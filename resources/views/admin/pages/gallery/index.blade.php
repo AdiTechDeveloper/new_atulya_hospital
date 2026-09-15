@@ -17,14 +17,6 @@
         </a>
     </div>
 
-    {{-- Success Message Alert --}}
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
     {{-- Gallery Data Table Card --}}
     <div class="card shadow-sm border-0">
         <div class="card-body">
@@ -36,7 +28,7 @@
                             <th width="15%">Preview</th>
                             <th width="20%">Category</th>
                             <th width="20%">Title</th>
-                            <th width="10%">Type</th>
+                            {{-- <th width="10%">Type</th> --}}
                             <th width="10%">Status</th>
                             <th width="20%" class="text-end">Actions</th>
                         </tr>
@@ -62,9 +54,9 @@
                                     <span class="badge bg-secondary">{{ $item->category_name }}</span>
                                 </td>
                                 <td>{{ $item->title ?? '—' }}</td>
-                                <td>
+                                {{-- <td>
                                     <span class="text-uppercase small fw-bold text-muted">{{ $item->media_type }}</span>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <form action="{{ route('admin.gallery.status', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
@@ -102,4 +94,63 @@
 </div>
     </div>
 </main>
+
+{{-- ================= TOAST NOTIFICATION ================= --}}
+@if(session('success') || session('error'))
+    <div class="toast-container position-fixed top-0 end-0 p-3"
+        style="z-index: 9999;">
+
+        <div id="galleryToast"
+            class="toast align-items-center border-0 shadow-lg
+            {{ session('success') ? 'text-bg-success' : 'text-bg-danger' }}"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true">
+
+            <div class="d-flex">
+
+                <div class="toast-body">
+
+                    @if(session('success'))
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        {{ session('success') }}
+                    @else
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        {{ session('error') }}
+                    @endif
+
+                </div>
+
+                <button type="button"
+                    class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast"
+                    aria-label="Close">
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const toastElement =
+                document.getElementById('galleryToast');
+
+            if (toastElement) {
+
+                const toast =
+                    new bootstrap.Toast(toastElement, {
+                        delay: 3000
+                    });
+
+                toast.show();
+
+            }
+
+        });
+    </script>
+@endif
 @endsection

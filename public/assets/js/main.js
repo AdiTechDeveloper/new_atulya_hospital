@@ -869,20 +869,20 @@
     });
 
     //>> Back To Top Slider Start <<//
-    $(window).on('scroll', function() {
-        if ($(this).scrollTop() > 20) {
-            $("#back-top").addClass("show");
-        } else {
-            $("#back-top").removeClass("show");
-        }
-    });
+    // $(window).on('scroll', function() {
+    //     if ($(this).scrollTop() > 20) {
+    //         $("#back-top").addClass("show");
+    //     } else {
+    //         $("#back-top").removeClass("show");
+    //     }
+    // });
 
-    $(document).on('click', '#back-top', function() {
-        $('html, body').animate({ scrollTop: 0 }, 800);
-        return false;
-    });
+    // $(document).on('click', '#back-top', function() {
+    //     $('html, body').animate({ scrollTop: 0 }, 800);
+    //     return false;
+    // });
         
-    }); // End Document Ready Function
+    // }); // End Document Ready Function
 
      //Price Range Slider
     document.addEventListener("DOMContentLoaded", function () {

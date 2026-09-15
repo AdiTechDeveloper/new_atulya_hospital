@@ -43,11 +43,11 @@
 
                             <ul>
                                 <li>
-                                    Monday - Friday
-                                    <span>9AM - 10PM</span>
+                                    Monday - Sunday 
+                                    <span>24 * 7</span>
                                 </li>
 
-                                <li>
+                                {{-- <li>
                                     Saturday
                                     <span>9AM - 8PM</span>
                                 </li>
@@ -55,7 +55,7 @@
                                 <li>
                                     Sunday
                                     <span>9AM - 12AM</span>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <div class="icon">
