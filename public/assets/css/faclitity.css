@@ -1,0 +1,150 @@
+.facility-hero-section {
+    background: #f5f8fb;
+    padding: 100px 0 90px;
+}
+
+.facility-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 35px;
+    font-size: 14px;
+}
+
+.facility-breadcrumb a {
+    color: #666;
+}
+
+.facility-hero-text {
+    max-width: 850px;
+}
+
+.facility-subtitle,
+.section-subtitle {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.facility-hero-text h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.facility-hero-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+}
+
+.facility-details-section {
+    padding: 100px 0;
+}
+
+.facility-details-image {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.facility-details-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.facility-details-content h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.facility-details-content > p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.facility-supporting-info {
+    margin-top: 30px;
+    padding: 25px;
+    border-left: 3px solid #0d6efd;
+    background: #f7f9fc;
+}
+
+.facility-supporting-info h4 {
+    margin-bottom: 10px;
+}
+
+.facility-supporting-info p {
+    margin: 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+.facility-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.facility-cta-section {
+    padding: 70px 0;
+}
+
+.facility-cta-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 50px;
+    border-radius: 12px;
+    background: #f5f8fb;
+}
+
+.facility-cta-content h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.facility-cta-content p {
+    margin: 0;
+    color: #666;
+    max-width: 600px;
+}
+
+@media (max-width: 991px) {
+
+    .facility-hero-text h1 {
+        font-size: 42px;
+    }
+
+    .facility-details-image img {
+        height: 400px;
+    }
+
+    .facility-cta-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .facility-hero-section {
+        padding: 70px 0;
+    }
+
+    .facility-hero-text h1 {
+        font-size: 34px;
+    }
+
+    .facility-actions {
+        flex-direction: column;
+    }
+
+    .facility-cta-wrapper {
+        padding: 30px;
+    }
+}

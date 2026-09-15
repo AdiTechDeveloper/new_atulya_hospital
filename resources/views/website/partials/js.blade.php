@@ -1,0 +1,29 @@
+<!--<< All JS Plugins >>-->
+        <script src="{{asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+        <!--<< Bootstrap Js >>-->
+        <script src="{{asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+        <!--<< Nice Select Js >>-->
+        <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+        <!--<< Odometer Js >>-->
+        <script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+        <!--<< Appear Js >>-->
+        <script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+        <!--<< Swiper Slider Js >>-->
+        <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+        <!--<< MeanMenu Js >>-->
+        <script src="{{ asset('assets/js/jquery.meanmenu.min.js') }}"></script>
+        <!--<< Magnific Popup Js >>-->
+        <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <!--<< Wow Animation Js >>-->
+        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+        <!--<< Gsap Animation Js >>-->
+        <script src="{{ asset('assets/js/gsap.min.js') }}"></script>
+        <!--<< ScrollTrigger Js >>-->
+        <script src="{{ asset('assets/js/ScrollTrigger.min.js') }}"></script>
+        <!--<< SplitText Js >>-->
+        <script src="{{ asset('assets/js/SplitText.min.js') }}"></script>
+        <!--<< splitType Js >>-->
+        <script src="{{ asset('assets/js/splitType.js') }}"></script>
+        <!--<< Main.js >>-->
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+

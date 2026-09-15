@@ -1,0 +1,68 @@
+/*
+Theme Name: Mezihub
+Author: ModinaTheme
+Author URI: https://themeforest.net/user/modinatheme/
+Description: Medical and Health Care HTML Template
+Version: 1.0.0
+*/
+
+//>> Basic Start <<//
+
+//>> Mixins <<//
+@import "_mixins";
+//>> Variables <<//	
+@import "_variables";
+//>> Typography <<//
+@import "_typography";
+//>> Buttons <<//
+@import "_buttons";
+//>> Basic End <<//	
+
+
+//>> Template Section Style Start <<//
+
+//>> Preloader <<//
+@import "_preloader";
+//>> Section <<//
+@import "_section";
+//>> Animation <<//
+@import "_animation";
+//>> Header <<//
+@import "_header";
+//>> MeanMenu <<//
+@import "_meanmenu";
+//>> Hero <<//
+@import "_hero";
+//>> Feature <<//
+@import "_feature";
+//>> About <<//
+@import "_about";
+//>> Service <<//
+@import "_service";
+//>> Shop <<//
+@import "_shop";
+//>> Project <<//
+@import "_project";
+//>> Helping <<//
+@import "_helping";
+//>> Team <<//
+@import "_team";
+//>> Faq <<//
+@import "_faq";
+//>> Cta <<//
+@import "_cta";
+//>> Testimonial <<//
+@import "_testimonial";
+//>> Brand <<//
+@import "_brand";
+//>> News Addons <<//
+@import "_news-addons";
+//>> Blog index default style <<//
+@import "_blog";
+//>> Contact <<//
+@import "_contact";
+//>> Footer <<//
+@import "_footer";
+
+//>> Template Section Style End <<//
+

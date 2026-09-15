@@ -1,0 +1,642 @@
+.appointment-wrapper {
+    .appointment-items {
+        border-radius: 12px;
+        background-color: $theme-color;
+        padding: 55px;
+
+        @include breakpoint (max-xl){
+            padding: 30px;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: $white;
+        }
+
+        .form-clt {
+            position: relative;
+            margin-top: 30px;
+
+            @media (max-width: 767px) {
+                margin-top: 10px;
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 500;
+                color: $white;
+                margin-bottom: 10px;
+            }
+    
+            input,textarea {
+
+                width: 100%;
+                background: $white;
+                border-radius: 4px;
+                border: 1px solid rgba(35, 31, 32, 0.11);
+                padding: 12px 20px;
+                font-weight: 500;
+                font-size: 15px;
+                text-transform: capitalize;
+                color: $header-color;
+
+                @media (max-width: 767px) {
+                    padding: 6px 10px;
+                }
+        
+                &::placeholder {
+                    color: rgba(100, 100, 100, 0.81);
+                }
+            }
+
+            .single-select {
+                 width: 100%;
+                background: $white;
+                border-radius: 4px;
+                border: 1px solid rgba(35, 31, 32, 0.11);
+                padding: 17px 20px;
+                font-weight: 500;
+                font-size: 15px;
+                text-transform: capitalize;
+                color: rgba(100, 100, 100, 0.81);
+                line-height: initial;
+                height: initial;
+                
+                .list {
+                    width: 100%;
+                }
+            }
+
+            .theme-btn {
+                width: 100%;
+                border-radius: 4px;
+                border: 1.5px solid #FFF;
+                padding: 19px 30px;
+
+                @media (max-width: 767px) {
+                    padding: 15px 20px;
+                    margin-top: 20px;
+                }
+
+                &:hover {
+                    background-color: $white;
+                    color: $header-color;
+                }
+            }
+        }
+    }
+
+    .appointment-image {
+        height: 490px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+    }
+}
+
+.appointment-section {
+    position: relative;
+    z-index: 9;
+
+     &::before {
+        @include before;
+        z-index: -1;
+        height: 50%;
+        background: rgba(36, 144, 235, 0.05);
+        top: 24px;
+    }
+
+    &::after {
+        @include before;
+        z-index: -1;
+        height: initial;
+       background: #051828;
+       top: 50%;
+    }
+}
+
+.contact-us-item {
+
+    h3 {
+        color: $white;
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .form-clt {
+
+        span {
+            color: $white;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        input {
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid rgba(35, 31, 32, 0.11);
+            background: $white;
+            color: rgba(100, 100, 100, 0.81);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1;
+            padding: 15px 20px;
+            text-transform: capitalize;
+
+                &::placeholder {
+                color: rgba(100, 100, 100, 0.81);
+            }
+        }
+
+        .form {
+            .single-select {
+                border-radius: 0;
+                border: none;
+                padding: 15px 20px;
+                height: initial;
+                line-height: 1;
+                border-radius: 4px;
+                border: 1px solid rgba(35, 31, 32, 0.11);
+                background: $white;
+
+                .current {
+                    color: rgba(100, 100, 100, 0.81);
+                }
+
+                &::after {
+                    right: 16px;
+                    width: 8px;
+                    height: 8px;
+                    border-bottom: 2px solid $text-color;
+                    border-right: 2px solid $text-color;
+                }
+
+                .list {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .theme-btn {
+        width: 100%;
+        padding: 19px 0;
+        border-radius: 4px;
+        background-color: $theme-color;
+
+        &:hover {
+            background-color: $header-color;
+        }
+    }
+}
+
+.contact-section-3 {
+    position: relative;
+
+    .shape-1 {
+        position: absolute;
+        bottom: 40px;
+        left: 30%;
+
+        @include breakpoint (max-xl) {
+            display: none;
+        }
+    }
+
+    .shape-2 {
+        position: absolute;
+        right: 91px;
+        top: 112px;
+
+        @include breakpoint (max-xl) {
+            display: none;
+        }
+    }
+}
+
+.contact-appointment-wrapper-5 {
+
+    .contact-appointment-left-item {
+
+        .contact-appointment-image {
+            img {
+                @include imgw;
+                border-radius: 12px;
+            }
+        }
+
+        .contact-appointment-list {
+            margin-top: 45px;
+
+            h5 {
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+
+            .contact-list {
+                display: flex;
+                align-items: flex-start;
+                gap: 90px;
+
+                @include breakpoint (max-xl) {
+                    flex-wrap: wrap;
+                    gap: 30px;
+                }
+
+                .list {
+                    li {
+                        @include flex;
+                        gap: 54px;
+
+                        @include breakpoint (max-xl) {
+                            flex-wrap: wrap;
+                            gap: 30px;
+                        }
+
+                        &:not(:last-child) {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+
+                .caller-item {
+                    @include flex;
+                    gap: 10px;
+
+                    .content {
+                        p {
+                            font-size: 18px;
+                            font-weight: 500;
+
+                            a {
+                                color: $header-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-appointment-box {
+        border-radius: 12px;
+        background-color: $theme-color;
+        padding: 35px;
+        margin-left: 30px;
+
+        @include breakpoint (max-xl) {
+            margin-left: 0;
+            padding: 30px;
+        }
+
+        h3 {
+            color: $white;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .form-clt {
+
+            span {
+                color: $white;
+                font-size: 15px;
+                font-weight: 600;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+
+            input,textarea {
+                outline: none;
+                border: none;
+                width: 100%;
+                border-radius: 4px;
+                border: 1px solid rgba(35, 31, 32, 0.11);
+                background: $white;
+                color: rgba(100, 100, 100, 0.81);
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 1;
+                padding: 15px 20px;
+
+                    &::placeholder {
+                    color: rgba(100, 100, 100, 0.81);
+                }
+            }
+
+            textarea {
+                padding-bottom: 130px;
+                resize: none;
+
+                @include breakpoint (max-sm) {
+                    padding-bottom: 100px;
+                }
+            }
+
+            .form {
+                .single-select {
+                    border-radius: 0;
+                    border: none;
+                    padding: 15px 20px;
+                    height: initial;
+                    line-height: 1;
+                    border-radius: 4px;
+                    border: 1px solid rgba(35, 31, 32, 0.11);
+                    background: $white;
+
+                    .current {
+                        color: rgba(100, 100, 100, 0.81);
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+
+                    &::after {
+                        right: 22px;
+                        width: 8px;
+                        height: 8px;
+                        border-bottom: 2px solid $header-color;
+                        border-right: 2px solid $header-color;
+                    }
+
+                    .list {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .theme-btn {
+           background-color: $theme-color-2;
+
+            &:hover {
+                background-color: $header-color;
+            }
+        }
+    }
+}
+
+.cta-newsletter-wrapper-5 {
+    padding: 70px 0;
+
+    .cta-newsletter-content {
+        h3 {
+            font-size: 32px;
+            color: $white;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 550px;
+            width: 100%;
+        }
+
+        .form-clt {
+            position: relative;
+
+            input {
+                width: 100%;
+                outline: none;
+                border: none;
+                border-radius: 40px;
+                background: #F7F9FB;
+                box-shadow: 0px 6px 17px 0px rgba(0, 0, 0, 0.05);
+                color: $text-color;
+                line-height: 1;
+                padding: 20px;
+                max-width: 550px;
+                font-size: 16px;
+                font-weight: 500;
+
+                &::placeholder {
+                    color: $text-color;
+                }
+            }
+
+            
+            .icon {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                bottom: 0;
+                width: 44px;
+                height: 44px;
+                line-height: 44px;
+                text-align: center;
+                background: $theme-color-2;
+                border-radius: 100px;
+                color: $white;
+                @include transition;
+
+                i {
+                    transform: rotate(45deg);
+                }
+
+                &:hover {
+                    background-color: $header-color;
+                }
+                
+            }
+        } 
+
+        p {
+            color: rgba(255, 255, 255, 0.80);
+            font-weight: 500;
+            font-size: 16px;
+            margin-top: 10px;
+
+            a {
+                color: $white;
+                text-decoration-line: underline;
+            }
+        }
+    }
+
+    .call-item {
+        @include flex;
+        gap: 22px;
+        justify-content: center;
+
+        @include breakpoint (max-xl) {
+            flex-wrap: wrap;
+        }
+
+        @include breakpoint (max-lg) {
+            justify-content: start;
+        }
+
+
+        .content {
+            p {
+                font-weight: 400;
+                font-size: 16px;
+                margin-bottom: 5px;
+                color: $white;
+            }
+
+            h2 {
+                a {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.cta-newsletter-section-5 {
+    position: relative;
+    z-index: 9;
+
+    &::before {
+        @include before;
+        background: #1F1F1F;
+        width: 50%;
+        z-index: -1;
+    }
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: $theme-color;
+        width: 50%;
+        z-index: -1;
+        left: initial;
+    }
+}
+
+.contact-info-box-items {
+    @include flex;
+    gap: 20px;
+    border-radius: 12px;
+    background: $white;
+    box-shadow: 14px 18px 84px 82px rgba(6, 3, 48, 0.03);
+    padding: 38px 32px;
+
+    .icon {
+        width: 78px;
+        height: 78px;
+        line-height: 78px;
+        border-radius: 50%;
+        text-align: center;
+        background-color: $theme-color;
+        color: $white;
+        font-size: 25px;
+    }
+
+    .content {
+        h6 {
+            font-size: 14px;
+            color: $text-color;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.appointment-wrapper-2 {
+    border-radius: 12px 0px 12px 12px;
+    background: #FFF;
+    box-shadow: 14px 18px 84px 82px rgba(6, 3, 48, 0.04);
+    padding: 50px;
+    margin-top: -140px;
+    position: relative;
+    z-index: 9;
+    
+    h3 {
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+
+     .form-clt {
+        position: relative;
+
+        p {
+            font-size: 15px;
+            font-weight: 500;
+            color: #172965;
+            margin-bottom: 10px;
+        }
+
+        input {
+
+            width: 100%;
+            background: $white;
+            border-radius: 4px;
+            border: 1px solid rgba(35, 31, 32, 0.11);
+            padding: 12px 20px;
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: capitalize;
+            color: $header-color;
+    
+            &::placeholder {
+                color: rgba(100, 100, 100, 0.81);
+            }
+        }
+
+        .single-select {
+                width: 100%;
+            background: $white;
+            border-radius: 4px;
+            border: 1px solid rgba(35, 31, 32, 0.11);
+            padding: 17px 20px;
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: capitalize;
+            color: rgba(100, 100, 100, 0.81);
+            line-height: initial;
+            height: initial;
+            
+            .list {
+                width: 100%;
+            }
+        }
+
+        .theme-btn {
+            background-color: $theme-color-2;
+            margin-top: 30px;
+
+            i {
+                color: $theme-color-2;
+            }
+
+            &:hover {
+                background-color: $header-color;
+
+                 i {
+                    background-color: $theme-color-2;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.map-items {
+        .googpemap {
+            iframe {
+                width: 100%;
+                height: 632px;
+                border-radius: 10px;
+
+                @include breakpoint (max-sm){
+                    height: 400px;
+                }
+            }
+        }
+    }

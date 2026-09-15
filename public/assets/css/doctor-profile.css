@@ -1,0 +1,566 @@
+/* =========================================================
+   DOCTOR PROFILE HERO
+========================================================= */
+
+.doctor-profile-hero {
+    background: #f7fbfc;
+    padding: 80px 0;
+}
+
+.doctor-profile-photo {
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.doctor-profile-photo img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   PHOTO BADGE
+========================================================= */
+
+.doctor-photo-badge {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+
+    background: #ffffff;
+    border-radius: 10px;
+
+    padding: 12px 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.12);
+}
+
+.doctor-photo-badge i {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eef8ff;
+    color: #168cf0;
+
+    font-size: 15px;
+}
+
+.doctor-photo-badge strong {
+    display: block;
+
+    font-size: 14px !important;
+
+    line-height: 1.4;
+}
+
+.doctor-photo-badge span {
+    display: block;
+
+    color: #777;
+
+    font-size: 11px !important;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.doctor-hero-content {
+    padding-left: 10px;
+}
+
+.doctor-department-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 16px;
+
+    border-radius: 30px;
+
+    background: #eef8ff;
+
+    color: #168cf0;
+
+    font-size: 12px !important;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .6px;
+}
+
+.doctor-department-badge i {
+    font-size: 12px;
+}
+
+.doctor-hero-content h1 {
+    font-size: 46px !important;
+
+    line-height: 1.2 !important;
+
+    font-weight: 700 !important;
+
+    margin: 16px 0 10px !important;
+}
+
+.doctor-specialization {
+    font-size: 18px !important;
+
+    color: #666;
+
+    line-height: 1.7 !important;
+
+    margin-bottom: 26px !important;
+}
+
+
+/* =========================================================
+   QUICK INFORMATION CARDS
+========================================================= */
+
+.doctor-quick-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 13px;
+}
+
+.doctor-quick-card {
+    background: #ffffff;
+
+    border: 1px solid #e5ebee;
+
+    border-radius: 9px;
+
+    padding: 17px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 13px;
+
+    min-height: 82px;
+
+    transition: all .3s ease;
+}
+
+.doctor-quick-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .07);
+}
+
+.doctor-quick-card i {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #eef8ff;
+
+    color: #168cf0;
+
+    font-size: 15px;
+}
+
+.doctor-quick-card small {
+    display: block;
+
+    color: #888;
+
+    font-size: 12px !important;
+
+    margin-bottom: 4px;
+}
+
+.doctor-quick-card strong {
+    display: block;
+
+    color: #222;
+
+    font-size: 14px !important;
+
+    line-height: 1.55 !important;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.doctor-action-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 27px;
+
+    flex-wrap: wrap;
+}
+
+
+/*
+=========================================================
+BOOK APPOINTMENT
+
+theme-btn is the actual template button.
+We are NOT changing its background/color.
+=========================================================
+*/
+
+.doctor-book-btn {
+    text-decoration: none !important;
+}
+
+
+/* =========================================================
+   CALL HOSPITAL BUTTON
+========================================================= */
+
+.doctor-call-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 13px 21px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    border: 1px solid #dfe5e8;
+
+    border-radius: 6px;
+
+    font-size: 14px !important;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all .3s ease;
+}
+
+.doctor-call-btn:hover {
+    color: #168cf0;
+
+    border-color: #168cf0;
+}
+
+
+/* =========================================================
+   INFORMATION SECTION
+========================================================= */
+
+.doctor-info-section {
+    padding: 80px 0;
+}
+
+.doctor-content-card {
+    background: #ffffff;
+
+    border: 1px solid #e7ecee;
+
+    border-radius: 12px;
+
+    padding: 42px;
+
+    box-shadow: 0 7px 25px rgba(0, 0, 0, .04);
+}
+
+.doctor-content-card h2 {
+    font-size: 34px !important;
+
+    line-height: 1.3 !important;
+
+    font-weight: 600 !important;
+
+    margin: 8px 0 18px !important;
+}
+
+.doctor-content-card h3 {
+    font-size: 21px !important;
+
+    line-height: 1.4 !important;
+
+    font-weight: 600 !important;
+
+    margin-bottom: 12px;
+}
+
+.doctor-content-card p {
+    color: #666666;
+
+    font-size: 15px !important;
+
+    line-height: 1.85 !important;
+}
+
+.doctor-section-label {
+    display: inline-block;
+
+    color: #168cf0;
+
+    font-size: 12px !important;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DETAILS LIST
+========================================================= */
+
+.doctor-list-box {
+    display: flex;
+
+    gap: 50px;
+
+    margin-top: 22px;
+}
+
+.doctor-list-box ul {
+    width: 50%;
+
+    padding: 0;
+
+    margin: 0;
+
+    list-style: none;
+}
+
+.doctor-list-box li {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+    color: #666666;
+
+    font-size: 15px !important;
+
+    line-height: 1.65 !important;
+}
+
+.doctor-list-box li i {
+    color: #168cf0;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PATIENT CARE BANNER
+========================================================= */
+
+.doctor-care-banner {
+    margin-top: 30px;
+
+    background: #f3faff;
+
+    border: 1px solid #dceef8;
+
+    border-radius: 10px;
+
+    padding: 21px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.doctor-care-banner i {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    color: #168cf0;
+
+    font-size: 15px;
+}
+
+.doctor-care-banner strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 15px !important;
+}
+
+.doctor-care-banner span {
+    color: #777777;
+
+    font-size: 13px !important;
+
+    line-height: 1.7 !important;
+}
+
+
+/* =========================================================
+   DESKTOP LARGE
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .doctor-profile-hero {
+        padding: 85px 0;
+    }
+
+    .doctor-profile-photo {
+        max-width: 380px;
+    }
+
+    .doctor-profile-photo img {
+        height: 460px;
+    }
+
+    .doctor-hero-content h1 {
+        font-size: 48px !important;
+    }
+
+    .doctor-specialization {
+        font-size: 18px !important;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .doctor-profile-photo {
+        max-width: 360px;
+    }
+
+    .doctor-hero-content {
+        padding-left: 0;
+
+        margin-top: 25px;
+    }
+
+    .doctor-hero-content h1 {
+        font-size: 42px !important;
+    }
+
+    .doctor-info-section {
+        padding: 60px 0;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 575px) {
+
+    .doctor-profile-hero {
+        padding: 50px 0;
+    }
+
+    .doctor-profile-photo img {
+        height: 390px;
+    }
+
+    .doctor-hero-content h1 {
+        font-size: 34px !important;
+    }
+
+    .doctor-specialization {
+        font-size: 16px !important;
+    }
+
+    .doctor-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-list-box {
+        display: block;
+    }
+
+    .doctor-list-box ul {
+        width: 100%;
+    }
+
+    .doctor-content-card {
+        padding: 25px;
+    }
+
+    .doctor-content-card h2 {
+        font-size: 29px !important;
+    }
+
+    .doctor-content-card p {
+        font-size: 14px !important;
+    }
+
+    .doctor-action-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .doctor-action-buttons .theme-btn,
+    .doctor-call-btn {
+        width: 100%;
+    }
+}
