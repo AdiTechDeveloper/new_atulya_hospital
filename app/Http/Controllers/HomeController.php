@@ -8,6 +8,12 @@ class HomeController extends Controller
 {
     public function index()
     {
+        /*
+        |--------------------------------------------------------------------------
+        | Doctors
+        |--------------------------------------------------------------------------
+        */
+
         $json = file_get_contents(
             storage_path('app/doctors.json')
         );
@@ -17,8 +23,6 @@ class HomeController extends Controller
         if (json_last_error() !== JSON_ERROR_NONE) {
             abort(500, 'Invalid doctors.json');
         }
-
-        $doctors = array_slice($doctors, 0, 4);
 
         /*
         |--------------------------------------------------------------------------
@@ -38,7 +42,6 @@ class HomeController extends Controller
                 ->first();
         }
 
-
         /*
         |--------------------------------------------------------------------------
         | Latest Videos
@@ -50,7 +53,6 @@ class HomeController extends Controller
             ->latest()
             ->take(3)
             ->get();
-
 
         return view('website.index', compact(
             'doctors',

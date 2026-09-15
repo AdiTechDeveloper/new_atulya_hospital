@@ -1,1889 +1,1499 @@
- @extends('website.layout.app')
-@section('title', 'Home')
+@extends('website.layout.app')
+
+@section('title', 'About Atulya Super Speciality Hospital & ICU | Ahmedabad')
+
+@section('meta_description', 'Learn about Atulya Super Speciality Hospital & ICU in Ahmedabad, our specialist healthcare services, 24×7 emergency and critical care, modern infrastructure and patient-focused approach.')
+
 @section('content')
 
- 
- <!-- About Section3 Start -->
-        <section class="about-section-3 section-padding fix">
-            <div class="left-shape float-bob-y">
-                <img src="{{ asset('assets/img/home-3/about/hand.png') }}" alt="img">
-            </div>
-            <div class="right-shape float-bob-y">
-                <img src="{{ asset('assets/img/home-3/about/teeth.png') }}" alt="img">
-            </div>
-            <div class="container">
-                <div class="about-wrapper-3">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="about-left-item">
-                                <div class="about-image wow fadeInUp" data-wow-delay=".3s">
-                                    <img src="{{ asset('assets/img/home-3/about/about-1.jpg') }}" alt="img">
-                                </div>
-                                <h5 class="wow fadeInUp" data-wow-delay=".4s">
-                                    Welcome To Hospa General Hospital. We are <br> open 24/7 at your service.
-                                </h5>
-                                <div class="about-list-item wow fadeInUp" data-wow-delay=".5s">
-                                    <ul class="list">
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            Comprehensive Care
-                                        </li>
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            Management consultation
-                                        </li>
-                                    </ul>
-                                    <ul class="list">
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            Specialized Support
-                                        </li>
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                           Instant Operation & Appointment
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="about-content">
-                                <div class="section-title mb-0">
-                                    <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">ABOUT US</span>
-                                    <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">
-                                        Heart & Science of Medical Test for Your Treatment
-                                    </h2>
-                                </div>
-                                <p class="about-text wow fadeInUp" data-wow-delay=".2s">
-                                    Your brand deserves more than just attention—it deserves results. That’s why we offer end-to-end creative services that help you engage your audience.
-                                </p>
-                                <div class="about-icon-items wow fadeInUp" data-wow-delay=".3s">
-                                    <div class="icon-item">
-                                        <div class="icon">
-                                            <img src="{{ asset('assets/img/home-3/about/icon-1.png') }}" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <h5>
-                                                Medical And <br> Expertise Services
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="icon-item">
-                                        <div class="icon">
-                                            <img src="{{ asset('assets/img/home-3/about/icon-2.png') }}" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <h5>
-                                                Medicine and Our <br> instrument
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="about-button wow fadeInUp" data-wow-delay=".5s">
-                                    <a href="#" class="theme-btn">
-                                        <i class="far fa-chevron-right"></i>
-                                        More About us
-                                    </a>
-                                    <a href="#"  class="theme-btn style-2">
-                                        <i class="far fa-chevron-right"></i>
-                                        Make Appointment
-                                    </a>
-                                </div>
-                                <div class="about-image-2 wow fadeInUp" data-wow-delay=".7s">
-                                    <img src="{{ asset('assets/img/home-3/about/about-2.jpg') }}" alt="img">
-                                    <div class="circle-image">
-                                        <img src="{{ asset('assets/img/home-3/about/text.png') }}" alt="img">
-                                        <a href="#"  class="arrow-icon">
-                                            <i class="fal fa-long-arrow-up"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<style>
+    .atulya-about {
+        background: #f7f9fc;
+        color: #172965;
+    }
 
-        <!-- Marquee Section Start -->
-        <div class="marquee-section-2 fix">
-            <div class="mycustom-marque">
-              <div class="scrolling-wrap style-2">
-               <div class="comm">
-                   <div></div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Our Projects</div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Instant Video</div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Online Support</div>
-                    <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> 24/7 Medicine</div>
-               </div>
-               <div class="comm">
-                   <div></div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Our Projects</div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Instant Video</div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Online Support</div>
-                    <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> 24/7 Medicine</div>
-               </div>
-               <div class="comm">
-                   <div></div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Our Projects</div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Instant Video</div>
-                   <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> Online Support</div>
-                    <div class="cmn-textslide"><img src="{{ asset('assets/img/home-5/marque.png') }}" alt="img"> 24/7 Medicine</div>
-               </div>
-           </div>
-         </div>
+    .atulya-container {
+        width: min(1180px, calc(100% - 30px));
+        margin: auto;
+    }
+
+    .atulya-section {
+        padding: 80px 0;
+    }
+
+    .atulya-section-head {
+        max-width: 720px;
+        margin: 0 auto 45px;
+        text-align: center;
+    }
+
+    .atulya-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        color: #1c6fd1;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .atulya-kicker::before {
+        content: "";
+        width: 28px;
+        height: 2px;
+        background: #1c6fd1;
+    }
+
+    .atulya-section-head h2 {
+        margin: 0 0 14px;
+        color: #172965;
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.15;
+        font-weight: 700;
+    }
+
+    .atulya-section-head p {
+        margin: 0;
+        color: #68738a;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /* HERO */
+
+    .atulya-about-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 85px 0 75px;
+        background:
+            radial-gradient(
+                circle at 90% 20%,
+                rgba(44, 127, 218, .12),
+                transparent 30%
+            ),
+            linear-gradient(135deg, #f8fbff 0%, #eef5fc 100%);
+    }
+
+    .atulya-about-hero::after {
+        content: "";
+        position: absolute;
+        right: -120px;
+        bottom: -160px;
+        width: 380px;
+        height: 380px;
+        border: 70px solid rgba(28, 111, 209, .05);
+        border-radius: 50%;
+    }
+
+    .atulya-hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.05fr .95fr;
+        gap: 65px;
+        align-items: center;
+    }
+
+    .atulya-hero-content h1 {
+        max-width: 650px;
+        margin: 0 0 22px;
+        color: #172965;
+        font-size: clamp(38px, 5vw, 62px);
+        line-height: 1.08;
+        font-weight: 750;
+    }
+
+    .atulya-hero-content h1 span {
+        color: #1c6fd1;
+    }
+
+    .atulya-hero-content > p {
+        max-width: 620px;
+        margin: 0 0 30px;
+        color: #667189;
+        font-size: 17px;
+        line-height: 1.85;
+    }
+
+    .atulya-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 35px;
+    }
+
+    .atulya-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 50px;
+        padding: 0 23px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        transition: .25s ease;
+    }
+
+    .atulya-btn-primary {
+        background: #172965;
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(23, 41, 101, .18);
+    }
+
+    .atulya-btn-primary:hover {
+        background: #1c6fd1;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .atulya-btn-outline {
+        border: 1px solid #d5dfec;
+        background: #fff;
+        color: #172965;
+    }
+
+    .atulya-btn-outline:hover {
+        border-color: #1c6fd1;
+        color: #1c6fd1;
+        transform: translateY(-2px);
+    }
+
+    .atulya-hero-points {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+
+    .atulya-hero-point {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #3e4b65;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .atulya-hero-point i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #e4f1ff;
+        color: #1c6fd1;
+        font-size: 12px;
+    }
+
+    .atulya-hero-image {
+        position: relative;
+    }
+
+    .atulya-hero-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 25px 60px rgba(23, 41, 101, .15);
+    }
+
+    .atulya-hero-badge {
+        position: absolute;
+        left: -25px;
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 16px 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 15px 40px rgba(23, 41, 101, .15);
+    }
+
+    .atulya-hero-badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 9px;
+        background: #e8f3ff;
+        color: #1c6fd1;
+        font-size: 19px;
+    }
+
+    .atulya-hero-badge strong {
+        display: block;
+        margin-bottom: 2px;
+        color: #172965;
+        font-size: 16px;
+    }
+
+    .atulya-hero-badge span {
+        color: #7a8498;
+        font-size: 12px;
+    }
+
+    /* ABOUT */
+
+    .atulya-about-grid {
+        display: grid;
+        grid-template-columns: .9fr 1.1fr;
+        gap: 65px;
+        align-items: center;
+    }
+
+    .atulya-about-image {
+        position: relative;
+    }
+
+    .atulya-about-image img {
+        width: 100%;
+        height: 530px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .atulya-content .atulya-kicker {
+        margin-bottom: 12px;
+    }
+
+    .atulya-content h2 {
+        margin: 0 0 18px;
+        color: #172965;
+        font-size: clamp(30px, 4vw, 45px);
+        line-height: 1.15;
+    }
+
+    .atulya-content > p {
+        margin: 0 0 18px;
+        color: #68738a;
+        font-size: 15px;
+        line-height: 1.85;
+    }
+
+    .atulya-check-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 25px;
+        margin-top: 28px;
+    }
+
+    .atulya-check {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: #3d4961;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .atulya-check i {
+        flex: 0 0 auto;
+        margin-top: 2px;
+        color: #1c6fd1;
+    }
+
+    /* VISION MISSION */
+
+    .atulya-purpose {
+        background: #172965;
+    }
+
+    .atulya-purpose .atulya-section-head h2,
+    .atulya-purpose .atulya-section-head p {
+        color: #fff;
+    }
+
+    .atulya-purpose .atulya-kicker {
+        color: #8fc7ff;
+    }
+
+    .atulya-purpose .atulya-kicker::before {
+        background: #8fc7ff;
+    }
+
+    .atulya-purpose-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+    }
+
+    .atulya-purpose-card {
+        position: relative;
+        padding: 35px;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 13px;
+        background: rgba(255,255,255,.055);
+        overflow: hidden;
+    }
+
+    .atulya-purpose-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 22px;
+        border-radius: 10px;
+        background: #fff;
+        color: #1c6fd1;
+        font-size: 20px;
+    }
+
+    .atulya-purpose-card h3 {
+        margin: 0 0 12px;
+        color: #fff;
+        font-size: 25px;
+    }
+
+    .atulya-purpose-card p {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        color: rgba(255,255,255,.72);
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* WHY */
+
+    .atulya-why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .atulya-why-card {
+        padding: 28px;
+        border: 1px solid #e4eaf2;
+        border-radius: 12px;
+        background: #fff;
+        transition: .25s ease;
+    }
+
+    .atulya-why-card:hover {
+        transform: translateY(-5px);
+        border-color: #cddff2;
+        box-shadow: 0 18px 40px rgba(23,41,101,.08);
+    }
+
+    .atulya-why-number {
+        margin-bottom: 22px;
+        color: #dceaf8;
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    .atulya-why-card h3 {
+        margin: 0 0 10px;
+        color: #172965;
+        font-size: 19px;
+    }
+
+    .atulya-why-card p {
+        margin: 0;
+        color: #737e92;
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    /* INFRASTRUCTURE */
+
+    .atulya-infra {
+        background: #f0f5fa;
+    }
+
+    .atulya-infra-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .atulya-infra-card {
+        overflow: hidden;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 8px 25px rgba(23,41,101,.06);
+    }
+
+    .atulya-infra-image {
+        height: 225px;
+        overflow: hidden;
+    }
+
+    .atulya-infra-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: .4s ease;
+    }
+
+    .atulya-infra-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .atulya-infra-content {
+        padding: 21px 22px 23px;
+    }
+
+    .atulya-infra-content h3 {
+        margin: 0 0 7px;
+        color: #172965;
+        font-size: 19px;
+    }
+
+    .atulya-infra-content p {
+        margin: 0;
+        color: #737e92;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    /* QUALITY */
+
+    .atulya-quality {
+        background: #fff;
+    }
+
+    .atulya-quality-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .atulya-quality-image {
+        position: relative;
+    }
+
+    .atulya-quality-image img {
+        width: 100%;
+        height: 460px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .atulya-quality-content h2 {
+        margin: 0 0 17px;
+        color: #172965;
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.15;
+    }
+
+    .atulya-quality-content > p {
+        margin: 0 0 24px;
+        color: #68738a;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .atulya-quality-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .atulya-quality-item {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 13px 14px;
+        border: 1px solid #e5ebf2;
+        border-radius: 8px;
+        color: #354159;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .atulya-quality-item i {
+        color: #1c6fd1;
+    }
+
+    .atulya-trust {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 25px;
+        padding-top: 22px;
+        border-top: 1px solid #e7ebf1;
+    }
+
+    .atulya-trust-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: #eaf4ff;
+        color: #1c6fd1;
+    }
+
+    .atulya-trust strong {
+        display: block;
+        margin-bottom: 3px;
+        color: #172965;
+        font-size: 14px;
+    }
+
+    .atulya-trust span {
+        color: #7b8597;
+        font-size: 12px;
+    }
+
+    /* CTA */
+
+    .atulya-cta {
+        padding: 55px 0;
+        background: #eef5fc;
+    }
+
+    .atulya-cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 35px 40px;
+        border-radius: 14px;
+        background: #172965;
+    }
+
+    .atulya-cta-box h3 {
+        margin: 0 0 7px;
+        color: #fff;
+        font-size: 27px;
+    }
+
+    .atulya-cta-box p {
+        margin: 0;
+        color: rgba(255,255,255,.7);
+        font-size: 14px;
+    }
+
+    .atulya-cta-box .atulya-btn {
+        flex: 0 0 auto;
+        background: #fff;
+        color: #172965;
+    }
+
+    .atulya-cta-box .atulya-btn:hover {
+        background: #1c6fd1;
+        color: #fff;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 991px) {
+        .atulya-section {
+            padding: 65px 0;
+        }
+
+        .atulya-hero-grid,
+        .atulya-about-grid,
+        .atulya-quality-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .atulya-hero-image img {
+            height: 430px;
+        }
+
+        .atulya-about-image img,
+        .atulya-quality-image img {
+            height: 420px;
+        }
+
+        .atulya-hero-badge {
+            left: 20px;
+        }
+
+        .atulya-why-grid,
+        .atulya-infra-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .atulya-section {
+            padding: 50px 0;
+        }
+
+        .atulya-about-hero {
+            padding: 55px 0;
+        }
+
+        .atulya-hero-content h1 {
+            font-size: 40px;
+        }
+
+        .atulya-hero-content > p {
+            font-size: 15px;
+        }
+
+        .atulya-hero-image img {
+            height: 340px;
+        }
+
+        .atulya-about-image img,
+        .atulya-quality-image img {
+            height: 350px;
+        }
+
+        .atulya-purpose-grid,
+        .atulya-why-grid,
+        .atulya-infra-grid,
+        .atulya-check-grid,
+        .atulya-quality-list {
+            grid-template-columns: 1fr;
+        }
+
+        .atulya-purpose-card {
+            padding: 27px;
+        }
+
+        .atulya-cta-box {
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 28px;
+        }
+
+        .atulya-experience-box {
+            right: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .atulya-container {
+            width: min(100% - 22px, 1180px);
+        }
+
+        .atulya-hero-content h1 {
+            font-size: 34px;
+        }
+
+        .atulya-hero-actions {
+            flex-direction: column;
+        }
+
+        .atulya-btn {
+            width: 100%;
+        }
+
+        .atulya-hero-points {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .atulya-hero-image img {
+            height: 290px;
+        }
+
+        .atulya-about-image img,
+        .atulya-quality-image img {
+            height: 300px;
+        }
+
+        .atulya-hero-badge {
+            position: relative;
+            left: 0;
+            bottom: auto;
+            margin-top: 12px;
+        }
+    }
+</style>
+
+
+<div class="atulya-about">
+
+    {{-- =========================
+         HERO
+    ========================= --}}
+    <section class="atulya-about-hero">
+
+        <div class="atulya-container">
+
+            <div class="atulya-hero-grid">
+
+                <div class="atulya-hero-content">
+
+                    <div class="atulya-kicker">
+                        About Atulya
+                    </div>
+
+                    <h1>
+                        About Atulya Super Speciality
+                        <span>Hospital & ICU</span>
+                    </h1>
+
+                    <p>
+                        Atulya Super Speciality Hospital & ICU is committed
+                        to delivering dependable healthcare through experienced
+                        specialists, critical care services, modern
+                        infrastructure and a patient-first approach.
+                    </p>
+
+                    <div class="atulya-hero-actions">
+
+                        <a href="{{ url('/doctors') }}"
+                           class="atulya-btn atulya-btn-primary">
+                            Meet Our Doctors
+                            <i class="far fa-arrow-right"></i>
+                        </a>
+
+                        <a href="tel:+919727579000"
+                           class="atulya-btn atulya-btn-outline">
+                            <i class="far fa-phone-alt"></i>
+                            +91 97275 79000
+                        </a>
+
+                    </div>
+
+                    <div class="atulya-hero-points">
+
+                        <div class="atulya-hero-point">
+                            <i class="far fa-check"></i>
+                            Specialist Care
+                        </div>
+
+                        <div class="atulya-hero-point">
+                            <i class="far fa-check"></i>
+                            24×7 Critical Care
+                        </div>
+
+                        <div class="atulya-hero-point">
+                            <i class="far fa-check"></i>
+                            Patient First
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="atulya-hero-image">
+
+                    <img
+                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                        alt="Atulya Super Speciality Hospital & ICU in Ahmedabad"
+                    >
+
+                    <div class="atulya-hero-badge">
+
+                        <div class="atulya-hero-badge-icon">
+                            <i class="far fa-hospital"></i>
+                        </div>
+
+                        <div>
+                            <strong>Atulya Hospital</strong>
+                            <span>Super Speciality Hospital & ICU</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <!-- Time Table Section Start -->
-        <section class="time-table-section fix section-padding">
-            <div class="time-shape-1">
-                <img src="{{ asset('assets/img/home-2/time-table/shape-1.png') }}" alt="img">
-            </div>
-            <div class="time-shape-2">
-                <img src="{{ asset('assets/img/home-2/time-table/shape-2.png') }}" alt="img">
-            </div>
-            <div class="container">
-                <div class="time-table-wrapper">
-                    <div class="section-title text-center">
-                        <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">TITME TABLE</span>
-                        <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Timing Calendar of Our Medical</h2>
-                        <p class="mt-3">Patient-centred care is about treating a person receiving healthcare with dignity and respect.</p>
-                    </div>
-                    <ul class="nav">
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".2s">
-                            <a href="#"  data-bs-toggle="tab" class="nav-link active">
-                               All Events
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".4s">
-                            <a href="#"  data-bs-toggle="tab" class="nav-link">
-                               Cardiology
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".6s">
-                            <a href="#"  data-bs-toggle="tab" class="nav-link">
-                                Dental
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".8s">
-                            <a href="#"  data-bs-toggle="tab" class="nav-link">
-                                Psychiatry
-                            </a>
-                        </li>
-                         <li class="nav-item wow fadeInUp" data-wow-delay=".8s">
-                            <a href="#"  data-bs-toggle="tab" class="nav-link">
-                                Rhinology
-                            </a>
-                        </li>
-                         <li class="nav-item wow fadeInUp" data-wow-delay=".8s">
-                            <a href="#"  data-bs-toggle="tab" class="nav-link">
-                                Pulmonary
-                            </a>
-                        </li>
-                    </ul>
-                     <div class="tab-content">
-                        <div id="thumb1" class="tab-pane fade show active">
-                            <div class="table-responsive">
-                                <table class="table schedule_table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Monday</th>
-                                            <th scope="col">Tuesday</th>
-                                            <th scope="col">Wednesday</th>
-                                            <th scope="col">Thursday</th>
-                                            <th scope="col">Friday</th>
-                                            <th scope="col">Saturday</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 am</div>
-                                            </td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Matthew
-                                                    </span>
-                                                    <span class="trainer_name">Cancer Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                        
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Eliyas
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">11:00 am</div>
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Smith
-                                                    </span>
-                                                    <span class="trainer_name">Orthopedics</span>
-                                                    <span class="time">9:00 am&nbsp;-&nbsp;10:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">1:00 pm</div>
-                                            </td>
-                                        <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">11:00 am - 1:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Rachel
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">1:00 pm - 2:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">3:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Lauren
-                                                    </span>
-                                                    <span class="trainer_name">Diagostic</span>
-                                                    <span class="time">3:00 pm - 4:00 pm</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">5:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">5:00 am - 7:00 pm</span>
-                                                </div>
-                                            </td>
-                                    
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">7:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Robinson
-                                                    </span>
-                                                    <span class="trainer_name">Neurology</span>
-                                                    <span class="time">7:00 pm - 9:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                        
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="thumb2" class="tab-pane fade">
-                            <div class="table-responsive">
-                                <table class="table schedule_table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Monday</th>
-                                            <th scope="col">Tuesday</th>
-                                            <th scope="col">Wednesday</th>
-                                            <th scope="col">Thursday</th>
-                                            <th scope="col">Friday</th>
-                                            <th scope="col">Saturday</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 am</div>
-                                            </td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Matthew
-                                                    </span>
-                                                    <span class="trainer_name">Cancer Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                        
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Eliyas
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">11:00 am</div>
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Smith
-                                                    </span>
-                                                    <span class="trainer_name">Orthopedics</span>
-                                                    <span class="time">9:00 am&nbsp;-&nbsp;10:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">1:00 pm</div>
-                                            </td>
-                                        <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">11:00 am - 1:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Rachel
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">1:00 pm - 2:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">3:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Lauren
-                                                    </span>
-                                                    <span class="trainer_name">Diagostic</span>
-                                                    <span class="time">3:00 pm - 4:00 pm</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">5:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">5:00 am - 7:00 pm</span>
-                                                </div>
-                                            </td>
-                                    
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">7:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Robinson
-                                                    </span>
-                                                    <span class="trainer_name">Neurology</span>
-                                                    <span class="time">7:00 pm - 9:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                        
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="thumb3" class="tab-pane fade">
-                            <div class="table-responsive">
-                                <table class="table schedule_table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Monday</th>
-                                            <th scope="col">Tuesday</th>
-                                            <th scope="col">Wednesday</th>
-                                            <th scope="col">Thursday</th>
-                                            <th scope="col">Friday</th>
-                                            <th scope="col">Saturday</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 am</div>
-                                            </td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Matthew
-                                                    </span>
-                                                    <span class="trainer_name">Cancer Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                        
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Eliyas
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">11:00 am</div>
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Smith
-                                                    </span>
-                                                    <span class="trainer_name">Orthopedics</span>
-                                                    <span class="time">9:00 am&nbsp;-&nbsp;10:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">1:00 pm</div>
-                                            </td>
-                                        <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">11:00 am - 1:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Rachel
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">1:00 pm - 2:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">3:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Lauren
-                                                    </span>
-                                                    <span class="trainer_name">Diagostic</span>
-                                                    <span class="time">3:00 pm - 4:00 pm</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">5:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">5:00 am - 7:00 pm</span>
-                                                </div>
-                                            </td>
-                                    
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">7:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Robinson
-                                                    </span>
-                                                    <span class="trainer_name">Neurology</span>
-                                                    <span class="time">7:00 pm - 9:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                        
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="thumb4" class="tab-pane fade">
-                               <div class="table-responsive">
-                                <table class="table schedule_table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Monday</th>
-                                            <th scope="col">Tuesday</th>
-                                            <th scope="col">Wednesday</th>
-                                            <th scope="col">Thursday</th>
-                                            <th scope="col">Friday</th>
-                                            <th scope="col">Saturday</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 am</div>
-                                            </td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Matthew
-                                                    </span>
-                                                    <span class="trainer_name">Cancer Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                        
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Eliyas
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">11:00 am</div>
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Smith
-                                                    </span>
-                                                    <span class="trainer_name">Orthopedics</span>
-                                                    <span class="time">9:00 am&nbsp;-&nbsp;10:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">1:00 pm</div>
-                                            </td>
-                                        <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">11:00 am - 1:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Rachel
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">1:00 pm - 2:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">3:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Lauren
-                                                    </span>
-                                                    <span class="trainer_name">Diagostic</span>
-                                                    <span class="time">3:00 pm - 4:00 pm</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">5:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">5:00 am - 7:00 pm</span>
-                                                </div>
-                                            </td>
-                                    
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">7:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Robinson
-                                                    </span>
-                                                    <span class="trainer_name">Neurology</span>
-                                                    <span class="time">7:00 pm - 9:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                        
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="thumb5" class="tab-pane fade">
-                               <div class="table-responsive">
-                                <table class="table schedule_table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Monday</th>
-                                            <th scope="col">Tuesday</th>
-                                            <th scope="col">Wednesday</th>
-                                            <th scope="col">Thursday</th>
-                                            <th scope="col">Friday</th>
-                                            <th scope="col">Saturday</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 am</div>
-                                            </td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Matthew
-                                                    </span>
-                                                    <span class="trainer_name">Cancer Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                        
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Eliyas
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">11:00 am</div>
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Smith
-                                                    </span>
-                                                    <span class="trainer_name">Orthopedics</span>
-                                                    <span class="time">9:00 am&nbsp;-&nbsp;10:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">1:00 pm</div>
-                                            </td>
-                                        <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">11:00 am - 1:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Rachel
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">1:00 pm - 2:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">3:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Lauren
-                                                    </span>
-                                                    <span class="trainer_name">Diagostic</span>
-                                                    <span class="time">3:00 pm - 4:00 pm</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">5:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">5:00 am - 7:00 pm</span>
-                                                </div>
-                                            </td>
-                                    
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">7:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Robinson
-                                                    </span>
-                                                    <span class="trainer_name">Neurology</span>
-                                                    <span class="time">7:00 pm - 9:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                        
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="thumb6" class="tab-pane fade">
-                               <div class="table-responsive">
-                                <table class="table schedule_table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Monday</th>
-                                            <th scope="col">Tuesday</th>
-                                            <th scope="col">Wednesday</th>
-                                            <th scope="col">Thursday</th>
-                                            <th scope="col">Friday</th>
-                                            <th scope="col">Saturday</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 am</div>
-                                            </td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Matthew
-                                                    </span>
-                                                    <span class="trainer_name">Cancer Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                        
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Eliyas
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">11:00 am</div>
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Smith
-                                                    </span>
-                                                    <span class="trainer_name">Orthopedics</span>
-                                                    <span class="time">9:00 am&nbsp;-&nbsp;10:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">1:00 pm</div>
-                                            </td>
-                                        <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">11:00 am - 1:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Rachel
-                                                    </span>
-                                                    <span class="trainer_name">Dental Care</span>
-                                                    <span class="time">1:00 pm - 2:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">3:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Lauren
-                                                    </span>
-                                                    <span class="trainer_name">Diagostic</span>
-                                                    <span class="time">3:00 pm - 4:00 pm</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">5:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                        Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">9:00 am - 11:00 am</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Samantha
-                                                    </span>
-                                                    <span class="trainer_name">Radiation Therapy</span>
-                                                    <span class="time">5:00 am - 7:00 pm</span>
-                                                </div>
-                                            </td>
-                                    
-                                            <td>
-                                            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">7:00 pm</div>
-                                            </td>
-                                            <td rowspan="2" class="active">
-                                                <div class="schedule_item">
-                                                    <span class="class_name">
-                                                    Dr. Robinson
-                                                    </span>
-                                                    <span class="trainer_name">Neurology</span>
-                                                    <span class="time">7:00 pm - 9:00 pm</span>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="time">9:00 pm</div>
-                                            </td>
-                                            <td></td>
-                                        
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </section>
 
-        <!-- Video Section Start -->
-        <div class="vedio-bg-section fix bg-cover" style="background-image: url(assets/img/home-1/counter/video-img.jpg);">
-            <div class="counter-section">
-                <div class="container">
-                    <div class="counter-wrapper zoom-effect-style">
-                        <div class="counter-items wow fadeInUp" data-wow-delay=".2s">
-                            <div class="icon">
-                                <img src="{{ asset('assets/img/home-1/counter/icon-01.png') }}" alt="img">
-                            </div>
-                            <div class="content">
-                                <h2><span class="odometer" data-count="38">00</span>k</h2>
-                                <p>Satisfied Patients</p>
-                            </div>
-                        </div>
-                    <div class="counter-items wow fadeInUp" data-wow-delay=".4s">
-                            <div class="icon">
-                                <img src="{{ asset('assets/img/home-1/counter/icon-02.png') }}" alt="img">
-                            </div>
-                            <div class="content">
-                                <h2><span class="odometer" data-count="420">00</span></h2>
-                                <p>Clinic Rooms</p>
-                            </div>
-                    </div>
-                    <div class="counter-items wow fadeInUp" data-wow-delay=".6s">
-                        <div class="icon">
-                            <img src="{{ asset('assets/img/home-1/counter/icon-03.png') }}" alt="img">
-                        </div>
-                        <div class="content">
-                            <h2><span class="odometer" data-count="32">00</span>+</h2>
-                            <p>Awards Winning</p>
-                        </div>
-                    </div>
-                        <div class="counter-items wow fadeInUp" data-wow-delay=".8s">
-                            <div class="icon">
-                                <img src="{{ asset('assets/img/home-1/counter/icon-04.png') }}" alt="img">
-                            </div>
-                            <div class="content">
-                                <h2><span class="odometer" data-count="563">00</span>K</h2>
-                                <p>Kinds Of Research</p>
-                            </div>
-                        </div>
-                    </div>
+
+    {{-- =========================
+         ABOUT HOSPITAL
+    ========================= --}}
+    <section class="atulya-section">
+
+        <div class="atulya-container">
+
+            <div class="atulya-about-grid">
+
+                <div class="atulya-about-image">
+
+                    <img
+                        src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
+                        alt="About Atulya Super Speciality Hospital Ahmedabad"
+                    >
+
                 </div>
-            </div>
-            <div class="vedio-wrapper">
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=R0mku_PtK1E" class="video-btn ripple video-popup">
-                    <i class="fas fa-play"></i>
-                    </a>
+
+
+                <div class="atulya-content">
+
+                    <div class="atulya-kicker">
+                        About Hospital
+                    </div>
+
+                    <h2>
+                        A Healthcare Environment
+                        Built Around Patients
+                    </h2>
+
+                    <p>
+                        Atulya Super Speciality Hospital & ICU provides
+                        comprehensive medical care with an emphasis on
+                        clinical expertise, patient safety and compassionate
+                        service.
+                    </p>
+
+                    <p>
+                        Our hospital brings together specialist doctors,
+                        emergency services, critical care, surgical
+                        infrastructure and diagnostic support to provide
+                        patients with a dependable healthcare experience
+                        under one roof.
+                    </p>
+
+                    <div class="atulya-check-grid">
+
+                        <div class="atulya-check">
+                            <i class="far fa-check-circle"></i>
+                            Experienced specialist doctors
+                        </div>
+
+                        <div class="atulya-check">
+                            <i class="far fa-check-circle"></i>
+                            24×7 emergency support
+                        </div>
+
+                        <div class="atulya-check">
+                            <i class="far fa-check-circle"></i>
+                            Critical care facilities
+                        </div>
+
+                        <div class="atulya-check">
+                            <i class="far fa-check-circle"></i>
+                            Modern surgical infrastructure
+                        </div>
+
+                        <div class="atulya-check">
+                            <i class="far fa-check-circle"></i>
+                            Diagnostic support
+                        </div>
+
+                        <div class="atulya-check">
+                            <i class="far fa-check-circle"></i>
+                            Patient-focused approach
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <!-- Pricing Section5 Start -->
-        <section class="pricing-section-5 section-padding fix">
-            <div class="shape-1">
-                <img src="{{ asset('assets/img/home-5/teeth-2.png') }}" alt="img">
+    </section>
+
+
+    {{-- =========================
+         OUR APPROACH
+    ========================= --}}
+    <section class="atulya-section">
+
+        <div class="atulya-container">
+
+            <div class="atulya-section-head">
+
+                <div class="atulya-kicker">
+                    Our Approach
+                </div>
+
+                <h2>
+                    Care That Puts Patients First
+                </h2>
+
+                <p>
+                    Atulya Super Speciality Hospital & ICU focuses on
+                    patient-centred healthcare through clear communication,
+                    timely access to medical services and coordinated care.
+                </p>
+
             </div>
-            <div class="shape-2 float-bob-y">
-                <img src="{{ asset('assets/img/home-5/teeth.png') }}" alt="img">
+
+
+            <div class="atulya-why-grid">
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">01</div>
+
+                    <h3>Patient-Centred Care</h3>
+
+                    <p>
+                        Care is planned around the patient's medical needs,
+                        comfort and overall healthcare journey.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">02</div>
+
+                    <h3>Clear Communication</h3>
+
+                    <p>
+                        We value clear communication with patients and
+                        families throughout the care process.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">03</div>
+
+                    <h3>Timely Access</h3>
+
+                    <p>
+                        Emergency, critical care and specialist services
+                        support timely access to appropriate medical care.
+                    </p>
+                </div>
+
             </div>
-            <div class="container">
-                <div class="pricing-wrapper-5">
-                    <div class="row g-4">
-                      <div class="col-xl-5 col-lg-6 col-md-6">
-                        <div class="pricing-content">
-                            <div class="section-title mb-0">
-                            <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR PRICING</span>
-                            <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">
-                                Our Affordable Pricing Plan For You
-                            </h2>
-                        </div>
-                        <p class="text wow fadeInUp" data-wow-delay=".5s">
-                            Vestibulum sed arcu non euismod odio laci inia at quis, libero nunc consequat interd varius sit amet mattis vulputate eni sito am.
+
+        </div>
+
+    </section>
+
+
+    {{-- =========================
+         VISION & MISSION
+    ========================= --}}
+    <section class="atulya-section atulya-purpose">
+
+        <div class="atulya-container">
+
+            <div class="atulya-section-head">
+
+                <div class="atulya-kicker">
+                    Vision & Mission
+                </div>
+
+                <h2>
+                    Our Purpose
+                </h2>
+
+                <p>
+                    Our direction is guided by quality healthcare,
+                    compassion, patient safety and continuous improvement.
+                </p>
+
+            </div>
+
+
+            <div class="atulya-purpose-grid">
+
+                {{-- Vision --}}
+                <div class="atulya-purpose-card">
+
+                    <div class="atulya-purpose-icon">
+                        <i class="far fa-eye"></i>
+                    </div>
+
+                    <h3>
+                        Our Vision
+                    </h3>
+
+                    <p>
+                        To build trust through quality healthcare,
+                        compassionate service, patient safety and
+                        continuous improvement.
+                    </p>
+
+                </div>
+
+
+                {{-- Mission --}}
+                <div class="atulya-purpose-card">
+
+                    <div class="atulya-purpose-icon">
+                        <i class="far fa-bullseye"></i>
+                    </div>
+
+                    <h3>
+                        Our Mission
+                    </h3>
+
+                    <p>
+                        To deliver patient-focused care supported by
+                        qualified professionals, appropriate infrastructure
+                        and coordinated clinical services.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {{-- =========================
+         VALUES
+    ========================= --}}
+    <section class="atulya-section">
+
+        <div class="atulya-container">
+
+            <div class="atulya-section-head">
+
+                <div class="atulya-kicker">
+                    Our Values
+                </div>
+
+                <h2>
+                    Principles That Guide Our Care
+                </h2>
+
+                <p>
+                    Our approach to healthcare is built around values that
+                    support respectful, responsible and patient-focused care.
+                </p>
+
+            </div>
+
+
+            <div class="atulya-check-grid">
+
+                <div class="atulya-check">
+                    <i class="far fa-check-circle"></i>
+                    Compassion
+                </div>
+
+                <div class="atulya-check">
+                    <i class="far fa-check-circle"></i>
+                    Integrity
+                </div>
+
+                <div class="atulya-check">
+                    <i class="far fa-check-circle"></i>
+                    Patient Safety
+                </div>
+
+                <div class="atulya-check">
+                    <i class="far fa-check-circle"></i>
+                    Clinical Excellence
+                </div>
+
+                <div class="atulya-check">
+                    <i class="far fa-check-circle"></i>
+                    Respect
+                </div>
+
+                <div class="atulya-check">
+                    <i class="far fa-check-circle"></i>
+                    Teamwork
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {{-- =========================
+         WHY ATULYA
+    ========================= --}}
+    <section class="atulya-section">
+
+        <div class="atulya-container">
+
+            <div class="atulya-section-head">
+
+                <div class="atulya-kicker">
+                    Why Atulya
+                </div>
+
+                <h2>
+                    Healthcare Support You Can Rely On
+                </h2>
+
+                <p>
+                    Atulya brings together specialist medical care,
+                    emergency support, critical care and hospital
+                    infrastructure to support different healthcare needs.
+                </p>
+
+            </div>
+
+
+            <div class="atulya-why-grid">
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">01</div>
+
+                    <h3>Experienced Medical Team</h3>
+
+                    <p>
+                        Care is supported by qualified medical professionals
+                        across multiple specialities.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">02</div>
+
+                    <h3>24/7 Emergency Care</h3>
+
+                    <p>
+                        Emergency support is available around the clock
+                        for urgent healthcare requirements.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">03</div>
+
+                    <h3>ICU & Critical Care</h3>
+
+                    <p>
+                        Critical care services support patients requiring
+                        close monitoring and specialised medical attention.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">04</div>
+
+                    <h3>Multispeciality Services</h3>
+
+                    <p>
+                        Multiple clinical departments provide access to
+                        different areas of specialist healthcare.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">05</div>
+
+                    <h3>Modern Clinical Infrastructure</h3>
+
+                    <p>
+                        Hospital infrastructure includes critical care,
+                        surgical and diagnostic facilities.
+                    </p>
+                </div>
+
+
+                <div class="atulya-why-card">
+                    <div class="atulya-why-number">06</div>
+
+                    <h3>Patient-Centred Care</h3>
+
+                    <p>
+                        Our approach focuses on respectful communication,
+                        coordinated services and patient needs.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {{-- =========================
+         INFRASTRUCTURE
+    ========================= --}}
+    <section class="atulya-section atulya-infra">
+
+        <div class="atulya-container">
+
+            <div class="atulya-section-head">
+
+                <div class="atulya-kicker">
+                    Infrastructure
+                </div>
+
+                <h2>
+                    Hospital Facilities
+                </h2>
+
+                <p>
+                    Our hospital infrastructure supports emergency care,
+                    critical care, surgical procedures and diagnostic needs.
+                </p>
+
+            </div>
+
+
+            <div class="atulya-infra-grid">
+
+                <div class="atulya-infra-card">
+
+                    <div class="atulya-infra-image">
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/25-beds.jpg') }}"
+                            alt="25-Bed Hospital Facility at Atulya Hospital Ahmedabad"
+                        >
+                    </div>
+
+                    <div class="atulya-infra-content">
+                        <h3>25-Bed Hospital Facility</h3>
+
+                        <p>
+                            Hospital beds supporting inpatient healthcare
+                            and patient care requirements.
                         </p>
                     </div>
-                    </div>
-                    <div class="col-xl-7 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="pricing-main-card">
-                            <div class="row g-0">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="pricing-card-item">
-                                        <div class="pricing-top">
-                                            <h4>Basic Plan</h4>
-                                        </div>
-                                        <div class="pricing-header">
-                                            <div class="header">
-                                                <h2>$399</h2>
-                                                <span>Monthly</span>
-                                            </div>
-                                            <p>
-                                                In every business year of this company we have created successful.
-                                            </p>
-                                        </div>
-                                        <div class="pdf-button">
-                                            <a href="your-file.pdf" download="" class="theme-btn">
-                                                Download PDF
-                                                <i class="far fa-arrow-down"></i>
-                                            </a>
-                                        </div>
-                                        <ul class="pricing-list">
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Dental Bonding
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Smile Makeover
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Metal Braces (Full Treatment)
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Root Canal Treatment
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Growth Method Analysis
-                                            </li>
-                                        </ul>
-                                        <div class="pricing-button">
-                                        <a href="pricing.html" class="theme-btn">
-                                            <i class="far fa-chevron-right"></i>
-                                            Start  Your Plan
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                     <div class="pricing-card-item">
-                                        <div class="pricing-top style-2">
-                                            <h4>Premium Plan</h4>
-                                           <span> Save 50%</span>
-                                        </div>
-                                        <div class="pricing-header">
-                                            <div class="header">
-                                                <h2>$799</h2>
-                                                <span>Monthly</span>
-                                            </div>
-                                            <p>
-                                                In every business year of this company we have created successful.
-                                            </p>
-                                        </div>
-                                        <div class="pdf-button">
-                                            <a href="your-file.pdf" download="" class="theme-btn">
-                                                Download PDF
-                                                <i class="far fa-arrow-down"></i>
-                                            </a>
-                                        </div>
-                                        <ul class="pricing-list">
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Dental Bonding
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Smile Makeover
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Metal Braces (Full Treatment)
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Root Canal Treatment
-                                            </li>
-                                            <li>
-                                                <i class="far fa-check"></i>
-                                                Growth Method Analysis
-                                            </li>
-                                        </ul>
-                                        <div class="pricing-button">
-                                            <a href="pricing.html" class="theme-btn">
-                                                <i class="far fa-chevron-right"></i>
-                                                Start  Your Plan
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Team Section Start -->
-        <section class="team-section section-padding section-bg  fix">
-            <div class="container">
-                <div class="section-title-area align-items-end">
-                    <div class="section-title">
-                        <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">MEET WITH DOCTOR</span>
-                        <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">All On Four Special Offer For <br> Your Physical Treatment</h2>
-                    </div>
-                    <div class="call-box wow fadeInUp" data-wow-delay=".3s">
-                        <div class="call-icon">
-                            <img src="{{ asset('assets/img/home-1/cta/call-icon.png') }}" alt="img">
-                        </div>
-                        <div class="content">
-                            <p>Call Emergency</p>
-                            <a href="tel:+38002020900">+38 002 0209 00</a>
-                        </div>
-                    </div>
                 </div>
-                <div class="row g-4 section-padding pb-0 advance-wrap">
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="team-box-items mt-0 advance-item">
-                            <div class="team-image">
-                                <img src="{{ asset('assets/img/home-1/team/team-01.jpg') }}" alt="img">
-                                <span class="post-box">
-                                    Orthopedic Surgeon
-                                </span>
-                            </div>
-                            <div class="team-content">
-                                <h3><a href="#" >Dr. Daniel Roberts</a></h3>
-                                <div class="phone-box">
-                                    <i class="fas fa-phone-alt"></i>
-                                    <span><b>Appointment</b> : <a href="tel:+38002020900">+38 002 0209 00</a></span>
-                                </div>
-                                <p>
-                                    Globally harness multimedia based & idea-sharing with backend products.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="team-box-items mt-0 advance-item">
-                            <div class="team-image">
-                                <img src="{{ asset('assets/img/home-1/team/team-02.jpg') }}" alt="img">
-                                <span class="post-box">
-                                    Cardiologist Specialist
-                                </span>
-                            </div>
-                            <div class="team-content">
-                                <h3><a href="#">Dr. James Anderson</a></h3>
-                                <div class="phone-box">
-                                    <i class="fas fa-phone-alt"></i>
-                                    <span><b>Appointment</b> : <a href="#" >+38 002 0209 00</a></span>
-                                </div>
-                                <p>
-                                    Globally harness multimedia based & idea-sharing with backend products.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="team-box-items mt-0 advance-item">
-                            <div class="team-image">
-                                <img src="{{ asset('assets/img/home-1/team/team-03.jpg') }}" alt="img">
-                                <span class="post-box">
-                                    Pediatrician Specialist
-                                </span>
-                            </div>
-                            <div class="team-content">
-                                <h3><a href="#" >Dr. Sophia Miller</a></h3>
-                                <div class="phone-box">
-                                    <i class="fas fa-phone-alt"></i>
-                                    <span><b>Appointment</b> : <a href="#" >+38 002 0209 00</a></span>
-                                </div>
-                                <p>
-                                    Globally harness multimedia based & idea-sharing with backend products.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="team-box-items mt-0 advance-item">
-                            <div class="team-image">
-                                <img src="{{ asset('assets/img/home-1/team/team-04.jpg') }}" alt="img">
-                                <span class="post-box">
-                                    Medicine Specialist
-                                </span>
-                            </div>
-                            <div class="team-content">
-                                <h3><a href="#" >DR: William John</a></h3>
-                                <div class="phone-box">
-                                    <i class="fas fa-phone-alt"></i>
-                                    <span><b>Appointment</b> : <a href="#" >+38 002 0209 00</a></span>
-                                </div>
-                                <p>
-                                    Globally harness multimedia based & idea-sharing with backend products.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-button text-center mt-5 wow fadeInUp" data-wow-delay=".9s">
-                    <a href="#" class="theme-btn">
-                        <i class="far fa-chevron-right"></i>
-                       View Our All Member
-                    </a>
-                </div>
-            </div>
-        </section>
 
-        <!-- project Section Start -->
-        <section class="project-section section-padding fix">
-            <div class="container">
-                <div class="section-title text-center">
-                    <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR PORTFOLIO</span>
-                    <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Some of Our Recent Work <br> of Our Patient</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".2s">
-                        <div class="project-items">
-                            <div class="project-image">
-                                <img src="{{ asset('assets/img/home-1/project/project-01.jpg') }}" alt="img">
-                            </div>
-                            <div class="project-content">
-                                <h6>NEUROLOGY / HEALTHCARE</h6>
-                                <h3><a href="#" >Acne-Free in 6 Weeks</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".4s">
-                        <div class="project-items">
-                            <div class="project-image">
-                                <img src="{{ asset('assets/img/home-1/project/project-02.jpg') }}" alt="img">
-                            </div>
-                            <div class="project-content">
-                                <h6>STROKE / HEALTHCARE</h6>
-                                <h3><a href="#" >Stroke Rehabilitation Success</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".6s">
-                        <div class="project-items">
-                            <div class="project-image">
-                                <img src="{{ asset('assets/img/home-1/project/project-03.jpg') }}" alt="img">
-                            </div>
-                            <div class="project-content">
-                                <h6>MEDICAL / SCIENCE</h6>
-                                <h3><a href="#" >Early Diagnosis of Asthma</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".8s">
-                        <div class="project-items">
-                            <div class="project-image">
-                                <img src="{{ asset('assets/img/home-1/project/project-04.jpg') }}" alt="img">
-                            </div>
-                            <div class="project-content">
-                                <h6>MEDICAL / HEALTHCARE</h6>
-                                <h3><a href="#" >Trusted Care for Every Life</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Testimonial Section5 Start -->
-        <section class="testimonial-section-1 section-padding pb-0 bg-cover fix" style="background-image: url(assets/img/home-1/testimonial/bg.jpg);">
-            <div class="shape float-bob-y">
-                <img src="{{ asset('assets/img/home-1/testimonial/vector.png') }}" alt="img">
-            </div>
-            <div class="shape-2 float-bob-y">
-                <img src="{{ asset('assets/img/home-1/testimonial/hand.png') }}" alt="img">
-            </div>
-            <div class="container">
-               <div class="testimonial-wrapper-1">
-                     <div class="row g-4">
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="testimonial-image">
-                            <img src="{{ asset('assets/img/home-1/testimonial/girl.png') }}" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="section-title-area">
-                             <div class="section-title">
-                                <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR TESTIMONIAL</span>
-                                <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">
-                                  Our Real Story of Clients
-                                </h2>
-                            </div>
-                            <div class="array-button-2">
-                                <button class="array-prev"><i class="fas fa-chevron-left"></i></button>
-                                <button class="array-next"><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                        <div class="testimonial-right-item">
-                            <div class="swiper testimonial-slider-1">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                   <div class="testimonial-box-item-1">
-                                        <div class="client-image">
-                                            <img src="{{ asset('assets/img/home-1/testimonial/client-1.jpg') }}" alt="img">
-                                            <div class="star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            <p>
-                                               “The doctors went above and beyond to ensure I received best possible treatment. I am grateful for their dedication & would trust them with my health any day.”
-                                            </p>
-                                            <div class="info-item">
-                                                <div class="info-content">
-                                                    <h5>William John</h5>
-                                                    <span>Small Business Owner</span>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="testimonial-box-item-1">
-                                        <div class="client-image">
-                                            <img src="{{ asset('assets/img/home-1/testimonial/client-2.jpg') }}" alt="img">
-                                             <div class="star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “The doctors went above and beyond to ensure I received best possible treatment. I am grateful for their dedication & would trust them with my health any day.”
-                                            </p>
-                                            <div class="info-item">
-                                                <div class="info-content">
-                                                    <h5>William John</h5>
-                                                    <span>Small Business Owner</span>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="testimonial-box-item-1">
-                                        <div class="client-image">
-                                            <img src="{{ asset('assets/img/home-1/testimonial/client-3.jpg') }}" alt="img">
-                                             <div class="star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “The doctors went above and beyond to ensure I received best possible treatment. I am grateful for their dedication & would trust them with my health any day.”
-                                            </p>
-                                            <div class="info-item">
-                                                <div class="info-content">
-                                                    <h5>William John</h5>
-                                                    <span>Small Business Owner</span>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-               </div>
-            </div>
-        </section>
+                <div class="atulya-infra-card">
 
-        <!-- News Section Start -->
-        <section class="news-section-2 section-padding bg-cover fix" style="background-image: url('assets/img/home-2/news/news-bg.jpg');">
-            <div class="container">
-                <div class="section-title text-center">
-                    <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR BLOG</span>
-                    <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Our Recent Insights, Blog <br> and News From Us</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="news-box-items-2">
-                            <div class="news-img">
-                                <img src="{{ asset('assets/img/home-2/news/news-01.jpg') }}" alt="img">
-                            </div>
-                            <div class="news-content">
-                                <ul class="post-date">
-                                    <li>
-                                       <i class="fal fa-calendar"></i>
-                                        09 May, 2025
-                                    </li>
-                                    <li>
-                                        Business
-                                    </li>
-                                </ul>
-                                <h3><a href="{{'#'}}">The Role of a Website in <br> Building Business Credibility</a></h3>
-                                <p>In every business year of this company we have created successful ventures with amazing companies.</p>
-                                <a href="{{'#'}}" class="link-btn">More Details
-                                    <i class="far fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="atulya-infra-image">
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/modular-ot.jpg') }}"
+                            alt="Modular Operation Theatre at Atulya Hospital Ahmedabad"
+                        >
                     </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay=".5s">
-                        <div class="news-box-items-2">
-                            <div class="news-img">
-                                <img src="{{ asset('assets/img/home-2/news/news-02.jpg') }}" alt="img">
-                            </div>
-                            <div class="news-content">
-                                <ul class="post-date">
-                                    <li>
-                                       <i class="fal fa-calendar"></i>
-                                        09 May, 2025
-                                    </li>
-                                    <li>
-                                        Business
-                                    </li>
-                                </ul>
-                                <h3><a href="{{'#'}}">The Role of a Website in Building Business Credibility</a></h3>
-                                <p>In every business year of this company we have created successful ventures with amazing companies.</p>
-                                <a href="{{'#'}}" class="link-btn">More Details
-                                    <i class="far fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay=".7s">
-                        <div class="news-box-items-2">
-                            <div class="news-img">
-                                <img src="{{ asset('assets/img/home-2/news/news-03.jpg') }}" alt="img">
-                            </div>
-                            <div class="news-content">
-                                <ul class="post-date">
-                                    <li>
-                                       <i class="fal fa-calendar"></i>
-                                        09 May, 2025
-                                    </li>
-                                    <li>
-                                        Business
-                                    </li>
-                                </ul>
-                                <h3><a href="{{'#'}}">The Role of a Website in Building Business Credibility</a></h3>
-                                <p>In every business year of this company we have created successful ventures with amazing companies.</p>
-                                <a href="{{'#'}}" class="link-btn">More Details
-                                    <i class="far fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Download App Section Start -->
-        <section class="download-app-section-2 section-padding fix">
-            <div class="download-shape-1">
-                <img src="{{ asset('assets/img/home-2/feature/shape-01.png') }}" alt="img">
-            </div>
-            <div class="download-shape-2">
-                <img src="{{ asset('assets/img/home-2/feature/shape-02.png') }}" alt="img">
-            </div>
-            <div class="container">
-                <div class="download-app-wrapper-2">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-7">
-                            <div class="download-app-content">
-                                <div class="section-title text-start mb-0">
-                                    <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR FAQS</span>
-                                    <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Download Our Mobile App To Get the Best Performance</h2>
-                                </div>
-                                <p class="download-text wow fadeInUp" data-wow-delay=".2s">A brief statement outlining the purpose and mission of the clinic. This can include the commitment. A brief statement outlining the purpose and mission of the clinic. A brief statement outlining the purpose and mission of the clinic. </p>
-                                <ul class="download-list wow fadeInUp" data-wow-delay=".3s">
-                                    <li>
-                                        <i class="far fa-check"></i>
-                                        Better Performance
-                                    </li>
-                                    <li>
-                                        <i class="far fa-check"></i>
-                                        For Online Checkup
-                                    </li>
-                                    <li>
-                                        <i class="far fa-check"></i>
-                                        Video Call Services
-                                    </li>
-                                </ul>
-                                <div class="logo-items wow fadeInUp" data-wow-delay=".5s">
-                                    <div class="logo-1">
-                                        <img src="{{ asset('assets/img/home-1/feature/logo-01.png') }}" alt="img">
-                                    </div>
-                                    <div class="logo-2">
-                                        <img src="{{ asset('assets/img/home-1/feature/logo-02.png') }}" alt="img">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="download-app-image">
-                                <div class="row g-4">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="download-image-1 style-margin">
-                                            <img src="{{ asset('assets/img/home-2/feature/01.png') }}" alt="img">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay=".5s">
-                                        <div class="download-image-2">
-                                            <img src="{{ asset('assets/img/home-2/feature/02.png') }}" alt="img">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <div class="atulya-infra-content">
+                        <h3>Modular Operation Theatre</h3>
 
-        <!-- Cta Newsletter Section Start -->
-        <section class="cta-newsletter-section section-bg-2 fix">
-            <div class="container">
-                <div class="cta-newsletter-wrapper style-2 text-center">
-                    <div class="row g-4 align-items-center justify-content-center">
-                        <div class="col-xl-10">
-                            <div class="section-title  mb-0">
-                                <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR NEWSLETTER</span>
-                                <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">
-                                    Join Our Newsletter to Never Miss Information
-                                </h2>
-                            </div>
-                            <div class="form-content">
-                            <form action="#">
-                                <input type="text" placeholder="Enter your e-mail">
-                                <button class="arrow-icon" type="submit">
-                                    <i class="far fa-arrow-right"></i>
-                                </button>
-                            </form>
-                            <p>By subscribing, you’re accept <a href="{{'#'}}">Privacy Policy</a></p>
-                        </div>
+                        <p>
+                            Surgical infrastructure designed to support
+                            operative procedures.
+                        </p>
                     </div>
-                    </div>
-                    <div class="cta-img">
-                        <img src="{{ asset('assets/img/home-2/cta-img.png') }}" alt="img">
-                    </div>
-                    <div class="left-shape">
-                        <img src="{{ asset('assets/img/home-2/left-shape.png') }}" alt="img">
-                    </div>
+
                 </div>
+
+
+                <div class="atulya-infra-card">
+
+                    <div class="atulya-infra-image">
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/icu.jpg') }}"
+                            alt="Critical Care ICU at Atulya Hospital Ahmedabad"
+                        >
+                    </div>
+
+                    <div class="atulya-infra-content">
+                        <h3>ICU & Critical Care</h3>
+
+                        <p>
+                            Critical care infrastructure for patients
+                            requiring close medical monitoring.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="atulya-infra-card">
+
+                    <div class="atulya-infra-image">
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/emergency.jpg') }}"
+                            alt="24x7 Emergency Facility at Atulya Hospital Ahmedabad"
+                        >
+                    </div>
+
+                    <div class="atulya-infra-content">
+                        <h3>Emergency Care</h3>
+
+                        <p>
+                            Emergency facilities supporting urgent
+                            medical care requirements.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="atulya-infra-card">
+
+                    <div class="atulya-infra-image">
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/lab-pharmacy.jpg') }}"
+                            alt="Laboratory and Pharmacy Facility at Atulya Hospital Ahmedabad"
+                        >
+                    </div>
+
+                    <div class="atulya-infra-content">
+                        <h3>Laboratory & Pharmacy</h3>
+
+                        <p>
+                            Diagnostic laboratory and pharmacy support
+                            for patient care.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="atulya-infra-card">
+
+                    <div class="atulya-infra-image">
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/xray.jpg') }}"
+                            alt="X-Ray Diagnostic Facility at Atulya Hospital Ahmedabad"
+                        >
+                    </div>
+
+                    <div class="atulya-infra-content">
+                        <h3>X-Ray & Diagnostics</h3>
+
+                        <p>
+                            Diagnostic support for medical evaluation
+                            and treatment planning.
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
-        </section>
-        @endsection
+
+        </div>
+
+    </section>
+
+
+    {{-- =========================
+         QUALITY
+    ========================= --}}
+    <section class="atulya-section atulya-quality">
+
+        <div class="atulya-container">
+
+            <div class="atulya-quality-grid">
+
+                <div class="atulya-quality-image">
+
+                    <img
+                        src="{{ asset('assets/img/inner/service-details/11.png') }}"
+                        alt="Quality Healthcare Infrastructure at Atulya Super Speciality Hospital"
+                    >
+
+                </div>
+
+
+                <div class="atulya-quality-content">
+
+                    <div class="atulya-kicker">
+                        Quality & Care
+                    </div>
+
+                    <h2>
+                        Focused on Safe & Responsible Healthcare
+                    </h2>
+
+                    <p>
+                        Atulya Super Speciality Hospital & ICU is committed
+                        to providing healthcare through clinical expertise,
+                        appropriate infrastructure, coordinated services
+                        and a patient-first approach.
+                    </p>
+
+
+                    <div class="atulya-quality-list">
+
+                        <div class="atulya-quality-item">
+                            <i class="far fa-check-circle"></i>
+                            Patient Safety
+                        </div>
+
+                        <div class="atulya-quality-item">
+                            <i class="far fa-check-circle"></i>
+                            Clinical Care
+                        </div>
+
+                        <div class="atulya-quality-item">
+                            <i class="far fa-check-circle"></i>
+                            Coordinated Services
+                        </div>
+
+                        <div class="atulya-quality-item">
+                            <i class="far fa-check-circle"></i>
+                            Appropriate Infrastructure
+                        </div>
+
+                    </div>
+
+
+                    <div class="atulya-trust">
+
+                        <div class="atulya-trust-icon">
+                            <i class="far fa-shield-check"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Patient-Focused Approach
+                            </strong>
+
+                            <span>
+                                Care designed around patient needs and
+                                healthcare requirements.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {{-- =========================
+         FINAL CTA
+    ========================= --}}
+    <section class="atulya-cta">
+
+        <div class="atulya-container">
+
+            <div class="atulya-cta-box">
+
+                <div>
+
+                    <h3>
+                        Need Medical Assistance?
+                    </h3>
+
+                    <p>
+                        Contact Atulya Super Speciality Hospital & ICU
+                        for appointments and healthcare assistance.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="tel:+919727579000"
+                    class="atulya-btn"
+                >
+                    <i class="far fa-phone-alt"></i>
+                    Call Hospital
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+@endsection
