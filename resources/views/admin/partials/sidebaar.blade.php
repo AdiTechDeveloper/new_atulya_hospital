@@ -1,9 +1,7 @@
 <aside class="sidebar-wrapper">
     <div class="sidebar-header">
         <div class="logo-icon">
-            <img src="{{ asset('/assets/img/logo/atulyalogo.png') }}"
-                 class="logo-img"
-                 alt="Logo">
+            <img src="{{ asset('/assets/img/logo/atulyalogo.png') }}" class="logo-img" alt="Logo">
         </div>
 
         {{-- <div class="logo-name flex-grow-1">
@@ -50,6 +48,16 @@
                 </a>
             </li>
 
+            <!-- Doctors -->
+            <li>
+                <a href="{{ route('admin.doctors.index') }}">
+                    <div class="parent-icon">
+                        <i class="material-icons-outlined">people</i>
+                    </div>
+                    <div class="menu-title">Doctors</div>
+                </a>
+            </li>
+
 
         </ul>
         <!-- End navigation -->
@@ -67,145 +75,113 @@
                href="javascript:;"
                data-bs-toggle="dropdown">
                 <img src="{{ asset('admin/assets/images/county/02.png') }}"
-                     width="22"
-                     alt="">
+    width="22"
+    alt="">
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/01.png') }}" width="20" alt="">
+                <span class="ms-2">English</span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/01.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">English</span>
-                    </a>
-                </li>
+        </li>
 
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/02.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">Catalan</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/03.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">French</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/04.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">Belize</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/05.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">Colombia</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/06.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">Spanish</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/07.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">Georgian</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center py-2"
-                       href="javascript:;">
-                        <img src="{{ asset('admin/assets/images/county/08.png') }}"
-                             width="20"
-                             alt="">
-                        <span class="ms-2">Hindi</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-         <div class="dropdown dropup-center dropup dropdown-help">
-            <a class="footer-icon dropdown-toggle dropdown-toggle-nocaret option"
-               href="javascript:;"
-               data-bs-toggle="dropdown"
-               aria-expanded="false">
-                <span class="material-icons-outlined">info</span>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/02.png') }}" width="20" alt="">
+                <span class="ms-2">Catalan</span>
             </a>
+        </li>
 
-            <div class="dropdown-menu dropdown-option dropdown-menu-end shadow">
-                <div>
-                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                       href="javascript:;">
-                        <i class="material-icons-outlined fs-6">inventory_2</i>
-                        Archive All
-                    </a>
-                </div>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/03.png') }}" width="20" alt="">
+                <span class="ms-2">French</span>
+            </a>
+        </li>
 
-                <div>
-                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                       href="javascript:;">
-                        <i class="material-icons-outlined fs-6">done_all</i>
-                        Mark all as read
-                    </a>
-                </div>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/04.png') }}" width="20" alt="">
+                <span class="ms-2">Belize</span>
+            </a>
+        </li>
 
-                <div>
-                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                       href="javascript:;">
-                        <i class="material-icons-outlined fs-6">mic_off</i>
-                        Disable Notifications
-                    </a>
-                </div>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/05.png') }}" width="20" alt="">
+                <span class="ms-2">Colombia</span>
+            </a>
+        </li>
 
-                <div>
-                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                       href="javascript:;">
-                        <i class="material-icons-outlined fs-6">grade</i>
-                        What's new?
-                    </a>
-                </div>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/06.png') }}" width="20" alt="">
+                <span class="ms-2">Spanish</span>
+            </a>
+        </li>
 
-                <div>
-                    <hr class="dropdown-divider">
-                </div>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/07.png') }}" width="20" alt="">
+                <span class="ms-2">Georgian</span>
+            </a>
+        </li>
 
-                <div>
-                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                       href="javascript:;">
-                        <i class="material-icons-outlined fs-6">leaderboard</i>
-                        Reports
-                    </a>
-                </div>
+        <li>
+            <a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                <img src="{{ asset('admin/assets/images/county/08.png') }}" width="20" alt="">
+                <span class="ms-2">Hindi</span>
+            </a>
+        </li>
+    </ul>
+    </div>
+
+    <div class="dropdown dropup-center dropup dropdown-help">
+        <a class="footer-icon dropdown-toggle dropdown-toggle-nocaret option" href="javascript:;" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="material-icons-outlined">info</span>
+        </a>
+
+        <div class="dropdown-menu dropdown-option dropdown-menu-end shadow">
+            <div>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;">
+                    <i class="material-icons-outlined fs-6">inventory_2</i>
+                    Archive All
+                </a>
             </div>
-        </div> 
+
+            <div>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;">
+                    <i class="material-icons-outlined fs-6">done_all</i>
+                    Mark all as read
+                </a>
+            </div>
+
+            <div>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;">
+                    <i class="material-icons-outlined fs-6">mic_off</i>
+                    Disable Notifications
+                </a>
+            </div>
+
+            <div>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;">
+                    <i class="material-icons-outlined fs-6">grade</i>
+                    What's new?
+                </a>
+            </div>
+
+            <div>
+                <hr class="dropdown-divider">
+            </div>
+
+            <div>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;">
+                    <i class="material-icons-outlined fs-6">leaderboard</i>
+                    Reports
+                </a>
+            </div>
+        </div>
+    </div>
     </div> --}}
 </aside>

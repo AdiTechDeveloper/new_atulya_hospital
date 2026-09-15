@@ -1,16 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\DoctorAdminController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\DepartmentController;
 use App\Http\Controllers\Website\FacilityController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,33 +22,27 @@ use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-
 // About
 Route::get('/about', function () {
     return view('website.pages.about');
 })->name('about');
-
 
 // Contact
 Route::get('/contact', function () {
     return view('website.pages.contact');
 })->name('contact');
 
-
 Route::get('/videos', [WebsiteVideoController::class, 'index'])
     ->name('videos.index');
-
 
 // Gallery - Public Website
 Route::get('/gallery', [WebsiteGalleryController::class, 'publicIndex'])
     ->name('gallery.index');
 
-
 // ICU
 Route::get('/icu', function () {
     return view('website.pages.icu');
 })->name('icu');
-
 
 // Departments
 Route::get('/departments', function () {
@@ -58,17 +52,14 @@ Route::get('/departments', function () {
 Route::get('/departments/{slug}', [DepartmentController::class, 'show'])
     ->name('departments.show');
 
-
 // Facilities
 Route::get('/facilities/{slug}', [FacilityController::class, 'show'])
     ->name('facilities.show');
-
 
 // Blog
 Route::get('/blog', function () {
     return view('website.pages.blog');
 })->name('blog');
-
 
 // Doctors
 Route::get('/doctors', [DoctorController::class, 'index'])
@@ -76,7 +67,6 @@ Route::get('/doctors', [DoctorController::class, 'index'])
 
 Route::get('/doctors/{slug}', [DoctorController::class, 'show'])
     ->name('doctors.show');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -89,18 +79,15 @@ Route::get('/admin/login', [AuthController::class, 'showLogin'])
     ->middleware('guest')
     ->name('admin.login');
 
-
 // Admin Login
 Route::post('/admin/login', [AuthController::class, 'login'])
     ->middleware('guest')
     ->name('admin.login.submit');
 
-
 // Admin Logout
 Route::post('/admin/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('admin.logout');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -122,35 +109,32 @@ Route::middleware('auth')
             return view('admin.index');
         })->name('admin.dashboard');
 
-
         /*
         |--------------------------------------------------------------------------
         | Videos
         |--------------------------------------------------------------------------
         */
 
-         Route::get('/videos', [VideoController::class, 'index'])
-    ->name('admin.videos.index');
+        Route::get('/videos', [VideoController::class, 'index'])
+            ->name('admin.videos.index');
 
-Route::get('/videos/create', [VideoController::class, 'create'])
-    ->name('admin.videos.create');
+        Route::get('/videos/create', [VideoController::class, 'create'])
+            ->name('admin.videos.create');
 
-Route::post('/videos', [VideoController::class, 'store'])
-    ->name('admin.videos.store');
+        Route::post('/videos', [VideoController::class, 'store'])
+            ->name('admin.videos.store');
 
-Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])
-    ->name('admin.videos.edit');
+        Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])
+            ->name('admin.videos.edit');
 
-Route::put('/videos/{video}', [VideoController::class, 'update'])
-    ->name('admin.videos.update');
+        Route::put('/videos/{video}', [VideoController::class, 'update'])
+            ->name('admin.videos.update');
 
-Route::delete('/videos/{video}', [VideoController::class, 'destroy'])
-    ->name('admin.videos.destroy');
+        Route::delete('/videos/{video}', [VideoController::class, 'destroy'])
+            ->name('admin.videos.destroy');
 
-Route::patch('/videos/{video}/status', [VideoController::class, 'toggleStatus'])
-    ->name('admin.videos.status');
-    
-
+        Route::patch('/videos/{video}/status', [VideoController::class, 'toggleStatus'])
+            ->name('admin.videos.status');
 
         /*
         |--------------------------------------------------------------------------
@@ -185,14 +169,16 @@ Route::patch('/videos/{video}/status', [VideoController::class, 'toggleStatus'])
         // Toggle Gallery Status
         Route::patch('/galleries/{gallery}/status', [AdminGalleryController::class, 'toggleStatus'])
             ->name('admin.gallery.status');
+
+        // Doctor admin routes
+        Route::get('/doctors', [DoctorAdminController::class, 'index'])->name('admin.doctors.index');
+        Route::get('/doctors/create', [DoctorAdminController::class, 'create'])->name('admin.doctors.create');
+        Route::post('/doctors', [DoctorAdminController::class, 'store'])->name('admin.doctors.store');
+        Route::get('/doctors/{doctor}/edit', [DoctorAdminController::class, 'edit'])->name('admin.doctors.edit');
+        Route::put('/doctors/{doctor}', [DoctorAdminController::class, 'update'])->name('admin.doctors.update');
+        Route::delete('/doctors/{doctor}', [DoctorAdminController::class, 'destroy'])->name('admin.doctors.destroy');
+        Route::patch('/doctors/{doctor}/status', [DoctorAdminController::class, 'toggleStatus'])->name('admin.doctors.status');
     });
-
-
-/*
-|--------------------------------------------------------------------------
-| Fallback Route
-|--------------------------------------------------------------------------
-*/
 
 Route::fallback(function () {
     return redirect('/');
