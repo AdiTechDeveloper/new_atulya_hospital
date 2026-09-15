@@ -9,7 +9,8 @@
 
 <!-- Hero Section Start -->
 
-<section class="hero-section hero-1 bg-cover fix" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/img/home-1/hero/bg-01.png') }}'); height:900px;">
+<section class="hero-section hero-1 bg-cover fix"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/img/home-1/hero/bg-01.png') }}'); height:900px;">
 
     <div class="container">
         <div class="row g-2 align-items-center">
@@ -27,7 +28,9 @@
                         Comprehensive medical care supported by experienced doctors, critical care services and modern hospital facilities.
                     </p>
 
-                    <a href="{{ url('/departments/urology') }}" class="theme-btn wow fadeInUp" data-wow-delay=".5s">
+                    <a href="{{ url('/departments/urology') }}"
+                        class="theme-btn wow fadeInUp"
+                        data-wow-delay=".5s">
 
                         <i class="far fa-chevron-right"></i>
 
@@ -57,15 +60,20 @@
             <div class="row">
 
                 <!-- Appointment -->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
+                    data-wow-delay=".3s">
 
                     <div class="hero-feature-icon">
 
                         <div class="icon justify-content-between">
 
-                            <img src="{{ asset('assets/img/home-1/hero/feature-2.png') }}" alt="Book an Appointment at Atulya Hospital">
+                            <img
+                                src="{{ asset('assets/img/home-1/hero/feature-2.png') }}"
+                                alt="Book an Appointment at Atulya Hospital">
 
-                            <a href="{{ url('/contact') }}" class="arrow-icon" aria-label="Book an Appointment">
+                            <a href="{{ url('/contact') }}"
+                                class="arrow-icon"
+                                aria-label="Book an Appointment">
 
                                 <i class="far fa-chevron-right"></i>
 
@@ -84,15 +92,20 @@
 
 
                 <!-- Doctors -->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
+                    data-wow-delay=".5s">
 
                     <div class="hero-feature-icon ps-0">
 
                         <div class="icon justify-content-between">
 
-                            <img src="{{ asset('assets/img/home-1/hero/feature-2.png') }}" alt="Specialist Doctors at Atulya Hospital">
+                            <img
+                                src="{{ asset('assets/img/home-1/hero/feature-2.png') }}"
+                                alt="Specialist Doctors at Atulya Hospital">
 
-                            <a href="{{ url('/doctors') }}" class="arrow-icon" aria-label="Meet Our Specialist Doctors">
+                            <a href="{{ url('/doctors') }}"
+                                class="arrow-icon"
+                                aria-label="Meet Our Specialist Doctors">
 
                                 <i class="far fa-chevron-right"></i>
 
@@ -111,13 +124,16 @@
 
 
                 <!-- Emergency -->
-                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
+                    data-wow-delay=".7s">
 
                     <div class="hero-feature-icon border-none">
 
                         <div class="icon">
 
-                            <img src="{{ asset('assets/img/home-1/hero/feature-3.png') }}" alt="24x7 Emergency Care at Atulya Hospital">
+                            <img
+                                src="{{ asset('assets/img/home-1/hero/feature-3.png') }}"
+                                alt="24x7 Emergency Care at Atulya Hospital">
 
                             <div class="content">
 
@@ -159,15 +175,18 @@
 <!-- About Section Start -->
 <section class="about-section section-padding fix">
     <div class="shape-1-img">
-        <img src="{{ asset('assets/img/home-1/about/shape-01.png') }}" alt="Atulya Hospital healthcare">
+        <img src="{{ asset('assets/img/home-1/about/shape-01.png') }}"
+            alt="Atulya Hospital healthcare">
     </div>
 
     <div class="shape-2-img">
-        <img src="{{ asset('assets/img/home-1/about/shape-02.png') }}" alt="Atulya Hospital medical care">
+        <img src="{{ asset('assets/img/home-1/about/shape-02.png') }}"
+            alt="Atulya Hospital medical care">
     </div>
 
     <div class="shape-3-img">
-        <img src="{{ asset('assets/img/home-1/about/shape-03.png') }}" alt="Atulya Hospital facilities">
+        <img src="{{ asset('assets/img/home-1/about/shape-03.png') }}"
+            alt="Atulya Hospital facilities">
     </div>
 
     <div class="container">
@@ -180,14 +199,21 @@
 
                     <div class="about-image">
 
-                        <img src="{{ asset('assets/img/home-1/hero/img1.png') }}" alt="Atulya Super Speciality Hospital and ICU Ahmedabad" class="wow img-custom-anim-left">
+                        <img
+                            src="{{ asset('assets/img/home-1/hero/img1.png') }}"
+                            alt="Atulya Super Speciality Hospital and ICU Ahmedabad"
+                            class="wow img-custom-anim-left">
 
                         <div class="about-img-2 float-bob-x">
-                            <img src="{{ asset('assets/img/home-1/hero/img2.png') }}" alt="Atulya Hospital medical care">
+                            <img
+                                src="{{ asset('assets/img/home-1/hero/img2.png') }}"
+                                alt="Atulya Hospital medical care">
                         </div>
 
                         <div class="about-img-3 float-bob-y">
-                            <img src="{{ asset('assets/img/home-1/hero/img3.png') }}" alt="Atulya Hospital healthcare services">
+                            <img
+                                src="{{ asset('assets/img/home-1/hero/img3.png') }}"
+                                alt="Atulya Hospital healthcare services">
                         </div>
 
                     </div>
@@ -231,7 +257,9 @@
                             <div class="about-items">
 
                                 <div class="about-img">
-                                    <img src="{{ asset('assets/img/home-1/about/icon-01.png') }}" alt="Specialist medical care at Atulya Hospital">
+                                    <img
+                                        src="{{ asset('assets/img/home-1/about/icon-01.png') }}"
+                                        alt="Specialist medical care at Atulya Hospital">
                                 </div>
 
                                 <h5>
@@ -245,7 +273,9 @@
                             <div class="about-items">
 
                                 <div class="about-img">
-                                    <img src="{{ asset('assets/img/home-1/about/icon-02.png') }}" alt="24x7 critical care at Atulya Hospital">
+                                    <img
+                                        src="{{ asset('assets/img/home-1/about/icon-02.png') }}"
+                                        alt="24x7 critical care at Atulya Hospital">
                                 </div>
 
                                 <h5>
@@ -321,15 +351,21 @@
 <section class="service-section section-padding section-bg-2 fix">
 
     <div class="service-shape-1">
-        <img src="{{ asset('assets/img/home-1/service/shape-1.png') }}" alt="img">
+        <img
+            src="{{ asset('assets/img/home-1/service/shape-1.png') }}"
+            alt="img">
     </div>
 
     <div class="service-shape-2">
-        <img src="{{ asset('assets/img/home-1/service/shape-2.png') }}" alt="img">
+        <img
+            src="{{ asset('assets/img/home-1/service/shape-2.png') }}"
+            alt="img">
     </div>
 
     <div class="service-shape-3">
-        <img src="{{ asset('assets/img/home-1/service/shape-3.png') }}" alt="img">
+        <img
+            src="{{ asset('assets/img/home-1/service/shape-3.png') }}"
+            alt="img">
     </div>
 
 
@@ -360,9 +396,14 @@
                     <ul class="nav">
 
                         <!-- ORTHOPEDICS -->
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".2s">
+                        <li
+                            class="nav-item wow fadeInUp"
+                            data-wow-delay=".2s">
 
-                            <a href="#thumb1" data-bs-toggle="tab" class="nav-link active">
+                            <a
+                                href="#thumb1"
+                                data-bs-toggle="tab"
+                                class="nav-link active">
                                 Orthopedics
                                 <i class="far fa-chevron-right"></i>
                             </a>
@@ -371,9 +412,14 @@
 
 
                         <!-- UROLOGY -->
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".4s">
+                        <li
+                            class="nav-item wow fadeInUp"
+                            data-wow-delay=".4s">
 
-                            <a href="#thumb2" data-bs-toggle="tab" class="nav-link">
+                            <a
+                                href="#thumb2"
+                                data-bs-toggle="tab"
+                                class="nav-link">
                                 Urology
                                 <i class="far fa-chevron-right"></i>
                             </a>
@@ -382,9 +428,14 @@
 
 
                         <!-- ENT -->
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".6s">
+                        <li
+                            class="nav-item wow fadeInUp"
+                            data-wow-delay=".6s">
 
-                            <a href="#thumb3" data-bs-toggle="tab" class="nav-link">
+                            <a
+                                href="#thumb3"
+                                data-bs-toggle="tab"
+                                class="nav-link">
                                 ENT Care
                                 <i class="far fa-chevron-right"></i>
                             </a>
@@ -393,9 +444,14 @@
 
 
                         <!-- GENERAL SURGERY -->
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".8s">
+                        <li
+                            class="nav-item wow fadeInUp"
+                            data-wow-delay=".8s">
 
-                            <a href="#thumb4" data-bs-toggle="tab" class="nav-link">
+                            <a
+                                href="#thumb4"
+                                data-bs-toggle="tab"
+                                class="nav-link">
                                 General Surgery
                                 <i class="far fa-chevron-right"></i>
                             </a>
@@ -404,9 +460,14 @@
 
 
                         <!-- JOINT REPLACEMENT -->
-                        <li class="nav-item wow fadeInUp" data-wow-delay="1s">
+                        <li
+                            class="nav-item wow fadeInUp"
+                            data-wow-delay="1s">
 
-                            <a href="#thumb5" data-bs-toggle="tab" class="nav-link">
+                            <a
+                                href="#thumb5"
+                                data-bs-toggle="tab"
+                                class="nav-link">
                                 Joint Replacement
                                 <i class="far fa-chevron-right"></i>
                             </a>
@@ -420,13 +481,17 @@
 
 
                 <!-- SERVICE CONTENT -->
-                <div class="col-lg-8 wow fadeInUp" data-wow-delay=".3s">
+                <div
+                    class="col-lg-8 wow fadeInUp"
+                    data-wow-delay=".3s">
 
                     <div class="tab-content">
 
 
                         <!-- ORTHOPEDICS -->
-                        <div id="thumb1" class="tab-pane fade show active">
+                        <div
+                            id="thumb1"
+                            class="tab-pane fade show active">
 
                             <div class="service-box-items">
 
@@ -456,7 +521,9 @@
                                     </p>
 
 
-                                    <a href="{{ url('/departments/orthopedic') }}" class="theme-btn mt-5">
+                                    <a
+                                        href="{{ url('/departments/orthopedic') }}"
+                                        class="theme-btn mt-5">
 
                                         <i class="far fa-chevron-right"></i>
 
@@ -468,7 +535,9 @@
 
 
                                 <!-- IMAGE -->
-                                <div class="service-image" style="
+                                <div
+                                    class="service-image"
+                                    style="
                                         width:45%;
                                         min-width:45%;
                                         display:flex;
@@ -476,7 +545,10 @@
                                         justify-content:center;
                                     ">
 
-                                    <img src="{{ asset('assets/img/home-1/service/serviceimg.png') }}" alt="Orthopaedic Care" style="
+                                    <img
+                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                        alt="Orthopaedic Care"
+                                        style="
                                             width:100%;
                                             max-width:100%;
                                             height:auto;
@@ -492,7 +564,9 @@
 
 
                         <!-- UROLOGY -->
-                        <div id="thumb2" class="tab-pane fade">
+                        <div
+                            id="thumb2"
+                            class="tab-pane fade">
 
                             <div class="service-box-items">
 
@@ -522,7 +596,9 @@
                                     </p>
 
 
-                                    <a href="{{ url('/departments/urology') }}" class="theme-btn mt-5">
+                                    <a
+                                        href="{{ url('/departments/urology') }}"
+                                        class="theme-btn mt-5">
 
                                         <i class="far fa-chevron-right"></i>
 
@@ -534,7 +610,9 @@
 
 
                                 <!-- IMAGE -->
-                                <div class="service-image" style="
+                                <div
+                                    class="service-image"
+                                    style="
                                         width:45%;
                                         min-width:45%;
                                         display:flex;
@@ -542,7 +620,10 @@
                                         justify-content:center;
                                     ">
 
-                                    <img src="{{ asset('assets/img/home-1/service/serviceimg.png') }}" alt="Urology Care" style="
+                                    <img
+                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                        alt="Urology Care"
+                                        style="
                                             width:100%;
                                             max-width:100%;
                                             height:auto;
@@ -558,7 +639,9 @@
 
 
                         <!-- ENT -->
-                        <div id="thumb3" class="tab-pane fade">
+                        <div
+                            id="thumb3"
+                            class="tab-pane fade">
 
                             <div class="service-box-items">
 
@@ -588,7 +671,9 @@
                                     </p>
 
 
-                                    <a href="{{ url('/departments/ent') }}" class="theme-btn mt-5">
+                                    <a
+                                        href="{{ url('/departments/ent') }}"
+                                        class="theme-btn mt-5">
 
                                         <i class="far fa-chevron-right"></i>
 
@@ -600,7 +685,9 @@
 
 
                                 <!-- IMAGE -->
-                                <div class="service-image" style="
+                                <div
+                                    class="service-image"
+                                    style="
                                         width:45%;
                                         min-width:45%;
                                         display:flex;
@@ -608,7 +695,10 @@
                                         justify-content:center;
                                     ">
 
-                                    <img src="{{ asset('assets/img/home-1/service/serviceimg.png') }}" alt="ENT Care" style="
+                                    <img
+                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                        alt="ENT Care"
+                                        style="
                                             width:100%;
                                             max-width:100%;
                                             height:auto;
@@ -624,7 +714,9 @@
 
 
                         <!-- GENERAL SURGERY -->
-                        <div id="thumb4" class="tab-pane fade">
+                        <div
+                            id="thumb4"
+                            class="tab-pane fade">
 
                             <div class="service-box-items">
 
@@ -654,7 +746,9 @@
                                     </p>
 
 
-                                    <a href="{{ url('/departments/general-surgery') }}" class="theme-btn mt-5">
+                                    <a
+                                        href="{{ url('/departments/general-surgery') }}"
+                                        class="theme-btn mt-5">
 
                                         <i class="far fa-chevron-right"></i>
 
@@ -666,7 +760,9 @@
 
 
                                 <!-- IMAGE -->
-                                <div class="service-image" style="
+                                <div
+                                    class="service-image"
+                                    style="
                                         width:45%;
                                         min-width:45%;
                                         display:flex;
@@ -674,7 +770,10 @@
                                         justify-content:center;
                                     ">
 
-                                    <img src="{{ asset('assets/img/home-1/service/serviceimg.png') }}" alt="General Surgery" style="
+                                    <img
+                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                        alt="General Surgery"
+                                        style="
                                             width:100%;
                                             max-width:100%;
                                             height:auto;
@@ -690,7 +789,9 @@
 
 
                         <!-- JOINT REPLACEMENT -->
-                        <div id="thumb5" class="tab-pane fade">
+                        <div
+                            id="thumb5"
+                            class="tab-pane fade">
 
                             <div class="service-box-items">
 
@@ -720,7 +821,9 @@
                                     </p>
 
 
-                                    <a href="{{ url('/departments/joint-replacement') }}" class="theme-btn mt-5">
+                                    <a
+                                        href="{{ url('/departments/joint-replacement') }}"
+                                        class="theme-btn mt-5">
 
                                         <i class="far fa-chevron-right"></i>
 
@@ -732,7 +835,9 @@
 
 
                                 <!-- IMAGE -->
-                                <div class="service-image" style="
+                                <div
+                                    class="service-image"
+                                    style="
                                         width:45%;
                                         min-width:45%;
                                         display:flex;
@@ -740,7 +845,10 @@
                                         justify-content:center;
                                     ">
 
-                                    <img src="{{ asset('assets/img/home-1/service/serviceimg.png') }}" alt="Joint Replacement Care" style="
+                                    <img
+                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                        alt="Joint Replacement Care"
+                                        style="
                                             width:100%;
                                             max-width:100%;
                                             height:auto;
@@ -765,36 +873,7 @@
     </div>
 
 
-    <!-- MOBILE RESPONSIVE IMAGE -->
-    <style>
-        @media (max-width: 991px) {
 
-            .service-section .service-box-items {
-                display: flex !important;
-                flex-direction: column !important;
-            }
-
-            .service-section .service-box-items .service-icon-box {
-                width: 100% !important;
-                flex: 0 0 100% !important;
-            }
-
-            .service-section .service-box-items .service-image {
-                width: 100% !important;
-                min-width: 100% !important;
-                margin-top: 25px;
-            }
-
-            .service-section .service-box-items .service-image img {
-                width: 100% !important;
-                max-width: 100% !important;
-                height: auto !important;
-                object-fit: contain !important;
-            }
-
-        }
-
-    </style>
 
 </section>
 <!-- Service Section End -->
@@ -812,7 +891,8 @@
     <div class="container">
 
         <!-- CTA -->
-        <div class="cta-wrapper zoom-effect-style bg-cover" style="background-image:  url('{{ asset('assets/img/home-1/cta/bg-image.png') }}');">
+        <div class="cta-wrapper zoom-effect-style bg-cover"
+            style="background-image:  url('{{ asset('assets/img/home-1/cta/bg-image.png') }}');">
 
 
 
@@ -834,7 +914,8 @@
                 <div class="call-box wow fadeInUp" data-wow-delay=".3s">
 
                     <div class="call-icon">
-                        <img src="{{ asset('assets/img/home-1/cta/call-icon.png') }}" alt="Emergency Helpline">
+                        <img src="{{ asset('assets/img/home-1/cta/call-icon.png') }}"
+                            alt="Emergency Helpline">
                     </div>
 
                     <div class="content">
@@ -857,7 +938,9 @@
 
             <div class="doctor-slider-wrapper">
 
-                <div id="doctorSliderTrack" style="
+                <div
+                    id="doctorSliderTrack"
+                    style="
                 display: flex;
                 gap: 24px;
                 transition: transform 0.5s ease;
@@ -866,7 +949,9 @@
 
                     @foreach($doctors as $doctor)
 
-                    <div class="doctor-slide-item" style="
+                    <div
+                        class="doctor-slide-item"
+                        style="
                         flex: 0 0 calc((100% - 72px) / 4);
                         min-width: 0;
                     ">
@@ -878,7 +963,9 @@
 
                                 <a href="{{ route('doctors.show', $doctor['slug']) }}">
 
-                                    <img src="{{ asset($doctor['image']) }}" alt="{{ $doctor['name'] }}">
+                                    <img
+                                        src="{{ asset($doctor['image']) }}"
+                                        alt="{{ $doctor['name'] }}">
 
                                 </a>
 
@@ -919,7 +1006,9 @@
                 <!-- SLIDER BUTTONS -->
                 @if(count($doctors) > 4)
 
-                <div class="doctor-slider-buttons" style="
+                <div
+                    class="doctor-slider-buttons"
+                    style="
                     display:flex;
                     justify-content:center;
                     align-items:center;
@@ -928,7 +1017,11 @@
                 ">
 
                     <!-- PREVIOUS -->
-                    <button type="button" id="doctorPrev" aria-label="Previous Doctor" style="
+                    <button
+                        type="button"
+                        id="doctorPrev"
+                        aria-label="Previous Doctor"
+                        style="
                         width:48px;
                         height:48px;
                         border-radius:50%;
@@ -945,7 +1038,11 @@
 
 
                     <!-- NEXT -->
-                    <button type="button" id="doctorNext" aria-label="Next Doctor" style="
+                    <button
+                        type="button"
+                        id="doctorNext"
+                        aria-label="Next Doctor"
+                        style="
                         width:48px;
                         height:48px;
                         border-radius:50%;
@@ -969,190 +1066,10 @@
         </div>
 
 
-        <style>
-            .doctor-slider-wrapper {
-                width: 100%;
-                overflow: hidden;
-            }
 
-            #doctorSliderTrack {
-                width: 100%;
-            }
 
-            .doctor-slide-item {
-                box-sizing: border-box;
-            }
 
-
-            @media (max-width: 1199px) {
-
-                .doctor-slide-item {
-                    flex: 0 0 calc((100% - 48px) / 3) !important;
-                }
-
-            }
-
-
-            @media (max-width: 767px) {
-
-                #doctorSliderTrack {
-                    gap: 20px !important;
-                }
-
-                .doctor-slide-item {
-                    flex: 0 0 calc((100% - 20px) / 2) !important;
-                }
-
-            }
-
-
-            @media (max-width: 575px) {
-
-                .doctor-slide-item {
-                    flex: 0 0 100% !important;
-                }
-
-            }
-
-        </style>
-
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-
-                const track = document.getElementById('doctorSliderTrack');
-
-                const nextButton = document.getElementById('doctorNext');
-
-                const prevButton = document.getElementById('doctorPrev');
-
-
-                if (!track || !nextButton || !prevButton) {
-                    return;
-                }
-
-
-                const doctors = track.querySelectorAll('.doctor-slide-item');
-
-                let currentIndex = 0;
-
-
-                function getVisibleDoctors() {
-
-                    if (window.innerWidth <= 575) {
-                        return 1;
-                    }
-
-                    if (window.innerWidth <= 767) {
-                        return 2;
-                    }
-
-                    if (window.innerWidth <= 1199) {
-                        return 3;
-                    }
-
-                    return 4;
-
-                }
-
-
-                function moveSlider() {
-
-                    const visibleDoctors = getVisibleDoctors();
-
-                    const gap = window.innerWidth <= 767 ? 20 : 24;
-
-                    const slideWidth =
-                        doctors[0].getBoundingClientRect().width;
-
-
-                    /*
-                     * Last position ke baad
-                     * directly first doctor par.
-                     */
-                    const maxIndex = doctors.length - visibleDoctors;
-
-
-                    if (currentIndex < maxIndex) {
-
-                        currentIndex++;
-
-                    } else {
-
-                        currentIndex = 0;
-
-                    }
-
-
-                    const moveAmount =
-                        currentIndex * (slideWidth + gap);
-
-
-                    track.style.transform =
-                        'translateX(-' + moveAmount + 'px)';
-
-                }
-
-
-                function movePrevious() {
-
-                    const visibleDoctors = getVisibleDoctors();
-
-                    const maxIndex = doctors.length - visibleDoctors;
-
-
-                    if (currentIndex > 0) {
-
-                        currentIndex--;
-
-                    } else {
-
-                        currentIndex = maxIndex;
-
-                    }
-
-
-                    const gap = window.innerWidth <= 767 ? 20 : 24;
-
-                    const slideWidth =
-                        doctors[0].getBoundingClientRect().width;
-
-
-                    const moveAmount =
-                        currentIndex * (slideWidth + gap);
-
-
-                    track.style.transform =
-                        'translateX(-' + moveAmount + 'px)';
-
-                }
-
-
-                nextButton.addEventListener('click', function() {
-
-                    moveSlider();
-
-                });
-
-
-                prevButton.addEventListener('click', function() {
-
-                    movePrevious();
-
-                });
-
-
-                window.addEventListener('resize', function() {
-
-                    currentIndex = 0;
-
-                    track.style.transform = 'translateX(0)';
-
-                });
-
-            });
-
-        </script>
+      
 
         <!-- Button -->
         <div class="team-button text-center mt-5 wow fadeInUp" data-wow-delay=".9s">
@@ -1169,23 +1086,16 @@
 
 </section>
 <!-- Cta Section End -->
-{{-- =========================================================
-     VIDEO SECTION
-========================================================= --}}
 
-<section class="vedio-bg-section fix bg-cover atulya-home-video" style="background-image: url('{{ asset('assets/img/home-1/counter/video-img.png') }}');">
+<section
+    class="vedio-bg-section fix bg-cover atulya-home-video"
+    style="background-image: url('{{ asset('assets/img/home-1/counter/video-img.png') }}');">
 
-    {{-- Background Overlay --}}
     <div class="atulya-video-overlay"></div>
-
 
     <div class="container">
 
         <div class="atulya-video-inner">
-
-            {{-- =================================================
-                 HEADING
-            ================================================== --}}
 
             <div class="atulya-video-heading">
 
@@ -1207,12 +1117,6 @@
 
             @php
 
-            /*
-            |--------------------------------------------------------------------------
-            | YouTube ID
-            |--------------------------------------------------------------------------
-            */
-
             $youtubeId = null;
 
             if (
@@ -1226,13 +1130,12 @@
             }
 
 
-            /*
-            |--------------------------------------------------------------------------
-            | YouTube Thumbnail
-            |--------------------------------------------------------------------------
-            */
+            if ($featuredVideo->thumbnail) {
 
-            if ($youtubeId) {
+            $videoThumbnail =
+            asset('storage/' . $featuredVideo->thumbnail);
+
+            } elseif ($youtubeId) {
 
             $videoThumbnail =
             'https://img.youtube.com/vi/' .
@@ -1242,95 +1145,94 @@
             } else {
 
             $videoThumbnail =
-            asset(
-            'assets/img/home-1/counter/video-img.png'
-            );
+            asset('assets/img/home-1/counter/video-img.png');
 
             }
 
             @endphp
 
 
-            {{-- =================================================
-                     FEATURED VIDEO CARD
-                ================================================== --}}
+            <div class="atulya-featured-video-card">
 
-            <div class="atulya-video-card">
+                <div class="atulya-featured-thumbnail">
 
+                    <img
+                        src="{{ $videoThumbnail }}"
+                        alt="{{ $featuredVideo->title }}"
+                        loading="lazy">
 
-                {{-- =================================================
-                         THUMBNAIL
-                    ================================================== --}}
-
-                <div class="atulya-video-thumbnail">
-
-                    <img src="{{ $videoThumbnail }}" alt="{{ $featuredVideo->title }}" loading="lazy">
+                    <div class="atulya-featured-overlay"></div>
 
 
-                    <div class="atulya-thumbnail-overlay"></div>
-
-
-                    {{-- Play Button --}}
-                    <button type="button" class="atulya-video-play" id="openVideo" data-video-url="{{ $featuredVideo->youtube_url }}" aria-label="Play {{ $featuredVideo->title }}">
-
-                        <span>
-                            <i class="fas fa-play"></i>
-                        </span>
-
+                    <button
+                        type="button"
+                        class="atulya-featured-play"
+                        id="openVideo"
+                        data-video-url="{{ $featuredVideo->youtube_url }}"
+                        aria-label="Play {{ $featuredVideo->title }}">
+                        <i class="fas fa-play"></i>
                     </button>
 
                 </div>
 
 
-                {{-- =================================================
-                         VIDEO CONTENT
-                    ================================================== --}}
+                <div class="atulya-featured-info">
 
-                <div class="atulya-video-info">
-
-                    <div class="atulya-video-info-inner">
-
-                        <span class="atulya-video-label">
-                            Featured Video
-                        </span>
+                    <span class="atulya-featured-label">
+                        Featured Video
+                    </span>
 
 
-                        <h3>
-                            {{ $featuredVideo->title }}
-                        </h3>
+                    <h3>
+                        {{ $featuredVideo->title }}
+                    </h3>
 
 
-                        @if($featuredVideo->description)
+                    @if($featuredVideo->description)
 
-                        <p>
-                            {{ \Illuminate\Support\Str::limit(
-                                        $featuredVideo->description,
-                                        130
-                                    ) }}
-                        </p>
+                    <p>
+                        {{ \Illuminate\Support\Str::limit(
+                                    $featuredVideo->description,
+                                    130
+                                ) }}
+                    </p>
 
-                        @else
+                    @else
 
-                        <p>
-                            Explore healthcare information,
-                            awareness and updates from Atulya Hospital.
-                        </p>
+                    <p>
+                        Explore healthcare information,
+                        awareness and updates from Atulya Hospital.
+                    </p>
 
-                        @endif
+                    @endif
+
+
+                    <div class="atulya-featured-bottom">
+
+                        <button
+                            type="button"
+                            class="atulya-watch-video"
+                            id="openVideoBottom"
+                            data-video-url="{{ $featuredVideo->youtube_url }}">
+                            <span>
+                                Watch Video
+                            </span>
+
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+
+                        <a
+                            href="{{ route('videos.index') }}"
+                            class="atulya-all-videos">
+                            <span>
+                                See All Videos
+                            </span>
+
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
 
                     </div>
-
-
-                    {{-- See All Videos --}}
-                    <a href="{{ route('videos.index') }}" class="theme-btn atulya-see-videos">
-
-                        <span>
-                            See All Videos
-                        </span>
-
-                        <i class="fas fa-arrow-right"></i>
-
-                    </a>
 
                 </div>
 
@@ -1338,10 +1240,6 @@
 
 
             @else
-
-            {{-- =================================================
-                     NO VIDEO
-                ================================================== --}}
 
             <div class="atulya-video-empty">
 
@@ -1356,15 +1254,14 @@
                     content for you.
                 </p>
 
-
-                <a href="{{ route('videos.index') }}" class="theme-btn atulya-see-videos">
-
+                <a
+                    href="{{ route('videos.index') }}"
+                    class="theme-btn atulya-see-videos">
                     <span>
                         See All Videos
                     </span>
 
                     <i class="fas fa-arrow-right"></i>
-
                 </a>
 
             </div>
@@ -1376,24 +1273,31 @@
     </div>
 
 
-    {{-- =========================================================
-         VIDEO POPUP
-    ========================================================== --}}
+    <!-- Video Popup -->
 
-    <div id="videoModal" class="atulya-video-modal">
+    <div
+        id="videoModal"
+        class="atulya-video-modal">
 
         <div class="atulya-video-modal-content">
 
-            <button type="button" id="closeVideo" class="atulya-video-close" aria-label="Close video">
-
+            <button
+                type="button"
+                id="closeVideo"
+                class="atulya-video-close"
+                aria-label="Close video">
                 <i class="fas fa-times"></i>
-
             </button>
 
 
             <div class="atulya-video-iframe-wrapper">
 
-                <iframe id="popupVideo" src="" title="Atulya Hospital Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                <iframe
+                    id="popupVideo"
+                    src=""
+                    title="Atulya Hospital Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
                 </iframe>
 
             </div>
@@ -1405,935 +1309,12 @@
 </section>
 
 
-{{-- =========================================================
-     VIDEO SECTION CSS
-========================================================= --}}
 
-@push('styles')
 
-<style>
-    /* =========================================================
-   SECTION
-========================================================= */
 
-    .atulya-home-video {
-        position: relative !important;
 
-        padding: 80px 0 85px !important;
 
-        background-position: center center !important;
-        background-size: cover !important;
-        background-repeat: no-repeat !important;
 
-        overflow: hidden;
-    }
-
-
-    /* =========================================================
-   OVERLAY
-========================================================= */
-
-    .atulya-video-overlay {
-        position: absolute;
-
-        inset: 0;
-
-        z-index: 1;
-
-        background: rgba(11, 39, 76, 0.70);
-    }
-
-
-    /* =========================================================
-   INNER
-========================================================= */
-
-    .atulya-video-inner {
-        position: relative;
-
-        z-index: 2;
-
-        width: 100%;
-    }
-
-
-    /* =========================================================
-   HEADING
-========================================================= */
-
-    .atulya-video-heading {
-        max-width: 680px;
-
-        margin: 0 auto 35px;
-
-        text-align: center;
-    }
-
-
-    .atulya-video-heading span {
-        display: inline-block;
-
-        margin-bottom: 8px;
-
-        color: #ffffff;
-
-        font-size: 11px;
-
-        font-weight: 700;
-
-        letter-spacing: 2px;
-
-        text-transform: uppercase;
-    }
-
-
-    .atulya-video-heading h2 {
-        margin: 0 0 10px;
-
-        color: #ffffff;
-
-        font-size: 38px;
-
-        line-height: 1.2;
-
-        font-weight: 700;
-    }
-
-
-    .atulya-video-heading p {
-        max-width: 610px;
-
-        margin: 0 auto;
-
-        color: rgba(255, 255, 255, .82);
-
-        font-size: 14px;
-
-        line-height: 1.7;
-    }
-
-
-    /* =========================================================
-   CARD
-========================================================= */
-
-    .atulya-video-card {
-        display: grid;
-
-        grid-template-columns: 58% 42%;
-
-        width: 100%;
-
-        max-width: 1000px;
-
-        height: 325px;
-
-        margin: 0 auto;
-
-        overflow: hidden;
-
-        border-radius: 12px;
-
-        background: #ffffff;
-
-        box-shadow:
-            0 18px 45px rgba(0, 0, 0, .25);
-    }
-
-
-    /* =========================================================
-   THUMBNAIL
-========================================================= */
-
-    .atulya-video-thumbnail {
-        position: relative;
-
-        width: 100%;
-
-        height: 325px;
-
-        overflow: hidden;
-
-        background: #122442;
-    }
-
-
-    .atulya-video-thumbnail img {
-        width: 100%;
-
-        height: 100%;
-
-        display: block;
-
-        object-fit: cover;
-
-        object-position: center;
-
-        transition: transform .5s ease;
-    }
-
-
-    .atulya-video-card:hover .atulya-video-thumbnail img {
-        transform: scale(1.035);
-    }
-
-
-    /* =========================================================
-   THUMBNAIL OVERLAY
-========================================================= */
-
-    .atulya-thumbnail-overlay {
-        position: absolute;
-
-        inset: 0;
-
-        z-index: 2;
-
-        background:
-            linear-gradient(to bottom,
-                rgba(0, 0, 0, .02),
-                rgba(0, 0, 0, .32));
-
-        pointer-events: none;
-    }
-
-
-    /* =========================================================
-   PLAY BUTTON
-========================================================= */
-
-    .atulya-video-play {
-        position: absolute;
-
-        left: 50%;
-        top: 50%;
-
-        z-index: 5;
-
-        width: 76px;
-        height: 76px;
-
-        padding: 0;
-
-        border: 0;
-
-        border-radius: 50%;
-
-        background: rgba(255, 255, 255, .96);
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        transform: translate(-50%, -50%);
-
-        cursor: pointer;
-
-        box-shadow:
-            0 10px 28px rgba(0, 0, 0, .25);
-
-        transition: .3s ease;
-    }
-
-
-    .atulya-video-play::before {
-        content: "";
-
-        position: absolute;
-
-        inset: -7px;
-
-        border: 2px solid rgba(255, 255, 255, .50);
-
-        border-radius: 50%;
-    }
-
-
-    .atulya-video-play span {
-        width: 55px;
-        height: 55px;
-
-        border-radius: 50%;
-
-        background: #172965;
-
-        color: #ffffff;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        padding-left: 3px;
-
-        transition: .3s ease;
-    }
-
-
-    .atulya-video-play span i {
-        font-size: 16px;
-    }
-
-
-    .atulya-video-play:hover {
-        transform:
-            translate(-50%, -50%) scale(1.08);
-    }
-
-
-    .atulya-video-play:hover span {
-        background: #2196f3;
-    }
-
-
-    /* =========================================================
-   VIDEO INFO
-========================================================= */
-
-    .atulya-video-info {
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: space-between;
-
-        padding: 38px 35px;
-
-        background: #ffffff;
-    }
-
-
-    .atulya-video-info-inner {
-        margin-top: 5px;
-    }
-
-
-    /* =========================================================
-   LABEL
-========================================================= */
-
-    .atulya-video-label {
-        display: inline-block;
-
-        margin-bottom: 12px;
-
-        padding: 6px 10px;
-
-        border-radius: 4px;
-
-        background: #eaf4ff;
-
-        color: #1c6fd1;
-
-        font-size: 9px;
-
-        line-height: 1;
-
-        font-weight: 700;
-
-        letter-spacing: 1px;
-
-        text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-   TITLE
-========================================================= */
-
-    .atulya-video-info h3 {
-        margin: 0 0 12px;
-
-        color: #172965;
-
-        font-size: 24px;
-
-        line-height: 1.3;
-
-        font-weight: 700;
-    }
-
-
-    /* =========================================================
-   DESCRIPTION
-========================================================= */
-
-    .atulya-video-info p {
-        max-width: 320px;
-
-        margin: 0;
-
-        color: #68738a;
-
-        font-size: 13px;
-
-        line-height: 1.7;
-    }
-
-
-    /* =========================================================
-   SEE ALL VIDEOS
-========================================================= */
-
-    .atulya-see-videos {
-        align-self: flex-start;
-
-        display: inline-flex !important;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 14px;
-
-        min-width: 170px;
-
-        height: 48px;
-
-        padding: 0 8px 0 20px !important;
-
-        border-radius: 30px !important;
-
-        color: #ffffff !important;
-
-        font-size: 13px;
-
-        font-weight: 600;
-
-        box-shadow:
-            0 8px 18px rgba(28, 111, 209, .18);
-
-        transition: .3s ease !important;
-    }
-
-
-    .atulya-see-videos i {
-        width: 34px;
-
-        height: 34px;
-
-        border-radius: 50%;
-
-        background: #ffffff;
-
-        color: #1c6fd1;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        font-size: 12px;
-
-        transition: .3s ease;
-    }
-
-
-    .atulya-see-videos:hover {
-        transform: translateY(-2px);
-
-        box-shadow:
-            0 12px 25px rgba(28, 111, 209, .28);
-    }
-
-
-    .atulya-see-videos:hover i {
-        transform: translateX(2px);
-    }
-
-
-    /* =========================================================
-   EMPTY
-========================================================= */
-
-    .atulya-video-empty {
-        max-width: 650px;
-
-        margin: 0 auto;
-
-        padding: 45px 25px;
-
-        text-align: center;
-
-        border-radius: 10px;
-
-        background: #ffffff;
-    }
-
-
-    .atulya-video-empty>i {
-        display: block;
-
-        margin-bottom: 12px;
-
-        color: #1c6fd1;
-
-        font-size: 35px;
-    }
-
-
-    .atulya-video-empty h3 {
-        margin: 0 0 8px;
-
-        color: #172965;
-
-        font-size: 22px;
-    }
-
-
-    .atulya-video-empty p {
-        margin: 0 0 20px;
-
-        color: #68738a;
-
-        font-size: 14px;
-    }
-
-
-    /* =========================================================
-   MODAL
-========================================================= */
-
-    .atulya-video-modal {
-        position: fixed;
-
-        inset: 0;
-
-        z-index: 999999;
-
-        display: none;
-
-        align-items: center;
-
-        justify-content: center;
-
-        padding: 20px;
-
-        background: rgba(0, 0, 0, .88);
-    }
-
-
-    .atulya-video-modal.active {
-        display: flex;
-    }
-
-
-    .atulya-video-modal-content {
-        position: relative;
-
-        width: 100%;
-
-        max-width: 950px;
-
-        background: #000;
-
-        border-radius: 10px;
-
-        overflow: visible;
-    }
-
-
-    .atulya-video-iframe-wrapper {
-        position: relative;
-
-        width: 100%;
-
-        padding-top: 56.25%;
-
-        overflow: hidden;
-
-        border-radius: 10px;
-    }
-
-
-    .atulya-video-iframe-wrapper iframe {
-        position: absolute;
-
-        inset: 0;
-
-        width: 100%;
-
-        height: 100%;
-
-        border: 0;
-    }
-
-
-    /* =========================================================
-   CLOSE
-========================================================= */
-
-    .atulya-video-close {
-        position: absolute;
-
-        right: 0;
-
-        top: -48px;
-
-        z-index: 10;
-
-        width: 40px;
-
-        height: 40px;
-
-        padding: 0;
-
-        border: 0;
-
-        border-radius: 50%;
-
-        background: #ffffff;
-
-        color: #172965;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        cursor: pointer;
-
-        transition: .25s ease;
-    }
-
-
-    .atulya-video-close:hover {
-        background: #2196f3;
-
-        color: #ffffff;
-    }
-
-
-    /* =========================================================
-   TABLET
-========================================================= */
-
-    @media (max-width: 991px) {
-
-        .atulya-home-video {
-            padding: 70px 0 75px !important;
-        }
-
-
-        .atulya-video-card {
-            grid-template-columns: 1fr;
-
-            height: auto;
-
-            max-width: 700px;
-        }
-
-
-        .atulya-video-thumbnail {
-            height: 350px;
-        }
-
-
-        .atulya-video-info {
-            min-height: 260px;
-
-            padding: 30px;
-        }
-
-
-        .atulya-video-info p {
-            max-width: 100%;
-        }
-
-    }
-
-
-    /* =========================================================
-   MOBILE
-========================================================= */
-
-    @media (max-width: 767px) {
-
-        .atulya-home-video {
-            padding: 55px 0 60px !important;
-        }
-
-
-        .atulya-video-heading {
-            padding: 0 10px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .atulya-video-heading h2 {
-            font-size: 30px;
-        }
-
-
-        .atulya-video-heading p {
-            font-size: 13px;
-        }
-
-
-        .atulya-video-thumbnail {
-            height: 250px;
-        }
-
-
-        .atulya-video-info {
-            min-height: auto;
-
-            padding: 25px 22px;
-        }
-
-
-        .atulya-video-info h3 {
-            font-size: 21px;
-        }
-
-
-        .atulya-video-info p {
-            margin-bottom: 24px;
-
-            font-size: 13px;
-        }
-
-
-        .atulya-video-play {
-            width: 70px;
-
-            height: 70px;
-        }
-
-
-        .atulya-video-play span {
-            width: 51px;
-
-            height: 51px;
-        }
-
-
-        .atulya-see-videos {
-            min-width: 165px;
-
-            height: 46px;
-        }
-
-    }
-
-
-    /* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-    @media (max-width: 575px) {
-
-        .atulya-home-video {
-            padding: 45px 0 50px !important;
-        }
-
-
-        .atulya-video-heading h2 {
-            font-size: 27px;
-        }
-
-
-        .atulya-video-thumbnail {
-            height: 215px;
-        }
-
-
-        .atulya-video-info {
-            padding: 22px 18px;
-        }
-
-
-        .atulya-video-info h3 {
-            font-size: 19px;
-        }
-
-
-        .atulya-video-info p {
-            font-size: 13px;
-        }
-
-
-        .atulya-video-modal {
-            padding: 12px;
-        }
-
-    }
-
-</style>
-
-@endpush
-
-
-{{-- =========================================================
-     VIDEO JS
-========================================================= --}}
-
-@push('scripts')
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-        const openButton =
-            document.getElementById('openVideo');
-
-        const modal =
-            document.getElementById('videoModal');
-
-        const iframe =
-            document.getElementById('popupVideo');
-
-        const closeButton =
-            document.getElementById('closeVideo');
-
-
-        if (!openButton || !modal || !iframe) {
-            return;
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | YouTube ID
-        |--------------------------------------------------------------------------
-        */
-
-        function getYoutubeId(url) {
-
-            if (!url) {
-                return null;
-            }
-
-
-            const patterns = [
-
-                /youtube\.com\/watch\?v=([^&]+)/,
-
-                /youtu\.be\/([^?&]+)/,
-
-                /youtube\.com\/embed\/([^?&]+)/,
-
-                /youtube\.com\/shorts\/([^?&]+)/
-
-            ];
-
-
-            for (const pattern of patterns) {
-
-                const match =
-                    url.match(pattern);
-
-                if (match) {
-                    return match[1];
-                }
-
-            }
-
-
-            return null;
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | OPEN
-        |--------------------------------------------------------------------------
-        */
-
-        openButton.addEventListener('click', function() {
-
-            const youtubeUrl =
-                this.getAttribute('data-video-url');
-
-            const videoId =
-                getYoutubeId(youtubeUrl);
-
-
-            if (!videoId) {
-                return;
-            }
-
-
-            iframe.src =
-                'https://www.youtube.com/embed/' +
-                videoId +
-                '?autoplay=1&rel=0';
-
-
-            modal.classList.add('active');
-
-            document.body.style.overflow = 'hidden';
-
-        });
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | CLOSE
-        |--------------------------------------------------------------------------
-        */
-
-        function closeVideo() {
-
-            modal.classList.remove('active');
-
-            iframe.src = '';
-
-            document.body.style.overflow = '';
-
-        }
-
-
-        if (closeButton) {
-
-            closeButton.addEventListener(
-                'click'
-                , closeVideo
-            );
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | OUTSIDE CLICK
-        |--------------------------------------------------------------------------
-        */
-
-        modal.addEventListener('click', function(event) {
-
-            if (event.target === modal) {
-
-                closeVideo();
-
-            }
-
-        });
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | ESCAPE
-        |--------------------------------------------------------------------------
-        */
-
-        document.addEventListener('keydown', function(event) {
-
-            if (event.key === 'Escape') {
-
-                closeVideo();
-
-            }
-
-        });
-
-    });
-
-</script>
-
-@endpush
 
 
 <!-- Feature Section Start -->
@@ -2468,7 +1449,9 @@
 
                                         <p>Name</p>
 
-                                        <input type="text" placeholder="Your name">
+                                        <input
+                                            type="text"
+                                            placeholder="Your name">
 
                                     </div>
 
@@ -2482,7 +1465,9 @@
 
                                         <p>Phone</p>
 
-                                        <input type="tel" placeholder="Your phone">
+                                        <input
+                                            type="tel"
+                                            placeholder="Your phone">
 
                                     </div>
 
@@ -2552,7 +1537,9 @@
 
                                         <p>Date</p>
 
-                                        <input type="date" placeholder="Select date">
+                                        <input
+                                            type="date"
+                                            placeholder="Select date">
 
                                     </div>
 
@@ -2566,7 +1553,9 @@
 
                                         <p>Time</p>
 
-                                        <input type="time" placeholder="Select time">
+                                        <input
+                                            type="time"
+                                            placeholder="Select time">
 
                                     </div>
 
@@ -2578,7 +1567,9 @@
 
                                     <div class="form-clt">
 
-                                        <button class="theme-btn" type="submit">
+                                        <button
+                                            class="theme-btn"
+                                            type="submit">
                                             Make an Appointment
                                         </button>
 
@@ -2600,7 +1591,9 @@
 
                     <div class="appointment-image">
 
-                        <img src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}" alt="Book an Appointment">
+                        <img
+                            src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
+                            alt="Book an Appointment">
 
                     </div>
 
@@ -2846,69 +1839,67 @@
 </div>
 
 <!-- News Section Start -->
-{{-- <section class="news-section section-padding fix pt-0">
+<section class="news-section section-padding fix pt-0">
     <div class="news-shape-1">
         <img src="{{ asset('assets/img/home-1/news/shape-01.png') }}" alt="img">
-</div>
-<div class="news-shape-2">
-    <img src="{{ asset('assets/img/home-1/news/shape-02.png') }}" alt="img">
-</div>
-<div class="container">
-    <div class="section-title text-center">
-        <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR BLOG</span>
-        <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Our Recent Insights, Blog <br> and News From Us</h2>
     </div>
-    <div class="row">
-        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-            <div class="news-box-items">
-                <div class="news-img">
-                    <img src="{{ asset('assets/img/home-1/news/blog-1.png') }}" alt="img">
-                    <span class="post-box">
-                        Medical
-                    </span>
-                </div>
-                <div class="news-content">
-                    <span>09 May, 2026</span>
-                    <h3><a href="{{ url('/blog') }}">When to See a Doctor: Warning <br> Signs You Shouldn’t Ignore</a></h3>
-                    <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
+    <div class="news-shape-2">
+        <img src="{{ asset('assets/img/home-1/news/shape-02.png') }}" alt="img">
+    </div>
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR BLOG</span>
+            <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Our Recent Insights, Blog <br> and News From Us</h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                <div class="news-box-items">
+                    <div class="news-img">
+                        <img src="{{ asset('assets/img/home-1/news/blog-1.png') }}" alt="img">
+                        <span class="post-box">
+                            Medical
+                        </span>
+                    </div>
+                    <div class="news-content">
+                        <span>09 May, 2026</span>
+                        <h3><a href="{{ url('/blog') }}">When to See a Doctor: Warning <br> Signs You Shouldn’t Ignore</a></h3>
+                        <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-            <div class="news-box-items">
-                <div class="news-img">
-                    <img src="{{ asset('assets/img/home-1/news/blog-2.png') }}" alt="img">
-                    <span class="post-box">
-                        Medical
-                    </span>
-                </div>
-                <div class="news-content">
-                    <span>20 July, 2026</span>
-                    <h3><a href="{{ url('/blog') }}">10 Everyday Habits for a Healthier <br> Life for Your Life</a></h3>
-                    <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
+            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                <div class="news-box-items">
+                    <div class="news-img">
+                        <img src="{{ asset('assets/img/home-1/news/blog-2.png') }}" alt="img">
+                        <span class="post-box">
+                            Medical
+                        </span>
+                    </div>
+                    <div class="news-content">
+                        <span>20 July, 2026</span>
+                        <h3><a href="{{ url('/blog') }}">10 Everyday Habits for a Healthier <br> Life for Your Life</a></h3>
+                        <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-            <div class="news-box-items">
-                <div class="news-img">
-                    <img src="{{ asset('assets/img/home-1/news/blog-3.png') }}" alt="img">
-                    <span class="post-box">
-                        Medical
-                    </span>
-                </div>
-                <div class="news-content">
-                    <span>20 January, 2026</span>
-                    <h3><a href="{{ url('/blog') }}">10 Simple Daily Habits to Improve <br> Your Healthcare</a></h3>
-                    <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
+            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                <div class="news-box-items">
+                    <div class="news-img">
+                        <img src="{{ asset('assets/img/home-1/news/blog-3.png') }}" alt="img">
+                        <span class="post-box">
+                            Medical
+                        </span>
+                    </div>
+                    <div class="news-content">
+                        <span>20 January, 2026</span>
+                        <h3><a href="{{ url('/blog') }}">10 Simple Daily Habits to Improve <br> Your Healthcare</a></h3>
+                        <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</section> --}}
-
-<!-- Faq Section Start -->
+</section> 
 
 <!-- Faq Section Start -->
 
@@ -2964,12 +1955,22 @@
                                 <!-- FAQ 1 -->
                                 <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".2s">
                                     <h5 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <button
+                                            class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne"
+                                            aria-expanded="false"
+                                            aria-controls="collapseOne">
                                             What medical services are available at Atulya Hospital?
                                         </button>
                                     </h5>
 
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                                    <div
+                                        id="collapseOne"
+                                        class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne"
+                                        data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             Atulya Hospital provides comprehensive multispeciality healthcare services including consultations, diagnosis, treatment, surgical care and other specialised medical services under one roof.
                                         </div>
@@ -2979,12 +1980,22 @@
                                 <!-- FAQ 2 -->
                                 <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".4s">
                                     <h5 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <button
+                                            class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo"
+                                            aria-expanded="false"
+                                            aria-controls="collapseTwo">
                                             How can I book an appointment with a doctor?
                                         </button>
                                     </h5>
 
-                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                                    <div
+                                        id="collapseTwo"
+                                        class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo"
+                                        data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             You can book an appointment through our website appointment form or contact Atulya Hospital directly at +91 97275 79000 for assistance with scheduling your consultation.
                                         </div>
@@ -2994,12 +2005,22 @@
                                 <!-- FAQ 3 -->
                                 <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".6s">
                                     <h5 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <button
+                                            class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree"
+                                            aria-expanded="false"
+                                            aria-controls="collapseThree">
                                             Do I need an appointment before visiting the hospital?
                                         </button>
                                     </h5>
 
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                                    <div
+                                        id="collapseThree"
+                                        class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree"
+                                        data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             Booking an appointment in advance is recommended for doctor consultations as it can help reduce waiting time. For urgent medical needs, you can contact the hospital directly for immediate guidance.
                                         </div>
@@ -3009,12 +2030,22 @@
                                 <!-- FAQ 4 -->
                                 <div class="accordion-item mb-3 wow fadeInUp" data-wow-delay=".8s">
                                     <h5 class="accordion-header" id="headingFour">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <button
+                                            class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseFour"
+                                            aria-expanded="false"
+                                            aria-controls="collapseFour">
                                             Does Atulya Hospital provide emergency medical assistance?
                                         </button>
                                     </h5>
 
-                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+                                    <div
+                                        id="collapseFour"
+                                        class="accordion-collapse collapse"
+                                        aria-labelledby="headingFour"
+                                        data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             Yes. For urgent medical assistance, patients or family members can contact Atulya Hospital at +91 97275 79000. Our team will guide you according to the patient's medical requirements.
                                         </div>
@@ -3024,12 +2055,22 @@
                                 <!-- FAQ 5 -->
                                 <div class="accordion-item wow fadeInUp" data-wow-delay=".9s">
                                     <h5 class="accordion-header" id="headingFive">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                        <button
+                                            class="accordion-button"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseFive"
+                                            aria-expanded="true"
+                                            aria-controls="collapseFive">
                                             What should I bring for my doctor consultation?
                                         </button>
                                     </h5>
 
-                                    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordion">
+                                    <div
+                                        id="collapseFive"
+                                        class="accordion-collapse collapse show"
+                                        aria-labelledby="headingFive"
+                                        data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             Please bring your previous medical reports, prescriptions, current medication details and any relevant test results. These records can help our doctors better understand your medical history and provide appropriate care.
                                         </div>
@@ -3048,95 +2089,6 @@
 
 </section>
 <!-- Faq Section End -->
-<script>
-    const openVideo = document.getElementById("openVideo");
-    const closeVideo = document.getElementById("closeVideo");
-    const videoModal = document.getElementById("videoModal");
-    const popupVideo = document.getElementById("popupVideo");
-
-    // Open popup
-    openVideo.addEventListener("click", function() {
-        videoModal.style.display = "flex";
-        popupVideo.currentTime = 0;
-        popupVideo.play();
-    });
-
-    // Close popup
-    closeVideo.addEventListener("click", function() {
-        videoModal.style.display = "none";
-        popupVideo.pause();
-        popupVideo.currentTime = 0;
-    });
-
-    // Close when clicking outside video
-    videoModal.addEventListener("click", function(e) {
-        if (e.target === videoModal) {
-            videoModal.style.display = "none";
-            popupVideo.pause();
-            popupVideo.currentTime = 0;
-        }
-    });
-
-</script>
-<style>
-    /* Video Popup */
-    .video-modal {
-        display: none;
-        position: fixed;
-        z-index: 99999;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.85);
-
-        align-items: center;
-        justify-content: center;
-    }
-
-    .video-modal-content {
-        position: relative;
-        width: 80%;
-        max-width: 1000px;
-    }
-
-    .video-modal-content video {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 8px;
-    }
-
-    .video-close {
-        position: absolute;
-        right: -40px;
-        top: -40px;
-
-        color: #fff;
-        font-size: 40px;
-        font-weight: 300;
-
-        cursor: pointer;
-        z-index: 100000;
-    }
-
-    .video-close:hover {
-        color: #ddd;
-    }
 
 
-    /* Mobile */
-    @media (max-width: 768px) {
-
-        .video-modal-content {
-            width: 92%;
-        }
-
-        .video-close {
-            right: 0;
-            top: -45px;
-            font-size: 35px;
-        }
-    }
-
-</style>
 @endsection

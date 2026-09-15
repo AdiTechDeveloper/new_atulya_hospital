@@ -96,29 +96,5 @@
         </div>
     </section>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .gallery-category {
-            scroll-margin-top: 100px;
-            margin-top: 35px;
-        }
-
-        .gallery-category h4 {
-            margin-bottom: 15px;
-        }
-
-        .gallery-category .service-img {
-            margin-bottom: 0;
-            overflow: hidden;
-        }
-
-        .gallery-category .service-img img {
-            width: 100%;
-            display: block;
-        }
-    </style>
 
 @endsection

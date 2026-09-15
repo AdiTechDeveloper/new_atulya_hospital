@@ -26,4 +26,5 @@
         <script src="{{ asset('assets/js/splitType.js') }}"></script>
         <!--<< Main.js >>-->
         <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script src="{{ asset('assets/js/external.js') }}"></script>
 
