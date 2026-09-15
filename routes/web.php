@@ -7,9 +7,10 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Website\DepartmentController;
-use App\Http\Controllers\Website\FacilityController;
+use App\Http\Controllers\Website\FacilityController as WebsiteFacilityController;
 use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
+use App\Http\Controllers\Admin\FacilityController ;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,7 +54,7 @@ Route::get('/departments/{slug}', [DepartmentController::class, 'show'])
     ->name('departments.show');
 
 // Facilities
-Route::get('/facilities/{slug}', [FacilityController::class, 'show'])
+Route::get('/facilities/{slug}', [WebsiteFacilityController::class, 'show'])
     ->name('facilities.show');
 
 // Blog
@@ -178,6 +179,33 @@ Route::middleware('auth')
         Route::put('/doctors/{doctor}', [DoctorAdminController::class, 'update'])->name('admin.doctors.update');
         Route::delete('/doctors/{doctor}', [DoctorAdminController::class, 'destroy'])->name('admin.doctors.destroy');
         Route::patch('/doctors/{doctor}/status', [DoctorAdminController::class, 'toggleStatus'])->name('admin.doctors.status');
+
+       
+        // Facilities
+
+        Route::get('/facilities', [FacilityController::class, 'index'])
+            ->name('admin.facilities.index');
+
+        Route::get('/facilities/create', [FacilityController::class, 'create'])
+            ->name('admin.facilities.create');
+
+        Route::post('/facilities', [FacilityController::class, 'store'])
+            ->name('admin.facilities.store');
+
+        Route::get('/facilities/{facility}/edit', [FacilityController::class, 'edit'])
+            ->name('admin.facilities.edit');
+
+        Route::put('/facilities/{facility}', [FacilityController::class, 'update'])
+            ->name('admin.facilities.update');
+
+        Route::delete('/facilities/{facility}', [FacilityController::class, 'destroy'])
+            ->name('admin.facilities.destroy');
+
+        Route::patch('/facilities/{facility}/status', [FacilityController::class, 'toggleStatus'])
+            ->name('admin.facilities.status');
+
+
+       
     });
 
 Route::fallback(function () {
