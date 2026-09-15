@@ -29,15 +29,11 @@
         position: relative;
         overflow: hidden;
         padding: 65px 0 60px;
-        background:
-            linear-gradient(
-                90deg,
-                rgba(238, 246, 253, .98) 0%,
-                rgba(238, 246, 253, .90) 55%,
-                rgba(238, 246, 253, .60) 100%
-            ),
-            url("{{ asset('assets/img/inner/breadcrumb/breadcrumb.jpg') }}")
-            center center / cover no-repeat;
+        background: linear-gradient(90deg,
+            rgba(238, 246, 253, .98) 0%,
+            rgba(238, 246, 253, .90) 55%,
+            rgba(238, 246, 253, .60) 100%),
+        url("{{ asset('assets/img/inner/breadcrumb/breadcrumb.jpg') }}") center center / cover no-repeat;
     }
 
     .atulya-videos-hero::after {
@@ -226,11 +222,9 @@
     .atulya-video-thumbnail-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, .02),
-            rgba(0, 0, 0, .28)
-        );
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, .02),
+                rgba(0, 0, 0, .28));
         pointer-events: none;
     }
 
@@ -591,6 +585,7 @@
         }
 
     }
+
 </style>
 
 
@@ -666,38 +661,23 @@
 
             <div class="atulya-video-filters">
 
-                <button
-                    type="button"
-                    class="atulya-video-filter active"
-                    data-filter="all">
+                <button type="button" class="atulya-video-filter active" data-filter="all">
                     All Videos
                 </button>
 
-                <button
-                    type="button"
-                    class="atulya-video-filter"
-                    data-filter="awareness">
+                <button type="button" class="atulya-video-filter" data-filter="awareness">
                     Awareness
                 </button>
 
-                <button
-                    type="button"
-                    class="atulya-video-filter"
-                    data-filter="patient">
+                <button type="button" class="atulya-video-filter" data-filter="patient">
                     Patient Care
                 </button>
 
-                <button
-                    type="button"
-                    class="atulya-video-filter"
-                    data-filter="treatment">
+                <button type="button" class="atulya-video-filter" data-filter="treatment">
                     Treatments
                 </button>
 
-                <button
-                    type="button"
-                    class="atulya-video-filter"
-                    data-filter="hospital">
+                <button type="button" class="atulya-video-filter" data-filter="hospital">
                     Hospital Updates
                 </button>
 
@@ -706,221 +686,150 @@
 
             @if($videos->count())
 
+            @php
+            $videoCollection = $videos->values();
+            @endphp
+
+            <div class="atulya-video-grid" id="atulyaVideoGrid">
+
+                @foreach($videoCollection as $video)
+
                 @php
-                    $videoCollection = $videos->values();
+
+                /*
+                |--------------------------------------------------------------------------
+                | YouTube ID
+                |--------------------------------------------------------------------------
+                */
+
+                $youtubeId = null;
+
+                if (
+                preg_match(
+                '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
+                $video->youtube_url,
+                $matches
+                )
+                ) {
+                $youtubeId = $matches[1];
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Thumbnail
+                |--------------------------------------------------------------------------
+                */
+
+                if ($youtubeId) {
+
+                $thumbnail =
+                'https://img.youtube.com/vi/' .
+                $youtubeId .
+                '/hqdefault.jpg';
+
+                } else {
+
+                $thumbnail =
+                asset(
+                'assets/img/home-1/counter/video-img.png'
+                );
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Optional category
+                |--------------------------------------------------------------------------
+                */
+
+                $category = $video->category ?? 'Hospital Updates';
+
+                $categoryClass = strtolower($category);
+
+                if (str_contains($categoryClass, 'patient')) {
+                $filterCategory = 'patient';
+                } elseif (str_contains($categoryClass, 'treatment')) {
+                $filterCategory = 'treatment';
+                } elseif (str_contains($categoryClass, 'awareness')) {
+                $filterCategory = 'awareness';
+                } else {
+                $filterCategory = 'hospital';
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Optional duration
+                |--------------------------------------------------------------------------
+                */
+
+                $duration = $video->duration ?? null;
+
                 @endphp
 
-                <div
-                    class="atulya-video-grid"
-                    id="atulyaVideoGrid">
 
-                    @foreach($videoCollection as $video)
+                <article class="atulya-video-card" data-category="{{ $filterCategory }}">
 
-                        @php
+                    {{-- THUMBNAIL --}}
 
-                            /*
-                            |--------------------------------------------------------------------------
-                            | YouTube ID
-                            |--------------------------------------------------------------------------
-                            */
+                    <div class="atulya-video-thumbnail">
 
-                            $youtubeId = null;
+                        <img src="{{ $thumbnail }}" alt="{{ $video->title }}" loading="lazy">
 
-                            if (
-                                preg_match(
-                                    '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
-                                    $video->youtube_url,
-                                    $matches
-                                )
-                            ) {
-                                $youtubeId = $matches[1];
-                            }
+                        <div class="atulya-video-thumbnail-overlay"></div>
 
 
-                            /*
-                            |--------------------------------------------------------------------------
-                            | Thumbnail
-                            |--------------------------------------------------------------------------
-                            */
+                        <button type="button" class="atulya-video-play" data-video-url="{{ $video->youtube_url }}" aria-label="Play {{ $video->title }}">
 
-                            if ($youtubeId) {
+                            <i class="fas fa-play"></i>
 
-                                $thumbnail =
-                                    'https://img.youtube.com/vi/' .
-                                    $youtubeId .
-                                    '/hqdefault.jpg';
-
-                            } else {
-
-                                $thumbnail =
-                                    asset(
-                                        'assets/img/home-1/counter/video-img.png'
-                                    );
-
-                            }
+                        </button>
 
 
-                            /*
-                            |--------------------------------------------------------------------------
-                            | Optional category
-                            |--------------------------------------------------------------------------
-                            */
+                        @if($duration)
 
-                            $category = $video->category ?? 'Hospital Updates';
+                        <span class="atulya-video-duration">
+                            {{ $duration }}
+                        </span>
 
-                            $categoryClass = strtolower($category);
-
-                            if (str_contains($categoryClass, 'patient')) {
-                                $filterCategory = 'patient';
-                            } elseif (str_contains($categoryClass, 'treatment')) {
-                                $filterCategory = 'treatment';
-                            } elseif (str_contains($categoryClass, 'awareness')) {
-                                $filterCategory = 'awareness';
-                            } else {
-                                $filterCategory = 'hospital';
-                            }
-
-
-                            /*
-                            |--------------------------------------------------------------------------
-                            | Optional duration
-                            |--------------------------------------------------------------------------
-                            */
-
-                            $duration = $video->duration ?? null;
-
-                        @endphp
-
-
-                        <article
-                            class="atulya-video-card"
-                            data-category="{{ $filterCategory }}">
-
-                            {{-- THUMBNAIL --}}
-
-                            <div class="atulya-video-thumbnail">
-
-                                <img
-                                    src="{{ $thumbnail }}"
-                                    alt="{{ $video->title }}"
-                                    loading="lazy">
-
-                                <div class="atulya-video-thumbnail-overlay"></div>
-
-
-                                <button
-                                    type="button"
-                                    class="atulya-video-play"
-                                    data-video-url="{{ $video->youtube_url }}"
-                                    aria-label="Play {{ $video->title }}">
-
-                                    <i class="fas fa-play"></i>
-
-                                </button>
-
-
-                                @if($duration)
-
-                                    <span class="atulya-video-duration">
-                                        {{ $duration }}
-                                    </span>
-
-                                @endif
-
-                            </div>
-
-
-                            {{-- CONTENT --}}
-
-                            <div class="atulya-video-card-content">
-
-                                <span class="atulya-video-category">
-                                    {{ $category }}
-                                </span>
-
-                                <h3>
-                                    {{ $video->title }}
-                                </h3>
-
-                                <p>
-
-                                    @if($video->description)
-
-                                        {{ \Illuminate\Support\Str::limit($video->description, 100) }}
-
-                                    @else
-
-                                        Learn more through informative healthcare
-                                        content from Atulya Hospital.
-
-                                    @endif
-
-                                </p>
-
-
-                                <button
-                                    type="button"
-                                    class="atulya-watch-video"
-                                    data-video-url="{{ $video->youtube_url }}">
-
-                                    Watch Video
-
-                                    <i class="fas fa-arrow-right"></i>
-
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                    @endforeach
-
-                </div>
-
-
-                {{-- =================================================
-                     BOTTOM
-                ================================================== --}}
-
-                <div class="atulya-videos-bottom">
-
-                    <div
-                        class="atulya-video-count"
-                        id="atulyaVideoCount">
-
-                        Showing {{ $videoCollection->count() }}
-                        of {{ $videoCollection->count() }} videos
+                        @endif
 
                     </div>
 
 
-                    <div class="atulya-video-pagination">
+                    {{-- CONTENT --}}
 
-                        <button
-                            type="button"
-                            class="atulya-video-page-btn"
-                            id="atulyaVideoPrev"
-                            disabled>
+                    <div class="atulya-video-card-content">
 
-                            <i class="fas fa-arrow-left"></i>
+                        <span class="atulya-video-category">
+                            {{ $category }}
+                        </span>
 
-                        </button>
+                        <h3>
+                            {{ $video->title }}
+                        </h3>
+
+                        <p>
+
+                            @if($video->description)
+
+                            {{ \Illuminate\Support\Str::limit($video->description, 100) }}
+
+                            @else
+
+                            Learn more through informative healthcare
+                            content from Atulya Hospital.
+
+                            @endif
+
+                        </p>
 
 
-                        <button
-                            type="button"
-                            class="atulya-video-page-btn active">
+                        <button type="button" class="atulya-watch-video" data-video-url="{{ $video->youtube_url }}">
 
-                            1
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="atulya-video-page-btn"
-                            id="atulyaVideoNext"
-                            disabled>
+                            Watch Video
 
                             <i class="fas fa-arrow-right"></i>
 
@@ -928,25 +837,70 @@
 
                     </div>
 
+                </article>
+
+                @endforeach
+
+            </div>
+
+
+            {{-- =================================================
+                     BOTTOM
+                ================================================== --}}
+
+            <div class="atulya-videos-bottom">
+
+                <div class="atulya-video-count" id="atulyaVideoCount">
+
+                    Showing {{ $videoCollection->count() }}
+                    of {{ $videoCollection->count() }} videos
+
                 </div>
+
+
+                <div class="atulya-video-pagination">
+
+                    <button type="button" class="atulya-video-page-btn" id="atulyaVideoPrev" disabled>
+
+                        <i class="fas fa-arrow-left"></i>
+
+                    </button>
+
+
+                    <button type="button" class="atulya-video-page-btn active">
+
+                        1
+
+                    </button>
+
+
+                    <button type="button" class="atulya-video-page-btn" id="atulyaVideoNext" disabled>
+
+                        <i class="fas fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
 
 
             @else
 
-                <div class="atulya-video-empty">
+            <div class="atulya-video-empty">
 
-                    <i class="fas fa-video"></i>
+                <i class="fas fa-video"></i>
 
-                    <h3>
-                        Videos Coming Soon
-                    </h3>
+                <h3>
+                    Videos Coming Soon
+                </h3>
 
-                    <p>
-                        We are preparing informative healthcare
-                        content for you.
-                    </p>
+                <p>
+                    We are preparing informative healthcare
+                    content for you.
+                </p>
 
-                </div>
+            </div>
 
             @endif
 
@@ -961,17 +915,11 @@
      VIDEO MODAL
 ========================================================= --}}
 
-<div
-    id="atulyaVideoModal"
-    class="atulya-video-modal">
+<div id="atulyaVideoModal" class="atulya-video-modal">
 
     <div class="atulya-video-modal-box">
 
-        <button
-            type="button"
-            id="atulyaVideoClose"
-            class="atulya-video-close"
-            aria-label="Close video">
+        <button type="button" id="atulyaVideoClose" class="atulya-video-close" aria-label="Close video">
 
             <i class="fas fa-times"></i>
 
@@ -980,12 +928,7 @@
 
         <div class="atulya-video-frame">
 
-            <iframe
-                id="atulyaVideoIframe"
-                src=""
-                title="Atulya Hospital Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+            <iframe id="atulyaVideoIframe" src="" title="Atulya Hospital Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
             </iframe>
 
         </div>
@@ -998,237 +941,235 @@
 @push('scripts')
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded', function () {
+        /*
+        |--------------------------------------------------------------------------
+        | VIDEO MODAL
+        |--------------------------------------------------------------------------
+        */
 
-    /*
-    |--------------------------------------------------------------------------
-    | VIDEO MODAL
-    |--------------------------------------------------------------------------
-    */
+        const modal =
+            document.getElementById('atulyaVideoModal');
 
-    const modal =
-        document.getElementById('atulyaVideoModal');
+        const iframe =
+            document.getElementById('atulyaVideoIframe');
 
-    const iframe =
-        document.getElementById('atulyaVideoIframe');
-
-    const closeButton =
-        document.getElementById('atulyaVideoClose');
+        const closeButton =
+            document.getElementById('atulyaVideoClose');
 
 
-    if (modal && iframe) {
+        if (modal && iframe) {
 
-        function getYoutubeId(url) {
+            function getYoutubeId(url) {
 
-            if (!url) {
+                if (!url) {
+                    return null;
+                }
+
+                const patterns = [
+
+                    /youtube\.com\/watch\?v=([^&]+)/,
+
+                    /youtu\.be\/([^?&]+)/,
+
+                    /youtube\.com\/embed\/([^?&]+)/,
+
+                    /youtube\.com\/shorts\/([^?&]+)/
+
+                ];
+
+
+                for (const pattern of patterns) {
+
+                    const match =
+                        url.match(pattern);
+
+                    if (match) {
+                        return match[1];
+                    }
+
+                }
+
                 return null;
             }
 
-            const patterns = [
 
-                /youtube\.com\/watch\?v=([^&]+)/,
+            function openVideo(url) {
 
-                /youtu\.be\/([^?&]+)/,
+                const videoId =
+                    getYoutubeId(url);
 
-                /youtube\.com\/embed\/([^?&]+)/,
-
-                /youtube\.com\/shorts\/([^?&]+)/
-
-            ];
-
-
-            for (const pattern of patterns) {
-
-                const match =
-                    url.match(pattern);
-
-                if (match) {
-                    return match[1];
+                if (!videoId) {
+                    return;
                 }
 
-            }
 
-            return null;
-        }
+                iframe.src =
+                    'https://www.youtube.com/embed/' +
+                    videoId +
+                    '?autoplay=1&rel=0';
 
 
-        function openVideo(url) {
+                modal.classList.add('active');
 
-            const videoId =
-                getYoutubeId(url);
-
-            if (!videoId) {
-                return;
+                document.body.style.overflow = 'hidden';
             }
 
 
-            iframe.src =
-                'https://www.youtube.com/embed/' +
-                videoId +
-                '?autoplay=1&rel=0';
+            function closeVideo() {
+
+                modal.classList.remove('active');
+
+                iframe.src = '';
+
+                document.body.style.overflow = '';
+            }
 
 
-            modal.classList.add('active');
+            document
+                .querySelectorAll('[data-video-url]')
+                .forEach(function(button) {
 
-            document.body.style.overflow = 'hidden';
-        }
+                    button.addEventListener(
+                        'click'
+                        , function() {
+
+                            openVideo(
+                                this.getAttribute(
+                                    'data-video-url'
+                                )
+                            );
+
+                        }
+                    );
+
+                });
 
 
-        function closeVideo() {
+            if (closeButton) {
 
-            modal.classList.remove('active');
-
-            iframe.src = '';
-
-            document.body.style.overflow = '';
-        }
-
-
-        document
-            .querySelectorAll('[data-video-url]')
-            .forEach(function (button) {
-
-                button.addEventListener(
-                    'click',
-                    function () {
-
-                        openVideo(
-                            this.getAttribute(
-                                'data-video-url'
-                            )
-                        );
-
-                    }
+                closeButton.addEventListener(
+                    'click'
+                    , closeVideo
                 );
 
-            });
+            }
 
 
-        if (closeButton) {
+            modal.addEventListener(
+                'click'
+                , function(event) {
 
-            closeButton.addEventListener(
-                'click',
-                closeVideo
+                    if (event.target === modal) {
+                        closeVideo();
+                    }
+
+                }
+            );
+
+
+            document.addEventListener(
+                'keydown'
+                , function(event) {
+
+                    if (event.key === 'Escape') {
+                        closeVideo();
+                    }
+
+                }
             );
 
         }
 
 
-        modal.addEventListener(
-            'click',
-            function (event) {
+        /*
+        |--------------------------------------------------------------------------
+        | CATEGORY FILTER
+        |--------------------------------------------------------------------------
+        */
 
-                if (event.target === modal) {
-                    closeVideo();
-                }
+        const filterButtons =
+            document.querySelectorAll(
+                '.atulya-video-filter'
+            );
 
-            }
-        );
+        const videoCards =
+            document.querySelectorAll(
+                '.atulya-video-card'
+            );
 
-
-        document.addEventListener(
-            'keydown',
-            function (event) {
-
-                if (event.key === 'Escape') {
-                    closeVideo();
-                }
-
-            }
-        );
-
-    }
+        const videoCount =
+            document.getElementById(
+                'atulyaVideoCount'
+            );
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | CATEGORY FILTER
-    |--------------------------------------------------------------------------
-    */
+        filterButtons.forEach(function(button) {
 
-    const filterButtons =
-        document.querySelectorAll(
-            '.atulya-video-filter'
-        );
+            button.addEventListener(
+                'click'
+                , function() {
 
-    const videoCards =
-        document.querySelectorAll(
-            '.atulya-video-card'
-        );
+                    filterButtons.forEach(
+                        function(item) {
+                            item.classList.remove('active');
+                        }
+                    );
 
-    const videoCount =
-        document.getElementById(
-            'atulyaVideoCount'
-        );
+                    this.classList.add('active');
 
 
-    filterButtons.forEach(function (button) {
+                    const filter =
+                        this.dataset.filter;
 
-        button.addEventListener(
-            'click',
-            function () {
-
-                filterButtons.forEach(
-                    function (item) {
-                        item.classList.remove('active');
-                    }
-                );
-
-                this.classList.add('active');
+                    let visibleCount = 0;
 
 
-                const filter =
-                    this.dataset.filter;
+                    videoCards.forEach(
+                        function(card) {
 
-                let visibleCount = 0;
-
-
-                videoCards.forEach(
-                    function (card) {
-
-                        const category =
-                            card.dataset.category;
+                            const category =
+                                card.dataset.category;
 
 
-                        if (
-                            filter === 'all' ||
-                            category === filter
-                        ) {
+                            if (
+                                filter === 'all' ||
+                                category === filter
+                            ) {
 
-                            card.style.display =
-                                '';
+                                card.style.display =
+                                    '';
 
-                            visibleCount++;
+                                visibleCount++;
 
-                        } else {
+                            } else {
 
-                            card.style.display =
-                                'none';
+                                card.style.display =
+                                    'none';
+
+                            }
 
                         }
+                    );
+
+
+                    if (videoCount) {
+
+                        videoCount.textContent =
+                            'Showing ' +
+                            visibleCount +
+                            ' of ' +
+                            videoCards.length +
+                            ' videos';
 
                     }
-                );
-
-
-                if (videoCount) {
-
-                    videoCount.textContent =
-                        'Showing ' +
-                        visibleCount +
-                        ' of ' +
-                        videoCards.length +
-                        ' videos';
 
                 }
+            );
 
-            }
-        );
-
-    }
-
-});
+        })
+    });
 
 </script>
 
