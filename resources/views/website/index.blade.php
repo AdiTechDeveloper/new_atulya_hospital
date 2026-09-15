@@ -1292,185 +1292,249 @@
 
 </section>
 <!-- Cta Section End -->
+{{-- =========================================================
+     VIDEO SECTION
+========================================================= --}}
 
-
-
-
-<!-- Video Section Start -->
-<section class="vedio-bg-section fix bg-cover"
+<section
+    class="vedio-bg-section fix bg-cover atulya-home-video"
     style="background-image: url('{{ asset('assets/img/home-1/counter/video-img.png') }}');">
 
-    {{-- Counter Section --}}
-    <div class="counter-section">
-
-        <div class="container">
-
-            <div class="counter-wrapper zoom-effect-style">
-
-                {{-- Counter 1 --}}
-                <div class="counter-items wow fadeInUp" data-wow-delay=".2s">
-
-                    <div class="icon">
-                        <img src="{{ asset('assets/img/home-1/counter/icon-01.png') }}"
-                             alt="Satisfied Patients">
-                    </div>
-
-                    <div class="content">
-                        <h2>
-                            <span class="odometer" data-count="00">00</span>
-                        </h2>
-
-                        <p>Satisfied Patients</p>
-                    </div>
-
-                </div>
+    {{-- Background Overlay --}}
+    <div class="atulya-video-overlay"></div>
 
 
-                {{-- Counter 2 --}}
-                <div class="counter-items wow fadeInUp" data-wow-delay=".4s">
+    <div class="container">
 
-                    <div class="icon">
-                        <img src="{{ asset('assets/img/home-1/counter/icon-02.png') }}"
-                             alt="Clinic Rooms">
-                    </div>
+        <div class="atulya-video-inner">
 
-                    <div class="content">
-                        <h2>
-                            <span class="odometer" data-count="00">00</span>
-                        </h2>
+            {{-- =================================================
+                 HEADING
+            ================================================== --}}
 
-                        <p>Clinic Rooms</p>
-                    </div>
+            <div class="atulya-video-heading">
 
-                </div>
+                <span>OUR VIDEOS</span>
 
+                <h2>
+                    Healthcare Information
+                </h2>
 
-                {{-- Counter 3 --}}
-                <div class="counter-items wow fadeInUp" data-wow-delay=".6s">
-
-                    <div class="icon">
-                        <img src="{{ asset('assets/img/home-1/counter/icon-03.png') }}"
-                             alt="Awards Winning">
-                    </div>
-
-                    <div class="content">
-                        <h2>
-                            <span class="odometer" data-count="00">00</span>+
-                        </h2>
-
-                        <p>Awards Winning</p>
-                    </div>
-
-                </div>
-
-
-                {{-- Counter 4 --}}
-                <div class="counter-items wow fadeInUp" data-wow-delay=".8s">
-
-                    <div class="icon">
-                        <img src="{{ asset('assets/img/home-1/counter/icon-04.png') }}"
-                             alt="Research">
-                    </div>
-
-                    <div class="content">
-                        <h2>
-                            <span class="odometer" data-count="00">00</span>K
-                        </h2>
-
-                        <p>Kinds Of Research</p>
-                    </div>
-
-                </div>
+                <p>
+                    Watch healthcare awareness, medical information
+                    and updates from Atulya Super Speciality Hospital & ICU.
+                </p>
 
             </div>
+
+
+            @if(isset($featuredVideo) && $featuredVideo)
+
+                @php
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | YouTube ID
+                    |--------------------------------------------------------------------------
+                    */
+
+                    $youtubeId = null;
+
+                    if (
+                        preg_match(
+                            '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
+                            $featuredVideo->youtube_url,
+                            $matches
+                        )
+                    ) {
+                        $youtubeId = $matches[1];
+                    }
+
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | YouTube Thumbnail
+                    |--------------------------------------------------------------------------
+                    */
+
+                    if ($youtubeId) {
+
+                        $videoThumbnail =
+                            'https://img.youtube.com/vi/' .
+                            $youtubeId .
+                            '/maxresdefault.jpg';
+
+                    } else {
+
+                        $videoThumbnail =
+                            asset(
+                                'assets/img/home-1/counter/video-img.png'
+                            );
+
+                    }
+
+                @endphp
+
+
+                {{-- =================================================
+                     FEATURED VIDEO CARD
+                ================================================== --}}
+
+                <div class="atulya-video-card">
+
+
+                    {{-- =================================================
+                         THUMBNAIL
+                    ================================================== --}}
+
+                    <div class="atulya-video-thumbnail">
+
+                        <img
+                            src="{{ $videoThumbnail }}"
+                            alt="{{ $featuredVideo->title }}"
+                            loading="lazy">
+
+
+                        <div class="atulya-thumbnail-overlay"></div>
+
+
+                        {{-- Play Button --}}
+                        <button
+                            type="button"
+                            class="atulya-video-play"
+                            id="openVideo"
+                            data-video-url="{{ $featuredVideo->youtube_url }}"
+                            aria-label="Play {{ $featuredVideo->title }}">
+
+                            <span>
+                                <i class="fas fa-play"></i>
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                    {{-- =================================================
+                         VIDEO CONTENT
+                    ================================================== --}}
+
+                    <div class="atulya-video-info">
+
+                        <div class="atulya-video-info-inner">
+
+                            <span class="atulya-video-label">
+                                Featured Video
+                            </span>
+
+
+                            <h3>
+                                {{ $featuredVideo->title }}
+                            </h3>
+
+
+                            @if($featuredVideo->description)
+
+                                <p>
+                                    {{ \Illuminate\Support\Str::limit(
+                                        $featuredVideo->description,
+                                        130
+                                    ) }}
+                                </p>
+
+                            @else
+
+                                <p>
+                                    Explore healthcare information,
+                                    awareness and updates from Atulya Hospital.
+                                </p>
+
+                            @endif
+
+                        </div>
+
+
+                        {{-- See All Videos --}}
+                        <a
+                            href="{{ route('videos.index') }}"
+                            class="theme-btn atulya-see-videos">
+
+                            <span>
+                                See All Videos
+                            </span>
+
+                            <i class="fas fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            @else
+
+                {{-- =================================================
+                     NO VIDEO
+                ================================================== --}}
+
+                <div class="atulya-video-empty">
+
+                    <i class="fas fa-video"></i>
+
+                    <h3>
+                        Videos Coming Soon
+                    </h3>
+
+                    <p>
+                        We are preparing informative healthcare
+                        content for you.
+                    </p>
+
+
+                    <a
+                        href="{{ route('videos.index') }}"
+                        class="theme-btn atulya-see-videos">
+
+                        <span>
+                            See All Videos
+                        </span>
+
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            @endif
 
         </div>
 
     </div>
 
 
-    {{-- =====================================================
-         FEATURED VIDEO PLAY
-    ====================================================== --}}
-
-    @if(isset($featuredVideo) && $featuredVideo)
-
-        <div class="vedio-wrapper">
-
-            <div class="video">
-
-                <a href="javascript:void(0);"
-                   class="video-btn ripple"
-                   id="openVideo"
-                   data-video-url="{{ $featuredVideo->youtube_url }}"
-                   aria-label="Play {{ $featuredVideo->title }}">
-
-                    <i class="fas fa-play"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    @endif
-
-
-    {{-- =====================================================
-         VIDEO TITLE + SEE ALL
-    ====================================================== --}}
-
-    <div class="video-section-bottom">
-
-        @if(isset($featuredVideo) && $featuredVideo)
-
-            <div class="video-section-info">
-
-                <span>
-                    OUR VIDEOS
-                </span>
-
-                <h3>
-                    {{ $featuredVideo->title }}
-                </h3>
-
-            </div>
-
-        @endif
-
-
-        <a href="{{ route('videos.index') }}"
-           class="theme-btn video-see-more">
-
-            See All Videos
-
-            <i class="fas fa-arrow-right ms-2"></i>
-
-        </a>
-
-    </div>
-
-
-    {{-- =====================================================
+    {{-- =========================================================
          VIDEO POPUP
-    ====================================================== --}}
+    ========================================================== --}}
 
-    <div id="videoModal"
-         class="video-modal">
+    <div
+        id="videoModal"
+        class="atulya-video-modal">
 
-        <div class="video-modal-content">
+        <div class="atulya-video-modal-content">
 
-            <button type="button"
-                    class="video-close"
-                    id="closeVideo"
-                    aria-label="Close video">
+            <button
+                type="button"
+                id="closeVideo"
+                class="atulya-video-close"
+                aria-label="Close video">
 
                 <i class="fas fa-times"></i>
 
             </button>
 
 
-            <div class="video-iframe-wrapper">
+            <div class="atulya-video-iframe-wrapper">
 
                 <iframe
                     id="popupVideo"
@@ -1497,65 +1561,494 @@
 
 <style>
 
-.video-section-bottom {
-    position: relative;
-    z-index: 5;
+/* =========================================================
+   SECTION
+========================================================= */
 
-    width: min(1180px, calc(100% - 30px));
+.atulya-home-video {
+    position: relative !important;
 
-    margin: 28px auto 0;
+    padding: 80px 0 85px !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 
-    gap: 25px;
+    overflow: hidden;
 }
 
-.video-section-info {
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.atulya-video-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background: rgba(11, 39, 76, 0.70);
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.atulya-video-inner {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.atulya-video-heading {
+    max-width: 680px;
+
+    margin: 0 auto 35px;
+
     text-align: center;
 }
 
-.video-section-info span {
-    display: block;
 
-    margin-bottom: 4px;
+.atulya-video-heading span {
+    display: inline-block;
 
-    color: #fff;
+    margin-bottom: 8px;
+
+    color: #ffffff;
 
     font-size: 11px;
 
     font-weight: 700;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 
-    opacity: .8;
+    text-transform: uppercase;
 }
 
-.video-section-info h3 {
-    margin: 0;
 
-    color: #fff;
+.atulya-video-heading h2 {
+    margin: 0 0 10px;
 
-    font-size: 18px;
+    color: #ffffff;
 
-    font-weight: 600;
+    font-size: 38px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
 }
 
-.video-see-more {
-    display: inline-flex;
 
-    align-items: center;
+.atulya-video-heading p {
+    max-width: 610px;
 
-    white-space: nowrap;
+    margin: 0 auto;
+
+    color: rgba(255,255,255,.82);
+
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
 
 /* =========================================================
-   VIDEO MODAL
+   CARD
 ========================================================= */
 
-.video-modal {
+.atulya-video-card {
+    display: grid;
+
+    grid-template-columns: 58% 42%;
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    height: 325px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+.atulya-video-thumbnail {
+    position: relative;
+
+    width: 100%;
+
+    height: 325px;
+
+    overflow: hidden;
+
+    background: #122442;
+}
+
+
+.atulya-video-thumbnail img {
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition: transform .5s ease;
+}
+
+
+.atulya-video-card:hover
+.atulya-video-thumbnail img {
+    transform: scale(1.035);
+}
+
+
+/* =========================================================
+   THUMBNAIL OVERLAY
+========================================================= */
+
+.atulya-thumbnail-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.02),
+            rgba(0,0,0,.32)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
+
+.atulya-video-play {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    z-index: 5;
+
+    width: 76px;
+    height: 76px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.96);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.25);
+
+    transition: .3s ease;
+}
+
+
+.atulya-video-play::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -7px;
+
+    border: 2px solid rgba(255,255,255,.50);
+
+    border-radius: 50%;
+}
+
+
+.atulya-video-play span {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #172965;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding-left: 3px;
+
+    transition: .3s ease;
+}
+
+
+.atulya-video-play span i {
+    font-size: 16px;
+}
+
+
+.atulya-video-play:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.08);
+}
+
+
+.atulya-video-play:hover span {
+    background: #2196f3;
+}
+
+
+/* =========================================================
+   VIDEO INFO
+========================================================= */
+
+.atulya-video-info {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 38px 35px;
+
+    background: #ffffff;
+}
+
+
+.atulya-video-info-inner {
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.atulya-video-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    padding: 6px 10px;
+
+    border-radius: 4px;
+
+    background: #eaf4ff;
+
+    color: #1c6fd1;
+
+    font-size: 9px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.atulya-video-info h3 {
+    margin: 0 0 12px;
+
+    color: #172965;
+
+    font-size: 24px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.atulya-video-info p {
+    max-width: 320px;
+
+    margin: 0;
+
+    color: #68738a;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SEE ALL VIDEOS
+========================================================= */
+
+.atulya-see-videos {
+    align-self: flex-start;
+
+    display: inline-flex !important;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 14px;
+
+    min-width: 170px;
+
+    height: 48px;
+
+    padding: 0 8px 0 20px !important;
+
+    border-radius: 30px !important;
+
+    color: #ffffff !important;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 18px rgba(28,111,209,.18);
+
+    transition: .3s ease !important;
+}
+
+
+.atulya-see-videos i {
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #1c6fd1;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+
+    transition: .3s ease;
+}
+
+
+.atulya-see-videos:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(28,111,209,.28);
+}
+
+
+.atulya-see-videos:hover i {
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.atulya-video-empty {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 45px 25px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.atulya-video-empty > i {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #1c6fd1;
+
+    font-size: 35px;
+}
+
+
+.atulya-video-empty h3 {
+    margin: 0 0 8px;
+
+    color: #172965;
+
+    font-size: 22px;
+}
+
+
+.atulya-video-empty p {
+    margin: 0 0 20px;
+
+    color: #68738a;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.atulya-video-modal {
     position: fixed;
 
     inset: 0;
@@ -1565,30 +2058,36 @@
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(0, 0, 0, .88);
+    background: rgba(0,0,0,.88);
 }
 
-.video-modal.active {
+
+.atulya-video-modal.active {
     display: flex;
 }
 
-.video-modal-content {
+
+.atulya-video-modal-content {
     position: relative;
 
     width: 100%;
 
-    max-width: 1000px;
+    max-width: 950px;
 
     background: #000;
 
     border-radius: 10px;
+
+    overflow: visible;
 }
 
-.video-iframe-wrapper {
+
+.atulya-video-iframe-wrapper {
     position: relative;
 
     width: 100%;
@@ -1600,26 +2099,35 @@
     border-radius: 10px;
 }
 
-.video-iframe-wrapper iframe {
+
+.atulya-video-iframe-wrapper iframe {
     position: absolute;
 
     inset: 0;
 
     width: 100%;
+
     height: 100%;
 
     border: 0;
 }
 
-.video-close {
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.atulya-video-close {
     position: absolute;
 
-    top: -48px;
     right: 0;
+
+    top: -48px;
 
     z-index: 10;
 
     width: 40px;
+
     height: 40px;
 
     padding: 0;
@@ -1628,49 +2136,181 @@
 
     border-radius: 50%;
 
-    background: #fff;
+    background: #ffffff;
 
     color: #172965;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     cursor: pointer;
 
-    transition: all .25s ease;
+    transition: .25s ease;
 }
 
-.video-close:hover {
-    background: #172965;
 
-    color: #fff;
+.atulya-video-close:hover {
+    background: #2196f3;
+
+    color: #ffffff;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .atulya-home-video {
+        padding: 70px 0 75px !important;
+    }
+
+
+    .atulya-video-card {
+        grid-template-columns: 1fr;
+
+        height: auto;
+
+        max-width: 700px;
+    }
+
+
+    .atulya-video-thumbnail {
+        height: 350px;
+    }
+
+
+    .atulya-video-info {
+        min-height: 260px;
+
+        padding: 30px;
+    }
+
+
+    .atulya-video-info p {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
 ========================================================= */
 
 @media (max-width: 767px) {
 
-    .video-section-bottom {
-        width: calc(100% - 30px);
-
-        flex-direction: column;
-
-        gap: 15px;
-
-        margin-top: 22px;
+    .atulya-home-video {
+        padding: 55px 0 60px !important;
     }
 
-    .video-section-info h3 {
-        font-size: 16px;
+
+    .atulya-video-heading {
+        padding: 0 10px;
+
+        margin-bottom: 28px;
     }
 
-    .video-see-more {
-        padding: 11px 20px;
+
+    .atulya-video-heading h2 {
+        font-size: 30px;
+    }
+
+
+    .atulya-video-heading p {
+        font-size: 13px;
+    }
+
+
+    .atulya-video-thumbnail {
+        height: 250px;
+    }
+
+
+    .atulya-video-info {
+        min-height: auto;
+
+        padding: 25px 22px;
+    }
+
+
+    .atulya-video-info h3 {
+        font-size: 21px;
+    }
+
+
+    .atulya-video-info p {
+        margin-bottom: 24px;
+
+        font-size: 13px;
+    }
+
+
+    .atulya-video-play {
+        width: 70px;
+
+        height: 70px;
+    }
+
+
+    .atulya-video-play span {
+        width: 51px;
+
+        height: 51px;
+    }
+
+
+    .atulya-see-videos {
+        min-width: 165px;
+
+        height: 46px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 575px) {
+
+    .atulya-home-video {
+        padding: 45px 0 50px !important;
+    }
+
+
+    .atulya-video-heading h2 {
+        font-size: 27px;
+    }
+
+
+    .atulya-video-thumbnail {
+        height: 215px;
+    }
+
+
+    .atulya-video-info {
+        padding: 22px 18px;
+    }
+
+
+    .atulya-video-info h3 {
+        font-size: 19px;
+    }
+
+
+    .atulya-video-info p {
+        font-size: 13px;
+    }
+
+
+    .atulya-video-modal {
+        padding: 12px;
     }
 
 }
@@ -1681,7 +2321,7 @@
 
 
 {{-- =========================================================
-     VIDEO POPUP JS
+     VIDEO JS
 ========================================================= --}}
 
 @push('scripts')
@@ -1710,7 +2350,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Get YouTube Video ID
+    | YouTube ID
     |--------------------------------------------------------------------------
     */
 
@@ -1719,6 +2359,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!url) {
             return null;
         }
+
 
         const patterns = [
 
@@ -1735,7 +2376,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (const pattern of patterns) {
 
-            const match = url.match(pattern);
+            const match =
+                url.match(pattern);
 
             if (match) {
                 return match[1];
@@ -1743,13 +2385,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
+
         return null;
     }
 
 
     /*
     |--------------------------------------------------------------------------
-    | Open Video
+    | OPEN
     |--------------------------------------------------------------------------
     */
 
@@ -1782,7 +2425,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Close Video
+    | CLOSE
     |--------------------------------------------------------------------------
     */
 
@@ -1809,7 +2452,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Click Outside
+    | OUTSIDE CLICK
     |--------------------------------------------------------------------------
     */
 
@@ -1826,7 +2469,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Escape
+    | ESCAPE
     |--------------------------------------------------------------------------
     */
 
