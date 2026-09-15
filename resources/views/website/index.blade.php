@@ -1585,7 +1585,6 @@
 
                 </div>
 
-
                 <!-- IMAGE -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay=".5s">
 
@@ -1596,19 +1595,11 @@
                             alt="Book an Appointment">
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
-
-
-
 
 
 <!-- Testimonial Section5 Start -->
@@ -1798,45 +1789,64 @@
     </div>
 </section>
 
-<!-- Brand Section Start -->
-<div class="brand-section section-padding fix">
-    <div class="container">
-        <div class="swiper brand-slide">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="barnd-image text-center">
-                        <img src="{{ asset('assets/img/home-1/brand/01.png') }}" alt="img">
+  <!-- Brand Section Start -->
+    <div class="brand-section section-padding fix">
+        <div class="container">
+            <div class="swiper brand-slide">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/rheumatology.png') }}"style="width:180px; height:150px;"
+                                alt="img">
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="barnd-image text-center">
-                        <img src="{{ asset('assets/img/home-1/brand/02.png') }}" alt="img">
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/General Surgery.png') }}"
+                                style="width:180px; height:150px;"alt="img">
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="barnd-image text-center">
-                        <img src="{{ asset('assets/img/home-1/brand/03.png') }}" alt="img">
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/ENT.png') }}" style="width:180px; height:150px;"
+                                alt="img">
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="barnd-image text-center">
-                        <img src="{{ asset('assets/img/home-1/brand/04.png') }}" alt="img">
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/Gastroenterology.png') }}"
+                                style="width:180px; height:150px;" alt="img">
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="barnd-image text-center">
-                        <img src="{{ asset('assets/img/home-1/brand/05.png') }}" alt="img">
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/Urology.png') }}"
+                                style="width:180px; height:150px;" alt="img">
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="barnd-image text-center">
-                        <img src="{{ asset('assets/img/home-1/brand/06.png') }}" alt="img">
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/Orthopedics.png') }}"
+                                style="width:180px; height:150px;" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/Emergency.png') }}"
+                                style="width:180px; height:150px;" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="barnd-image text-center">
+                            <img src="{{ asset('assets/img/home-1/brand/plastic_surgery.png') }}"
+                                style="width:180px; height:150px;" alt="img">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 <!-- News Section Start -->
 <section class="news-section section-padding fix pt-0">
@@ -2085,9 +2095,9 @@
             </div>
         </div>
     </div>
-
-
 </section>
+
+
 <!-- Faq Section End -->
 
 

@@ -41,13 +41,21 @@
                                 healthcare with a patient-centred approach.
                             </p>
 
-                             <ul>
-
+                            <ul>
                                 <li>
-                                    Monday - Sunday
-                                    <span>24×7</span>
+                                    Monday - Sunday 
+                                    <span>24 * 7</span>
                                 </li>
 
+                                {{-- <li>
+                                    Saturday
+                                    <span>9AM - 8PM</span>
+                                </li>
+
+                                <li>
+                                    Sunday
+                                    <span>9AM - 12AM</span>
+                                </li> --}}
                             </ul>
                             <div class="icon">
 

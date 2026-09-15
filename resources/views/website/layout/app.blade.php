@@ -20,7 +20,7 @@
     <div class="animation-preloader">
         <div class="spinner">
         </div>
-        <!-- <div class="txt-loading">
+         {{-- <div class="txt-loading">
                     <span data-text-preloader="M" class="letters-loading">
                         M
                     </span>
@@ -42,8 +42,8 @@
                     <span data-text-preloader="B" class="letters-loading">
                         B
                     </span>
-                </div> -->
-        <!-- <p class="text-center">Loading</p> -->
+                </div> 
+        <p class="text-center">Loading</p>  --}}
     </div>
     <!-- <div class="loader">
                 <div class="row">
@@ -67,12 +67,15 @@
 
     <!-- Footer -->
     @include('website.partials.footer')
-
+       <button id="back-top" class="back-to-top">
+        <i class="fas fa-long-arrow-up"></i>
+    </button>
 
     <!-- Javascript -->
     @include('website.partials.js')
 
     @stack('scripts')
+     
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/919727579000?text=Hello%20Atulya%20Super%20Speciality%20Hospital%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
         class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
@@ -80,6 +83,7 @@
         <i class="fab fa-whatsapp"></i>
 
     </a>
+   
 
 
     <!-- jQuery -->
@@ -134,10 +138,34 @@
             });
 
         });
+        $(document).ready(function () {
+
+    // Back To Top Show / Hide
+    $(window).on('scroll', function () {
+
+        if ($(this).scrollTop() > 20) {
+            $('#back-top').addClass('show');
+        } else {
+            $('#back-top').removeClass('show');
+        }
+
+    });
+
+    // Back To Top Click
+    $(document).on('click', '#back-top', function (e) {
+
+        e.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 800);
+
+        return false;
+    });
+
+});
     </script>
-    <button id="back-top" class="back-to-top">
-        <i class="fas fa-long-arrow-up"></i>
-    </button>
+ 
 </body>
 
 </html>
