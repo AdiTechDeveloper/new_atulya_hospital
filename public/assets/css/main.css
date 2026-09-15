@@ -1804,7 +1804,7 @@ button {
 
 .header-main .sidebar__toggle {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 30px;
   color: var(--header);
 }
 
