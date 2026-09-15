@@ -16,3 +16,4 @@
 </script>
 <script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/main.js') }}"></script>
+

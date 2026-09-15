@@ -6,6 +6,8 @@
 	<link rel="icon" href="{{ asset('/assets/img/atulyalogo.png') }}" type="image/png">
 
   <!--plugins-->
-  
+  <!-- In your <head> tag -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
 
 </head>
