@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class VideoController extends Controller
 {
-    /**
-     * Display all videos.
-     */
     public function index()
     {
         $videos = Video::orderBy('sort_order')
@@ -21,101 +19,80 @@ class VideoController extends Controller
         return view('admin.pages.video-list', compact('videos'));
     }
 
-
-    /**
-     * Show create video form.
-     */
     public function create()
     {
         return view('admin.pages.video-create');
     }
 
-
-    /**
-     * Store new video.
-     */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => [
-                'required',
-                'string',
-                'max:255',
+        // dd($request->all());
+        $validated = $request->validate(
+            [
+                'title' => ['required', 'string', 'max:255'],
+                'slug' => ['nullable', 'string', 'max:255'],
+                'category' => ['nullable', 'string', 'max:255'],
+                'language' => ['nullable', 'string', 'max:100'],
+                'description' => ['nullable', 'string'],
+                'youtube_url' => [
+                    'required',
+                    'url',
+                    'max:500',
+                    function ($attribute, $value, $fail) {
+                        $host = parse_url($value, PHP_URL_HOST);
+
+                        $host = strtolower($host ?? '');
+
+                        $valid = in_array($host, [
+                            'youtube.com',
+                            'www.youtube.com',
+                            'm.youtube.com',
+                            'youtu.be',
+                            'www.youtu.be',
+                        ], true);
+
+                        if (!$valid) {
+                            $fail('Please enter a valid YouTube video URL.');
+                        }
+                    },
+                ],
+                'duration' => ['nullable', 'string', 'max:50'],
+                'thumbnail' => [
+                    'nullable',
+                    'image',
+                    'mimes:jpg,jpeg,png,webp',
+                    'max:2048',
+                ],
+                'sort_order' => ['nullable', 'integer', 'min:0'],
+                'published_at' => ['nullable', 'date'],
             ],
+            [
+                'title.required' => 'Please enter the video title.',
+                'title.max' => 'Video title cannot exceed 255 characters.',
 
-            'slug' => [
-                'nullable',
-                'string',
-                'max:255',
-                'unique:videos,slug',
-            ],
+                'slug.max' => 'Slug cannot exceed 255 characters.',
 
-            'category' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+                'category.max' => 'Category cannot exceed 255 characters.',
+                'language.max' => 'Language cannot exceed 100 characters.',
 
-            'language' => [
-                'nullable',
-                'string',
-                'max:100',
-            ],
+                'youtube_url.required' => 'Please enter the YouTube video URL.',
+                'youtube_url.url' => 'Please enter a valid URL.',
+                'youtube_url.max' => 'YouTube URL cannot exceed 500 characters.',
 
-            'description' => [
-                'nullable',
-                'string',
-            ],
+                'duration.max' => 'Duration cannot exceed 50 characters.',
 
-            'youtube_url' => [
-                'required',
-                'url',
-                'max:500',
-            ],
+                'thumbnail.image' => 'Please upload a valid image.',
+                'thumbnail.mimes' => 'Thumbnail must be JPG, JPEG, PNG or WEBP.',
+                'thumbnail.max' => 'Thumbnail size must not exceed 2MB.',
 
-            'duration' => [
-                'nullable',
-                'string',
-                'max:50',
-            ],
+                'sort_order.integer' => 'Sort order must be a number.',
+                'sort_order.min' => 'Sort order cannot be negative.',
 
-            'thumbnail' => [
-                'nullable',
-                'image',
-                'mimes:jpg,jpeg,png,webp',
-                'max:2048',
-            ],
+                'published_at.date' => 'Please enter a valid published date.',
+            ]
+        );
 
-            'sort_order' => [
-                'nullable',
-                'integer',
-                'min:0',
-            ],
-
-            'published_at' => [
-                'nullable',
-                'date',
-            ],
-        ]);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Generate Slug
-        |--------------------------------------------------------------------------
-        */
-
-        $slug = $request->input('slug');
-
-        if (!$slug) {
-            $slug = Str::slug($request->input('title'));
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Make Slug Unique
-        |--------------------------------------------------------------------------
-        */
+        $slug = Str::slug($request->input('slug') ?: $request->input('title'));
 
         $originalSlug = $slug;
         $counter = 1;
@@ -127,171 +104,96 @@ class VideoController extends Controller
 
         $validated['slug'] = $slug;
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Checkbox Values
-        |--------------------------------------------------------------------------
-        */
-
-        $validated['is_active'] = $request->boolean('is_active');
         $validated['is_featured'] = $request->boolean('is_featured');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Sort Order
-        |--------------------------------------------------------------------------
-        */
-
+        $validated['is_active'] = $request->boolean('is_active');
         $validated['sort_order'] = $request->input('sort_order', 0);
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Thumbnail Upload
-        |--------------------------------------------------------------------------
-        */
-
         if ($request->hasFile('thumbnail')) {
-
-            $validated['thumbnail'] =
-                $request->file('thumbnail')
-                    ->store('videos', 'public');
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
+                ->store('videos', 'public');
         }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Featured Video
-        |--------------------------------------------------------------------------
-        |
-        | Only one video can be featured.
-        |
-        */
 
         if ($validated['is_featured']) {
-
             Video::where('is_featured', true)
-                ->update([
-                    'is_featured' => false,
-                ]);
+                ->update(['is_featured' => false]);
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Create Video
-        |--------------------------------------------------------------------------
-        */
-
         Video::create($validated);
-
 
         return redirect()
             ->route('admin.videos.index')
             ->with('success', 'Video added successfully.');
     }
 
-
-    /**
-     * Show edit video form.
-     */
     public function edit(Video $video)
     {
-        return view(
-            'admin.pages.video-edit',
-            compact('video')
-        );
+        return view('admin.pages.video-edit', compact('video'));
     }
 
-
-    /**
-     * Update video.
-     */
     public function update(Request $request, Video $video)
     {
-        $validated = $request->validate([
-            'title' => [
-                'required',
-                'string',
-                'max:255',
+        $validated = $request->validate(
+            [
+                'title' => ['required', 'string', 'max:255'],
+                'slug' => ['nullable', 'string', 'max:255'],
+                'category' => ['nullable', 'string', 'max:255'],
+                'language' => ['nullable', 'string', 'max:100'],
+                'description' => ['nullable', 'string'],
+                'youtube_url' => [
+                    'required',
+                    'url',
+                    'max:500',
+                    function ($attribute, $value, $fail) {
+                        $host = parse_url($value, PHP_URL_HOST);
+
+                        $host = strtolower($host ?? '');
+
+                        $valid = in_array($host, [
+                            'youtube.com',
+                            'www.youtube.com',
+                            'm.youtube.com',
+                            'youtu.be',
+                            'www.youtu.be',
+                        ], true);
+
+                        if (!$valid) {
+                            $fail('Please enter a valid YouTube video URL.');
+                        }
+                    },
+                ],
+                'duration' => ['nullable', 'string', 'max:50'],
+                'thumbnail' => [
+                    'nullable',
+                    'image',
+                    'mimes:jpg,jpeg,png,webp',
+                    'max:2048',
+                ],
+                'sort_order' => ['nullable', 'integer', 'min:0'],
+                'published_at' => ['nullable', 'date'],
             ],
+            [
+                'title.required' => 'Please enter the video title.',
+                'title.max' => 'Video title cannot exceed 255 characters.',
 
-            'slug' => [
-                'nullable',
-                'string',
-                'max:255',
-                'unique:videos,slug,' . $video->id,
-            ],
+                'slug.max' => 'Slug cannot exceed 255 characters.',
 
-            'category' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+                'youtube_url.required' => 'Please enter the YouTube video URL.',
+                'youtube_url.url' => 'Please enter a valid URL.',
+                'youtube_url.max' => 'YouTube URL cannot exceed 500 characters.',
 
-            'language' => [
-                'nullable',
-                'string',
-                'max:100',
-            ],
+                'thumbnail.image' => 'Please upload a valid image.',
+                'thumbnail.mimes' => 'Thumbnail must be JPG, JPEG, PNG or WEBP.',
+                'thumbnail.max' => 'Thumbnail size must not exceed 2MB.',
 
-            'description' => [
-                'nullable',
-                'string',
-            ],
+                'sort_order.integer' => 'Sort order must be a number.',
+                'sort_order.min' => 'Sort order cannot be negative.',
 
-            'youtube_url' => [
-                'required',
-                'url',
-                'max:500',
-            ],
+                'published_at.date' => 'Please enter a valid published date.',
+            ]
+        );
 
-            'duration' => [
-                'nullable',
-                'string',
-                'max:50',
-            ],
-
-            'thumbnail' => [
-                'nullable',
-                'image',
-                'mimes:jpg,jpeg,png,webp',
-                'max:2048',
-            ],
-
-            'sort_order' => [
-                'nullable',
-                'integer',
-                'min:0',
-            ],
-
-            'published_at' => [
-                'nullable',
-                'date',
-            ],
-        ]);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Generate Slug
-        |--------------------------------------------------------------------------
-        */
-
-        $slug = $request->input('slug');
-
-        if (!$slug) {
-            $slug = Str::slug($request->input('title'));
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Make Slug Unique
-        |--------------------------------------------------------------------------
-        */
+        $slug = Str::slug($request->input('slug') ?: $request->input('title'));
 
         $originalSlug = $slug;
         $counter = 1;
@@ -307,132 +209,57 @@ class VideoController extends Controller
 
         $validated['slug'] = $slug;
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Checkbox Values
-        |--------------------------------------------------------------------------
-        */
-
-        $validated['is_active'] = $request->boolean('is_active');
         $validated['is_featured'] = $request->boolean('is_featured');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Sort Order
-        |--------------------------------------------------------------------------
-        */
-
+        $validated['is_active'] = $request->boolean('is_active');
         $validated['sort_order'] = $request->input('sort_order', 0);
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Thumbnail Upload
-        |--------------------------------------------------------------------------
-        */
-
         if ($request->hasFile('thumbnail')) {
-
-            /*
-             * Delete old thumbnail
-             */
-
             if (
                 $video->thumbnail &&
-                \Storage::disk('public')->exists($video->thumbnail)
+                Storage::disk('public')->exists($video->thumbnail)
             ) {
-                \Storage::disk('public')
-                    ->delete($video->thumbnail);
+                Storage::disk('public')->delete($video->thumbnail);
             }
 
-
-            /*
-             * Store new thumbnail
-             */
-
-            $validated['thumbnail'] =
-                $request->file('thumbnail')
-                    ->store('videos', 'public');
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
+                ->store('videos', 'public');
         }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Featured Video
-        |--------------------------------------------------------------------------
-        */
 
         if ($validated['is_featured']) {
-
             Video::where('id', '!=', $video->id)
                 ->where('is_featured', true)
-                ->update([
-                    'is_featured' => false,
-                ]);
+                ->update(['is_featured' => false]);
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Update Video
-        |--------------------------------------------------------------------------
-        */
-
         $video->update($validated);
-
 
         return redirect()
             ->route('admin.videos.index')
             ->with('success', 'Video updated successfully.');
     }
 
-
-    /**
-     * Delete video.
-     */
     public function destroy(Video $video)
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Delete Thumbnail
-        |--------------------------------------------------------------------------
-        */
-
         if (
             $video->thumbnail &&
-            \Storage::disk('public')->exists($video->thumbnail)
+            Storage::disk('public')->exists($video->thumbnail)
         ) {
-            \Storage::disk('public')
-                ->delete($video->thumbnail);
+            Storage::disk('public')->delete($video->thumbnail);
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Delete Video
-        |--------------------------------------------------------------------------
-        */
-
         $video->delete();
-
 
         return redirect()
             ->route('admin.videos.index')
             ->with('success', 'Video deleted successfully.');
     }
 
-
-    /**
-     * Toggle video status.
-     */
     public function toggleStatus(Video $video)
     {
         $video->update([
             'is_active' => !$video->is_active,
         ]);
-
 
         return redirect()
             ->route('admin.videos.index')

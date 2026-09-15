@@ -10,9 +10,7 @@
 
     <div class="container">
 
-        {{-- =========================
-            PAGE INTRO
-        ========================== --}}
+    
         <div class="icu-intro text-center">
 
             <span class="icu-badge">

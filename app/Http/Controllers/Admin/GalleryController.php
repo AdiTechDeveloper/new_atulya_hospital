@@ -40,48 +40,57 @@ class GalleryController extends Controller
     }
 
     // Update the gallery item in the database
-    public function update(Request $request, $id)
-    {
-        $gallery = Gallery::findOrFail($id);
+  public function update(Request $request, $id)
+{
+    $gallery = Gallery::findOrFail($id);
 
-        $request->validate([
-            'category_name' => 'required|string|max:150',
-            'title'         => 'nullable|string|max:255',
-            'media_type'    => 'required|in:image,video',
-            'file'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'file_path'     => 'required_if:media_type,video|nullable|string',
-            'sort_order'    => 'nullable|integer',
-        ]);
+    $request->validate([
+        'category_name' => 'required|string|max:150',
+        'title'         => 'nullable|string|max:255',
+        'file'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+        'sort_order'    => 'nullable|integer',
+    ]);
 
-        $filePath = $gallery->file_path; // Default to existing file path
+    // Keep existing image by default
+    $filePath = $gallery->file_path;
 
-        if ($request->media_type === 'image') {
-            if ($request->hasFile('file')) {
-                // Delete old physical image if it exists
-                if ($gallery->media_type === 'image' && $gallery->file_path) {
-                    Storage::disk('public')->delete($gallery->file_path);
-                }
-                // Store the new uploaded image
-                $filePath = $request->file('file')->store('gallery', 'public');
-            }
-        } elseif ($request->media_type === 'video') {
-            // If switching from image to video, clean up old image file
-            if ($gallery->media_type === 'image' && $gallery->file_path) {
-                Storage::disk('public')->delete($gallery->file_path);
-            }
-            $filePath = $request->input('file_path');
+    /*
+    |--------------------------------------------------------------------------
+    | Replace Image
+    |--------------------------------------------------------------------------
+    */
+
+    if ($request->hasFile('file')) {
+
+        // Delete old image
+        if (
+            $gallery->file_path &&
+            Storage::disk('public')->exists($gallery->file_path)
+        ) {
+            Storage::disk('public')->delete($gallery->file_path);
         }
 
-        $gallery->update([
-            'category_name' => $request->category_name,
-            'title'         => $request->title,
-            'media_type'    => $request->media_type,
-            'file_path'     => $filePath,
-            'sort_order'    => $request->input('sort_order', 0),
-        ]);
-
-        return redirect()->route('admin.gallery.index')->with('success', 'Gallery item updated successfully!');
+        // Store new image
+        $filePath = $request->file('file')->store('gallery', 'public');
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Update Gallery
+    |--------------------------------------------------------------------------
+    */
+
+    $gallery->update([
+        'category_name' => $request->category_name,
+        'title'         => $request->title,
+        'file_path'     => $filePath,
+        'sort_order'    => $request->input('sort_order', 0),
+    ]);
+
+    return redirect()
+        ->route('admin.gallery.index')
+        ->with('success', 'Gallery item updated successfully!');
+}
 
     // Delete gallery item
     public function destroy($id)
@@ -108,40 +117,29 @@ class GalleryController extends Controller
 
     // Store the newly created gallery item in database
     public function store(Request $request)
-    {
-     $request->validate([
+{
+    $request->validate([
         'category_name' => 'required|string|max:150',
         'title'         => 'nullable|string|max:255',
-        'media_type'    => 'required|in:image,video',
-        'file'          => 'required_if:media_type,image|image|mimes:jpeg,png,jpg,webp',
-        'file_path'     => 'required_if:media_type,video|nullable|string',
+        'file'          => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
         'sort_order'    => 'nullable|integer',
     ]);
 
-        $filePath = '';
+    // Store image in storage/app/public/gallery
+    $filePath = $request->file('file')->store('gallery', 'public');
 
-        if ($request->media_type === 'image' && $request->hasFile('file')) {
-            // Store image in storage/app/public/gallery
-            $filePath = $request->file('file')->store('gallery', 'public');
-             
-        } elseif ($request->media_type === 'video') {
-            // Store video URL (e.g., YouTube embed link or direct file path)
-            $filePath = $request->file_path;
-        }
+    Gallery::create([
+        'category_name' => $request->category_name,
+        'title'         => $request->title,
+        'file_path'     => $filePath,
+        'sort_order'    => $request->input('sort_order', 0),
+        'status'        => 1,
+    ]);
 
-       
-
-        Gallery::create([
-            'category_name' => $request->category_name,
-            'title'         => $request->title,
-            'media_type'    => $request->media_type,
-            'file_path'     => $filePath,
-            'sort_order'    => $request->input('sort_order', 0),
-            'status'        => 1,
-        ]);
-
-        return redirect()->route('admin.gallery.index')->with('success', 'Gallery item added successfully!');
-    }
+    return redirect()
+        ->route('admin.gallery.index')
+        ->with('success', 'Gallery item added successfully!');
+}
 
     // Toggle status active/inactive
     public function toggleStatus($id)

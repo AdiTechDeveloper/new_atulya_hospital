@@ -1,138 +1,429 @@
+
 @extends('admin.layout.app')
 
 @section('title', 'Edit Gallery Item')
 
 @section('content')
-    <main class="main-wrapper">
-        <div class="main-content">
-            <div class="container-fluid my-4">
-                {{-- Header --}}
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h2>Edit Gallery Item</h2>
-                        <p class="text-muted mb-0">Modify category, file, or description details.</p>
-                    </div>
-                    <a href="{{ route('admin.gallery.index') }}" class="btn btn-secondary">
-                        <i class="bi bi-arrow-left"></i> Back to List
-                    </a>
+
+<main class="main-wrapper">
+    <div class="main-content">
+
+        <div class="container-fluid my-4">
+
+            {{-- Header --}}
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2>Edit Gallery Item</h2>
+                    <p class="text-muted mb-0">
+                        Modify category, image, or description details.
+                    </p>
                 </div>
 
-                {{-- Validation Errors --}}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                <a href="{{ route('admin.gallery.index') }}"
+                    class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i>
+                    Back to List
+                </a>
+            </div>
 
-                {{-- Form Card --}}
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
-                        <form action="{{ route('admin.gallery.update', $gallery->id) }}" method="POST"
-                            enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
 
-                            <div class="row">
-                                {{-- Category Name --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="category_name" class="form-label fw-bold">Category Name <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="category_name" name="category_name"
-                                        value="{{ old('category_name', $gallery->category_name) }}" list="categoryOptions"
-                                        required>
-                                    <datalist id="categoryOptions">
-                                        @foreach ($categories as $cat)
-                                            <option value="{{ $cat }}">
-                                        @endforeach
-                                    </datalist>
-                                </div>
+            {{-- Form Card --}}
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
 
-                                {{-- Media Type Selector --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="media_type" class="form-label fw-bold">Media Type <span
-                                            class="text-danger">*</span></label>
-                                    <select class="form-select" id="media_type" name="media_type" required
-                                        onchange="toggleMediaTypeInputs()">
-                                        <option value="image"
-                                            {{ old('media_type', $gallery->media_type) == 'image' ? 'selected' : '' }}>Image
-                                            Upload</option>
-                                        <option value="video"
-                                            {{ old('media_type', $gallery->media_type) == 'video' ? 'selected' : '' }}>Video
-                                            Link (Embed URL)</option>
-                                    </select>
-                                </div>
+                    <form action="{{ route('admin.gallery.update', $gallery->id) }}"
+                        method="POST"
+                        enctype="multipart/form-data">
 
-                                {{-- Title / Caption --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="title" class="form-label fw-bold">Title / Caption</label>
-                                    <input type="text" class="form-control" id="title" name="title"
-                                        value="{{ old('title', $gallery->title) }}">
-                                </div>
+                        @csrf
+                        @method('PUT')
 
-                                {{-- Sort Order --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="sort_order" class="form-label fw-bold">Sort Order</label>
-                                    <input type="number" class="form-control" id="sort_order" name="sort_order"
-                                        value="{{ old('sort_order', $gallery->sort_order) }}">
-                                </div>
+                        <div class="row">
 
-                                {{-- Dynamic Upload Field (Image) --}}
-                                <div class="col-md-12 mb-3" id="imageUploadField">
-                                    <label for="file" class="form-label fw-bold">Replace Image File</label>
-                                    @if ($gallery->media_type === 'image' && $gallery->file_path)
-                                        <div class="mb-2">
-                                            <img src="{{ asset('storage/' . $gallery->file_path) }}" alt="Current Image"
-                                                class="rounded" style="width: 120px; height: 70px; object-fit: cover;">
-                                            <div class="small text-muted">Current stored image preview</div>
+                            {{-- CATEGORY NAME --}}
+                            <div class="col-md-6 mb-3">
+
+                                <label for="category_name"
+                                    class="form-label fw-bold">
+                                    Category Name
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input type="text"
+                                    class="form-control @error('category_name') is-invalid @enderror"
+                                    id="category_name"
+                                    name="category_name"
+                                    value="{{ old('category_name', $gallery->category_name) }}"
+                                    list="categoryOptions"
+                                    required>
+
+                                <datalist id="categoryOptions">
+                                    @foreach ($categories as $cat)
+                                        <option value="{{ $cat }}">
+                                    @endforeach
+                                </datalist>
+
+                                @error('category_name')
+                                    <div class="text-danger validation-error">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <small class="text-muted">
+                                    Type a new category or select an existing one.
+                                </small>
+
+                            </div>
+
+
+                            {{-- TITLE --}}
+                            <div class="col-md-6 mb-3">
+
+                                <label for="title"
+                                    class="form-label fw-bold">
+                                    Title / Caption
+                                </label>
+
+                                <input type="text"
+                                    class="form-control @error('title') is-invalid @enderror"
+                                    id="title"
+                                    name="title"
+                                    value="{{ old('title', $gallery->title) }}"
+                                    placeholder="Optional description">
+
+                                @error('title')
+                                    <div class="text-danger validation-error">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+
+
+                            {{-- SORT ORDER --}}
+                            <div class="col-md-6 mb-3">
+
+                                <label for="sort_order"
+                                    class="form-label fw-bold">
+                                    Sort Order
+                                </label>
+
+                                <input type="number"
+                                    class="form-control @error('sort_order') is-invalid @enderror"
+                                    id="sort_order"
+                                    name="sort_order"
+                                    value="{{ old('sort_order', $gallery->sort_order) }}">
+
+                                @error('sort_order')
+                                    <div class="text-danger validation-error">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+
+
+                            {{-- IMAGE --}}
+                            <div class="col-md-6 mb-3">
+
+                                <label for="file"
+                                    class="form-label fw-bold">
+                                    Replace Image File
+                                </label>
+
+
+                                {{-- CURRENT IMAGE --}}
+                                @if ($gallery->file_path)
+
+                                    <div class="mb-3">
+
+                                        <div class="fw-bold mb-2">
+                                            Current Image:
                                         </div>
-                                    @endif
-                                    <input type="file" class="form-control" id="file" name="file"
-                                        accept="image/*">
-                                    <small class="text-muted d-block mt-1">Leave blank to keep the existing image.</small>
+
+                                        <div>
+                                            <img src="{{ asset('storage/' . $gallery->file_path) }}"
+                                                alt="{{ $gallery->title ?? 'Gallery Image' }}"
+                                                class="rounded border"
+                                                style="
+                                                    width: 250px;
+                                                    height: 160px;
+                                                    object-fit: cover;
+                                                ">
+                                        </div>
+
+                                        <div class="small text-muted mt-1">
+                                            Existing stored image
+                                        </div>
+
+                                    </div>
+
+                                @endif
+
+
+                                {{-- FILE INPUT --}}
+                                <input type="file"
+                                    class="form-control @error('file') is-invalid @enderror"
+                                    id="file"
+                                    name="file"
+                                    accept="image/jpeg,image/png,image/jpg,image/webp">
+
+
+                                {{-- FILE ERROR --}}
+                                @error('file')
+                                    <div id="fileError"
+                                        class="text-danger validation-error">
+                                        {{ $message }}
+                                    </div>
+                                @else
+                                    <div id="fileError"
+                                        class="text-danger validation-error"
+                                        style="display:none;">
+                                    </div>
+                                @enderror
+
+
+                                {{-- SELECTED FILE NAME --}}
+                                <div id="fileName"
+                                    class="mt-2"
+                                    style="display:none;">
+
+                                    <i class="bi bi-file-earmark-image"></i>
+                                    Selected file:
+                                    <strong id="selectedFileName"></strong>
+
                                 </div>
 
-                                {{-- Dynamic Video URL Field --}}
-                                <div class="col-md-12 mb-3 d-none" id="videoUrlField">
-                                    <label for="file_path" class="form-label fw-bold">Video Embed URL <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="file_path" name="file_path"
-                                        value="{{ old('file_path', $gallery->media_type === 'video' ? $gallery->file_path : '') }}"
-                                        placeholder="https://www.youtube.com/embed/...">
+
+                                <small class="text-muted d-block mt-1">
+                                    Leave blank to keep the existing image.
+                                    Accepted: jpeg, png, jpg, webp.
+                                    Max: 5MB.
+                                </small>
+
+
+                                {{-- NEW IMAGE PREVIEW --}}
+                                <div id="newImagePreviewWrapper"
+                                    class="mt-3"
+                                    style="display:none;">
+
+                                    <div class="fw-bold mb-2">
+                                        New Image Preview:
+                                    </div>
+
+                                    <div>
+                                        <img id="newImagePreview"
+                                            src=""
+                                            alt="New Image Preview"
+                                            class="rounded border"
+                                            style="
+                                                width: 250px;
+                                                height: 160px;
+                                                object-fit: cover;
+                                            ">
+                                    </div>
+
                                 </div>
+
                             </div>
 
-                            <div class="mt-4">
-                                <button type="submit" class="btn btn-primary px-4">Update Gallery Item</button>
-                                <a href="{{ route('admin.gallery.index') }}" class="btn btn-outline-secondary">Cancel</a>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+
+
+                        {{-- BUTTONS --}}
+                        <div class="mt-4">
+
+                            <button type="submit"
+                                class="btn btn-primary px-4">
+
+                                <i class="bi bi-check-circle"></i>
+                                Update Gallery Item
+
+                            </button>
+
+                            <a href="{{ route('admin.gallery.index') }}"
+                                class="btn btn-outline-secondary">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
                 </div>
             </div>
+
         </div>
-    </main>
 
-   <script>
-    function toggleMediaTypeInputs() {
-        const mediaType = document.getElementById('media_type').value;
-        const imageField = document.getElementById('imageUploadField');
-        const videoField = document.getElementById('videoUrlField');
+    </div>
+</main>
 
-        if (mediaType === 'video') {
-            imageField.style.display = 'none';
-            videoField.style.display = 'block';
-        } else {
-            imageField.style.display = 'block';
-            videoField.style.display = 'none';
+
+{{-- ================= JAVASCRIPT ================= --}}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const fileInput = document.getElementById('file');
+    const fileName = document.getElementById('fileName');
+    const selectedFileName = document.getElementById('selectedFileName');
+
+    const fileError = document.getElementById('fileError');
+
+    const newImagePreviewWrapper =
+        document.getElementById('newImagePreviewWrapper');
+
+    const newImagePreview =
+        document.getElementById('newImagePreview');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Remove Laravel Validation Error While Typing
+    |--------------------------------------------------------------------------
+    */
+
+    const inputs = document.querySelectorAll(
+        'input:not([type="file"]), textarea, select'
+    );
+
+    inputs.forEach(function (input) {
+
+        input.addEventListener('input', function () {
+
+            input.classList.remove('is-invalid');
+
+            const parent = input.closest('.mb-3');
+
+            if (parent) {
+
+                const error =
+                    parent.querySelector('.validation-error');
+
+                if (error) {
+                    error.style.display = 'none';
+                }
+
+            }
+
+        });
+
+
+        input.addEventListener('change', function () {
+
+            input.classList.remove('is-invalid');
+
+            const parent = input.closest('.mb-3');
+
+            if (parent) {
+
+                const error =
+                    parent.querySelector('.validation-error');
+
+                if (error) {
+                    error.style.display = 'none';
+                }
+
+            }
+
+        });
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | File Selection
+    |--------------------------------------------------------------------------
+    */
+
+    fileInput.addEventListener('change', function () {
+
+        const file = this.files[0];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | No File Selected
+        |--------------------------------------------------------------------------
+        */
+
+        if (!file) {
+
+            fileName.style.display = 'none';
+
+            selectedFileName.textContent = '';
+
+            newImagePreviewWrapper.style.display = 'none';
+
+            newImagePreview.src = '';
+
+            return;
         }
-    }
 
-    // Run on page load and on change
-    document.getElementById('media_type').addEventListener('change', toggleMediaTypeInputs);
-    document.addEventListener("DOMContentLoaded", toggleMediaTypeInputs);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Remove Previous Error
+        |--------------------------------------------------------------------------
+        */
+
+        fileInput.classList.remove('is-invalid');
+
+        if (fileError) {
+            fileError.style.display = 'none';
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Show File Name
+        |--------------------------------------------------------------------------
+        */
+
+        selectedFileName.textContent = file.name;
+
+        fileName.style.display = 'block';
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Check Image
+        |--------------------------------------------------------------------------
+        */
+
+        if (!file.type.startsWith('image/')) {
+
+            newImagePreviewWrapper.style.display = 'none';
+
+            newImagePreview.src = '';
+
+            return;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Show Image Preview
+        |--------------------------------------------------------------------------
+        */
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            newImagePreview.src = event.target.result;
+
+            newImagePreviewWrapper.style.display = 'block';
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+});
 </script>
+
 @endsection
