@@ -1,4 +1,3 @@
-
 <!-- Footer Section Start -->
 <footer class="footer-section   mt-10  section-bg-2 fix">
 
@@ -20,7 +19,7 @@
             <div class="row">
 
                 <!-- About Hospital -->
-                <div class="col-xxl-3 col-xl-4 colo-lg-4 col-md-6 col-sm-12 wow fadeInUp"
+                <div class="col-xxl-4 col-xl-4 colo-lg-4 col-md-6 col-sm-12 wow fadeInUp"
                      data-wow-delay=".2s">
 
                     <div class="single-footer-widget style-bg-white">
@@ -57,6 +56,7 @@
                                     <span>9AM - 12AM</span>
                                 </li> --}}
                             </ul>
+
                             <div class="icon">
 
                                 <img src="{{ asset('assets/img/home-1/hero/feature-3.png') }}"
@@ -86,7 +86,7 @@
 
 
                 <!-- Quick Links + Services -->
-                <div class="col-xxl-3 col-xl-5 colo-lg-4 col-md-6 ps-lg-5 col-sm-12 wow fadeInUp"
+                <div class="col-xxl-4 col-xl-3 colo-lg-4 col-md-6 ps-lg-5 col-sm-12 wow fadeInUp"
                      data-wow-delay=".4s">
 
                     <div class="single-footer-widget-area">
@@ -124,11 +124,6 @@
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="{{ url('/appointments') }}">
-                                        Book Appointment
-                                    </a>
-                                </li>
 
                                 <li>
                                     <a href="{{ url('/contact') }}">
@@ -152,37 +147,41 @@
 
                                 <li>
                                     <a href="{{ url('/departments/orthopedic') }}">
-                                        Orthopaedics
+                                        Orthopedic
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="{{ url('/departments/joint-replacement') }}">
-                                        Joint Replacement
-                                    </a>
-                                </li>
 
                                 <li>
                                     <a href="{{ url('/departments/ent') }}">
                                         ENT
                                     </a>
                                 </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/skin-cosmetics') }}">
-                                        Skin & Cosmetics
+                                 <li>
+                                    <a href="{{ url('/departments/rheumatology') }}">
+                                        RHEUMATOLOGY
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/departments/plastic-surgery') }}">
-                                        Plastic Surgery
+                                    <a href="{{ url('/departments/urology') }}">
+                                        UROLOGY
                                     </a>
                                 </li>
 
+                                <li>
+                                    <a href="{{ url('/departments/onco-surgery') }}">
+                                       General Surgery
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="{{ url('/departments/critical-care') }}">
+                                        Critical Care
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="{{ url('/departments/physiotherapy') }}">
-                                        Physiotherapy
+                                        Physician
                                     </a>
                                 </li>
 
@@ -196,7 +195,7 @@
 
 
                 <!-- Recent Posts -->
-                <div class="col-xxl-3 col-xl-3 colo-lg-4 col-md-6 ps-lg-5 col-sm-6 wow fadeInUp"
+                {{-- <div class="col-xxl-3 col-xl-3 colo-lg-4 col-md-6 ps-lg-5 col-sm-6 wow fadeInUp"
                      data-wow-delay=".6s">
 
                     <div class="single-footer-widget">
@@ -276,11 +275,11 @@
 
                     </div>
 
-                </div>
+                </div> --}}
 
 
                 <!-- Contact Us -->
-                <div class="col-xxl-3 col-xl-4 colo-lg-4 col-md-6 ps-xxl-5 wow fadeInUp"
+                <div class="col-xxl-4 col-xl-4 colo-lg-4 col-md-6 ps-xxl-5 wow fadeInUp"
                      data-wow-delay=".8s">
 
                     <div class="single-footer-widget">
@@ -380,13 +379,9 @@
 
             <div class="footer-bottom-wrapper">
 
-              
                 <p>
                     Copyright © {{ date('Y') }} Atulya Hospital.
                     All Rights Reserved.
-                    <span>
-                        Designed & Developed by The Adi Tech
-                    </span>
                 </p>
 
                 <div class="social-icon d-flex align-items-center">
