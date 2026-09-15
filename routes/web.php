@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\DepartmentController;
 use App\Http\Controllers\Website\FacilityController;
@@ -18,24 +19,8 @@ use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
 */
 
 // Home
-Route::get('/', function () {
-
-    $json = file_get_contents(
-        storage_path('app/doctors.json')
-    );
-
-    $doctors = json_decode($json, true);
-
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        abort(500, 'Invalid doctors.json');
-    }
-
-    // Homepage par sirf 4 doctors
-    $doctors = array_slice($doctors, 0, 4);
-
-    return view('website.index', compact('doctors'));
-
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
 
 
 // About
@@ -144,26 +129,27 @@ Route::middleware('auth')
         |--------------------------------------------------------------------------
         */
 
-        Route::get('/videos', [VideoController::class, 'index'])
-            ->name('admin.videos.index');
+         Route::get('/videos', [VideoController::class, 'index'])
+    ->name('admin.videos.index');
 
-        Route::get('/videos/create', [VideoController::class, 'create'])
-            ->name('admin.videos.create');
+Route::get('/videos/create', [VideoController::class, 'create'])
+    ->name('admin.videos.create');
 
-        Route::post('/videos', [VideoController::class, 'store'])
-            ->name('admin.videos.store');
+Route::post('/videos', [VideoController::class, 'store'])
+    ->name('admin.videos.store');
 
-        Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])
-            ->name('admin.videos.edit');
+Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])
+    ->name('admin.videos.edit');
 
-        Route::put('/videos/{video}', [VideoController::class, 'update'])
-            ->name('admin.videos.update');
+Route::put('/videos/{video}', [VideoController::class, 'update'])
+    ->name('admin.videos.update');
 
-        Route::delete('/videos/{video}', [VideoController::class, 'destroy'])
-            ->name('admin.videos.destroy');
+Route::delete('/videos/{video}', [VideoController::class, 'destroy'])
+    ->name('admin.videos.destroy');
 
-        Route::patch('/videos/{video}/status', [VideoController::class, 'toggleStatus'])
-            ->name('admin.videos.status');
+Route::patch('/videos/{video}/status', [VideoController::class, 'toggleStatus'])
+    ->name('admin.videos.status');
+    
 
 
         /*

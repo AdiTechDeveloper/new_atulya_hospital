@@ -6,14 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    protected $fillable = [
-        'title',
-        'youtube_url',
-        'description',
-        'is_active',
-    ];
+   protected $fillable = [
+    'title',
+    'slug',
+    'category',
+    'language',
+    'description',
+    'youtube_url',
+    'duration',
+    'thumbnail',
+    'is_featured',
+    'is_active',
+    'sort_order',
+    'published_at',
+];
 
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
+protected $casts = [
+    'is_featured' => 'boolean',
+    'is_active' => 'boolean',
+    'sort_order' => 'integer',
+    'published_at' => 'datetime',
+];
 }
