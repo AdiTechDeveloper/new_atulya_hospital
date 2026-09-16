@@ -30,6 +30,7 @@
 <script src="{{ asset('assets/js/script-gsap.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.waypoints.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/external.js') }}"></script>
 
 <script src="{{ asset('assets/js/circle-progress.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
@@ -39,7 +40,7 @@
 
 <!--<< Main.js >>-->
 <script src="{{ asset('assets/js/main.js') }}"></script>
-<script>
+{{-- <script>
 document.addEventListener('DOMContentLoaded', function () {
 
     if (typeof WOW !== 'undefined') {
@@ -75,4 +76,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-</script>
+</script> --}}
