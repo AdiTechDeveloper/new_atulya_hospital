@@ -39,37 +39,6 @@
             </div>
 
 
-            <!-- {{-- Validation Errors --}}
-            @if($errors->any())
-
-            <div class="row">
-                <div class="col-12">
-
-                    <div class="alert alert-danger alert-dismissible fade show"
-                        role="alert">
-
-                        <strong>Please fix the following errors:</strong>
-
-                        <ul class="mb-0 mt-2">
-                            @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-
-                        <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close">
-                        </button>
-
-                    </div>
-
-                </div>
-            </div>
-
-            @endif -->
-
-
             {{-- Create Video --}}
             <div class="row">
 
@@ -621,6 +590,29 @@
         </div>
     </div>
 </main>
+@if($errors->any())
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="videoValidationToast" class="toast align-items-center border-0 shadow-lg text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <strong>Please fix the following errors:</strong>
+                    <ul class="mb-0 mt-2">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new bootstrap.Toast(document.getElementById('videoValidationToast'), { delay: 5000 }).show();
+        });
+    </script>
+@endif
 @push('scripts')
 
 <script>

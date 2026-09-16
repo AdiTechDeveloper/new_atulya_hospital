@@ -4,6 +4,9 @@
 <!--plugins-->
 <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+
 <!--plugins-->
 <script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
 <script src="{{ asset('admin/assets/plugins/metismenu/metisMenu.min.js') }}"></script>

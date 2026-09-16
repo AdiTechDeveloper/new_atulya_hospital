@@ -74,7 +74,7 @@
                             {{-- Phone Number --}}
                             <div class="col-md-6 mb-3">
                                 <label for="phone_number" class="form-label fw-bold">Appointment Phone Number</label>
-                                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{ old('phone_number', $doctor->phone_number ?? '') }}" placeholder="e.g. +91 97275 79000">
+                                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{ old('phone_number', $doctor->phone_number ?? '') }}" placeholder="Enter 10 digit mobile number" inputmode="numeric" maxlength="10" autocomplete="tel">
                                 @error('phone_number')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                                 @enderror
@@ -83,7 +83,7 @@
                             {{-- OPD Timing --}}
                             <div class="col-md-6 mb-3">
                                 <label for="opd_timing" class="form-label fw-bold">OPD Timing <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('opd_timing') is-invalid @enderror" id="opd_timing" name="opd_timing" value="{{ old('opd_timing', $doctor->opd_timing ?? '') }}" placeholder="e.g. 4 PM to 6 PM">
+                                <input type="text" class="form-control @error('opd_timing') is-invalid @enderror" id="opd_timing" name="opd_timing" value="{{ old('opd_timing', $doctor->opd_timing ?? '') }}" placeholder="e.g. 04 PM to 06 PM" maxlength="17" autocomplete="off">
                                 @error('opd_timing')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                                 @enderror
@@ -95,13 +95,13 @@
                                     Profile Picture @if(!isset($doctor)) <span class="text-danger">*</span> @endif
                                 </label>
 
-                                @if(isset($doctor) && $doctor->image)
+                                {{-- Live Preview Container --}}
                                 <div class="mb-2">
-                                    <img src="{{ asset('storage/' . $doctor->image) }}" alt="{{ $doctor->name }}" class="rounded img-thumbnail" style="height: 80px;">
+                                    <img id="imagePreview" src="{{ isset($doctor) && $doctor->image ? asset('storage/' . $doctor->image) : '#' }}" alt="Profile Preview" class="rounded img-thumbnail {{ isset($doctor) && $doctor->image ? '' : 'd-none' }}" style="height: 100px; width: 100px; object-fit: cover;">
                                 </div>
-                                @endif
 
-                                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*" onchange="previewDoctorImage(this)">
+
                                 @error('image')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                                 @else
@@ -158,11 +158,17 @@
 </main>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 
 <script>
     $(function() {
+        $('#phone_number').on('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        $('#opd_timing').on('input', function() {
+            this.value = this.value.replace(/[^0-9a-zA-Z ]/g, '').slice(0, 17);
+        });
+
         $("#doctorForm").validate({
             highlight: function(element) {
                 $(element).addClass('is-invalid').removeClass('is-valid');
@@ -191,8 +197,14 @@
                 , qualification: {
                     required: true
                 }
+                , phone_number: {
+                    digits: true
+                    , minlength: 10
+                    , maxlength: 10
+                }
                 , opd_timing: {
                     required: true
+                    , pattern: /^(0[1-9]|1[0-2]) (AM|PM) to (0[1-9]|1[0-2]) (AM|PM)$/i
                 }
                 , @if(!isset($doctor))
                 image: {
@@ -215,7 +227,15 @@
                 , department: "Please enter department"
                 , speciality: "Please enter speciality"
                 , qualification: "Please enter qualification"
-                , opd_timing: "Please enter OPD timing"
+                , phone_number: {
+                    digits: "Mobile number must contain digits only"
+                    , minlength: "Mobile number must be exactly 10 digits"
+                    , maxlength: "Mobile number must be exactly 10 digits"
+                }
+                , opd_timing: {
+                    required: "Please enter OPD timing"
+                    , pattern: "Use format: 04 PM to 06 PM"
+                }
                 , image: {
                     required: "Please upload a profile picture"
                     , extension: "Please upload a valid image file (jpg, jpeg, png, webp)"
@@ -228,6 +248,21 @@
             }
         });
     });
+
+    function previewDoctorImage(input) {
+        const preview = document.getElementById('imagePreview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
 </script>
 @endpush
