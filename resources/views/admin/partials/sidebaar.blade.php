@@ -66,6 +66,23 @@
                     <div class="menu-title">Facilities</div>
                 </a>
             </li>
+              <li>
+               <a href="{{ url('/admin/blogs/') }}">
+                    <div class="parent-icon">
+                          <i class="material-icons-outlined">article</i>
+                    </div>
+                    <div class="menu-title">Blogs</div>
+                </a>
+            </li>
+              <li>
+               <a href="{{ url('/admin/settings/') }}">
+                    <div class="parent-icon">
+                          <i class="material-icons-outlined">article</i>
+                    </div>
+                    <div class="menu-title">Setting</div>
+                </a>
+            </li>
+
 
 
         </ul>

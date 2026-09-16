@@ -1,23 +1,24 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DoctorAdminController;
+use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\VideoController;
+
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Website\DepartmentController;
 use App\Http\Controllers\Website\FacilityController as WebsiteFacilityController;
 use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
-use App\Http\Controllers\Admin\FacilityController ;
-use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Website Routes
-|--------------------------------------------------------------------------
-*/
+
+// ==================== Website Routes ====================
 
 // Home
 Route::get('/', [HomeController::class, 'index'])
@@ -33,10 +34,11 @@ Route::get('/contact', function () {
     return view('website.pages.contact');
 })->name('contact');
 
+// Videos
 Route::get('/videos', [WebsiteVideoController::class, 'index'])
     ->name('videos.index');
 
-// Gallery - Public Website
+// Gallery
 Route::get('/gallery', [WebsiteGalleryController::class, 'publicIndex'])
     ->name('gallery.index');
 
@@ -69,18 +71,14 @@ Route::get('/doctors', [DoctorController::class, 'index'])
 Route::get('/doctors/{slug}', [DoctorController::class, 'show'])
     ->name('doctors.show');
 
-/*
-|--------------------------------------------------------------------------
-| Admin Authentication Routes
-|--------------------------------------------------------------------------
-*/
 
-// Admin Login Page
+// ==================== Admin Authentication ====================
+
+// Admin Login
 Route::get('/admin/login', [AuthController::class, 'showLogin'])
     ->middleware('guest')
     ->name('admin.login');
 
-// Admin Login
 Route::post('/admin/login', [AuthController::class, 'login'])
     ->middleware('guest')
     ->name('admin.login.submit');
@@ -90,32 +88,20 @@ Route::post('/admin/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('admin.logout');
 
-/*
-|--------------------------------------------------------------------------
-| Admin Protected Routes
-|--------------------------------------------------------------------------
-*/
+
+// ==================== Admin Protected Routes ====================
 
 Route::middleware('auth')
     ->prefix('admin')
     ->group(function () {
 
-        /*
-        |--------------------------------------------------------------------------
-        | Dashboard
-        |--------------------------------------------------------------------------
-        */
-
+        // Dashboard
         Route::get('/dashboard', function () {
             return view('admin.index');
         })->name('admin.dashboard');
 
-        /*
-        |--------------------------------------------------------------------------
-        | Videos
-        |--------------------------------------------------------------------------
-        */
 
+        // Videos
         Route::get('/videos', [VideoController::class, 'index'])
             ->name('admin.videos.index');
 
@@ -137,52 +123,54 @@ Route::middleware('auth')
         Route::patch('/videos/{video}/status', [VideoController::class, 'toggleStatus'])
             ->name('admin.videos.status');
 
-        /*
-        |--------------------------------------------------------------------------
-        | Gallery
-        |--------------------------------------------------------------------------
-        */
 
-        // Gallery List
+        // Gallery
         Route::get('/galleries', [AdminGalleryController::class, 'index'])
             ->name('admin.gallery.index');
 
-        // Create Gallery Form
         Route::get('/galleries/create', [AdminGalleryController::class, 'create'])
             ->name('admin.gallery.create');
 
-        // Store Gallery
         Route::post('/galleries', [AdminGalleryController::class, 'store'])
             ->name('admin.gallery.store');
 
-        // Edit Gallery Form
         Route::get('/galleries/{gallery}/edit', [AdminGalleryController::class, 'edit'])
             ->name('admin.gallery.edit');
 
-        // Update Gallery
         Route::put('/galleries/{gallery}', [AdminGalleryController::class, 'update'])
             ->name('admin.gallery.update');
 
-        // Delete Gallery
         Route::delete('/galleries/{gallery}', [AdminGalleryController::class, 'destroy'])
             ->name('admin.gallery.destroy');
 
-        // Toggle Gallery Status
         Route::patch('/galleries/{gallery}/status', [AdminGalleryController::class, 'toggleStatus'])
             ->name('admin.gallery.status');
 
-        // Doctor admin routes
-        Route::get('/doctors', [DoctorAdminController::class, 'index'])->name('admin.doctors.index');
-        Route::get('/doctors/create', [DoctorAdminController::class, 'create'])->name('admin.doctors.create');
-        Route::post('/doctors', [DoctorAdminController::class, 'store'])->name('admin.doctors.store');
-        Route::get('/doctors/{doctor}/edit', [DoctorAdminController::class, 'edit'])->name('admin.doctors.edit');
-        Route::put('/doctors/{doctor}', [DoctorAdminController::class, 'update'])->name('admin.doctors.update');
-        Route::delete('/doctors/{doctor}', [DoctorAdminController::class, 'destroy'])->name('admin.doctors.destroy');
-        Route::patch('/doctors/{doctor}/status', [DoctorAdminController::class, 'toggleStatus'])->name('admin.doctors.status');
 
-       
+        // Doctors
+        Route::get('/doctors', [DoctorAdminController::class, 'index'])
+            ->name('admin.doctors.index');
+
+        Route::get('/doctors/create', [DoctorAdminController::class, 'create'])
+            ->name('admin.doctors.create');
+
+        Route::post('/doctors', [DoctorAdminController::class, 'store'])
+            ->name('admin.doctors.store');
+
+        Route::get('/doctors/{doctor}/edit', [DoctorAdminController::class, 'edit'])
+            ->name('admin.doctors.edit');
+
+        Route::put('/doctors/{doctor}', [DoctorAdminController::class, 'update'])
+            ->name('admin.doctors.update');
+
+        Route::delete('/doctors/{doctor}', [DoctorAdminController::class, 'destroy'])
+            ->name('admin.doctors.destroy');
+
+        Route::patch('/doctors/{doctor}/status', [DoctorAdminController::class, 'toggleStatus'])
+            ->name('admin.doctors.status');
+
+
         // Facilities
-
         Route::get('/facilities', [FacilityController::class, 'index'])
             ->name('admin.facilities.index');
 
@@ -205,9 +193,42 @@ Route::middleware('auth')
             ->name('admin.facilities.status');
 
 
-       
+        // Blogs
+        Route::get('/blogs', [BlogController::class, 'index'])
+            ->name('admin.blogs.index');
+
+        Route::get('/blogs/create', [BlogController::class, 'create'])
+            ->name('admin.blogs.create');
+
+        Route::post('/blogs', [BlogController::class, 'store'])
+            ->name('admin.blogs.store');
+
+        Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])
+            ->name('admin.blogs.edit');
+
+        Route::put('/blogs/{blog}', [BlogController::class, 'update'])
+            ->name('admin.blogs.update');
+
+        Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])
+            ->name('admin.blogs.destroy');
+
+        Route::patch('/blogs/{blog}/status', [BlogController::class, 'toggleStatus'])
+            ->name('admin.blogs.status');
+
+        Route::patch('/blogs/{blog}/featured', [BlogController::class, 'toggleFeatured'])
+            ->name('admin.blogs.featured');
+
+            // Settings
+Route::get('/settings', [SettingController::class, 'index'])
+    ->name('admin.settings.index');
+
+Route::put('/settings', [SettingController::class, 'update'])
+    ->name('admin.settings.update');
+
     });
 
+
+// Fallback
 Route::fallback(function () {
     return redirect('/');
 });

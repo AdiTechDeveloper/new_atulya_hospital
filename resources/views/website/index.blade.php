@@ -1162,7 +1162,7 @@
                         loading="lazy">
 
                     <div class="atulya-featured-overlay"></div>
-
+   
 
                     <button
                         type="button"

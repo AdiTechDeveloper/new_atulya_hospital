@@ -71,9 +71,7 @@
                     <thead>
                         <tr>
 
-                            <th style="width: 80px;">
-                                #
-                            </th>
+                            
 
                             <th style="width: 130px;">
                                 Thumbnail
@@ -132,10 +130,7 @@
 
                             <tr>
 
-                                {{-- ID --}}
-                                <td>
-                                    {{ $video->id }}
-                                </td>
+                                
 
 
                                 {{-- Thumbnail --}}
