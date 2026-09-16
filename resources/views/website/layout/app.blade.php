@@ -15,51 +15,51 @@
 
     <!-- Header/Navbar -->
     @include('website.partials.header')
-@if(request()->is('/'))
-    <div id="preloader" class="preloader">
-        <div class="animation-preloader">
-            <div class="spinner">
+    @if (request()->is('/'))
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                    <span data-text-preloader="U" class="letters-loading">
+                        U
+                    </span>
+                    <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+                    <span data-text-preloader="Y" class="letters-loading">
+                        Y
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                </div>
+                <p class="text-center">Loading</p>
             </div>
-            <div class="txt-loading">
-                <span data-text-preloader="A" class="letters-loading">
-                    A
-                </span>
-                <span data-text-preloader="T" class="letters-loading">
-                    T
-                </span>
-                <span data-text-preloader="U" class="letters-loading">
-                    U
-                </span>
-                <span data-text-preloader="L" class="letters-loading">
-                    L
-                </span>
-                <span data-text-preloader="Y" class="letters-loading">
-                    Y
-                </span>
-                <span data-text-preloader="A" class="letters-loading">
-                    A
-                </span>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
             </div>
-            <p class="text-center">Loading</p>
         </div>
-        <div class="loader">
-            <div class="row">
-                <div class="col-3 loader-section section-left">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-left">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-right">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-right">
-                    <div class="bg"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endif
+    @endif
     @yield('content')
 
     <!-- Footer -->
@@ -83,7 +83,7 @@
 
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
 
     <!-- Slick JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -185,26 +185,25 @@
             $('.offcanvas__overlay').removeClass('overlay-open');
 
         });
- 
-    (function () {
-        var preloader = document.getElementById('preloader');
 
-        function hidePreloader() {
-            if (!preloader) return;
-            preloader.style.transition = 'opacity 0.5s ease';
-            preloader.style.opacity = '0';
-            setTimeout(function () {
-                preloader.style.display = 'none';
-            }, 500);
-        }
+        (function() {
+            var preloader = document.getElementById('preloader');
 
-        // Normal case: page fully loaded (images, fonts, everything)
-        window.addEventListener('load', hidePreloader);
+            function hidePreloader() {
+                if (!preloader) return;
+                preloader.style.transition = 'opacity 0.5s ease';
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
 
-        // Fallback: agar koi resource atak jaye to bhi 3 sec baad hata do
-        setTimeout(hidePreloader, 3000);
-    })();
+            // Normal case: page fully loaded (images, fonts, everything)
+            window.addEventListener('load', hidePreloader);
 
+            // Fallback: agar koi resource atak jaye to bhi 3 sec baad hata do
+            setTimeout(hidePreloader, 3000);
+        })();
     </script>
 </body>
 
