@@ -58,6 +58,15 @@
                 </a>
             </li>
 
+            <li>
+               <a href="{{ url('/admin/facilities/') }}">
+                    <div class="parent-icon">
+                          <i class="material-icons-outlined">workspace_premium</i>
+                    </div>
+                    <div class="menu-title">Facilities</div>
+                </a>
+            </li>
+
 
         </ul>
         <!-- End navigation -->
