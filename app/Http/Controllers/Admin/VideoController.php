@@ -26,7 +26,6 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $validated = $request->validate(
             [
                 'title' => ['required', 'string', 'max:255'],
@@ -40,7 +39,6 @@ class VideoController extends Controller
                     'max:500',
                     function ($attribute, $value, $fail) {
                         $host = parse_url($value, PHP_URL_HOST);
-
                         $host = strtolower($host ?? '');
 
                         $valid = in_array($host, [
@@ -51,7 +49,7 @@ class VideoController extends Controller
                             'www.youtu.be',
                         ], true);
 
-                        if (!$valid) {
+                        if (! $valid) {
                             $fail('Please enter a valid YouTube video URL.');
                         }
                     },
@@ -93,12 +91,11 @@ class VideoController extends Controller
         );
 
         $slug = Str::slug($request->input('slug') ?: $request->input('title'));
-
         $originalSlug = $slug;
         $counter = 1;
 
         while (Video::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $counter;
+            $slug = $originalSlug.'-'.$counter;
             $counter++;
         }
 
@@ -106,7 +103,20 @@ class VideoController extends Controller
 
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_active'] = $request->boolean('is_active');
-        $validated['sort_order'] = $request->input('sort_order', 0);
+
+        $sortOrderInput = $request->input('sort_order');
+
+        if (! is_numeric($sortOrderInput) || (int) $sortOrderInput === 0) {
+            $maxOrder = Video::max('sort_order') ?? 0;
+            $validated['sort_order'] = $maxOrder + 1;
+        } else {
+            $newOrder = (int) $sortOrderInput;
+            $validated['sort_order'] = $newOrder;
+
+            if ($newOrder > 0) {
+                Video::where('sort_order', '>=', $newOrder)->increment('sort_order');
+            }
+        }
 
         if ($request->hasFile('thumbnail')) {
             $validated['thumbnail'] = $request
@@ -146,9 +156,7 @@ class VideoController extends Controller
                     'max:500',
                     function ($attribute, $value, $fail) {
                         $host = parse_url($value, PHP_URL_HOST);
-
                         $host = strtolower($host ?? '');
-
                         $valid = in_array($host, [
                             'youtube.com',
                             'www.youtube.com',
@@ -157,7 +165,7 @@ class VideoController extends Controller
                             'www.youtu.be',
                         ], true);
 
-                        if (!$valid) {
+                        if (! $valid) {
                             $fail('Please enter a valid YouTube video URL.');
                         }
                     },
@@ -175,26 +183,20 @@ class VideoController extends Controller
             [
                 'title.required' => 'Please enter the video title.',
                 'title.max' => 'Video title cannot exceed 255 characters.',
-
                 'slug.max' => 'Slug cannot exceed 255 characters.',
-
                 'youtube_url.required' => 'Please enter the YouTube video URL.',
                 'youtube_url.url' => 'Please enter a valid URL.',
                 'youtube_url.max' => 'YouTube URL cannot exceed 500 characters.',
-
                 'thumbnail.image' => 'Please upload a valid image.',
                 'thumbnail.mimes' => 'Thumbnail must be JPG, JPEG, PNG or WEBP.',
                 'thumbnail.max' => 'Thumbnail size must not exceed 2MB.',
-
                 'sort_order.integer' => 'Sort order must be a number.',
                 'sort_order.min' => 'Sort order cannot be negative.',
-
                 'published_at.date' => 'Please enter a valid published date.',
             ]
         );
 
         $slug = Str::slug($request->input('slug') ?: $request->input('title'));
-
         $originalSlug = $slug;
         $counter = 1;
 
@@ -203,15 +205,32 @@ class VideoController extends Controller
                 ->where('id', '!=', $video->id)
                 ->exists()
         ) {
-            $slug = $originalSlug . '-' . $counter;
+            $slug = $originalSlug.'-'.$counter;
             $counter++;
         }
 
         $validated['slug'] = $slug;
-
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_active'] = $request->boolean('is_active');
-        $validated['sort_order'] = $request->input('sort_order', 0);
+
+        $oldOrder = (int) $video->sort_order;
+        $newOrder = (int) $request->input('sort_order', 0);
+        $validated['sort_order'] = $newOrder;
+
+        if ($oldOrder !== $newOrder && $newOrder > 0) {
+            if ($newOrder < $oldOrder) {
+                Video::where('id', '!=', $video->id)
+                    ->where('sort_order', '>=', $newOrder)
+                    ->where('sort_order', '<', $oldOrder)
+                    ->increment('sort_order');
+            } else {
+                // Moving Down (e.g., Position 2 to Position 5)
+                Video::where('id', '!=', $video->id)
+                    ->where('sort_order', '>', $oldOrder)
+                    ->where('sort_order', '<=', $newOrder)
+                    ->decrement('sort_order');
+            }
+        }
 
         if ($request->hasFile('thumbnail')) {
             if (
@@ -258,7 +277,7 @@ class VideoController extends Controller
     public function toggleStatus(Video $video)
     {
         $video->update([
-            'is_active' => !$video->is_active,
+            'is_active' => ! $video->is_active,
         ]);
 
         return redirect()

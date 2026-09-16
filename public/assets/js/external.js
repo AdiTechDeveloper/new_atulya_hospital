@@ -298,32 +298,48 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-    const openVideo = document.getElementById("openVideo");
-    const closeVideo = document.getElementById("closeVideo");
-    const videoModal = document.getElementById("videoModal");
-    const popupVideo = document.getElementById("popupVideo");
+const openVideo = document.getElementById("openVideo");
+const closeVideoButton = document.getElementById("closeVideo");
+const videoModal = document.getElementById("videoModal");
+const popupVideo = document.getElementById("popupVideo");
 
-    // Open popup
-    openVideo.addEventListener("click", function() {
+// Open popup
+if (openVideo && videoModal && popupVideo) {
+    openVideo.addEventListener("click", function () {
         videoModal.style.display = "flex";
-        popupVideo.currentTime = 0;
-        popupVideo.play();
-    });
 
-    // Close popup
-    closeVideo.addEventListener("click", function() {
+        popupVideo.currentTime = 0;
+
+        const playPromise = popupVideo.play();
+
+        if (playPromise !== undefined) {
+            playPromise.catch(function (error) {
+                console.log("Video autoplay prevented:", error);
+            });
+        }
+    });
+}
+
+// Close popup
+if (closeVideoButton && videoModal && popupVideo) {
+    closeVideoButton.addEventListener("click", function () {
         videoModal.style.display = "none";
+
         popupVideo.pause();
         popupVideo.currentTime = 0;
     });
+}
 
-    // Close when clicking outside video
-    videoModal.addEventListener("click", function(e) {
+// Close when clicking outside video
+if (videoModal && popupVideo) {
+    videoModal.addEventListener("click", function (e) {
         if (e.target === videoModal) {
             videoModal.style.display = "none";
+
             popupVideo.pause();
             popupVideo.currentTime = 0;
         }
     });
+}
 
 
