@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+
     const track = document.getElementById('doctorSliderTrack');
 
     const nextButton = document.getElementById('doctorNext');
