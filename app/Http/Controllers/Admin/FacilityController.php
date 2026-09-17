@@ -18,28 +18,97 @@ class FacilityController extends Controller
 
         return view('admin.pages.facilities.index', compact('facilities'));
     }
-public function create()
-{
-    return view('admin.pages.facilities.create');
-}
+
+    public function create()
+    {
+        return view('admin.pages.facilities.create');
+    }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string',
-            'main_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'secondary_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'section_heading' => 'nullable|string|max:255',
-            'section_description' => 'nullable|string',
-            'features' => 'nullable|array',
-            'features.*' => 'nullable|string|max:255',
-            'bottom_heading' => 'nullable|string|max:255',
-            'bottom_description' => 'nullable|string',
-            'sort_order' => 'nullable|integer|min:1',
-            'is_active' => 'nullable|boolean',
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'short_description' => [
+                'required',
+                'string',
+            ],
+
+            'main_image' => [
+                'required',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+
+            'secondary_image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+
+            'section_heading' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'section_description' => [
+                'required',
+                'string',
+            ],
+
+            'features' => [
+                'required',
+                'array',
+                'min:1',
+            ],
+
+            'features.*' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'bottom_heading' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'bottom_description' => [
+                'required',
+                'string',
+            ],
+
+            'sort_order' => [
+                'nullable',
+                'integer',
+                'min:1',
+            ],
+
+            'is_active' => [
+                'nullable',
+                'boolean',
+            ],
         ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Slug
+        |--------------------------------------------------------------------------
+        */
 
         $slug = $validated['slug'] ?? '';
 
@@ -56,6 +125,12 @@ public function create()
             $slug = $originalSlug . '-' . $counter++;
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | Sort Order
+        |--------------------------------------------------------------------------
+        */
+
         $sortOrder = (int) ($validated['sort_order'] ?? 0);
 
         $maxSort = Facility::max('sort_order') ?? 0;
@@ -68,6 +143,12 @@ public function create()
 
         Facility::where('sort_order', '>=', $sortOrder)
             ->increment('sort_order');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Images
+        |--------------------------------------------------------------------------
+        */
 
         $mainImage = null;
         $secondaryImage = null;
@@ -84,19 +165,25 @@ public function create()
                 ->store('facilities', 'public');
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | Create
+        |--------------------------------------------------------------------------
+        */
+
         Facility::create([
             'title' => $validated['title'],
             'slug' => $slug,
-            'short_description' => $validated['short_description'] ?? null,
+            'short_description' => $validated['short_description'],
             'main_image' => $mainImage,
             'secondary_image' => $secondaryImage,
-            'section_heading' => $validated['section_heading'] ?? null,
-            'section_description' => $validated['section_description'] ?? null,
+            'section_heading' => $validated['section_heading'],
+            'section_description' => $validated['section_description'],
             'features' => array_values(
-                array_filter($validated['features'] ?? [])
+                array_filter($validated['features'])
             ),
-            'bottom_heading' => $validated['bottom_heading'] ?? null,
-            'bottom_description' => $validated['bottom_description'] ?? null,
+            'bottom_heading' => $validated['bottom_heading'],
+            'bottom_description' => $validated['bottom_description'],
             'sort_order' => $sortOrder,
             'is_active' => $request->boolean('is_active'),
         ]);
@@ -108,26 +195,97 @@ public function create()
 
     public function edit(Facility $facility)
     {
-        return view('admin.pages.facilities.edit', compact('facility'));
+        return view(
+            'admin.pages.facilities.edit',
+            compact('facility')
+        );
     }
 
     public function update(Request $request, Facility $facility)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string',
-            'main_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'secondary_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'section_heading' => 'nullable|string|max:255',
-            'section_description' => 'nullable|string',
-            'features' => 'nullable|array',
-            'features.*' => 'nullable|string|max:255',
-            'bottom_heading' => 'nullable|string|max:255',
-            'bottom_description' => 'nullable|string',
-            'sort_order' => 'nullable|integer|min:1',
-            'is_active' => 'nullable|boolean',
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'short_description' => [
+                'required',
+                'string',
+            ],
+
+            'main_image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+
+            'secondary_image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+
+            'section_heading' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'section_description' => [
+                'required',
+                'string',
+            ],
+
+            'features' => [
+                'required',
+                'array',
+                'min:1',
+            ],
+
+            'features.*' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'bottom_heading' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'bottom_description' => [
+                'required',
+                'string',
+            ],
+
+            'sort_order' => [
+                'nullable',
+                'integer',
+                'min:1',
+            ],
+
+            'is_active' => [
+                'nullable',
+                'boolean',
+            ],
         ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Slug
+        |--------------------------------------------------------------------------
+        */
 
         $slug = $validated['slug'] ?? '';
 
@@ -148,40 +306,72 @@ public function create()
             $slug = $originalSlug . '-' . $counter++;
         }
 
-        $oldSortOrder = (int) $facility->sort_order;
-        $newSortOrder = (int) ($validated['sort_order'] ?? $oldSortOrder);
+        /*
+        |--------------------------------------------------------------------------
+        | Sort Order
+        |--------------------------------------------------------------------------
+        */
 
-        $maxSort = Facility::where('id', '!=', $facility->id)
-            ->max('sort_order') ?? 0;
+        $oldSortOrder = (int) $facility->sort_order;
+
+        $newSortOrder = (int) (
+            $validated['sort_order'] ?? $oldSortOrder
+        );
+
+        $maxSort = Facility::where(
+            'id',
+            '!=',
+            $facility->id
+        )->max('sort_order') ?? 0;
 
         if ($newSortOrder < 1) {
             $newSortOrder = $oldSortOrder;
         }
 
-        $newSortOrder = min($newSortOrder, $maxSort + 1);
+        $newSortOrder = min(
+            $newSortOrder,
+            $maxSort + 1
+        );
 
         if ($newSortOrder < $oldSortOrder) {
+
             Facility::where('id', '!=', $facility->id)
                 ->whereBetween(
                     'sort_order',
-                    [$newSortOrder, $oldSortOrder - 1]
+                    [
+                        $newSortOrder,
+                        $oldSortOrder - 1
+                    ]
                 )
                 ->increment('sort_order');
+
         } elseif ($newSortOrder > $oldSortOrder) {
+
             Facility::where('id', '!=', $facility->id)
                 ->whereBetween(
                     'sort_order',
-                    [$oldSortOrder + 1, $newSortOrder]
+                    [
+                        $oldSortOrder + 1,
+                        $newSortOrder
+                    ]
                 )
                 ->decrement('sort_order');
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Images
+        |--------------------------------------------------------------------------
+        */
 
         $mainImage = $facility->main_image;
         $secondaryImage = $facility->secondary_image;
 
         if ($request->hasFile('main_image')) {
+
             if ($facility->main_image) {
-                Storage::disk('public')->delete($facility->main_image);
+                Storage::disk('public')
+                    ->delete($facility->main_image);
             }
 
             $mainImage = $request
@@ -190,8 +380,10 @@ public function create()
         }
 
         if ($request->hasFile('secondary_image')) {
+
             if ($facility->secondary_image) {
-                Storage::disk('public')->delete($facility->secondary_image);
+                Storage::disk('public')
+                    ->delete($facility->secondary_image);
             }
 
             $secondaryImage = $request
@@ -199,19 +391,25 @@ public function create()
                 ->store('facilities', 'public');
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | Update
+        |--------------------------------------------------------------------------
+        */
+
         $facility->update([
             'title' => $validated['title'],
             'slug' => $slug,
-            'short_description' => $validated['short_description'] ?? null,
+            'short_description' => $validated['short_description'],
             'main_image' => $mainImage,
             'secondary_image' => $secondaryImage,
-            'section_heading' => $validated['section_heading'] ?? null,
-            'section_description' => $validated['section_description'] ?? null,
+            'section_heading' => $validated['section_heading'],
+            'section_description' => $validated['section_description'],
             'features' => array_values(
-                array_filter($validated['features'] ?? [])
+                array_filter($validated['features'])
             ),
-            'bottom_heading' => $validated['bottom_heading'] ?? null,
-            'bottom_description' => $validated['bottom_description'] ?? null,
+            'bottom_heading' => $validated['bottom_heading'],
+            'bottom_description' => $validated['bottom_description'],
             'sort_order' => $newSortOrder,
             'is_active' => $request->boolean('is_active'),
         ]);
@@ -226,17 +424,22 @@ public function create()
         $deletedSortOrder = $facility->sort_order;
 
         if ($facility->main_image) {
-            Storage::disk('public')->delete($facility->main_image);
+            Storage::disk('public')
+                ->delete($facility->main_image);
         }
 
         if ($facility->secondary_image) {
-            Storage::disk('public')->delete($facility->secondary_image);
+            Storage::disk('public')
+                ->delete($facility->secondary_image);
         }
 
         $facility->delete();
 
-        Facility::where('sort_order', '>', $deletedSortOrder)
-            ->decrement('sort_order');
+        Facility::where(
+            'sort_order',
+            '>',
+            $deletedSortOrder
+        )->decrement('sort_order');
 
         return redirect()
             ->route('admin.facilities.index')

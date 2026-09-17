@@ -13,16 +13,20 @@ return new class extends Migration
 
             $table->string('hospital_name');
             $table->string('logo')->nullable();
-            $table->string('phone')->nullable();
-            $table->text('address')->nullable();
+            $table->string('phone');
+            $table->text('address');
 
-            $table->string('facebook_url')->nullable();
-            $table->string('instagram_url')->nullable();
-            $table->string('youtube_url')->nullable();
-            $table->string('whatsapp_url')->nullable();
+            $table->string('google_maps_url');
+            $table->text('google_maps_embed_url');
+
+            $table->string('facebook_url');
+            $table->string('instagram_url');
+            $table->string('youtube_url');
+            $table->string('whatsapp_url');
 
             $table->string('opening_time')->nullable();
             $table->string('closing_time')->nullable();
+            $table->boolean('is_24_hours')->default(true);
 
             $table->timestamps();
         });

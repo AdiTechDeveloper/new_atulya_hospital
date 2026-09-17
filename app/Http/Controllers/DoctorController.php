@@ -2,36 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
+
 class DoctorController extends Controller
 {
     public function index()
     {
-        $json = file_get_contents(
-            storage_path('app/doctors.json')
+        $doctors = Doctor::where('is_active', true)
+            ->orderBy('id')
+            ->get();
+
+        return view(
+            'website.pages.ourdoctor',
+            compact('doctors')
         );
-
-        $doctors = json_decode($json, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            dd('JSON Error: ' . json_last_error_msg());
-        }
-
-        return view('website.pages.ourdoctor', compact('doctors'));
     }
 
     public function show($slug)
     {
-        $json = file_get_contents(
-            storage_path('app/doctors.json')
-        );
-
-        $doctors = json_decode($json, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            abort(500, 'Invalid doctors.json');
-        }
-
-        $doctor = collect($doctors)->firstWhere('slug', $slug);
+        $doctor = Doctor::where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
 
         if (!$doctor) {
             abort(404);

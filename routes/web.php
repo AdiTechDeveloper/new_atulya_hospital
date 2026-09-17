@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 use App\Http\Controllers\Admin\DoctorAdminController;
 use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\VideoController;
 
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Website\BlogController as WebsiteBlogController;
 use App\Http\Controllers\Website\DepartmentController;
 use App\Http\Controllers\Website\FacilityController as WebsiteFacilityController;
 use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
@@ -48,21 +50,22 @@ Route::get('/icu', function () {
 })->name('icu');
 
 // Departments
-Route::get('/departments', function () {
-    return view('website.pages.show');
-})->name('departments.index');
+Route::get('/departments', [DepartmentController::class, 'index'])
+    ->name('departments.index');
 
 Route::get('/departments/{slug}', [DepartmentController::class, 'show'])
     ->name('departments.show');
 
 // Facilities
-Route::get('/facilities/{slug}', [WebsiteFacilityController::class, 'show'])
+Route::get('/facilities/{slug?}', [WebsiteFacilityController::class, 'show'])
     ->name('facilities.show');
 
 // Blog
-Route::get('/blog', function () {
-    return view('website.pages.blog');
-})->name('blog');
+Route::get('/blog', [WebsiteBlogController::class, 'index'])
+    ->name('blog');
+
+Route::get('/blog/{slug}', [WebsiteBlogController::class, 'show'])
+    ->name('blog.show');
 
 // Doctors
 Route::get('/doctors', [DoctorController::class, 'index'])
@@ -218,13 +221,34 @@ Route::middleware('auth')
         Route::patch('/blogs/{blog}/featured', [BlogController::class, 'toggleFeatured'])
             ->name('admin.blogs.featured');
 
-            // Settings
-Route::get('/settings', [SettingController::class, 'index'])
-    ->name('admin.settings.index');
+        // Settings
+        Route::get('/settings', [SettingController::class, 'index'])
+            ->name('admin.settings.index');
 
-Route::put('/settings', [SettingController::class, 'update'])
-    ->name('admin.settings.update');
+        Route::put('/settings', [SettingController::class, 'update'])
+            ->name('admin.settings.update');
 
+        // Departments
+        Route::get('/departments', [AdminDepartmentController::class, 'index'])
+            ->name('admin.departments.index');
+
+        Route::get('/departments/create', [AdminDepartmentController::class, 'create'])
+            ->name('admin.departments.create');
+
+        Route::post('/departments', [AdminDepartmentController::class, 'store'])
+            ->name('admin.departments.store');
+
+        Route::get('/departments/{department}/edit', [AdminDepartmentController::class, 'edit'])
+            ->name('admin.departments.edit');
+
+        Route::put('/departments/{department}', [AdminDepartmentController::class, 'update'])
+            ->name('admin.departments.update');
+
+        Route::delete('/departments/{department}', [AdminDepartmentController::class, 'destroy'])
+            ->name('admin.departments.destroy');
+
+        Route::patch('/departments/{department}/status', [AdminDepartmentController::class, 'toggleStatus'])
+            ->name('admin.departments.status');
     });
 
 

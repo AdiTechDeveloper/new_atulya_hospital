@@ -77,7 +77,15 @@
               <li>
                <a href="{{ url('/admin/settings/') }}">
                     <div class="parent-icon">
-                          <i class="material-icons-outlined">article</i>
+                          <i class="material-icons-outlined">brightness_5</i>
+                    </div>
+                    <div class="menu-title">Setting</div>
+                </a>
+            </li>
+             <li>
+               <a href="{{ url('/admin/departments/') }}">
+                    <div class="parent-icon">
+                          <i class="material-icons-outlined">brightness_5</i>
                     </div>
                     <div class="menu-title">Setting</div>
                 </a>

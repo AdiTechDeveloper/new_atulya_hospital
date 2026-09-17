@@ -1,8 +1,15 @@
 @extends('website.layout.app')
 
-@section('title', $department['name'])
+@section('title', $department->name)
 
 @section('content')
+
+@php
+    $services = $department->services ?? [];
+    $specialities = $department->specialities ?? [];
+    $conditions = $department->conditions ?? [];
+    $whyChoose = $department->why_choose ?? [];
+@endphp
 
 <section style="padding-bottom: 3rem;" class="service-details-section  pt-80 pb-80">
 
@@ -23,149 +30,16 @@
 
                             <ul class="wow fadeInUp" data-wow-delay=".3s">
 
-                                <li>
-                                    <a href="{{ url('/departments/urology') }}">
-                                        <span>Urology</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                @foreach($allDepartments as $item)
 
-                                <li>
-                                    <a href="{{ url('/departments/orthopedic') }}">
-                                        <span>Orthopedic</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('departments.show', $item->slug) }}">
+                                            <span>{{ $item->name }}</span>
+                                            <span class="icon"><i class="far fa-long-arrow-right"></i></span>
+                                        </a>
+                                    </li>
 
-                                <li>
-                                    <a href="{{ url('/departments/rheumatology') }}">
-                                        <span>Rheumatology</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/gastro-surgery') }}">
-                                        <span>Gastro Surgery</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/trauma') }}">
-                                        <span>Trauma</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/critical-care') }}">
-                                        <span>Critical Care</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/general-surgery') }}">
-                                        <span>General Surgery</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/joint-replacement') }}">
-                                        <span>Joint Replacement</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/internal-medicine') }}">
-                                        <span>Internal Medicine</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/ent') }}">
-                                        <span>ENT</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/arthroscopy') }}">
-                                        <span>Arthroscopy</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/skin-cosmetics') }}">
-                                        <span>Skin & Cosmetics</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/onco-surgery') }}">
-                                        <span>Onco Surgery</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/sports-medicine') }}">
-                                        <span>Sports Medicine</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/plastic-surgery') }}">
-                                        <span>Plastic Surgery</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/physiotherapy') }}">
-                                        <span>Physiotherapy</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                @endforeach
 
                             </ul>
 
@@ -191,26 +65,21 @@
                             </span>
 
                             <h2 class="mt-2">
-                                {{ $department['name'] }}
+                                {{ $department->name }}
                             </h2>
 
                             <p>
-                                {{ $department['introduction'] }}
+                                {{ $department->short_description }}
                             </p>
 
                         </div>
 
 
                         <!-- Department Image - ONLY ONE -->
-                        @if(!empty($department['images'][0]))
+                        @if($department->image)
 
                             <div class="service-img wow img-custom-anim-left mb-4">
-
-                                <img
-                                    src="{{ asset($department['images'][0]) }}"
-                                    alt="{{ $department['name'] }}"
-                                >
-
+                                <img src="{{ asset('storage/' . $department->image) }}" alt="{{ $department->name }}">
                             </div>
 
                         @endif
@@ -222,11 +91,11 @@
                         <div class="mb-4">
 
                             <h3>
-                                About {{ $department['name'] }}
+                                {{ $department->about_heading ?: 'About ' . $department->name }}
                             </h3>
 
                             <p>
-                                {{ $department['about'] }}
+                                {{ $department->about_description }}
                             </p>
 
                         </div>
@@ -242,7 +111,7 @@
                             </h3>
 
                             <p>
-                                Our {{ $department['name'] }} Department provides
+                                Our {{ $department->name }} Department provides
                                 specialized services based on the patient's
                                 medical condition and treatment requirements.
                             </p>
@@ -252,9 +121,9 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['services'],
+                                        $services,
                                         0,
-                                        ceil(count($department['services']) / 2)
+                                        ceil(count($services) / 2)
                                     ) as $service)
 
                                         <li>
@@ -269,8 +138,8 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['services'],
-                                        ceil(count($department['services']) / 2)
+                                        $services,
+                                        ceil(count($services) / 2)
                                     ) as $service)
 
                                         <li>
@@ -307,9 +176,9 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['specialities'],
+                                        $specialities,
                                         0,
-                                        ceil(count($department['specialities']) / 2)
+                                        ceil(count($specialities) / 2)
                                     ) as $speciality)
 
                                         <li>
@@ -324,8 +193,8 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['specialities'],
-                                        ceil(count($department['specialities']) / 2)
+                                        $specialities,
+                                        ceil(count($specialities) / 2)
                                     ) as $speciality)
 
                                         <li>
@@ -352,7 +221,7 @@
                             </h3>
 
                             <p>
-                                The {{ $department['name'] }} Department provides
+                                The {{ $department->name }} Department provides
                                 care across the following important medical
                                 conditions and specialized areas.
                             </p>
@@ -362,9 +231,9 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['care_areas'],
+                                        $conditions,
                                         0,
-                                        ceil(count($department['care_areas']) / 2)
+                                        ceil(count($conditions) / 2)
                                     ) as $area)
 
                                         <li>
@@ -379,8 +248,8 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['care_areas'],
-                                        ceil(count($department['care_areas']) / 2)
+                                        $conditions,
+                                        ceil(count($conditions) / 2)
                                     ) as $area)
 
                                         <li>
@@ -403,11 +272,11 @@
                         <div class="mb-4">
 
                             <h3>
-                                Patient Care
+                                {{ $department->patient_care_heading ?: 'Patient Care' }}
                             </h3>
 
                             <p>
-                                {{ $department['patient_care'] }}
+                                {{ $department->patient_care_description }}
                             </p>
 
                         </div>
@@ -433,9 +302,9 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['why_choose'],
+                                        $whyChoose,
                                         0,
-                                        ceil(count($department['why_choose']) / 2)
+                                        ceil(count($whyChoose) / 2)
                                     ) as $reason)
 
                                         <li>
@@ -450,8 +319,8 @@
                                 <ul>
 
                                     @foreach(array_slice(
-                                        $department['why_choose'],
-                                        ceil(count($department['why_choose']) / 2)
+                                        $whyChoose,
+                                        ceil(count($whyChoose) / 2)
                                     ) as $reason)
 
                                         <li>
@@ -480,21 +349,23 @@
                             <p>
                                 Patients are supported by qualified medical
                                 professionals with expertise related to
-                                {{ $department['name'] }}.
+                                {{ $department->name }}.
                             </p>
 
                             <div class="list-box">
 
                                 <ul>
 
-                                    @foreach($department['related_doctors'] as $doctor)
+                                    @forelse($department->doctors as $doctor)
 
                                         <li>
                                             <i class="far fa-user-md"></i>
-                                            {{ $doctor }}
+                                            {{ $doctor->name }}
                                         </li>
 
-                                    @endforeach
+                                    @empty
+                                        <li>No doctors currently assigned to this department.</li>
+                                    @endforelse
 
                                 </ul>
 
@@ -725,10 +596,10 @@
                                                 </option>
 
                                                 <option
-                                                    value="{{ $department['slug'] }}"
+                                                    value="{{ $department->slug }}"
                                                     selected
                                                 >
-                                                    {{ $department['name'] }}
+                                                    {{ $department->name }}
                                                 </option>
 
                                             </select>

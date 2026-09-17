@@ -2066,3 +2066,462 @@ html {
     }
 
 }
+ .atulya-home-video {
+        position: relative;
+        overflow: hidden;
+        padding: 105px 0 100px;
+        background-position: center;
+    }
+
+    .atulya-video-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(7, 25, 55, 0.86) 0%,
+                rgba(9, 35, 72, 0.90) 100%
+            );
+        z-index: 1;
+    }
+
+    .atulya-home-video .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .atulya-video-heading {
+        max-width: 760px;
+        margin: 0 auto 48px;
+        text-align: center;
+    }
+
+    .atulya-video-heading span {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 13px;
+        color: #8ec5ff;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .atulya-video-heading span::before,
+    .atulya-video-heading span::after {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: rgba(142, 197, 255, 0.75);
+    }
+
+    .atulya-video-heading h2 {
+        margin: 0 0 15px;
+        color: #fff;
+        font-size: 44px;
+        line-height: 1.15;
+        font-weight: 700;
+    }
+
+    .atulya-video-heading p {
+        max-width: 680px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .atulya-video-row {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .atulya-video-card {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.97);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.20);
+        transition:
+            transform 0.35s ease,
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
+    }
+
+    .atulya-video-card:hover {
+        transform: translateY(-9px);
+        border-color: rgba(142, 197, 255, 0.65);
+        box-shadow: 0 28px 60px rgba(0, 0, 0, 0.30);
+    }
+
+    .atulya-video-thumb {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: #0b1628;
+    }
+
+    .atulya-video-thumb img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .atulya-video-card:hover .atulya-video-thumb img {
+        transform: scale(1.06);
+    }
+
+    .atulya-video-image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05) 20%,
+            rgba(0, 0, 0, 0.48) 100%
+        );
+        z-index: 1;
+    }
+
+    .atulya-video-number {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 3;
+        min-width: 40px;
+        height: 28px;
+        padding: 0 9px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        background: rgba(7, 25, 55, 0.65);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        backdrop-filter: blur(8px);
+    }
+
+    .atulya-video-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 4;
+        width: 68px;
+        height: 68px;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.94);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+        transition:
+            transform 0.35s ease,
+            background 0.35s ease,
+            box-shadow 0.35s ease;
+    }
+
+    .atulya-video-play::before {
+        content: "";
+        position: absolute;
+        inset: -7px;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 50%;
+        transition: transform 0.35s ease;
+    }
+
+    .atulya-video-play:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+        background: #fff;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .atulya-video-play:hover::before {
+        transform: scale(1.08);
+    }
+
+    .atulya-play-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .atulya-play-icon i {
+        margin-left: 4px;
+        color: #172965;
+        font-size: 19px;
+    }
+
+    .atulya-video-content {
+        min-height: 175px;
+        padding: 20px 21px 21px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .atulya-video-meta {
+        margin-bottom: 9px;
+    }
+
+    .atulya-video-meta span {
+        color: #7d8ba0;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+    }
+
+    .atulya-video-meta i {
+        margin-right: 4px;
+    }
+
+    .atulya-video-content h4 {
+        margin: 0;
+        color: #172965;
+        font-size: 19px;
+        line-height: 1.35;
+        font-weight: 700;
+    }
+
+    .atulya-video-content p {
+        margin: 8px 0 14px;
+        color: #718096;
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .atulya-video-watch {
+        margin-top: auto;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #172965;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: left;
+        transition: gap 0.3s ease;
+    }
+
+    .atulya-video-watch:hover {
+        gap: 13px;
+    }
+
+    .atulya-video-watch i {
+        font-size: 11px;
+    }
+
+    .atulya-video-see-all {
+        margin-top: 42px;
+        text-align: center;
+    }
+
+    .atulya-video-all-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        backdrop-filter: blur(8px);
+        transition:
+            background 0.3s ease,
+            border-color 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .atulya-video-all-btn:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.5);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .atulya-video-all-btn i {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .atulya-video-all-btn:hover i {
+        transform: translateX(4px);
+    }
+
+    .atulya-video-empty {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 55px 30px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.07);
+        text-align: center;
+        backdrop-filter: blur(8px);
+    }
+
+    .atulya-video-empty > i {
+        margin-bottom: 18px;
+        color: #8ec5ff;
+        font-size: 48px;
+    }
+
+    .atulya-video-empty h3 {
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .atulya-video-empty p {
+        margin-bottom: 25px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .atulya-video-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(2, 10, 23, 0.92);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    .atulya-video-modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .atulya-video-modal-content {
+        width: 100%;
+        max-width: 1050px;
+        position: relative;
+        border-radius: 15px;
+        background: #000;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .atulya-video-iframe-wrapper {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 15px;
+        background: #000;
+    }
+
+    .atulya-video-iframe-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 0;
+    }
+
+    .atulya-video-close {
+        position: absolute;
+        top: -17px;
+        right: -17px;
+        z-index: 5;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #fff;
+        color: #172965;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        transition:
+            transform 0.3s ease,
+            background 0.3s ease;
+    }
+
+    .atulya-video-close:hover {
+        transform: rotate(90deg);
+        background: #f1f5f9;
+    }
+
+    .atulya-video-close i {
+        font-size: 17px;
+    }
+
+    @media (max-width: 1199px) {
+        .atulya-video-heading h2 {
+            font-size: 40px;
+        }
+
+        .atulya-video-content {
+            min-height: 165px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .atulya-home-video {
+            padding: 75px 0 70px;
+        }
+
+        .atulya-video-heading {
+            margin-bottom: 35px;
+        }
+
+        .atulya-video-heading h2 {
+            font-size: 32px;
+        }
+
+        .atulya-video-heading p {
+            font-size: 14px;
+        }
+
+        .atulya-video-row {
+            max-width: 520px;
+        }
+
+        .atulya-video-content {
+            min-height: 150px;
+        }
+
+        .atulya-video-modal {
+            padding: 15px;
+        }
+
+        .atulya-video-close {
+            top: -12px;
+            right: -3px;
+            width: 38px;
+            height: 38px;
+        }
+    }
+        .doctor-fixed-image {
+        width: 220px !important;
+        height: 220px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }

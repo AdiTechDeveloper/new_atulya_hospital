@@ -6,7 +6,7 @@
 
 <section class="team-section fix ">
 
-    <div class="container">
+    <div class="container pb-10">
 
         {{-- Section Heading --}}
         <div class="section-title text-center mb-5 wow fadeInUp"
@@ -42,15 +42,15 @@
                         {{-- Doctor Image --}}
                         <div class="team-image p-3">
 
-                            <img
-                                src="{{ asset($doctor['image']) }}"
-                                alt="{{ $doctor['name'] }}"
+                               <img
+        src="{{ asset('storage/' . $doctor->image) }}"
+        alt="{{ $doctor->name }}"
                                 class="w-75 h-auto d-block mx-auto"
                             >
 
                             {{-- Department Badge --}}
                             <span class="post-box">
-                                {{ $doctor['department'] }}
+                                {{ $doctor->department }}
                             </span>
 
                         </div>
@@ -61,23 +61,27 @@
 
                             {{-- Doctor Name --}}
                             <h3 class="mb-2">
-                                <a href="{{ route('doctors.show', $doctor['slug']) }}">
-                                    {{ $doctor['name'] }}
+
+                                <a href="{{ route('doctors.show', $doctor->slug) }}">
+                                    {{ $doctor->name }}
                                 </a>
+
                             </h3>
 
 
-                            {{-- Specialization --}}
+                            {{-- Speciality --}}
                             <p class="mb-2">
-                                {{ $doctor['specialization'] }}
+                                {{ $doctor->speciality }}
                             </p>
 
 
                             {{-- Qualification --}}
                             <p class="mb-3">
+
                                 <strong>
-                                    {{ $doctor['qualification'] }}
+                                    {{ $doctor->qualification }}
                                 </strong>
+
                             </p>
 
 
@@ -87,10 +91,13 @@
                                 <i class="fas fa-phone-alt"></i>
 
                                 <span>
+
                                     <b>Appointment</b> :
-                                    <a href="tel:+919727579000">
-                                        +91 97275 79000
+
+                                    <a href="tel:{{ $doctor->phone_number ?? '+919727579000' }}">
+                                        {{ $doctor->phone_number ?? '+91 97275 79000' }}
                                     </a>
+
                                 </span>
 
                             </div>
@@ -102,8 +109,11 @@
                                 <i class="far fa-clock"></i>
 
                                 <span>
+
                                     <b>OPD Timing</b> :
-                                    {{ $doctor['timing'] }}
+
+                                    {{ $doctor->opd_timing }}
+
                                 </span>
 
                             </div>
@@ -113,11 +123,14 @@
                             <div class="mt-auto pt-2">
 
                                 <a
-                                    href="{{ route('doctors.show', $doctor['slug']) }}"
+                                    href="{{ route('doctors.show', $doctor->slug) }}"
                                     class="theme-btn"
                                 >
+
                                     <i class="far fa-chevron-right"></i>
+
                                     View Profile
+
                                 </a>
 
                             </div>

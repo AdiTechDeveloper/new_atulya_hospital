@@ -95,7 +95,7 @@ class VideoController extends Controller
         $counter = 1;
 
         while (Video::where('slug', $slug)->exists()) {
-            $slug = $originalSlug.'-'.$counter;
+            $slug = $originalSlug . '-' . $counter;
             $counter++;
         }
 
@@ -125,8 +125,15 @@ class VideoController extends Controller
         }
 
         if ($validated['is_featured']) {
-            Video::where('is_featured', true)
-                ->update(['is_featured' => false]);
+            $featuredCount = Video::where('is_featured', true)->count();
+
+            if ($featuredCount >= 4) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'is_featured' => 'You can feature a maximum of 4 videos.'
+                    ]);
+            }
         }
 
         Video::create($validated);
@@ -202,10 +209,10 @@ class VideoController extends Controller
 
         while (
             Video::where('slug', $slug)
-                ->where('id', '!=', $video->id)
-                ->exists()
+            ->where('id', '!=', $video->id)
+            ->exists()
         ) {
-            $slug = $originalSlug.'-'.$counter;
+            $slug = $originalSlug . '-' . $counter;
             $counter++;
         }
 
@@ -244,13 +251,19 @@ class VideoController extends Controller
                 ->file('thumbnail')
                 ->store('videos', 'public');
         }
+        if ($validated['is_featured'] && ! $video->is_featured) {
+            $featuredCount = Video::where('is_featured', true)
+                ->where('id', '!=', $video->id)
+                ->count();
 
-        if ($validated['is_featured']) {
-            Video::where('id', '!=', $video->id)
-                ->where('is_featured', true)
-                ->update(['is_featured' => false]);
+            if ($featuredCount >= 4) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'is_featured' => 'You can feature a maximum of 4 videos.'
+                    ]);
+            }
         }
-
         $video->update($validated);
 
         return redirect()

@@ -3,23 +3,40 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 
 class DepartmentController extends Controller
 {
+    public function index()
+    {
+        $departments = Department::where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        return view('website.pages.show', compact('departments'));
+    }
+
     public function show($slug)
     {
-        $json = file_get_contents(storage_path('app/departments.json'));
+        $department = Department::with([
+            'doctors' => function ($query) {
+                $query->where('is_active', true)
+                    ->orderBy('name');
+            }
+        ])
+        ->where('slug', $slug)
+        ->where('is_active', true)
+        ->firstOrFail();
 
-        $departments = json_decode($json, true);
+        $allDepartments = Department::where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
 
-        $department = collect($departments)
-            ->firstWhere('slug', $slug);
-
-        if (! $department) {
-
-            return redirect('/');
-        }
-
-        return view('website.pages.department',compact('department'));
+        return view(
+            'website.pages.department',
+            compact('department', 'allDepartments')
+        );
     }
 }
