@@ -6,8 +6,9 @@
                 <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                     <div class="offcanvas__logo">
                         <a href="#">
-                            <img src="{{ asset('assets/img/logo/Atulya-logo.png') }}" alt="logo-img">
-                        </a>
+                            <img
+                                src="{{ asset(setting('logo')) }}"
+                                alt="{{ setting('hospital_name') }}"> </a>
                     </div>
                     <div class="offcanvas__close">
                         <button>
@@ -131,7 +132,7 @@
                             <span>
                                 Call Us:
                             </span>
-                            <a href="tel:+919727579000">+91 97275 79000 </a>
+                            <a href="{{ setting('phone') }}">{{ setting('phone') }} </a>
                         </li>
                         <li>
                             <span>
@@ -158,7 +159,7 @@
     <div class="container">
         <div class="header-top-wrapper">
             <p>
-                Atulya Hospital – Quality Healthcare With Compassionate Care
+               {{ setting('hospital_name') }} – Quality Healthcare With Compassionate Care
                 <a href="{{ url('/contact') }}">Contact Us</a>.
             </p>
 
@@ -166,8 +167,8 @@
 
                 <li>
                     <i class="fas fa-phone"></i>
-                    <a href="tel:+919727579000">
-                        +91 97275 79000
+                    <a href="{{ setting('phone') }}">
+                        {{ setting('phone') }}
                     </a>
                 </li>
 
@@ -230,7 +231,7 @@
                                         <ul class="mobile-submenu">
 
                                             <li>
-                                                <a href="{{ url('/departments/urology') }}">
+                                                <a href="{{ url('/departments') }}">
                                                     Departments
                                                 </a>
                                             </li>
@@ -293,7 +294,7 @@
                             </div>
                             <div class="content">
                                 <span>Call Emergency</span>
-                                <h6><a href="tel:+919727579000">+91 97275 79000 </a></h6>
+                                <h6><a href="{{ setting('phone') }}">{{ setting('phone') }}</a></h6>
                             </div>
                         </div>
                         <a href="{{ url('/contact') }}" class="theme-btn">
@@ -414,41 +415,45 @@
         font-size: 13px;
         transition: transform 0.3s ease;
     }
+
     .mobile-has-dropdown {
-    position: relative;
-}
+        position: relative;
+    }
 
     /* Mobile submenu */
-  .mobile-submenu {
-    display: none;
-    position: absolute;
-    top: 100%;              /* parent li ke turant neeche */
-    left: 0;
-    width: 100%;
-    z-index: 999999;        /* offcanvas (99999) se bhi upar */
-    padding-left: 15px !important;
-    background: #f8f8f8;
-    list-style: none;
-    margin: 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    /* max-height: 250px;      bahut lambi list ho to scroll aa jaye */
-    overflow-y: auto;
-}
+    .mobile-submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        /* parent li ke turant neeche */
+        left: 0;
+        width: 100%;
+        z-index: 999999;
+        /* offcanvas (99999) se bhi upar */
+        padding-left: 15px !important;
+        background: #f8f8f8;
+        list-style: none;
+        margin: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        /* max-height: 250px;      bahut lambi list ho to scroll aa jaye */
+        overflow-y: auto;
+    }
 
-.mobile-submenu li {
-    display: block !important;
-    width: 100%;
-    float: none !important;
-    border-bottom: 1px solid #eeeeee;
-}
+    .mobile-submenu li {
+        display: block !important;
+        width: 100%;
+        float: none !important;
+        border-bottom: 1px solid #eeeeee;
+    }
 
-.mobile-submenu li a {
-    display: block !important;
-    width: 100%;
-    padding: 12px 10px;
-    font-size: 14px;
-    color: #333;
-}
+    .mobile-submenu li a {
+        display: block !important;
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
     /* Active submenu */
     .mobile-has-dropdown.active .mobile-submenu {
         display: flex;
@@ -538,66 +543,66 @@
     }
 </style>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
 
-    /* ---------------------------------------------------------
-       Open Mobile Offcanvas
-    --------------------------------------------------------- */
-    document.querySelectorAll('.sidebar__toggle').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector('.offcanvas__info').classList.add('info-open');
-            document.querySelector('.offcanvas__overlay').classList.add('overlay-open');
+        /* ---------------------------------------------------------
+           Open Mobile Offcanvas
+        --------------------------------------------------------- */
+        document.querySelectorAll('.sidebar__toggle').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.offcanvas__info').classList.add('info-open');
+                document.querySelector('.offcanvas__overlay').classList.add('overlay-open');
+            });
         });
-    });
 
-    /* ---------------------------------------------------------
-       Close Mobile Offcanvas
-    --------------------------------------------------------- */
-    var closeBtn = document.querySelector('.offcanvas__close button');
-    var overlay  = document.querySelector('.offcanvas__overlay');
+        /* ---------------------------------------------------------
+           Close Mobile Offcanvas
+        --------------------------------------------------------- */
+        var closeBtn = document.querySelector('.offcanvas__close button');
+        var overlay = document.querySelector('.offcanvas__overlay');
 
-    function closeOffcanvas(e) {
-        e.preventDefault();
-        document.querySelector('.offcanvas__info').classList.remove('info-open');
-        document.querySelector('.offcanvas__overlay').classList.remove('overlay-open');
-    }
-
-    if (closeBtn) closeBtn.addEventListener('click', closeOffcanvas);
-    if (overlay)  overlay.addEventListener('click', closeOffcanvas);
-
-    /* ---------------------------------------------------------
-       Mobile Services Dropdown Toggle
-    --------------------------------------------------------- */
-    document.querySelectorAll('.mobile-has-dropdown').forEach(function (parentLi) {
-
-        var link   = parentLi.querySelector(':scope > .mobile-menu-link > a');
-        var toggle = parentLi.querySelector(':scope > .mobile-menu-link > .mobile-submenu-toggle');
-        var submenu = parentLi.querySelector(':scope > .mobile-submenu');
-
-        if (!submenu) {
-            console.warn('[dropdown] .mobile-submenu not found inside', parentLi);
-            return;
-        }
-
-        function toggleSubmenu(e) {
+        function closeOffcanvas(e) {
             e.preventDefault();
-            e.stopPropagation();
-
-            var isOpen = parentLi.classList.contains('active');
-
-            if (isOpen) {
-                submenu.style.display = 'none';
-                parentLi.classList.remove('active');
-            } else {
-                submenu.style.display = 'block';
-                parentLi.classList.add('active');
-            }
+            document.querySelector('.offcanvas__info').classList.remove('info-open');
+            document.querySelector('.offcanvas__overlay').classList.remove('overlay-open');
         }
 
-        if (link)   link.addEventListener('click', toggleSubmenu);
-        if (toggle) toggle.addEventListener('click', toggleSubmenu);
-    });
+        if (closeBtn) closeBtn.addEventListener('click', closeOffcanvas);
+        if (overlay) overlay.addEventListener('click', closeOffcanvas);
 
-});
+        /* ---------------------------------------------------------
+           Mobile Services Dropdown Toggle
+        --------------------------------------------------------- */
+        document.querySelectorAll('.mobile-has-dropdown').forEach(function(parentLi) {
+
+            var link = parentLi.querySelector(':scope > .mobile-menu-link > a');
+            var toggle = parentLi.querySelector(':scope > .mobile-menu-link > .mobile-submenu-toggle');
+            var submenu = parentLi.querySelector(':scope > .mobile-submenu');
+
+            if (!submenu) {
+                console.warn('[dropdown] .mobile-submenu not found inside', parentLi);
+                return;
+            }
+
+            function toggleSubmenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var isOpen = parentLi.classList.contains('active');
+
+                if (isOpen) {
+                    submenu.style.display = 'none';
+                    parentLi.classList.remove('active');
+                } else {
+                    submenu.style.display = 'block';
+                    parentLi.classList.add('active');
+                }
+            }
+
+            if (link) link.addEventListener('click', toggleSubmenu);
+            if (toggle) toggle.addEventListener('click', toggleSubmenu);
+        });
+
+    });
 </script>

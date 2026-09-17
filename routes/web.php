@@ -50,10 +50,8 @@ Route::get('/icu', function () {
 })->name('icu');
 
 // Departments
-Route::get('/departments', [DepartmentController::class, 'index'])
-    ->name('departments.index');
 
-Route::get('/departments/{slug}', [DepartmentController::class, 'show'])
+Route::get('/departments/{slug?}', [DepartmentController::class, 'show'])
     ->name('departments.show');
 
 // Facilities

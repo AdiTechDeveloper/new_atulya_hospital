@@ -24,7 +24,7 @@
                              data-wow-delay="0.3s">
 
                             <img src="{{ asset('assets/img/inner/contact/contact.png') }}"
-                                 alt="Atulya Hospital">
+                                 alt="{{ setting('hospital_name') }}">
 
                         </div>
 
@@ -226,9 +226,9 @@
 
                         <h6>Call Us</h6>
 
-                        <a href="tel:+919727579000">
+                        <a href="{{ setting('phone') }}">
 
-                            +91 97275 79000
+                          {{ setting('phone') }}
 
                         </a>
 
@@ -281,7 +281,7 @@
                     <div class="content">
 
                         <h6>Our Location</h6>
-                      Atulya Superspeciality Hospital & ICU, 206–214, 2nd Floor, Elite Magnum, Bhuyangdev Cross Road, Ahmedabad – 380061, Gujarat
+                      {{ setting('address') }}
 
                     </div>
 
@@ -305,7 +305,7 @@
         <div class="googpemap">
 
             <iframe
-                src="https://www.google.com/maps?q=Atulya+Super+Speciality+Hospital+%26+ICU,+2nd+Floor,+Elite+Magnum,+Bhuyangdev+Cross+Road,+Ahmedabad,+Gujarat+380061&output=embed"
+                src="{{ setting('google_maps_embed_url') }}"
                 width="100%"
                 height="500"
                 style="border:0;"

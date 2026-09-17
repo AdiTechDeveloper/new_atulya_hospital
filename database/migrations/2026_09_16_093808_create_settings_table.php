@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('phone');
             $table->text('address');
 
-            $table->string('google_maps_url');
+            $table->string('google_maps_url');   
             $table->text('google_maps_embed_url');
 
             $table->string('facebook_url');

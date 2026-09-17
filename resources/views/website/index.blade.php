@@ -69,7 +69,7 @@
 
                             <img
                                 src="{{ asset('assets/img/home-1/hero/feature-2.png') }}"
-                                alt="Book an Appointment at Atulya Hospital">
+                                alt="Book an Appointment at {{ setting('hospital_name') }}">
 
                             <a href="{{ url('/contact') }}"
                                 class="arrow-icon"
@@ -101,7 +101,7 @@
 
                             <img
                                 src="{{ asset('assets/img/home-1/hero/feature-2.png') }}"
-                                alt="Specialist Doctors at Atulya Hospital">
+                                alt="Specialist Doctors at {{ setting('hospital_name') }}">
 
                             <a href="{{ url('/doctors') }}"
                                 class="arrow-icon"
@@ -133,7 +133,7 @@
 
                             <img
                                 src="{{ asset('assets/img/home-1/hero/feature-3.png') }}"
-                                alt="24x7 Emergency Care at Atulya Hospital">
+                                alt="24x7 Emergency Care at {{ setting('hospital_name') }}">
 
                             <div class="content">
 
@@ -142,8 +142,8 @@
                                 </p>
 
                                 <h4>
-                                    <a href="tel:+919727579000">
-                                        +91 97275 79000
+                                    <a href="{{ setting('phone') }}">
+                                       {{ setting('phone') }}
                                     </a>
                                 </h4>
 
@@ -176,17 +176,17 @@
 <section class="about-section section-padding fix">
     <div class="shape-1-img">
         <img src="{{ asset('assets/img/home-1/about/shape-01.png') }}"
-            alt="Atulya Hospital healthcare">
+            alt="{{ setting('hospital_name') }} healthcare">
     </div>
 
     <div class="shape-2-img">
         <img src="{{ asset('assets/img/home-1/about/shape-02.png') }}"
-            alt="Atulya Hospital medical care">
+            alt="{{ setting('hospital_name') }} medical care">
     </div>
 
     <div class="shape-3-img">
         <img src="{{ asset('assets/img/home-1/about/shape-03.png') }}"
-            alt="Atulya Hospital facilities">
+            alt="{{ setting('hospital_name') }} facilities">
     </div>
 
     <div class="container">
@@ -207,13 +207,13 @@
                         <div class="about-img-2 float-bob-x">
                             <img
                                 src="{{ asset('assets/img/home-1/hero/img2.png') }}"
-                                alt="Atulya Hospital medical care">
+                                alt="{{ setting('hospital_name') }} medical care">
                         </div>
 
                         <div class="about-img-3 float-bob-y">
                             <img
                                 src="{{ asset('assets/img/home-1/hero/img3.png') }}"
-                                alt="Atulya Hospital healthcare services">
+                                alt="{{ setting('hospital_name') }} healthcare services">
                         </div>
 
                     </div>
@@ -229,7 +229,7 @@
                         <div class="section-title mb-0 text-start">
 
                             <span class="subtitle tz-sub-tilte tz-sub-anim text-uppercase tx-subTitle">
-                                ABOUT ATULYA HOSPITAL
+                                ABOUT {{ setting('hospital_name') }}
                             </span>
 
                             <h2 class="tx-title sec_title tz-itm-title tz-itm-anim">
@@ -259,7 +259,7 @@
                                 <div class="about-img">
                                     <img
                                         src="{{ asset('assets/img/home-1/about/icon-01.png') }}"
-                                        alt="Specialist medical care at Atulya Hospital">
+                                        alt="Specialist medical care at {{ setting('hospital_name') }}">
                                 </div>
 
                                 <h5>
@@ -275,7 +275,7 @@
                                 <div class="about-img">
                                     <img
                                         src="{{ asset('assets/img/home-1/about/icon-02.png') }}"
-                                        alt="24x7 critical care at Atulya Hospital">
+                                        alt="24x7 critical care at {{ setting('hospital_name') }}">
                                 </div>
 
                                 <h5>
@@ -921,8 +921,8 @@
                     <div class="content">
                         <p>Call Emergency</p>
 
-                        <a href="tel:+919727579000">
-                            +91 97275 79000
+                        <a href="{{ setting('phone') }}">
+                       {{ setting('phone') }}
                         </a>
                     </div>
 
@@ -959,19 +959,18 @@
                         <div class="team-box-items mt-0 advance-item h-100 d-flex flex-column">
 
                             <!-- Doctor Image -->
-                           <div class="team-image p-3">
+                            <div class="team-image p-3">
 
-    <img
-        src="{{ asset('storage/' . $doctor->image) }}"
-        alt="{{ $doctor->name }}"
-        class="doctor-fixed-image d-block mx-auto"
-    >
+                                <img
+                                    src="{{ asset('storage/' . $doctor->image) }}"
+                                    alt="{{ $doctor->name }}"
+                                    class="doctor-fixed-image d-block mx-auto">
 
-    <span class="post-box">
-        {{ $doctor->department }}
-    </span>
+                                <span class="post-box">
+                                    {{ $doctor->department }}
+                                </span>
 
-</div>
+                            </div>
 
 
                             <!-- Doctor Details -->
@@ -1094,9 +1093,9 @@
 
         <div class="atulya-video-inner">
 
-            {{-- =====================================================
-                 HEADING
-            ====================================================== --}}
+            {{-- =========================
+                    HEADING
+            ========================== --}}
 
             <div class="atulya-video-heading">
 
@@ -1114,190 +1113,160 @@
             </div>
 
 
-            {{-- =====================================================
-                 VIDEOS
-            ====================================================== --}}
+            {{-- =========================
+                    VIDEOS
+            ========================== --}}
 
             @if(isset($videos) && $videos->count())
 
-            <div class="row g-4 atulya-video-row">
+                <div class="row g-4 atulya-video-row">
 
-                @foreach($videos as $video)
+                    @foreach($videos as $video)
 
-                @php
+                        @php
 
-                /*
-                |--------------------------------------------------------------------------
-                | Get YouTube Video ID
-                |--------------------------------------------------------------------------
-                */
+                            $youtubeId = null;
 
-                $youtubeId = null;
+                            if (
+                                preg_match(
+                                    '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
+                                    $video->youtube_url,
+                                    $matches
+                                )
+                            ) {
+                                $youtubeId = $matches[1];
+                            }
 
-                if (
-                preg_match(
-                '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
-                $video->youtube_url,
-                $matches
-                )
-                ) {
-                $youtubeId = $matches[1];
-                }
+                            if ($video->thumbnail) {
 
+                                $videoThumbnail = asset(
+                                    'storage/' . $video->thumbnail
+                                );
 
-                /*
-                |--------------------------------------------------------------------------
-                | Video Thumbnail
-                |--------------------------------------------------------------------------
-                */
+                            } elseif ($youtubeId) {
 
-                if ($video->thumbnail) {
+                                $videoThumbnail =
+                                    'https://img.youtube.com/vi/' .
+                                    $youtubeId .
+                                    '/maxresdefault.jpg';
 
-                $videoThumbnail = asset(
-                'storage/' . $video->thumbnail
-                );
+                            } else {
 
-                } elseif ($youtubeId) {
+                                $videoThumbnail =
+                                    asset(
+                                        'assets/img/home-1/counter/video-img.png'
+                                    );
 
-                $videoThumbnail =
-                'https://img.youtube.com/vi/' .
-                $youtubeId .
-                '/maxresdefault.jpg';
+                            }
 
-                } else {
-
-                $videoThumbnail =
-                asset(
-                'assets/img/home-1/counter/video-img.png'
-                );
-
-                }
-
-                @endphp
+                        @endphp
 
 
-                {{-- =====================================================
-                             VIDEO CARD
-                        ====================================================== --}}
+                        {{-- VIDEO CARD --}}
 
-                <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="col-xl-3 col-lg-3 col-md-6">
 
-                    <div class="atulya-video-card">
+                            <div class="atulya-video-card">
 
-                        {{-- Thumbnail --}}
+                                {{-- Thumbnail --}}
 
-                        <div class="atulya-video-thumb">
+                                <div class="atulya-video-thumb">
 
-                            <img
-                                src="{{ $videoThumbnail }}"
-                                alt="{{ $video->title }}"
-                                loading="lazy">
+                                    <img
+                                        src="{{ $videoThumbnail }}"
+                                        alt="{{ $video->title }}"
+                                        loading="lazy"
+                                    >
 
+                                    <div class="atulya-video-thumb-overlay"></div>
 
-                            {{-- Thumbnail Overlay --}}
+                                    <button
+                                        type="button"
+                                        class="atulya-video-play open-video"
+                                        data-video-url="{{ $video->youtube_url }}"
+                                        aria-label="Play {{ $video->title }}"
+                                    >
+                                        <i class="fas fa-play"></i>
+                                    </button>
 
-                            <div class="atulya-video-thumb-overlay"></div>
-
-
-                            {{-- Play Button --}}
-
-                            <button
-                                type="button"
-                                class="atulya-video-play open-video"
-                                data-video-url="{{ $video->youtube_url }}"
-                                aria-label="Play {{ $video->title }}">
-
-                                <i class="fas fa-play"></i>
-
-                            </button>
-
-                        </div>
+                                </div>
 
 
-                        {{-- Card Content --}}
+                                {{-- Content --}}
 
-                        <div class="atulya-video-content">
+                                <div class="atulya-video-content">
 
-                            <h4>
-                                {{ $video->title }}
-                            </h4>
+                                    <h4>
+                                        {{ $video->title }}
+                                    </h4>
 
+                                    @if($video->description)
 
-                            @if($video->description)
+                                        <p>
+                                            {{ \Illuminate\Support\Str::limit($video->description, 80) }}
+                                        </p>
 
-                            <p>
-                                {{ \Illuminate\Support\Str::limit(
-                                                $video->description,
-                                                100
-                                            ) }}
-                            </p>
+                                    @endif
 
-                            @endif
+                                </div>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                    @endforeach
 
                 </div>
 
-                @endforeach
 
-            </div>
+                {{-- SEE ALL --}}
 
+                <div class="atulya-video-see-all">
 
-            {{-- =====================================================
-                     SEE ALL VIDEOS
-                ====================================================== --}}
+                    <a
+                        href="{{ route('videos.index') }}"
+                        class="theme-btn">
 
-            <div class="atulya-video-see-all">
+                        <span>
+                            View All Videos
+                        </span>
 
-                <a
-                    href="{{ route('videos.index') }}"
-                    class="theme-btn">
+                        <i class="fas fa-arrow-right"></i>
 
-                    <span>
-                        See All Videos
-                    </span>
+                    </a>
 
-                    <i class="fas fa-arrow-right"></i>
-
-                </a>
-
-            </div>
-
+                </div>
 
             @else
 
-            {{-- =====================================================
-                     EMPTY STATE
-                ====================================================== --}}
+                {{-- EMPTY STATE --}}
 
-            <div class="atulya-video-empty">
+                <div class="atulya-video-empty">
 
-                <i class="fas fa-video"></i>
+                    <i class="fas fa-video"></i>
 
-                <h3>
-                    Videos Coming Soon
-                </h3>
+                    <h3>
+                        Videos Coming Soon
+                    </h3>
 
-                <p>
-                    We are preparing informative healthcare
-                    content for you.
-                </p>
+                    <p>
+                        We are preparing informative healthcare
+                        content for you.
+                    </p>
 
-                <a
-                    href="{{ route('videos.index') }}"
-                    class="theme-btn atulya-see-videos">
+                    <a
+                        href="{{ route('videos.index') }}"
+                        class="theme-btn atulya-see-videos">
 
-                    <span>
-                        See All Videos
-                    </span>
+                        <span>
+                            View All Videos
+                        </span>
 
-                    <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right"></i>
 
-                </a>
+                    </a>
 
-            </div>
+                </div>
 
             @endif
 
@@ -1306,18 +1275,15 @@
     </div>
 
 
-    {{-- =========================================================
-         VIDEO POPUP
-    ========================================================== --}}
+    {{-- =========================
+            VIDEO POPUP
+    ========================== --}}
 
     <div
         id="videoModal"
         class="atulya-video-modal">
 
         <div class="atulya-video-modal-content">
-
-
-            {{-- Close Button --}}
 
             <button
                 type="button"
@@ -1329,15 +1295,12 @@
 
             </button>
 
-
-            {{-- YouTube Iframe --}}
-
             <div class="atulya-video-iframe-wrapper">
 
                 <iframe
                     id="popupVideo"
                     src=""
-                    title="Atulya Hospital Video"
+                    title="{{ setting('hospital_name', 'Atulya Hospital') }} Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
@@ -1349,17 +1312,6 @@
     </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1379,7 +1331,7 @@
         <div class="section-title text-center">
 
             <span class="subtitle tz-sub-tilte tz-sub-anim text-uppercase tx-subTitle">
-                WHY CHOOSE ATULYA HOSPITAL
+                WHY CHOOSE {{ setting('hospital_name') }}
             </span>
 
             <h2 class="tx-title sec_title tz-itm-title tz-itm-anim">
@@ -1453,7 +1405,7 @@
 
                     <p>
                         From routine consultations to specialised treatments,
-                        Atulya Hospital provides comprehensive healthcare services
+                        {{ setting('hospital_name') }} provides comprehensive healthcare services
                         under one roof.
                     </p>
 
@@ -1695,7 +1647,7 @@
                                         </div>
                                         <div class="testimonial-content">
                                             <p>
-                                                “I am a doctor myself and have taken the help of my colleague Dr. Dhaivat Shukla for joint-related problems in my relatives. His diagnosis and treatment approach have always impressed me. His knowledge, dedication, and patient care are truly commendable. Best wishes to my dear friend Dr. Shukla and the entire Atulya Hospital team.”
+                                                “I am a doctor myself and have taken the help of my colleague Dr. Dhaivat Shukla for joint-related problems in my relatives. His diagnosis and treatment approach have always impressed me. His knowledge, dedication, and patient care are truly commendable. Best wishes to my dear friend Dr. Shukla and the entire {{ setting('hospital_name') }} team.”
                                             </p>
                                             <div class="info-item">
                                                 <div class="info-content">
@@ -1752,7 +1704,7 @@
                                         </div>
                                         <div class="testimonial-content">
                                             <p>
-                                                “My mother was suffering from arthritis, severe morning stiffness, and constant pain. Dr. Dhaivat Shukla at Atulya Hospital helped us manage her condition with proper treatment and guidance. Her pain improved significantly, and we are truly thankful to Dr. Shukla and the entire Atulya team.”
+                                                “My mother was suffering from arthritis, severe morning stiffness, and constant pain. Dr. Dhaivat Shukla at {{ setting('hospital_name') }} helped us manage her condition with proper treatment and guidance. Her pain improved significantly, and we are truly thankful to Dr. Shukla and the entire Atulya team.”
                                             </p>
                                             <div class="info-item">
                                                 <div class="info-content">
@@ -1895,67 +1847,241 @@
 
 
 <!-- News Section Start -->
-<section class="news-section section-padding fix pt-0">
-    <div class="news-shape-1">
-        <img src="{{ asset('assets/img/home-1/news/shape-01.png') }}" alt="img">
-    </div>
-    <div class="news-shape-2">
-        <img src="{{ asset('assets/img/home-1/news/shape-02.png') }}" alt="img">
-    </div>
-    <div class="container">
-        <div class="section-title text-center">
-            <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR BLOG</span>
-            <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">Our Recent Insights, Blog <br> and News From Us</h2>
-        </div>
-        <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="news-box-items">
-                    <div class="news-img">
-                        <img src="{{ asset('assets/img/home-1/news/blog-1.png') }}" alt="img">
-                        <span class="post-box">
-                            Medical
-                        </span>
-                    </div>
-                    <div class="news-content">
-                        <span>09 May, 2026</span>
-                        <h3><a href="{{ url('/blog') }}">When to See a Doctor: Warning <br> Signs You Shouldn’t Ignore</a></h3>
-                        <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="news-box-items">
-                    <div class="news-img">
-                        <img src="{{ asset('assets/img/home-1/news/blog-2.png') }}" alt="img">
-                        <span class="post-box">
-                            Medical
-                        </span>
-                    </div>
-                    <div class="news-content">
-                        <span>20 July, 2026</span>
-                        <h3><a href="{{ url('/blog') }}">10 Everyday Habits for a Healthier <br> Life for Your Life</a></h3>
-                        <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="news-box-items">
-                    <div class="news-img">
-                        <img src="{{ asset('assets/img/home-1/news/blog-3.png') }}" alt="img">
-                        <span class="post-box">
-                            Medical
-                        </span>
-                    </div>
-                    <div class="news-content">
-                        <span>20 January, 2026</span>
-                        <h3><a href="{{ url('/blog') }}">10 Simple Daily Habits to Improve <br> Your Healthcare</a></h3>
-                        <p>A brief statement outlining the purpose and <br> mission of the clinic this can include.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="news-section section-padding fix pt-0"> 
+ 
+    <div class="news-shape-1"> 
+        <img 
+            src="{{ asset('assets/img/home-1/news/shape-01.png') }}" 
+            alt="img" 
+        > 
+    </div> 
+ 
+    <div class="news-shape-2"> 
+        <img 
+            src="{{ asset('assets/img/home-1/news/shape-02.png') }}" 
+            alt="img" 
+        > 
+    </div> 
+ 
+ 
+    <div class="container"> 
+ 
+        <!-- ========================= 
+                HEADING 
+        ========================== --> 
+ 
+        <div class="section-title text-center"> 
+ 
+            <span class="subtitle tz-sub-tilte tz-sub-anim text-uppercase tx-subTitle"> 
+                OUR BLOG 
+            </span> 
+ 
+            <h2 class="tx-title sec_title tz-itm-title tz-itm-anim"> 
+                Our Recent Insights, Blog <br> 
+                and News From Us 
+            </h2> 
+ 
+        </div> 
+ 
+ 
+        <!-- ========================= 
+                BLOGS 
+        ========================== --> 
+ 
+        @if(isset($blogs) && $blogs->count()) 
+ 
+            <div class="row"> 
+ 
+                @foreach($blogs as $blog) 
+ 
+                    <div 
+                        class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" 
+                        data-wow-delay="{{ ($loop->index + 3) / 10 }}s" 
+                    > 
+ 
+                        <div class="news-box-items"> 
+ 
+                            <!-- Blog Image --> 
+ 
+                            <div class="news-img blog-fixed-image"> 
+ 
+                                @if($blog->featured_image) 
+ 
+                                    <img 
+                                        src="{{ asset('storage/' . $blog->featured_image) }}" 
+                                        alt="{{ $blog->title }}" 
+                                    > 
+ 
+                                @else 
+ 
+                                    <img 
+                                        src="{{ asset('assets/img/home-1/news/blog-1.png') }}" 
+                                        alt="{{ $blog->title }}" 
+                                    > 
+ 
+                                @endif 
+ 
+ 
+                                @if($blog->category) 
+ 
+                                    <span class="post-box"> 
+                                        {{ $blog->category }} 
+                                    </span> 
+ 
+                                @endif 
+ 
+                            </div> 
+ 
+ 
+                            <!-- Blog Content --> 
+ 
+                            <div class="news-content"> 
+ 
+                                <span> 
+                                    {{ $blog->published_at 
+                                        ? $blog->published_at->format('d M, Y') 
+                                        : $blog->created_at->format('d M, Y') 
+                                    }} 
+                                </span> 
+ 
+ 
+                                <h3> 
+ 
+                                    <a href="{{ route('blog.show', $blog->slug) }}"> 
+ 
+                                        {{ $blog->title }} 
+ 
+                                    </a> 
+ 
+                                </h3> 
+ 
+ 
+                                @if($blog->short_description) 
+ 
+                                    <p> 
+                                        {{ \Illuminate\Support\Str::limit( 
+                                            $blog->short_description, 
+                                            120 
+                                        ) }} 
+                                    </p> 
+ 
+                                @endif 
+ 
+                            </div> 
+ 
+                        </div> 
+ 
+                    </div> 
+ 
+                @endforeach 
+ 
+            </div> 
+ 
+ 
+            <!-- ========================= 
+                    SHOW MORE BLOGS 
+            ========================== --> 
+ 
+            <div class="text-center mt-5"> 
+ 
+                <a 
+                    href="{{ route('blog') }}" 
+                    class="theme-btn" 
+                > 
+ 
+                    <i class="far fa-chevron-right"></i> 
+ 
+                    Show More Blogs 
+ 
+                </a> 
+ 
+            </div> 
+ 
+        @else 
+ 
+            <!-- Empty State --> 
+ 
+            <div class="text-center"> 
+ 
+                <p> 
+                    No blogs available at the moment. 
+                </p> 
+ 
+                <a 
+                    href="{{ route('blog') }}" 
+                    class="theme-btn" 
+                > 
+ 
+                    <i class="far fa-chevron-right"></i> 
+ 
+                    View Blog 
+ 
+                </a> 
+ 
+            </div> 
+ 
+        @endif 
+ 
+    </div> 
+ 
 </section>
+
+
+<!-- =========================
+     BLOG IMAGE CONSISTENCY
+========================== -->
+
+<style>
+
+    .news-section .blog-fixed-image {
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .news-section .blog-fixed-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+
+    /* Tablet */
+
+    @media (max-width: 991px) {
+
+        .news-section .blog-fixed-image {
+            height: 240px;
+        }
+
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 767px) {
+
+        .news-section .blog-fixed-image {
+            height: 230px;
+        }
+
+    }
+
+
+    /* Small Mobile */
+
+    @media (max-width: 575px) {
+
+        .news-section .blog-fixed-image {
+            height: 220px;
+        }
+
+    }
+
+</style>
 
 <!-- Faq Section Start -->
 
@@ -1992,8 +2118,8 @@
                                 <div class="content">
                                     <p>Emergency Assistance</p>
                                     <h4>
-                                        <a href="tel:+919727579000">
-                                            +91 97275 79000
+                                        <a href="{{ setting('phone') }}">
+                                           {{ setting('phone') }}
                                         </a>
                                     </h4>
                                 </div>
@@ -2018,7 +2144,7 @@
                                             data-bs-target="#collapseOne"
                                             aria-expanded="false"
                                             aria-controls="collapseOne">
-                                            What medical services are available at Atulya Hospital?
+                                            What medical services are available at {{ setting('hospital_name') }}?
                                         </button>
                                     </h5>
 
@@ -2028,7 +2154,7 @@
                                         aria-labelledby="headingOne"
                                         data-bs-parent="#accordion">
                                         <div class="accordion-body">
-                                            Atulya Hospital provides comprehensive multispeciality healthcare services including consultations, diagnosis, treatment, surgical care and other specialised medical services under one roof.
+                                            {{ setting('hospital_name') }} provides comprehensive multispeciality healthcare services including consultations, diagnosis, treatment, surgical care and other specialised medical services under one roof.
                                         </div>
                                     </div>
                                 </div>
@@ -2053,7 +2179,7 @@
                                         aria-labelledby="headingTwo"
                                         data-bs-parent="#accordion">
                                         <div class="accordion-body">
-                                            You can book an appointment through our website appointment form or contact Atulya Hospital directly at +91 97275 79000 for assistance with scheduling your consultation.
+                                            You can book an appointment through our website appointment form or contact {{ setting('hospital_name') }} directly at {{ setting('phone') }} for assistance with scheduling your consultation.
                                         </div>
                                     </div>
                                 </div>
@@ -2093,7 +2219,7 @@
                                             data-bs-target="#collapseFour"
                                             aria-expanded="false"
                                             aria-controls="collapseFour">
-                                            Does Atulya Hospital provide emergency medical assistance?
+                                            Does {{ setting('hospital_name') }} provide emergency medical assistance?
                                         </button>
                                     </h5>
 
@@ -2103,7 +2229,7 @@
                                         aria-labelledby="headingFour"
                                         data-bs-parent="#accordion">
                                         <div class="accordion-body">
-                                            Yes. For urgent medical assistance, patients or family members can contact Atulya Hospital at +91 97275 79000. Our team will guide you according to the patient's medical requirements.
+                                            Yes. For urgent medical assistance, patients or family members can contact {{ setting('hospital_name') }} at {{ setting('phone') }}. Our team will guide you according to the patient's medical requirements.
                                         </div>
                                     </div>
                                 </div>

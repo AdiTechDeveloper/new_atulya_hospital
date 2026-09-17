@@ -24,7 +24,7 @@
 
                 <p>
                     Discover healthcare insights, medical awareness
-                    and updates from Atulya Hospital.
+                    and updates from {{ setting('hospital_name') }}.
                 </p>
 
                 <div class="atulya-videos-breadcrumb">
@@ -239,7 +239,7 @@
                             @else
 
                             Learn more through informative healthcare
-                            content from Atulya Hospital.
+                            content from {{ setting('hospital_name') }}.
 
                             @endif
 
@@ -347,7 +347,7 @@
 
         <div class="atulya-video-frame">
 
-            <iframe id="atulyaVideoIframe" src="" title="Atulya Hospital Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            <iframe id="atulyaVideoIframe" src="" title="{{ setting('hospital_name') }} Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
             </iframe>
 
         </div>

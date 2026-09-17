@@ -45,10 +45,10 @@
                             <i class="far fa-arrow-right"></i>
                         </a>
 
-                        <a href="tel:+919727579000"
+                        <a href="{{ setting('phone') }}"
                            class="atulya-btn atulya-btn-outline">
                             <i class="far fa-phone-alt"></i>
-                            +91 97275 79000
+                           {{ setting('phone') }}
                         </a>
 
                     </div>
@@ -89,7 +89,7 @@
                         </div>
 
                         <div>
-                            <strong>Atulya Hospital</strong>
+                            <strong>{{ setting('hospital_name') }}</strong>
                             <span>Super Speciality Hospital & ICU</span>
                         </div>
 
@@ -537,7 +537,7 @@
                     <div class="atulya-infra-image">
                         <img
                             src="{{ asset('assets/img/inner/facilities/25-beds.jpg') }}"
-                            alt="25-Bed Hospital Facility at Atulya Hospital Ahmedabad"
+                            alt="25-Bed Hospital Facility at {{ setting('hospital_name') }} Ahmedabad"
                         >
                     </div>
 
@@ -558,7 +558,7 @@
                     <div class="atulya-infra-image">
                         <img
                             src="{{ asset('assets/img/inner/facilities/modular-ot.jpg') }}"
-                            alt="Modular Operation Theatre at Atulya Hospital Ahmedabad"
+                            alt="Modular Operation Theatre at {{ setting('hospital_name') }} Ahmedabad"
                         >
                     </div>
 
@@ -579,7 +579,7 @@
                     <div class="atulya-infra-image">
                         <img
                             src="{{ asset('assets/img/inner/facilities/icu.jpg') }}"
-                            alt="Critical Care ICU at Atulya Hospital Ahmedabad"
+                            alt="Critical Care ICU at {{ setting('hospital_name') }} Ahmedabad"
                         >
                     </div>
 
@@ -600,7 +600,7 @@
                     <div class="atulya-infra-image">
                         <img
                             src="{{ asset('assets/img/inner/facilities/emergency.jpg') }}"
-                            alt="24x7 Emergency Facility at Atulya Hospital Ahmedabad"
+                            alt="24x7 Emergency Facility at{{ setting('hospital_name') }} Ahmedabad"
                         >
                     </div>
 
@@ -621,7 +621,7 @@
                     <div class="atulya-infra-image">
                         <img
                             src="{{ asset('assets/img/inner/facilities/lab-pharmacy.jpg') }}"
-                            alt="Laboratory and Pharmacy Facility at Atulya Hospital Ahmedabad"
+                            alt="Laboratory and Pharmacy Facility at {{ setting('hospital_name') }} Ahmedabad"
                         >
                     </div>
 
@@ -642,7 +642,7 @@
                     <div class="atulya-infra-image">
                         <img
                             src="{{ asset('assets/img/inner/facilities/xray.jpg') }}"
-                            alt="X-Ray Diagnostic Facility at Atulya Hospital Ahmedabad"
+                            alt="X-Ray Diagnostic Facility at {{ setting('hospital_name') }} Ahmedabad"
                         >
                     </div>
 
@@ -780,7 +780,7 @@
 
 
                 <a
-                    href="tel:+919727579000"
+                    href="{{ setting('phone') }}"
                     class="atulya-btn"
                 >
                     <i class="far fa-phone-alt"></i>

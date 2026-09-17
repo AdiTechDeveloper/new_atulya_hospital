@@ -274,74 +274,6 @@
                         </div>
 
 
-                        <div class="contact-appointment-list">
-
-                            <h5
-                                class="wow fadeInUp"
-                                data-wow-delay=".3s">
-
-                                Working Hours
-
-                            </h5>
-
-
-                            <div
-                                class="contact-list wow fadeInUp"
-                                data-wow-delay=".5s">
-
-                                <ul class="list">
-
-                                    <li>
-                                        Monday
-                                        <span>9AM - 10PM</span>
-                                    </li>
-
-                                    <li>
-                                        Saturday
-                                        <span>9AM - 08PM</span>
-                                    </li>
-
-                                    <li>
-                                        Sunday
-                                        <span>9AM - 12PM</span>
-                                    </li>
-
-                                </ul>
-
-
-                                <div class="caller-item">
-
-                                    <div class="icon">
-
-                                        <img
-                                            src="{{ asset('assets/img/home-5/call.png') }}"
-                                            alt="Call">
-
-                                    </div>
-
-
-                                    <div class="content">
-
-                                        <span>
-                                            For Help
-                                        </span>
-
-                                        <p>
-
-                                            <a href="tel:+919727579000">
-                                                +91 97275 79000
-                                            </a>
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
                     </div>
 
                 </div>
@@ -480,7 +412,7 @@
                                 <!-- Age -->
 
                                 <div
-                                    class="col-lg-12 wow fadeInUp"
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
@@ -527,7 +459,7 @@
                                 <!-- Message -->
 
                                 <div
-                                    class="col-lg-12 wow fadeInUp"
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
