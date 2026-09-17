@@ -1,82 +1,56 @@
 @extends('website.layout.app')
 
-@section('title', $facility['name'])
+@section('title', $facility->title)
 
 @section('content')
 
 <!-- =========================
         Facility Details Section
     ========================== -->
-<section style="    margin-bottom: 3rem" class="service-details-section mb-10">
+
+<section style="margin-bottom: 3rem" class="service-details-section mb-10">
+
     <div class="container">
+
         <div class="service-details-wrapper">
+
             <div class="row g-5">
+
 
                 <!-- =========================
                         LEFT SIDEBAR
                     ========================== -->
+
                 <div class="col-lg-4 order-2 order-xl-1">
 
                     <div class="service-details-sidebar sticky-style">
 
+
                         <!-- Facilities List -->
+
                         <div class="sidebar-widget">
 
                             <ul class="wow fadeInUp" data-wow-delay=".3s">
 
-                                <li>
-                                    <a href="{{ url('/facilities/25-beds-central-oxygen') }}">
-                                        <span>25 Beds with Central Oxygen</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                @foreach($facilities as $item)
 
-                                <li>
-                                    <a href="{{ url('/facilities/2-modular-class-100-ot') }}">
-                                        <span>2 Modular Class 100 OT</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                    <li>
 
-                                <li>
-                                    <a href="{{ url('/facilities/6-beds-icu-with-dialysis') }}">
-                                        <span>6 Beds ICU with Dialysis</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                        <a href="{{ route('facilities.show', $item->slug) }}">
 
-                                <li>
-                                    <a href="{{ url('/facilities/24x7-emergency-ambulance') }}">
-                                        <span>24×7 Emergency & Ambulance</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                            <span>
+                                                {{ $item->title }}
+                                            </span>
 
-                                <li>
-                                    <a href="{{ url('/facilities/24x7-laboratory-pharmacy') }}">
-                                        <span>24×7 Laboratory & Pharmacy</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                            <span class="icon">
+                                                <i class="far fa-long-arrow-right"></i>
+                                            </span>
 
-                                <li>
-                                    <a href="{{ url('/facilities/x-ray-facility') }}">
-                                        <span>X-Ray Facility</span>
-                                        <span class="icon">
-                                            <i class="far fa-long-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
+                                        </a>
+
+                                    </li>
+
+                                @endforeach
 
                             </ul>
 
@@ -84,32 +58,24 @@
 
 
                         <!-- Contact Sidebar -->
-                        <div class="sidebar-widget-image wow fadeInUp" data-wow-delay=".5s">
 
-                            <img
-                               src="{{ asset($facility['image1']) }}"
-                                alt="{{ $facility['name'] }}">
-                            <!-- <div class="content">
+                        <div
+                            class="sidebar-widget-image wow fadeInUp"
+                            data-wow-delay=".5s">
 
-                                <div class="icon">
-                                    <i class="flaticon-support"></i>
-                                </div>
+                            @if($facility->secondary_image)
 
-                                <h3>
-                                    <a href="tel:+916355258425">
-                                        +91 63552 58425
-                                    </a>
-                                </h3>
+                                <img
+                                    src="{{ asset('storage/' . $facility->secondary_image) }}"
+                                    alt="{{ $facility->title }}">
 
-                                <h3>
-                                    <a
-                                        href="mailto:info@example.com"
-                                        class="link">
-                                        info@example.com
-                                    </a>
-                                </h3>
+                            @elseif($facility->main_image)
 
-                            </div> -->
+                                <img
+                                    src="{{ asset('storage/' . $facility->main_image) }}"
+                                    alt="{{ $facility->title }}">
+
+                            @endif
 
                         </div>
 
@@ -121,110 +87,163 @@
                 <!-- =========================
                         RIGHT CONTENT
                     ========================== -->
+
                 <div class="col-lg-8 order-1 order-xl-2">
 
                     <div class="service-details-right-items">
 
+
                         <!-- Main Facility Image -->
-                        <div class="service-img wow img-custom-anim-left">
 
-                            <img
-                                src="{{ asset($facility['image']) }}"
-                                alt="{{ $facility['name'] }}">
+                        @if($facility->main_image)
 
-                        </div>
+                            <div class="service-img wow img-custom-anim-left">
+
+                                <img
+                                    src="{{ asset('storage/' . $facility->main_image) }}"
+                                    alt="{{ $facility->title }}">
+
+                            </div>
+
+                        @endif
 
 
                         <!-- Facility Name -->
+
                         <h3>
-                            {{ $facility['name'] }}
+                            {{ $facility->title }}
                         </h3>
 
 
                         <!-- Facility Description -->
-                        <p>
-                            {{ $facility['description'] }}
-                        </p>
+
+                        @if($facility->short_description)
+
+                            <p>
+                                {{ $facility->short_description }}
+                            </p>
+
+                        @endif
 
 
                         <!-- Overview -->
-                        <h4>
-                            {{ $facility['overview_title'] }}
-                        </h4>
 
-                        <p>
-                            {{ $facility['overview'] }}
-                        </p>
+                        @if($facility->section_heading)
+
+                            <h4>
+                                {{ $facility->section_heading }}
+                            </h4>
+
+                        @endif
+
+
+                        @if($facility->section_description)
+
+                            <p>
+                                {{ $facility->section_description }}
+                            </p>
+
+                        @endif
 
 
                         <!-- Facility Highlights -->
-                        <div class="list-box">
 
-                            <ul>
+                        @if(!empty($facility->features))
 
-                                @foreach(array_slice($facility['highlights'], 0, 3) as $highlight)
+                            <div class="list-box">
 
-                                <li>
-                                    <i class="far fa-check"></i>
-                                    {{ $highlight }}
-                                </li>
+                                <ul>
 
-                                @endforeach
+                                    @foreach(array_slice($facility->features, 0, 3) as $feature)
 
-                            </ul>
+                                        <li>
+
+                                            <i class="far fa-check"></i>
+
+                                            {{ $feature }}
+
+                                        </li>
+
+                                    @endforeach
+
+                                </ul>
 
 
-                            <ul>
+                                <ul>
 
-                                @foreach(array_slice($facility['highlights'], 3, 3) as $highlight)
+                                    @foreach(array_slice($facility->features, 3, 3) as $feature)
 
-                                <li>
-                                    <i class="far fa-check"></i>
-                                    {{ $highlight }}
-                                </li>
+                                        <li>
 
-                                @endforeach
+                                            <i class="far fa-check"></i>
 
-                            </ul>
+                                            {{ $feature }}
 
-                        </div>
+                                        </li>
+
+                                    @endforeach
+
+                                </ul>
+
+                            </div>
+
+                        @endif
 
 
                         <!-- Supporting Information -->
-                        <h4>
-                            {{ $facility['why_title'] }}
-                        </h4>
 
-                        <p>
-                            {{ $facility['supporting_information'] }}
-                        </p>
+                        @if($facility->bottom_heading)
+
+                            <h4>
+                                {{ $facility->bottom_heading }}
+                            </h4>
+
+                        @endif
+
+
+                        @if($facility->bottom_description)
+
+                            <p>
+                                {{ $facility->bottom_description }}
+                            </p>
+
+                        @endif
 
 
                         <!-- Appointment Button -->
+
                         <div class="mt-4">
 
                             <a
                                 href="{{ url('/appointment') }}"
                                 class="theme-btn">
+
                                 <i class="far fa-chevron-right"></i>
+
                                 Make An Appointment
+
                             </a>
 
                         </div>
+
 
                     </div>
 
                 </div>
 
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 
 <!-- =========================
         CONTACT / APPOINTMENT
     ========================== -->
+
 <section class="contact-appointment-section section-padding fix pt-0">
 
     <div class="container">
@@ -233,12 +252,15 @@
 
             <div class="row g-4">
 
+
                 <!-- =========================
                         LEFT SIDE
                     ========================== -->
+
                 <div class="col-lg-6">
 
                     <div class="contact-appointment-left-item">
+
 
                         <div
                             class="contact-appointment-image wow img-custom-anim-left"
@@ -257,8 +279,11 @@
                             <h5
                                 class="wow fadeInUp"
                                 data-wow-delay=".3s">
+
                                 Working Hours
+
                             </h5>
+
 
                             <div
                                 class="contact-list wow fadeInUp"
@@ -294,14 +319,19 @@
 
                                     </div>
 
+
                                     <div class="content">
 
-                                        <span>For Help</span>
+                                        <span>
+                                            For Help
+                                        </span>
 
                                         <p>
-                                            <a href="tel:+916355258425">
-                                                +91 63552 58425
+
+                                            <a href="tel:+919727579000">
+                                                +91 97275 79000
                                             </a>
+
                                         </p>
 
                                     </div>
@@ -320,6 +350,7 @@
                 <!-- =========================
                         RIGHT SIDE - APPOINTMENT
                     ========================== -->
+
                 <div class="col-lg-6">
 
                     <div class="contact-appointment-box">
@@ -328,20 +359,25 @@
                             Book An Appointment
                         </h3>
 
+
                         <form action="#" method="POST">
 
                             @csrf
 
                             <div class="row g-4">
 
+
                                 <!-- Name -->
+
                                 <div
                                     class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
 
-                                        <span>Name</span>
+                                        <span>
+                                            Name
+                                        </span>
 
                                         <input
                                             type="text"
@@ -354,13 +390,16 @@
 
 
                                 <!-- Email -->
+
                                 <div
                                     class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
 
-                                        <span>Email</span>
+                                        <span>
+                                            Email
+                                        </span>
 
                                         <input
                                             type="email"
@@ -373,13 +412,16 @@
 
 
                                 <!-- Phone -->
+
                                 <div
                                     class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
 
-                                        <span>Phone</span>
+                                        <span>
+                                            Phone
+                                        </span>
 
                                         <input
                                             type="text"
@@ -392,13 +434,16 @@
 
 
                                 <!-- Facility -->
+
                                 <div
                                     class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
 
-                                        <span>Facility</span>
+                                        <span>
+                                            Facility
+                                        </span>
 
                                         <div class="form">
 
@@ -410,11 +455,18 @@
                                                     Select Facility
                                                 </option>
 
-                                                <option
-                                                    value="{{ $facility['slug'] }}"
-                                                    selected>
-                                                    {{ $facility['name'] }}
-                                                </option>
+
+                                                @foreach($facilities as $item)
+
+                                                    <option
+                                                        value="{{ $item->slug }}"
+                                                        {{ $item->id == $facility->id ? 'selected' : '' }}>
+
+                                                        {{ $item->title }}
+
+                                                    </option>
+
+                                                @endforeach
 
                                             </select>
 
@@ -426,13 +478,16 @@
 
 
                                 <!-- Age -->
+
                                 <div
                                     class="col-lg-12 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
 
-                                        <span>Select Age</span>
+                                        <span>
+                                            Select Age
+                                        </span>
 
                                         <div class="form">
 
@@ -470,13 +525,16 @@
 
 
                                 <!-- Message -->
+
                                 <div
                                     class="col-lg-12 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
 
-                                        <span>Your Message</span>
+                                        <span>
+                                            Your Message
+                                        </span>
 
                                         <textarea
                                             name="message"
@@ -488,6 +546,7 @@
 
 
                                 <!-- Submit -->
+
                                 <div
                                     class="col-lg-12 wow fadeInUp"
                                     data-wow-delay=".3s">
@@ -504,6 +563,7 @@
 
                                 </div>
 
+
                             </div>
 
                         </form>
@@ -519,6 +579,5 @@
     </div>
 
 </section>
-
 
 @endsection

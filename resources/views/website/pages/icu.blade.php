@@ -6,9 +6,9 @@
 
 <link rel="stylesheet" href="{{ asset('assets/css/icu-emergency.css') }}">
 
-<section class="icu-emergency-section">
+<section class="">
 
-    <div class="container">
+    <div class="container pb-10">
 
     
         <div class="icu-intro text-center">

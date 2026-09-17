@@ -22,9 +22,9 @@
 
                 <div class="doctor-profile-photo">
 
-                    <img
-                        src="{{ asset($doctor['image']) }}"
-                        alt="{{ $doctor['name'] }}"
+                                      <img
+        src="{{ asset('storage/' . $doctor->image) }}"
+        alt="{{ $doctor->name }}"
                     >
 
 

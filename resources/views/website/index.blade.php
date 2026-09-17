@@ -959,22 +959,19 @@
                         <div class="team-box-items mt-0 advance-item h-100 d-flex flex-column">
 
                             <!-- Doctor Image -->
-                            <div class="team-image">
+                           <div class="team-image p-3">
 
-                                <a href="{{ route('doctors.show', $doctor['slug']) }}">
+    <img
+        src="{{ asset('storage/' . $doctor->image) }}"
+        alt="{{ $doctor->name }}"
+        class="doctor-fixed-image d-block mx-auto"
+    >
 
-                                    <img
-                                        src="{{ asset($doctor['image']) }}"
-                                        alt="{{ $doctor['name'] }}">
+    <span class="post-box">
+        {{ $doctor->department }}
+    </span>
 
-                                </a>
-
-                                <!-- Department -->
-                                <span class="post-box">
-                                    {{ $doctor['department'] }}
-                                </span>
-
-                            </div>
+</div>
 
 
                             <!-- Doctor Details -->
@@ -1069,7 +1066,7 @@
 
 
 
-      
+
 
         <!-- Button -->
         <div class="team-button text-center mt-5 wow fadeInUp" data-wow-delay=".9s">
@@ -1097,6 +1094,10 @@
 
         <div class="atulya-video-inner">
 
+            {{-- =====================================================
+                 HEADING
+            ====================================================== --}}
+
             <div class="atulya-video-heading">
 
                 <span>OUR VIDEOS</span>
@@ -1113,133 +1114,163 @@
             </div>
 
 
-            @if(isset($featuredVideo) && $featuredVideo)
+            {{-- =====================================================
+                 VIDEOS
+            ====================================================== --}}
 
-            @php
+            @if(isset($videos) && $videos->count())
 
-            $youtubeId = null;
+            <div class="row g-4 atulya-video-row">
 
-            if (
-            preg_match(
-            '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
-            $featuredVideo->youtube_url,
-            $matches
-            )
-            ) {
-            $youtubeId = $matches[1];
-            }
+                @foreach($videos as $video)
 
+                @php
 
-            if ($featuredVideo->thumbnail) {
+                /*
+                |--------------------------------------------------------------------------
+                | Get YouTube Video ID
+                |--------------------------------------------------------------------------
+                */
 
-            $videoThumbnail =
-            asset('storage/' . $featuredVideo->thumbnail);
+                $youtubeId = null;
 
-            } elseif ($youtubeId) {
-
-            $videoThumbnail =
-            'https://img.youtube.com/vi/' .
-            $youtubeId .
-            '/maxresdefault.jpg';
-
-            } else {
-
-            $videoThumbnail =
-            asset('assets/img/home-1/counter/video-img.png');
-
-            }
-
-            @endphp
+                if (
+                preg_match(
+                '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
+                $video->youtube_url,
+                $matches
+                )
+                ) {
+                $youtubeId = $matches[1];
+                }
 
 
-            <div class="atulya-featured-video-card">
+                /*
+                |--------------------------------------------------------------------------
+                | Video Thumbnail
+                |--------------------------------------------------------------------------
+                */
 
-                <div class="atulya-featured-thumbnail">
+                if ($video->thumbnail) {
 
-                    <img
-                        src="{{ $videoThumbnail }}"
-                        alt="{{ $featuredVideo->title }}"
-                        loading="lazy">
+                $videoThumbnail = asset(
+                'storage/' . $video->thumbnail
+                );
 
-                    <div class="atulya-featured-overlay"></div>
-   
+                } elseif ($youtubeId) {
 
-                    <button
-                        type="button"
-                        class="atulya-featured-play"
-                        id="openVideo"
-                        data-video-url="{{ $featuredVideo->youtube_url }}"
-                        aria-label="Play {{ $featuredVideo->title }}">
-                        <i class="fas fa-play"></i>
-                    </button>
+                $videoThumbnail =
+                'https://img.youtube.com/vi/' .
+                $youtubeId .
+                '/maxresdefault.jpg';
 
-                </div>
+                } else {
 
+                $videoThumbnail =
+                asset(
+                'assets/img/home-1/counter/video-img.png'
+                );
 
-                <div class="atulya-featured-info">
+                }
 
-                    <span class="atulya-featured-label">
-                        Featured Video
-                    </span>
-
-
-                    <h3>
-                        {{ $featuredVideo->title }}
-                    </h3>
+                @endphp
 
 
-                    @if($featuredVideo->description)
+                {{-- =====================================================
+                             VIDEO CARD
+                        ====================================================== --}}
 
-                    <p>
-                        {{ \Illuminate\Support\Str::limit(
-                                    $featuredVideo->description,
-                                    130
-                                ) }}
-                    </p>
+                <div class="col-xl-3 col-lg-3 col-md-6">
 
-                    @else
+                    <div class="atulya-video-card">
 
-                    <p>
-                        Explore healthcare information,
-                        awareness and updates from Atulya Hospital.
-                    </p>
+                        {{-- Thumbnail --}}
 
-                    @endif
+                        <div class="atulya-video-thumb">
 
-
-                    <div class="atulya-featured-bottom">
-
-                        <button
-                            type="button"
-                            class="atulya-watch-video"
-                            id="openVideoBottom"
-                            data-video-url="{{ $featuredVideo->youtube_url }}">
-                            <span>
-                                Watch Video
-                            </span>
-
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
+                            <img
+                                src="{{ $videoThumbnail }}"
+                                alt="{{ $video->title }}"
+                                loading="lazy">
 
 
-                        <a
-                            href="{{ route('videos.index') }}"
-                            class="atulya-all-videos">
-                            <span>
-                                See All Videos
-                            </span>
+                            {{-- Thumbnail Overlay --}}
 
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+                            <div class="atulya-video-thumb-overlay"></div>
+
+
+                            {{-- Play Button --}}
+
+                            <button
+                                type="button"
+                                class="atulya-video-play open-video"
+                                data-video-url="{{ $video->youtube_url }}"
+                                aria-label="Play {{ $video->title }}">
+
+                                <i class="fas fa-play"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        {{-- Card Content --}}
+
+                        <div class="atulya-video-content">
+
+                            <h4>
+                                {{ $video->title }}
+                            </h4>
+
+
+                            @if($video->description)
+
+                            <p>
+                                {{ \Illuminate\Support\Str::limit(
+                                                $video->description,
+                                                100
+                                            ) }}
+                            </p>
+
+                            @endif
+
+                        </div>
 
                     </div>
 
                 </div>
 
+                @endforeach
+
+            </div>
+
+
+            {{-- =====================================================
+                     SEE ALL VIDEOS
+                ====================================================== --}}
+
+            <div class="atulya-video-see-all">
+
+                <a
+                    href="{{ route('videos.index') }}"
+                    class="theme-btn">
+
+                    <span>
+                        See All Videos
+                    </span>
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
             </div>
 
 
             @else
+
+            {{-- =====================================================
+                     EMPTY STATE
+                ====================================================== --}}
 
             <div class="atulya-video-empty">
 
@@ -1257,11 +1288,13 @@
                 <a
                     href="{{ route('videos.index') }}"
                     class="theme-btn atulya-see-videos">
+
                     <span>
                         See All Videos
                     </span>
 
                     <i class="fas fa-arrow-right"></i>
+
                 </a>
 
             </div>
@@ -1273,7 +1306,9 @@
     </div>
 
 
-    <!-- Video Popup -->
+    {{-- =========================================================
+         VIDEO POPUP
+    ========================================================== --}}
 
     <div
         id="videoModal"
@@ -1281,14 +1316,21 @@
 
         <div class="atulya-video-modal-content">
 
+
+            {{-- Close Button --}}
+
             <button
                 type="button"
                 id="closeVideo"
                 class="atulya-video-close"
                 aria-label="Close video">
+
                 <i class="fas fa-times"></i>
+
             </button>
 
+
+            {{-- YouTube Iframe --}}
 
             <div class="atulya-video-iframe-wrapper">
 
@@ -1307,6 +1349,10 @@
     </div>
 
 </section>
+
+
+
+
 
 
 
@@ -1789,63 +1835,63 @@
     </div>
 </section>
 
-  <!-- Brand Section Start -->
-    <div class="brand-section section-padding fix">
-        <div class="container">
-            <div class="swiper brand-slide">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/rheumatology.png') }}"style="width:180px; height:150px;"
-                                alt="img">
-                        </div>
+<!-- Brand Section Start -->
+<div class="brand-section section-padding fix">
+    <div class="container">
+        <div class="swiper brand-slide">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/rheumatology.png') }}" style="width:180px; height:150px;"
+                            alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/General Surgery.png') }}"
-                                style="width:180px; height:150px;"alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/General Surgery.png') }}"
+                            style="width:180px; height:150px;" alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/ENT.png') }}" style="width:180px; height:150px;"
-                                alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/ENT.png') }}" style="width:180px; height:150px;"
+                            alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/Gastroenterology.png') }}"
-                                style="width:180px; height:150px;" alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/Gastroenterology.png') }}"
+                            style="width:180px; height:150px;" alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/Urology.png') }}"
-                                style="width:180px; height:150px;" alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/Urology.png') }}"
+                            style="width:180px; height:150px;" alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/Orthopedics.png') }}"
-                                style="width:180px; height:150px;" alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/Orthopedics.png') }}"
+                            style="width:180px; height:150px;" alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/Emergency.png') }}"
-                                style="width:180px; height:150px;" alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/Emergency.png') }}"
+                            style="width:180px; height:150px;" alt="img">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="barnd-image text-center">
-                            <img src="{{ asset('assets/img/home-1/brand/plastic_surgery.png') }}"
-                                style="width:180px; height:150px;" alt="img">
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="barnd-image text-center">
+                        <img src="{{ asset('assets/img/home-1/brand/plastic_surgery.png') }}"
+                            style="width:180px; height:150px;" alt="img">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 <!-- News Section Start -->
@@ -1909,7 +1955,7 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 
 <!-- Faq Section Start -->
 

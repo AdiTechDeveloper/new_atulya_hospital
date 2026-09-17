@@ -242,7 +242,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="{{ url('/facilities/25-beds-central-oxygen') }}">
+                                                <a href="{{ url('/facilities') }}">
                                                     Facilities
                                                 </a>
                                             </li>

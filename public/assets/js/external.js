@@ -136,210 +136,395 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
 
-    const openButton =
-        document.getElementById('openVideo');
-
-    const bottomButton =
-        document.getElementById('openVideoBottom');
-
-    const modal =
-        document.getElementById('videoModal');
-
-    const iframe =
-        document.getElementById('popupVideo');
-
-    const closeButton =
-        document.getElementById('closeVideo');
+    document.addEventListener('DOMContentLoaded', function() {
 
 
-    if (!modal || !iframe) {
-        return;
-    }
+        /* =========================================================
+           ELEMENTS
+        ========================================================= */
+
+        const modal = document.getElementById('videoModal');
+
+        const iframe = document.getElementById('popupVideo');
+
+        const closeBtn = document.getElementById('closeVideo');
 
 
-    function getYoutubeId(url) {
-
-        if (!url) {
-            return null;
-        }
-
-
-        const patterns = [
-
-            /youtube\.com\/watch\?v=([^&]+)/,
-
-            /youtu\.be\/([^?&]+)/,
-
-            /youtube\.com\/embed\/([^?&]+)/,
-
-            /youtube\.com\/shorts\/([^?&]+)/
-
-        ];
-
-
-        for (const pattern of patterns) {
-
-            const match =
-                url.match(pattern);
-
-            if (match) {
-                return match[1];
-            }
-
-        }
-
-
-        return null;
-    }
-
-
-    function openVideo(videoUrl) {
-
-        const videoId =
-            getYoutubeId(videoUrl);
-
-
-        if (!videoId) {
+        if (!modal || !iframe) {
             return;
         }
 
 
-        iframe.src =
-            'https://www.youtube.com/embed/' +
-            videoId +
-            '?autoplay=1&rel=0';
+        /* =========================================================
+           GET YOUTUBE ID
+        ========================================================= */
+
+        function getYoutubeId(url) {
+
+            if (!url) {
+                return null;
+            }
 
 
-        modal.classList.add('active');
+            const patterns = [
 
-        document.body.style.overflow = 'hidden';
+                /youtube\.com\/watch\?v=([^&]+)/,
 
-    }
+                /youtu\.be\/([^?&]+)/,
+
+                /youtube\.com\/embed\/([^?&]+)/,
+
+                /youtube\.com\/shorts\/([^?&]+)/
+
+            ];
 
 
-    if (openButton) {
+            for (const pattern of patterns) {
 
-        openButton.addEventListener(
-            'click',
-            function () {
+                const match = url.match(pattern);
 
-                openVideo(
-                    this.getAttribute('data-video-url')
-                );
+                if (match) {
+
+                    return match[1];
+
+                }
 
             }
-        );
-
-    }
 
 
-    if (bottomButton) {
-
-        bottomButton.addEventListener(
-            'click',
-            function () {
-
-                openVideo(
-                    this.getAttribute('data-video-url')
-                );
-
-            }
-        );
-
-    }
-
-
-    function closeVideo() {
-
-        modal.classList.remove('active');
-
-        iframe.src = '';
-
-        document.body.style.overflow = '';
-
-    }
-
-
-    if (closeButton) {
-
-        closeButton.addEventListener(
-            'click',
-            closeVideo
-        );
-
-    }
-
-
-    modal.addEventListener(
-        'click',
-        function (event) {
-
-            if (event.target === modal) {
-                closeVideo();
-            }
+            return null;
 
         }
-    );
 
 
-    document.addEventListener(
-        'keydown',
-        function (event) {
+        /* =========================================================
+           OPEN VIDEO
+        ========================================================= */
 
-            if (event.key === 'Escape') {
-                closeVideo();
-            }
-
-        }
-    );
-
-});
+        document
+            .querySelectorAll('.atulya-home-video .open-video')
+            .forEach(function(button) {
 
 
-const openVideo = document.getElementById("openVideo");
-const closeVideoButton = document.getElementById("closeVideo");
-const videoModal = document.getElementById("videoModal");
-const popupVideo = document.getElementById("popupVideo");
+                button.addEventListener('click', function() {
 
-// Open popup
-if (openVideo && videoModal && popupVideo) {
-    openVideo.addEventListener("click", function () {
-        videoModal.style.display = "flex";
 
-        popupVideo.currentTime = 0;
+                    const youtubeUrl =
+                        this.getAttribute('data-video-url');
 
-        const playPromise = popupVideo.play();
 
-        if (playPromise !== undefined) {
-            playPromise.catch(function (error) {
-                console.log("Video autoplay prevented:", error);
+                    const videoId =
+                        getYoutubeId(youtubeUrl);
+
+
+                    if (!videoId) {
+
+                        return;
+
+                    }
+
+
+                    iframe.src =
+                        'https://www.youtube.com/embed/' +
+                        videoId +
+                        '?autoplay=1&rel=0';
+
+
+                    modal.classList.add('active');
+
+
+                    document.body.style.overflow = 'hidden';
+
+
+                });
+
             });
+
+
+        /* =========================================================
+           CLOSE VIDEO
+        ========================================================= */
+
+        function closeVideo() {
+
+
+            modal.classList.remove('active');
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Remove iframe src so video stops
+            |--------------------------------------------------------------------------
+            */
+
+            iframe.src = '';
+
+
+            document.body.style.overflow = '';
+
+
         }
-    });
-}
 
-// Close popup
-if (closeVideoButton && videoModal && popupVideo) {
-    closeVideoButton.addEventListener("click", function () {
-        videoModal.style.display = "none";
 
-        popupVideo.pause();
-        popupVideo.currentTime = 0;
-    });
-}
+        /* =========================================================
+           CLOSE BUTTON
+        ========================================================= */
 
-// Close when clicking outside video
-if (videoModal && popupVideo) {
-    videoModal.addEventListener("click", function (e) {
-        if (e.target === videoModal) {
-            videoModal.style.display = "none";
+        if (closeBtn) {
 
-            popupVideo.pause();
-            popupVideo.currentTime = 0;
+            closeBtn.addEventListener(
+                'click',
+                closeVideo
+            );
+
         }
+
+
+        /* =========================================================
+           CLOSE ON BACKGROUND CLICK
+        ========================================================= */
+
+        modal.addEventListener(
+            'click',
+            function(event) {
+
+
+                if (event.target === modal) {
+
+                    closeVideo();
+
+                }
+
+            }
+        );
+
+
+        /* =========================================================
+           CLOSE WITH ESC
+        ========================================================= */
+
+        document.addEventListener(
+            'keydown',
+            function(event) {
+
+
+                if (event.key === 'Escape') {
+
+                    closeVideo();
+
+                }
+
+            }
+        );
+
+
     });
-}
+
+// document.addEventListener('DOMContentLoaded', function () {
+
+//     const openButton =
+//         document.getElementById('openVideo');
+
+//     const bottomButton =
+//         document.getElementById('openVideoBottom');
+
+//     const modal =
+//         document.getElementById('videoModal');
+
+//     const iframe =
+//         document.getElementById('popupVideo');
+
+//     const closeButton =
+//         document.getElementById('closeVideo');
+
+
+//     if (!modal || !iframe) {
+//         return;
+//     }
+
+
+//     function getYoutubeId(url) {
+
+//         if (!url) {
+//             return null;
+//         }
+
+
+//         const patterns = [
+
+//             /youtube\.com\/watch\?v=([^&]+)/,
+
+//             /youtu\.be\/([^?&]+)/,
+
+//             /youtube\.com\/embed\/([^?&]+)/,
+
+//             /youtube\.com\/shorts\/([^?&]+)/
+
+//         ];
+
+
+//         for (const pattern of patterns) {
+
+//             const match =
+//                 url.match(pattern);
+
+//             if (match) {
+//                 return match[1];
+//             }
+
+//         }
+
+
+//         return null;
+//     }
+
+
+//     function openVideo(videoUrl) {
+
+//         const videoId =
+//             getYoutubeId(videoUrl);
+
+
+//         if (!videoId) {
+//             return;
+//         }
+
+
+//         iframe.src =
+//             'https://www.youtube.com/embed/' +
+//             videoId +
+//             '?autoplay=1&rel=0';
+
+
+//         modal.classList.add('active');
+
+//         document.body.style.overflow = 'hidden';
+
+//     }
+
+
+//     if (openButton) {
+
+//         openButton.addEventListener(
+//             'click',
+//             function () {
+
+//                 openVideo(
+//                     this.getAttribute('data-video-url')
+//                 );
+
+//             }
+//         );
+
+//     }
+
+
+//     if (bottomButton) {
+
+//         bottomButton.addEventListener(
+//             'click',
+//             function () {
+
+//                 openVideo(
+//                     this.getAttribute('data-video-url')
+//                 );
+
+//             }
+//         );
+
+//     }
+
+
+//     function closeVideo() {
+
+//         modal.classList.remove('active');
+
+//         iframe.src = '';
+
+//         document.body.style.overflow = '';
+
+//     }
+
+
+//     if (closeButton) {
+
+//         closeButton.addEventListener(
+//             'click',
+//             closeVideo
+//         );
+
+//     }
+
+
+//     modal.addEventListener(
+//         'click',
+//         function (event) {
+
+//             if (event.target === modal) {
+//                 closeVideo();
+//             }
+
+//         }
+//     );
+
+
+//     document.addEventListener(
+//         'keydown',
+//         function (event) {
+
+//             if (event.key === 'Escape') {
+//                 closeVideo();
+//             }
+
+//         }
+//     );
+
+// });
+
+
+// const openVideo = document.getElementById("openVideo");
+// const closeVideoButton = document.getElementById("closeVideo");
+// const videoModal = document.getElementById("videoModal");
+// const popupVideo = document.getElementById("popupVideo");
+
+// // Open popup
+// if (openVideo && videoModal && popupVideo) {
+//     openVideo.addEventListener("click", function () {
+//         videoModal.style.display = "flex";
+
+//         popupVideo.currentTime = 0;
+
+//         const playPromise = popupVideo.play();
+
+//         if (playPromise !== undefined) {
+//             playPromise.catch(function (error) {
+//                 console.log("Video autoplay prevented:", error);
+//             });
+//         }
+//     });
+// }
+
+// // Close popup
+// if (closeVideoButton && videoModal && popupVideo) {
+//     closeVideoButton.addEventListener("click", function () {
+//         videoModal.style.display = "none";
+
+//         popupVideo.pause();
+//         popupVideo.currentTime = 0;
+//     });
+// }
+
+// // Close when clicking outside video
+// if (videoModal && popupVideo) {
+//     videoModal.addEventListener("click", function (e) {
+//         if (e.target === videoModal) {
+//             videoModal.style.display = "none";
+
+//             popupVideo.pause();
+//             popupVideo.currentTime = 0;
+//         }
+//     });
+// }
 
 
