@@ -5,36 +5,41 @@
 @section('content')
 
 <!-- =========================
-        Facility Details Section
-    ========================== -->
+    FACILITY DETAILS SECTION
+========================== -->
 
-<section style="margin-bottom: 3rem" class="service-details-section mb-10">
+<section class="facility-details-section section-padding">
 
     <div class="container">
 
-        <div class="service-details-wrapper">
+        <div class="facility-details-wrapper">
 
             <div class="row g-5">
 
 
                 <!-- =========================
-                        LEFT SIDEBAR
-                    ========================== -->
+                    LEFT SIDEBAR
+                ========================== -->
 
                 <div class="col-lg-4 order-2 order-xl-1">
 
-                    <div class="service-details-sidebar sticky-style">
-
-
-                        <!-- Facilities List -->
+                    <div class="facility-sidebar sticky-style">
 
                         <div class="sidebar-widget">
 
-                            <ul class="wow fadeInUp" data-wow-delay=".3s">
+                            <h4 class="facility-sidebar-title">
+                                Our Facilities
+                            </h4>
+
+
+                            <ul class="facility-list wow fadeInUp"
+                                data-wow-delay=".3s">
 
                                 @foreach($facilities as $item)
 
-                                    <li>
+                                    <li
+                                        class="{{ $facility->id == $item->id ? 'active' : '' }}"
+                                    >
 
                                         <a href="{{ route('facilities.show', $item->slug) }}">
 
@@ -56,176 +61,212 @@
 
                         </div>
 
-
-                        <!-- Contact Sidebar -->
-
-                        <div
-                            class="sidebar-widget-image wow fadeInUp"
-                            data-wow-delay=".5s">
-
-                            @if($facility->secondary_image)
-
-                                <img
-                                    src="{{ asset('storage/' . $facility->secondary_image) }}"
-                                    alt="{{ $facility->title }}">
-
-                            @elseif($facility->main_image)
-
-                                <img
-                                    src="{{ asset('storage/' . $facility->main_image) }}"
-                                    alt="{{ $facility->title }}">
-
-                            @endif
-
-                        </div>
-
                     </div>
 
                 </div>
 
 
                 <!-- =========================
-                        RIGHT CONTENT
-                    ========================== -->
+                    RIGHT CONTENT
+                ========================== -->
 
                 <div class="col-lg-8 order-1 order-xl-2">
 
-                    <div class="service-details-right-items">
+                    <div class="facility-details-content">
 
 
-                        <!-- Main Facility Image -->
+                        <!-- =========================
+                            FACILITY IMAGES
+                        ========================== -->
 
-                        @if($facility->main_image)
+                        <div class="facility-images">
 
-                            <div class="service-img wow img-custom-anim-left">
+                            <div class="row g-3">
 
-                                <img
-                                    src="{{ asset('storage/' . $facility->main_image) }}"
-                                    alt="{{ $facility->title }}">
+                                {{-- Main Image --}}
+                                @if($facility->main_image)
 
-                            </div>
+                                    <div class="col-md-7">
 
-                        @endif
+                                        <div class="facility-image large-image wow img-custom-anim-left">
 
+                                            <img
+                                                src="{{ asset('storage/' . $facility->main_image) }}"
+                                                alt="{{ $facility->title }}"
+                                            >
 
-                        <!-- Facility Name -->
+                                        </div>
 
-                        <h3>
-                            {{ $facility->title }}
-                        </h3>
+                                    </div>
 
-
-                        <!-- Facility Description -->
-
-                        @if($facility->short_description)
-
-                            <p>
-                                {{ $facility->short_description }}
-                            </p>
-
-                        @endif
+                                @endif
 
 
-                        <!-- Overview -->
+                                {{-- Secondary Image --}}
+                                @if($facility->secondary_image)
 
-                        @if($facility->section_heading)
+                                    <div class="col-md-5">
 
-                            <h4>
-                                {{ $facility->section_heading }}
-                            </h4>
+                                        <div class="facility-image small-image wow img-custom-anim-right">
 
-                        @endif
+                                            <img
+                                                src="{{ asset('storage/' . $facility->secondary_image) }}"
+                                                alt="{{ $facility->title }}"
+                                            >
 
+                                        </div>
 
-                        @if($facility->section_description)
+                                    </div>
 
-                            <p>
-                                {{ $facility->section_description }}
-                            </p>
+                                @elseif($facility->main_image)
 
-                        @endif
+                                    {{-- If secondary image does not exist --}}
+                                    <div class="col-md-5">
 
+                                        <div class="facility-image small-image">
 
-                        <!-- Facility Highlights -->
+                                            <img
+                                                src="{{ asset('storage/' . $facility->main_image) }}"
+                                                alt="{{ $facility->title }}"
+                                            >
 
-                        @if(!empty($facility->features))
+                                        </div>
 
-                            <div class="list-box">
+                                    </div>
 
-                                <ul>
-
-                                    @foreach(array_slice($facility->features, 0, 3) as $feature)
-
-                                        <li>
-
-                                            <i class="far fa-check"></i>
-
-                                            {{ $feature }}
-
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
-
-
-                                <ul>
-
-                                    @foreach(array_slice($facility->features, 3, 3) as $feature)
-
-                                        <li>
-
-                                            <i class="far fa-check"></i>
-
-                                            {{ $feature }}
-
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
+                                @endif
 
                             </div>
-
-                        @endif
-
-
-                        <!-- Supporting Information -->
-
-                        @if($facility->bottom_heading)
-
-                            <h4>
-                                {{ $facility->bottom_heading }}
-                            </h4>
-
-                        @endif
-
-
-                        @if($facility->bottom_description)
-
-                            <p>
-                                {{ $facility->bottom_description }}
-                            </p>
-
-                        @endif
-
-
-                        <!-- Appointment Button -->
-
-                        <div class="mt-4">
-
-                            <a
-                                href="{{ url('/appointment') }}"
-                                class="theme-btn">
-
-                                <i class="far fa-chevron-right"></i>
-
-                                Make An Appointment
-
-                            </a>
 
                         </div>
 
+
+                        <!-- =========================
+                            FACILITY TITLE
+                        ========================== -->
+
+                        <div class="facility-content mt-4">
+
+                            <h2 class="facility-title">
+
+                                {{ $facility->title }}
+
+                            </h2>
+
+
+                            <!-- =========================
+                                MAIN DESCRIPTION
+                            ========================== -->
+
+                            @if($facility->short_description)
+
+                                <p class="facility-description">
+
+                                    {{ $facility->short_description }}
+
+                                </p>
+
+                            @endif
+
+
+                            <!-- =========================
+                                SECTION HEADING
+                            ========================== -->
+
+                            @if($facility->section_heading)
+
+                                <h4 class="facility-section-heading">
+
+                                    {{ $facility->section_heading }}
+
+                                </h4>
+
+                            @endif
+
+
+                            <!-- =========================
+                                SECTION DESCRIPTION
+                            ========================== -->
+
+                            @if($facility->section_description)
+
+                                <p class="facility-section-description">
+
+                                    {{ $facility->section_description }}
+
+                                </p>
+
+                            @endif
+
+
+                            <!-- =========================
+                                FEATURES
+                            ========================== -->
+
+                            @if(!empty($facility->features))
+
+                                <div class="facility-features">
+
+                                    <div class="row">
+
+                                        @foreach($facility->features as $feature)
+
+                                            <div class="col-md-6">
+
+                                                <div class="facility-feature-item">
+
+                                                    <span class="feature-icon">
+
+                                                        <i class="far fa-check"></i>
+
+                                                    </span>
+
+                                                    <span class="feature-text">
+
+                                                        {{ $feature }}
+
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        @endforeach
+
+                                    </div>
+
+                                </div>
+
+                            @endif
+
+
+                            <!-- =========================
+                                BOTTOM CONTENT
+                            ========================== -->
+
+                            @if($facility->bottom_heading)
+
+                                <h4 class="facility-bottom-heading">
+
+                                    {{ $facility->bottom_heading }}
+
+                                </h4>
+
+                            @endif
+
+
+                            @if($facility->bottom_description)
+
+                                <p class="facility-bottom-description">
+
+                                    {{ $facility->bottom_description }}
+
+                                </p>
+
+                            @endif
+
+
+                        </div>
 
                     </div>
 
@@ -240,344 +281,299 @@
 </section>
 
 
-<!-- =========================
-        CONTACT / APPOINTMENT
-    ========================== -->
-
-<section class="contact-appointment-section section-padding fix pt-0">
-
-    <div class="container">
-
-        <div class="contact-appointment-wrapper-5">
-
-            <div class="row g-4">
-
-
-                <!-- =========================
-                        LEFT SIDE
-                    ========================== -->
-
-                <div class="col-lg-6">
-
-                    <div class="contact-appointment-left-item">
-
-
-                        <div
-                            class="contact-appointment-image wow img-custom-anim-left"
-                            data-wow-duration="1.3s"
-                            data-wow-delay="0.3s">
-
-                            <img
-                                src="{{ asset('assets/img/inner/contact/contact.png') }}"
-                                alt="Contact Hospital">
-
-                        </div>
-
-
-                        <div class="contact-appointment-list">
-
-                            <h5
-                                class="wow fadeInUp"
-                                data-wow-delay=".3s">
-
-                                Working Hours
-
-                            </h5>
-
-
-                            <div
-                                class="contact-list wow fadeInUp"
-                                data-wow-delay=".5s">
-
-                                <ul class="list">
-
-                                    <li>
-                                        Monday
-                                        <span>9AM - 10PM</span>
-                                    </li>
-
-                                    <li>
-                                        Saturday
-                                        <span>9AM - 08PM</span>
-                                    </li>
-
-                                    <li>
-                                        Sunday
-                                        <span>9AM - 12PM</span>
-                                    </li>
-
-                                </ul>
-
-
-                                <div class="caller-item">
-
-                                    <div class="icon">
-
-                                        <img
-                                            src="{{ asset('assets/img/home-5/call.png') }}"
-                                            alt="Call">
-
-                                    </div>
-
-
-                                    <div class="content">
-
-                                        <span>
-                                            For Help
-                                        </span>
-
-                                        <p>
-
-                                            <a href="tel:+919727579000">
-                                                +91 97275 79000
-                                            </a>
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                        RIGHT SIDE - APPOINTMENT
-                    ========================== -->
-
-                <div class="col-lg-6">
-
-                    <div class="contact-appointment-box">
-
-                        <h3>
-                            Book An Appointment
-                        </h3>
-
-
-                        <form action="#" method="POST">
-
-                            @csrf
-
-                            <div class="row g-4">
-
-
-                                <!-- Name -->
-
-                                <div
-                                    class="col-lg-6 wow fadeInUp"
-                                    data-wow-delay=".3s">
-
-                                    <div class="form-clt">
-
-                                        <span>
-                                            Name
-                                        </span>
-
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder="Your Name">
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Email -->
-
-                                <div
-                                    class="col-lg-6 wow fadeInUp"
-                                    data-wow-delay=".5s">
-
-                                    <div class="form-clt">
-
-                                        <span>
-                                            Email
-                                        </span>
-
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            placeholder="Your Email">
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Phone -->
-
-                                <div
-                                    class="col-lg-6 wow fadeInUp"
-                                    data-wow-delay=".3s">
-
-                                    <div class="form-clt">
-
-                                        <span>
-                                            Phone
-                                        </span>
-
-                                        <input
-                                            type="text"
-                                            name="phone"
-                                            placeholder="Your Phone">
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Facility -->
-
-                                <div
-                                    class="col-lg-6 wow fadeInUp"
-                                    data-wow-delay=".5s">
-
-                                    <div class="form-clt">
-
-                                        <span>
-                                            Facility
-                                        </span>
-
-                                        <div class="form">
-
-                                            <select
-                                                name="facility"
-                                                class="single-select w-100">
-
-                                                <option value="">
-                                                    Select Facility
-                                                </option>
-
-
-                                                @foreach($facilities as $item)
-
-                                                    <option
-                                                        value="{{ $item->slug }}"
-                                                        {{ $item->id == $facility->id ? 'selected' : '' }}>
-
-                                                        {{ $item->title }}
-
-                                                    </option>
-
-                                                @endforeach
-
-                                            </select>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Age -->
-
-                                <div
-                                    class="col-lg-12 wow fadeInUp"
-                                    data-wow-delay=".5s">
-
-                                    <div class="form-clt">
-
-                                        <span>
-                                            Select Age
-                                        </span>
-
-                                        <div class="form">
-
-                                            <select
-                                                name="age"
-                                                class="single-select w-100">
-
-                                                <option value="">
-                                                    Select Age
-                                                </option>
-
-                                                <option value="0-18">
-                                                    0 - 18
-                                                </option>
-
-                                                <option value="19-40">
-                                                    19 - 40
-                                                </option>
-
-                                                <option value="41-60">
-                                                    41 - 60
-                                                </option>
-
-                                                <option value="60+">
-                                                    60+
-                                                </option>
-
-                                            </select>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Message -->
-
-                                <div
-                                    class="col-lg-12 wow fadeInUp"
-                                    data-wow-delay=".3s">
-
-                                    <div class="form-clt">
-
-                                        <span>
-                                            Your Message
-                                        </span>
-
-                                        <textarea
-                                            name="message"
-                                            placeholder="Write your message..."></textarea>
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Submit -->
-
-                                <div
-                                    class="col-lg-12 wow fadeInUp"
-                                    data-wow-delay=".3s">
-
-                                    <button
-                                        type="submit"
-                                        class="theme-btn">
-
-                                        <i class="far fa-chevron-right"></i>
-
-                                        Make Your Appointment
-
-                                    </button>
-
-                                </div>
-
-
-                            </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 
 @endsection
+
+<style>
+    /* =========================================
+   FACILITY DETAILS
+========================================= */
+
+.facility-details-section {
+    padding: 80px 0;
+}
+
+.facility-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.facility-sidebar-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   FACILITY LIST
+========================================= */
+
+.facility-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.facility-list li {
+    margin-bottom: 10px;
+}
+
+.facility-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 18px;
+
+    background: #f5f7fa;
+
+    color: #222;
+
+    text-decoration: none;
+
+    border-radius: 4px;
+
+    transition: all 0.3s ease;
+}
+
+.facility-list li a:hover {
+    background: #238fe5;
+    color: #fff;
+}
+
+.facility-list li.active a {
+    background: #238fe5;
+    color: #fff;
+}
+
+.facility-list li a .icon {
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FACILITY IMAGES
+========================================= */
+
+.facility-images {
+    margin-bottom: 30px;
+}
+
+.facility-image {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.facility-image.large-image {
+    height: 430px;
+}
+
+.facility-image.small-image {
+    height: 430px;
+}
+
+.facility-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.facility-image:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   FACILITY CONTENT
+========================================= */
+
+.facility-title {
+    font-size: 34px;
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+}
+
+.facility-description {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #555;
+
+    margin-bottom: 25px;
+}
+
+.facility-section-heading {
+    font-size: 25px;
+
+    line-height: 1.4;
+
+    font-weight: 600;
+
+    margin-top: 30px;
+
+    margin-bottom: 15px;
+}
+
+.facility-section-description {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #555;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   FACILITY FEATURES
+========================================= */
+
+.facility-features {
+    margin: 30px 0;
+}
+
+.facility-feature-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    font-size: 16px;
+
+    color: #444;
+}
+
+.feature-icon {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.feature-icon i {
+    color: #238fe5;
+
+    font-size: 14px;
+}
+
+.feature-text {
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BOTTOM CONTENT
+========================================= */
+
+.facility-bottom-heading {
+    font-size: 25px;
+
+    line-height: 1.4;
+
+    font-weight: 600;
+
+    margin-top: 30px;
+
+    margin-bottom: 15px;
+}
+
+.facility-bottom-description {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #555;
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+
+    .facility-details-section {
+        padding: 60px 0;
+    }
+
+    .facility-sidebar {
+        position: static;
+    }
+
+    .facility-image.large-image,
+    .facility-image.small-image {
+        height: 350px;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .facility-details-section {
+        padding: 50px 0;
+    }
+
+    .facility-image.large-image,
+    .facility-image.small-image {
+        height: 300px;
+    }
+
+    .facility-title {
+        font-size: 28px;
+    }
+
+    .facility-section-heading,
+    .facility-bottom-heading {
+        font-size: 22px;
+    }
+
+    .facility-feature-item {
+        margin-bottom: 14px;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .facility-image.large-image,
+    .facility-image.small-image {
+        height: 250px;
+    }
+
+    .facility-title {
+        font-size: 25px;
+    }
+
+    .facility-description,
+    .facility-section-description,
+    .facility-bottom-description {
+        font-size: 15px;
+    }
+
+}
+</style> 
+
