@@ -20,29 +20,29 @@
 
                 <!-- About Hospital -->
                 <div class="col-xxl-4 col-xl-4 colo-lg-4 col-md-6 col-sm-12 wow fadeInUp"
-                     data-wow-delay=".2s">
+                    data-wow-delay=".2s">
 
                     <div class="single-footer-widget style-bg-white">
 
                         <div class="widget-head">
                             <a href="{{ url('/') }}" class="footer-logo">
                                 <img width="150px"
-                                     src="{{ asset('assets/img/logo/Atulya-Logo.png') }}"
-                                     alt="Atulya Hospital">
+                                    src="{{ asset('assets/img/logo/Atulya-Logo.png') }}"
+                                    alt="{{ setting('hospital_name') }}">
                             </a>
                         </div>
 
                         <div class="footer-content">
 
                             <p>
-                                Atulya Hospital is committed to providing
+                               {{ setting('hospital_name') }} is committed to providing
                                 compassionate, comprehensive and quality
                                 healthcare with a patient-centred approach.
                             </p>
 
                             <ul>
                                 <li>
-                                    Monday - Sunday 
+                                    Monday - Sunday
                                     <span>24 * 7</span>
                                 </li>
 
@@ -60,7 +60,7 @@
                             <div class="icon">
 
                                 <img src="{{ asset('assets/img/home-1/hero/feature-3.png') }}"
-                                     alt="Appointment">
+                                    alt="Appointment">
 
                                 <div class="content">
 
@@ -69,9 +69,8 @@
                                     </p>
 
                                     <h4>
-                                        <a href="tel:+919727579000">
-                                            +91 97275 79000
-                                        </a>
+                                        <a href="{{ setting('phone') }}">
+                                            {{ setting('phone') }} </a>
                                     </h4>
 
                                 </div>
@@ -87,7 +86,7 @@
 
                 <!-- Quick Links + Services -->
                 <div class="col-xxl-4 col-xl-3 colo-lg-4 col-md-6 ps-lg-5 col-sm-12 wow fadeInUp"
-                     data-wow-delay=".4s">
+                    data-wow-delay=".4s">
 
                     <div class="single-footer-widget-area">
 
@@ -130,6 +129,11 @@
                                         Contact Us
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('/carrer') }}">
+                                        Carrer
+                                    </a>
+                                </li>
 
                             </ul>
 
@@ -157,7 +161,7 @@
                                         ENT
                                     </a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="{{ url('/departments/rheumatology') }}">
                                         RHEUMATOLOGY
                                     </a>
@@ -171,10 +175,10 @@
 
                                 <li>
                                     <a href="{{ url('/departments/onco-surgery') }}">
-                                       General Surgery
+                                        General Surgery
                                     </a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="{{ url('/departments/critical-care') }}">
                                         Critical Care
                                     </a>
@@ -210,165 +214,165 @@
 
                                 <div class="thumb">
                                     <img src="{{ asset('assets/img/home-1/footer/post-1.png') }}"
-                                         alt="Healthcare">
-                                </div>
+                alt="Healthcare">
+            </div>
 
-                                <div class="content">
+            <div class="content">
 
-                                    <p>Health & Wellness</p>
+                <p>Health & Wellness</p>
 
-                                    <h4>
-                                        <a href="#">
-                                            Understanding the Importance of Regular Health Checkups
-                                        </a>
-                                    </h4>
+                <h4>
+                    <a href="#">
+                        Understanding the Importance of Regular Health Checkups
+                    </a>
+                </h4>
 
-                                </div>
+            </div>
 
-                            </li>
-
-
-                            <li>
-
-                                <div class="thumb">
-                                    <img src="{{ asset('assets/img/home-1/footer/post-2.png') }}"
-                                         alt="Heart Health">
-                                </div>
-
-                                <div class="content">
-
-                                    <p>Patient Care</p>
-
-                                    <h4>
-                                        <a href="#">
-                                            Simple Steps to Maintain a Healthy Heart
-                                        </a>
-                                    </h4>
-
-                                </div>
-
-                            </li>
+            </li>
 
 
-                            <li>
+            <li>
 
-                                <div class="thumb">
-                                    <img src="{{ asset('assets/img/home-1/footer/post-3.png') }}"
-                                         alt="Healthy Lifestyle">
-                                </div>
+                <div class="thumb">
+                    <img src="{{ asset('assets/img/home-1/footer/post-2.png') }}"
+                        alt="Heart Health">
+                </div>
 
-                                <div class="content">
+                <div class="content">
 
-                                    <p>Healthy Living</p>
+                    <p>Patient Care</p>
 
-                                    <h4>
-                                        <a href="#">
-                                            Tips for a Healthier and Active Lifestyle
-                                        </a>
-                                    </h4>
-
-                                </div>
-
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div> --}}
-
-
-                <!-- Contact Us -->
-                <div class="col-xxl-4 col-xl-4 colo-lg-4 col-md-6 ps-xxl-5 wow fadeInUp"
-                     data-wow-delay=".8s">
-
-                    <div class="single-footer-widget">
-
-                        <div class="widget-head">
-                            <h3>Contact Us</h3>
-                        </div>
-
-                        <div class="footer-content">
-
-                            <p class="text-white">
-                                Atulya Hospital is dedicated to providing
-                                accessible and compassionate healthcare
-                                with a focus on patient comfort and well-being.
-                            </p>
-
-                            <ul class="footer-contect">
-
-                                <!-- Phone -->
-                                <li>
-
-                                    <div class="icon">
-                                        <i class="fas fa-phone-alt"></i>
-                                    </div>
-
-                                    <div class="content">
-
-                                        <p>
-                                            <a href="tel:+919727579000">
-                                                +91 97275 79000
-                                            </a>
-                                        </p>
-
-                                    </div>
-
-                                </li>
-
-
-                                <!-- Email -->
-                                <li>
-
-                                    <div class="icon">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-
-                                    <div class="content">
-
-                                        <p>
-                                            <a href="mailto:info@atulyahospital.com">
-                                                info@atulyahospital.com
-                                            </a>
-                                        </p>
-
-                                    </div>
-
-                                </li>
-
-
-                                <!-- Address -->
-                                <li>
-
-                                    <div class="icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-
-                                    <div class="content">
-
-                                        <p>
-                                            Atulya Superspeciality Hospital & ICU,
-                                            206–214, 2nd Floor, Elite Magnum,
-                                            Bhuyangdev Cross Road,
-                                            Ahmedabad – 380061, Gujarat
-                                        </p>
-
-                                    </div>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
+                    <h4>
+                        <a href="#">
+                            Simple Steps to Maintain a Healthy Heart
+                        </a>
+                    </h4>
 
                 </div>
+
+            </li>
+
+
+            <li>
+
+                <div class="thumb">
+                    <img src="{{ asset('assets/img/home-1/footer/post-3.png') }}"
+                        alt="Healthy Lifestyle">
+                </div>
+
+                <div class="content">
+
+                    <p>Healthy Living</p>
+
+                    <h4>
+                        <a href="#">
+                            Tips for a Healthier and Active Lifestyle
+                        </a>
+                    </h4>
+
+                </div>
+
+            </li>
+
+            </ul>
+
+        </div>
+
+    </div> --}}
+
+
+    <!-- Contact Us -->
+    <div class="col-xxl-4 col-xl-4 colo-lg-4 col-md-6 ps-xxl-5 wow fadeInUp"
+        data-wow-delay=".8s">
+
+        <div class="single-footer-widget">
+
+            <div class="widget-head">
+                <h3>Contact Us</h3>
+            </div>
+
+            <div class="footer-content">
+
+                <p class="text-white">
+                   {{ setting('hospital_name') }} is dedicated to providing
+                    accessible and compassionate healthcare
+                    with a focus on patient comfort and well-being.
+                </p>
+
+                <ul class="footer-contect">
+
+                    <!-- Phone -->
+                    <li>
+
+                        <div class="icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+
+                        <div class="content">
+
+                            <p>
+                                <a href="{{ setting('phone') }}">
+                                    {{ setting('phone') }}
+                                </a>
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <!-- Email -->
+                    <li>
+
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div class="content">
+
+                            <p>
+                                <a href="mailto:info@atulyahospital.com">
+                                    info@atulyahospital.com
+                                </a>
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <!-- Address -->
+                    <li>
+
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+
+                        <div class="content">
+
+                            <p>
+                                Atulya Superspeciality Hospital & ICU,
+                                206–214, 2nd Floor, Elite Magnum,
+                                Bhuyangdev Cross Road,
+                                Ahmedabad – 380061, Gujarat
+                            </p>
+
+                        </div>
+
+                    </li>
+
+                </ul>
 
             </div>
 
         </div>
+
+    </div>
+
+    </div>
+
+    </div>
     </div>
 
 
@@ -380,33 +384,33 @@
             <div class="footer-bottom-wrapper">
 
                 <p>
-                    Copyright © {{ date('Y') }} Atulya Hospital.
+                    Copyright © {{ date('Y') }} {{ setting('hospital_name') }}.
                     All Rights Reserved.
                 </p>
 
                 <div class="social-icon d-flex align-items-center">
 
-                    <a href="https://www.facebook.com/AtulyaSuperSpecialityHospital/"
-                       target="_blank"
-                       aria-label="Facebook">
+                    <a href="{{ setting('facebook_url') }}"
+                        target="_blank"
+                        aria-label="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-                    <a href="https://www.youtube.com/@atulyasuperspecialityhospital"
-                       target="_blank"
-                       aria-label="YouTube">
+                    <a href="{{ setting('youtube_url') }}"
+                        target="_blank"
+                        aria-label="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
 
-                    <a href="https://maps.app.goo.gl/Q57Xx13m5LiAcwwA6"
-                       target="_blank"
-                       aria-label="Google Maps">
+                    <a href="{{ setting('google_maps_url') }}"
+                        target="_blank"
+                        aria-label="Google Maps">
                         <i class="fas fa-map-marker-alt"></i>
                     </a>
 
-                    <a href="https://www.instagram.com/atulya_superspeciality/"
-                       target="_blank"
-                       aria-label="Instagram">
+                    <a href="{{ setting('instagram_url') }}"
+                        target="_blank"
+                        aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
 
@@ -419,4 +423,3 @@
     </div>
 
 </footer>
-

@@ -398,11 +398,11 @@
             <div class="icu-cta-action">
 
                 <a
-                    href="tel:+919727579000"
+                    href="{{ setting('phone') }}"
                     class="theme-btn"
                 >
                     <i class="fas fa-phone-alt"></i>
-                    +91 97275 79000
+                    {{ setting('phone') }}
                 </a>
 
                 <span>

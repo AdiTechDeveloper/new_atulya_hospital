@@ -162,10 +162,15 @@ class BlogController extends Controller
 
         if ($isFeatured) {
 
-            Blog::where('is_featured', true)
-                ->update([
-                    'is_featured' => false,
-                ]);
+            $featuredCount = Blog::where('is_featured', true)->count();
+
+            if ($featuredCount >= 3) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'is_featured' => 'You can feature a maximum of 3 blogs.'
+                    ]);
+            }
         }
 
 
@@ -296,8 +301,8 @@ class BlogController extends Controller
 
         while (
             Blog::where('slug', $slug)
-                ->where('id', '!=', $blog->id)
-                ->exists()
+            ->where('id', '!=', $blog->id)
+            ->exists()
         ) {
             $slug = $originalSlug . '-' . $counter++;
         }
@@ -350,7 +355,6 @@ class BlogController extends Controller
                     ]
                 )
                 ->increment('sort_order');
-
         } elseif ($newSortOrder > $oldSortOrder) {
 
             Blog::where(
@@ -390,8 +394,8 @@ class BlogController extends Controller
 
             $featuredImage =
                 $request
-                    ->file('featured_image')
-                    ->store('blogs', 'public');
+                ->file('featured_image')
+                ->store('blogs', 'public');
         }
 
 
@@ -401,23 +405,21 @@ class BlogController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        $isFeatured =
-            $request->boolean('is_featured');
+        $isFeatured = $request->boolean('is_featured');
 
-        if ($isFeatured) {
+        if ($isFeatured && ! $blog->is_featured) {
 
-            Blog::where(
-                'id',
-                '!=',
-                $blog->id
-            )
-                ->where(
-                    'is_featured',
-                    true
-                )
-                ->update([
-                    'is_featured' => false,
-                ]);
+            $featuredCount = Blog::where('is_featured', true)
+                ->where('id', '!=', $blog->id)
+                ->count();
+
+            if ($featuredCount >= 3) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'is_featured' => 'You can feature a maximum of 3 blogs.'
+                    ]);
+            }
         }
 
 
@@ -504,27 +506,22 @@ class BlogController extends Controller
             $blog->update([
                 'is_featured' => false,
             ]);
-
         } else {
 
-            Blog::where(
-                'id',
-                '!=',
-                $blog->id
-            )
-                ->where(
-                    'is_featured',
-                    true
-                )
-                ->update([
-                    'is_featured' => false,
-                ]);
+            $featuredCount = Blog::where('is_featured', true)->count();
+
+            if ($featuredCount >= 3) {
+                return redirect()
+                    ->route('admin.blogs.index')
+                    ->withErrors([
+                        'is_featured' => 'You can feature a maximum of 3 blogs.'
+                    ]);
+            }
 
             $blog->update([
                 'is_featured' => true,
             ]);
         }
-
 
         return redirect()
             ->route('admin.blogs.index')

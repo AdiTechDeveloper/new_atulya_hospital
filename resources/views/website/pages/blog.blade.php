@@ -7,10 +7,12 @@
 
 <!-- =========================
         PAGE HEADER
-    ========================== -->
+========================== -->
 
 <section class="breadcrumb-section fix">
+
     <div class="container">
+
         <div class="breadcrumb-wrapper">
 
             <div class="breadcrumb-content text-center">
@@ -36,18 +38,19 @@
             </div>
 
         </div>
-    </div>
-</section>
 
+    </div>
+
+</section>
 
 
 <!-- =========================
         BLOG SECTION
-    ========================== -->
+========================== -->
 
-<section class="blog-wrapper section-padding  ">
+<section class="blog-wrapper section-padding">
 
-    <div class="container ">
+    <div class="container">
 
         <div class="news-area">
 
@@ -61,182 +64,192 @@
                         @if($blogs->count())
 
 
-                        @foreach($blogs as $blog)
+                            @foreach($blogs as $blog)
 
 
-                        <!-- =========================
+                                <!-- =========================
                                         BLOG ITEM
-                                    ========================== -->
+                                ========================== -->
 
-                        <div
-                            class="single-blog-post d-flex flex-column flex-md-row overflow-hidden mb-4 wow fadeInUp"
-                            data-wow-delay=".2s"
-                            style="
+                                <div
+                                    class="single-blog-post d-flex flex-column flex-md-row overflow-hidden mb-4 wow fadeInUp"
+                                    data-wow-delay=".2s"
+                                    style="
                                         border: 1px solid #e8e8e8;
                                         border-radius: 10px;
                                         background: #fff;
-                                    ">
+                                    "
+                                >
 
 
-                            <!-- =========================
+                                    <!-- =========================
                                             BLOG IMAGE
-                                        ========================== -->
+                                    ========================== -->
 
-                            <div
-                                class="post-featured-thumb bg-cover flex-shrink-0"
-                                style="
-                                            width: 35%;
-                                            min-height: 260px;
-                                            background-image: url('{{ $blog->featured_image
+                                    <div
+                                        class="post-featured-thumb blog-list-image flex-shrink-0"
+                                    >
+
+                                        <img
+                                            src="{{ $blog->featured_image
                                                 ? asset('storage/' . $blog->featured_image)
-                                                : asset('assets/img/inner/news/post-01.jpg') }}');
-                                        ">
-                            </div>
+                                                : asset('assets/img/inner/news/post-01.jpg') }}"
+                                            alt="{{ $blog->title }}"
+                                        >
+
+                                    </div>
 
 
-
-                            <!-- =========================
+                                    <!-- =========================
                                             BLOG CONTENT
-                                        ========================== -->
+                                    ========================== -->
 
-                            <div
-                                class="post-content d-flex flex-column justify-content-center"
-                                style="width: 65%; padding: 35px 40px;">
-
-
-                                <!-- Meta -->
-
-                                <div
-                                    class="post-meta mb-2"
-                                    style="gap: 18px;">
-
-                                    @if($blog->category)
-
-                                    <span>
-
-                                        <i class="fal fa-folder"></i>
-
-                                        {{ $blog->category }}
-
-                                    </span>
-
-                                    @endif
+                                    <div
+                                        class="post-content d-flex flex-column justify-content-center"
+                                        style="
+                                            width: 65%;
+                                            padding: 35px 40px;
+                                        "
+                                    >
 
 
-                                    <span>
+                                        <!-- Meta -->
 
-                                        <i class="fal fa-calendar-alt"></i>
+                                        <div
+                                            class="post-meta mb-2"
+                                            style="gap: 18px;"
+                                        >
 
-                                        {{ $blog->published_at
+                                            @if($blog->category)
+
+                                                <span>
+
+                                                    <i class="fal fa-folder"></i>
+
+                                                    {{ $blog->category }}
+
+                                                </span>
+
+                                            @endif
+
+
+                                            <span>
+
+                                                <i class="fal fa-calendar-alt"></i>
+
+                                                {{ $blog->published_at
                                                     ? $blog->published_at->format('d M Y')
-                                                    : $blog->created_at->format('d M Y') }}
+                                                    : $blog->created_at->format('d M Y')
+                                                }}
 
-                                    </span>
-
-
-                                    <span>
-
-                                        <i class="far fa-user"></i>
-
-                                        {{ $blog->author ?? 'Atulya Hospital' }}
-
-                                    </span>
-
-                                </div>
+                                            </span>
 
 
+                                            <span>
 
-                                <!-- Title -->
+                                                <i class="far fa-user"></i>
 
-                                <h3
-                                    class="mb-3"
-                                    style="line-height: 1.3;">
+                                                {{ $blog->author ?? setting('hospital_name') }}
 
-                                    <a
-                                        href="{{ route('blog.show', $blog->slug) }}">
+                                            </span>
 
-                                        {{ $blog->title }}
-
-                                    </a>
-
-                                </h3>
+                                        </div>
 
 
+                                        <!-- Title -->
 
-                                <!-- Description -->
+                                        <h3
+                                            class="mb-3"
+                                            style="line-height: 1.3;"
+                                        >
 
-                                @if($blog->short_description)
+                                            <a
+                                                href="{{ route('blog.show', $blog->slug) }}"
+                                            >
 
-                                <p
-                                    class="mb-0"
-                                    style="
+                                                {{ $blog->title }}
+
+                                            </a>
+
+                                        </h3>
+
+
+                                        <!-- Description -->
+
+                                        @if($blog->short_description)
+
+                                            <p
+                                                class="mb-0"
+                                                style="
                                                     display: -webkit-box;
                                                     -webkit-line-clamp: 3;
                                                     -webkit-box-orient: vertical;
                                                     overflow: hidden;
-                                                ">
+                                                "
+                                            >
 
-                                    {{ $blog->short_description }}
+                                                {{ $blog->short_description }}
 
-                                </p>
+                                            </p>
 
-                                @endif
+                                        @endif
 
 
+                                        <!-- Read More -->
 
-                                <!-- Read More -->
+                                        <div class="mt-4">
 
-                                <div class="mt-4">
+                                            <a
+                                                href="{{ route('blog.show', $blog->slug) }}"
+                                                class="theme-btn"
+                                            >
 
-                                    <a
-                                        href="{{ route('blog.show', $blog->slug) }}"
-                                        class="theme-btn">
+                                                <i class="far fa-chevron-right"></i>
 
-                                        <i class="far fa-chevron-right"></i>
+                                                Read More
 
-                                        Read More
+                                            </a>
 
-                                    </a>
+                                        </div>
+
+
+                                    </div>
 
                                 </div>
 
 
-                            </div>
-
-                        </div>
-
-
-                        @endforeach
+                            @endforeach
 
 
                         @else
 
 
-                        <!-- =========================
+                            <!-- =========================
                                     NO BLOGS
-                                ========================== -->
+                            ========================== -->
 
-                        <div
-                            class="single-blog-post text-center"
-                            style="
+                            <div
+                                class="single-blog-post text-center"
+                                style="
                                     border: 1px solid #e8e8e8;
                                     border-radius: 10px;
                                     padding: 60px 30px;
-                                ">
+                                "
+                            >
 
-                            <div class="post-content">
+                                <div class="post-content">
 
-                                <h3>
-                                    No Blogs Available
-                                </h3>
+                                    <h3>
+                                        No Blogs Available
+                                    </h3>
 
-                                <p>
-                                    Blog posts will appear here once they are published.
-                                </p>
+                                    <p>
+                                        Blog posts will appear here once they are published.
+                                    </p>
+
+                                </div>
 
                             </div>
-
-                        </div>
 
 
                         @endif
@@ -245,128 +258,126 @@
                     </div>
 
 
-
                     <!-- =========================
                             PAGINATION
-                        ========================== -->
+                    ========================== -->
 
                     @if($blogs->hasPages())
 
-                    <div class="page-nav-wrap text-center mt-5">
+                        <div class="page-nav-wrap text-center mt-5">
 
-                        <ul>
-
-
-                            <!-- Previous -->
-
-                            @if($blogs->onFirstPage())
-
-                            <li>
-
-                                <span
-                                    class="page-numbers disabled">
-
-                                    <i class="far fa-long-arrow-left"></i>
-
-                                </span>
-
-                            </li>
-
-                            @else
-
-                            <li>
-
-                                <a
-                                    class="page-numbers"
-                                    href="{{ $blogs->previousPageUrl() }}">
-
-                                    <i class="far fa-long-arrow-left"></i>
-
-                                </a>
-
-                            </li>
-
-                            @endif
+                            <ul>
 
 
+                                <!-- Previous -->
 
-                            <!-- Page Numbers -->
+                                @if($blogs->onFirstPage())
 
-                            @foreach(
-                            $blogs->getUrlRange(
-                            1,
-                            $blogs->lastPage()
-                            )
-                            as $page => $url
-                            )
+                                    <li>
 
-                            @if($page == $blogs->currentPage())
+                                        <span class="page-numbers disabled">
 
-                            <li class="active">
+                                            <i class="far fa-long-arrow-left"></i>
 
-                                <span class="page-numbers">
+                                        </span>
 
-                                    {{ sprintf('%02d', $page) }}
+                                    </li>
 
-                                </span>
+                                @else
 
-                            </li>
+                                    <li>
 
-                            @else
+                                        <a
+                                            class="page-numbers"
+                                            href="{{ $blogs->previousPageUrl() }}"
+                                        >
 
-                            <li>
+                                            <i class="far fa-long-arrow-left"></i>
 
-                                <a
-                                    class="page-numbers"
-                                    href="{{ $url }}">
+                                        </a>
 
-                                    {{ sprintf('%02d', $page) }}
+                                    </li>
 
-                                </a>
-
-                            </li>
-
-                            @endif
-
-                            @endforeach
+                                @endif
 
 
+                                <!-- Page Numbers -->
 
-                            <!-- Next -->
+                                @foreach(
+                                    $blogs->getUrlRange(
+                                        1,
+                                        $blogs->lastPage()
+                                    )
+                                    as $page => $url
+                                )
 
-                            @if($blogs->hasMorePages())
+                                    @if($page == $blogs->currentPage())
 
-                            <li>
+                                        <li class="active">
 
-                                <a
-                                    class="page-numbers"
-                                    href="{{ $blogs->nextPageUrl() }}">
+                                            <span class="page-numbers">
 
-                                    <i class="far fa-long-arrow-right"></i>
+                                                {{ sprintf('%02d', $page) }}
 
-                                </a>
+                                            </span>
 
-                            </li>
+                                        </li>
 
-                            @else
+                                    @else
 
-                            <li>
+                                        <li>
 
-                                <span
-                                    class="page-numbers disabled">
+                                            <a
+                                                class="page-numbers"
+                                                href="{{ $url }}"
+                                            >
 
-                                    <i class="far fa-long-arrow-right"></i>
+                                                {{ sprintf('%02d', $page) }}
 
-                                </span>
+                                            </a>
 
-                            </li>
+                                        </li>
 
-                            @endif
+                                    @endif
+
+                                @endforeach
 
 
-                        </ul>
+                                <!-- Next -->
 
-                    </div>
+                                @if($blogs->hasMorePages())
+
+                                    <li>
+
+                                        <a
+                                            class="page-numbers"
+                                            href="{{ $blogs->nextPageUrl() }}"
+                                        >
+
+                                            <i class="far fa-long-arrow-right"></i>
+
+                                        </a>
+
+                                    </li>
+
+                                @else
+
+                                    <li>
+
+                                        <span class="page-numbers disabled">
+
+                                            <i class="far fa-long-arrow-right"></i>
+
+                                        </span>
+
+                                    </li>
+
+                                @endif
+
+
+                            </ul>
+
+                        </div>
 
                     @endif
 
@@ -381,6 +392,116 @@
 
 </section>
 
+
+<!-- =========================
+     BLOG IMAGE CSS
+========================== -->
+
+<style>
+
+    /* Desktop */
+
+    .blog-wrapper .blog-list-image {
+
+        width: 35% !important;
+
+        min-width: 35% !important;
+
+        height: 260px !important;
+
+        min-height: 260px !important;
+
+        overflow: hidden;
+
+        position: relative;
+
+    }
+
+
+    .blog-wrapper .blog-list-image img {
+
+        width: 100% !important;
+
+        height: 100% !important;
+
+        display: block;
+
+        object-fit: cover !important;
+
+        object-position: center !important;
+
+    }
+
+
+    /* Tablet */
+
+    @media (max-width: 991px) {
+
+        .blog-wrapper .blog-list-image {
+
+            width: 35% !important;
+
+            min-width: 35% !important;
+
+            height: 240px !important;
+
+            min-height: 240px !important;
+
+        }
+
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 767px) {
+
+        .blog-wrapper .single-blog-post {
+
+            display: block !important;
+
+        }
+
+
+        .blog-wrapper .blog-list-image {
+
+            width: 100% !important;
+
+            min-width: 100% !important;
+
+            height: 230px !important;
+
+            min-height: 230px !important;
+
+        }
+
+
+        .blog-wrapper .post-content {
+
+            width: 100% !important;
+
+            padding: 25px 22px !important;
+
+        }
+
+    }
+
+
+    /* Small Mobile */
+
+    @media (max-width: 575px) {
+
+        .blog-wrapper .blog-list-image {
+
+            height: 210px !important;
+
+            min-height: 210px !important;
+
+        }
+
+    }
+
+</style>
 
 
 @endsection

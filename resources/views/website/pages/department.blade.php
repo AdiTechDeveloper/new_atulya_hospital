@@ -5,39 +5,55 @@
 @section('content')
 
 @php
-    $services = $department->services ?? [];
-    $specialities = $department->specialities ?? [];
-    $conditions = $department->conditions ?? [];
-    $whyChoose = $department->why_choose ?? [];
+$services = $department->services ?? [];
+$specialities = $department->specialities ?? [];
+$conditions = $department->conditions ?? [];
+$whyChoose = $department->why_choose ?? [];
 @endphp
 
-<section style="padding-bottom: 3rem;" class="service-details-section  pt-80 pb-80">
+<!-- =========================
+        Department Details
+    ========================== -->
+
+<section style="margin-bottom: 3rem" class="service-details-section mb-10">
 
     <div class="container">
 
         <div class="service-details-wrapper">
 
-            <div class="row g-4">
+            <div class="row g-5">
 
                 <!-- =========================
-                    LEFT SIDEBAR
-                ========================== -->
+                        LEFT SIDEBAR
+                    ========================== -->
+
                 <div class="col-lg-4 order-2 order-xl-1">
 
                     <div class="service-details-sidebar sticky-style">
+
+                        <!-- Departments List -->
 
                         <div class="sidebar-widget">
 
                             <ul class="wow fadeInUp" data-wow-delay=".3s">
 
-                                @foreach($allDepartments as $item)
+                                @foreach($departments as $item)
 
-                                    <li>
-                                        <a href="{{ route('departments.show', $item->slug) }}">
-                                            <span>{{ $item->name }}</span>
-                                            <span class="icon"><i class="far fa-long-arrow-right"></i></span>
-                                        </a>
-                                    </li>
+                                <li>
+
+                                    <a href="{{ route('departments.show', $item->slug) }}">
+
+                                        <span>
+                                            {{ $item->name }}
+                                        </span>
+
+                                        <span class="icon">
+                                            <i class="far fa-long-arrow-right"></i>
+                                        </span>
+
+                                    </a>
+
+                                </li>
 
                                 @endforeach
 
@@ -45,349 +61,418 @@
 
                         </div>
 
+
+                        <!-- Department Image -->
+
+                        <div
+                            class="sidebar-widget-image wow fadeInUp"
+                            data-wow-delay=".5s">
+
+                            @if($department->image)
+
+                            <img
+                                src="{{ asset('storage/' . $department->image) }}"
+                                alt="{{ $department->name }}">
+
+                            @endif
+
+                        </div>
+
                     </div>
 
                 </div>
 
 
                 <!-- =========================
-                    RIGHT CONTENT
-                ========================== -->
+                        RIGHT CONTENT
+                    ========================== -->
+
                 <div class="col-lg-8 order-1 order-xl-2">
 
                     <div class="service-details-right-items">
 
-                        <!-- Department Heading -->
-                        <div class="mb-4">
 
-                            <span class="subtitle">
-                                OUR DEPARTMENT
-                            </span>
+                        <!-- Main Department Image -->
 
-                            <h2 class="mt-2">
-                                {{ $department->name }}
-                            </h2>
+                        @if($department->image)
 
-                            <p>
-                                {{ $department->short_description }}
-                            </p>
+                        <div class="service-img wow img-custom-anim-left">
+
+                            <img
+                                src="{{ asset('storage/' . $department->image) }}"
+                                alt="{{ $department->name }}">
 
                         </div>
 
+                        @endif
 
-                        <!-- Department Image - ONLY ONE -->
-                        @if($department->image)
 
-                            <div class="service-img wow img-custom-anim-left mb-4">
-                                <img src="{{ asset('storage/' . $department->image) }}" alt="{{ $department->name }}">
-                            </div>
+                        <!-- Department Name -->
+
+                        <h3>
+                            {{ $department->name }}
+                        </h3>
+
+
+                        <!-- Short Description -->
+
+                        @if($department->short_description)
+
+                        <p>
+                            {{ $department->short_description }}
+                        </p>
 
                         @endif
 
 
                         <!-- =========================
-                            ABOUT DEPARTMENT
-                        ========================== -->
-                        <div class="mb-4">
+                                ABOUT DEPARTMENT
+                            ========================== -->
 
-                            <h3>
-                                {{ $department->about_heading ?: 'About ' . $department->name }}
-                            </h3>
+                        @if($department->about_heading)
 
-                            <p>
-                                {{ $department->about_description }}
-                            </p>
+                        <h4>
+                            {{ $department->about_heading }}
+                        </h4>
 
-                        </div>
+                        @endif
 
+                        @if($department->about_description)
 
-                        <!-- =========================
-                            OUR SERVICES
-                        ========================== -->
-                        <div class="mb-4">
+                        <p>
+                            {{ $department->about_description }}
+                        </p>
 
-                            <h3>
-                                Our Services
-                            </h3>
-
-                            <p>
-                                Our {{ $department->name }} Department provides
-                                specialized services based on the patient's
-                                medical condition and treatment requirements.
-                            </p>
-
-                            <div class="list-box">
-
-                                <ul>
-
-                                    @foreach(array_slice(
-                                        $services,
-                                        0,
-                                        ceil(count($services) / 2)
-                                    ) as $service)
-
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $service }}
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
-
-                                <ul>
-
-                                    @foreach(array_slice(
-                                        $services,
-                                        ceil(count($services) / 2)
-                                    ) as $service)
-
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $service }}
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
-
-                            </div>
-
-                        </div>
+                        @endif
 
 
                         <!-- =========================
-                            OUR SPECIALITIES
-                        ========================== -->
-                        <div class="mb-4">
+                                SERVICES
+                            ========================== -->
 
-                            <h3>
-                                Our Specialities
-                            </h3>
+                        @if(!empty($services))
 
-                            <p>
-                                Our department provides focused care across
-                                specialized areas to support accurate diagnosis,
-                                treatment and recovery.
-                            </p>
+                        <h4>
+                            Services
+                        </h4>
 
-                            <div class="list-box">
+                        <div class="list-box">
 
-                                <ul>
+                            <ul>
 
-                                    @foreach(array_slice(
-                                        $specialities,
-                                        0,
-                                        ceil(count($specialities) / 2)
-                                    ) as $speciality)
+                                @foreach(
+                                array_slice(
+                                $services,
+                                0,
+                                ceil(count($services) / 2)
+                                ) as $service
+                                )
 
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $speciality }}
-                                        </li>
+                                <li>
 
-                                    @endforeach
+                                    <i class="far fa-check"></i>
 
-                                </ul>
+                                    {{ $service }}
 
-                                <ul>
+                                </li>
 
-                                    @foreach(array_slice(
-                                        $specialities,
-                                        ceil(count($specialities) / 2)
-                                    ) as $speciality)
+                                @endforeach
 
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $speciality }}
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
-
-                            </div>
-
-                        </div>
+                            </ul>
 
 
-                        <!-- =========================
-                            CONDITIONS & CARE AREAS
-                        ========================== -->
-                        <div class="mb-4">
+                            <ul>
 
-                            <h3>
-                                Conditions & Care Areas
-                            </h3>
+                                @foreach(
+                                array_slice(
+                                $services,
+                                ceil(count($services) / 2)
+                                ) as $service
+                                )
 
-                            <p>
-                                The {{ $department->name }} Department provides
-                                care across the following important medical
-                                conditions and specialized areas.
-                            </p>
+                                <li>
 
-                            <div class="list-box">
+                                    <i class="far fa-check"></i>
 
-                                <ul>
+                                    {{ $service }}
 
-                                    @foreach(array_slice(
-                                        $conditions,
-                                        0,
-                                        ceil(count($conditions) / 2)
-                                    ) as $area)
+                                </li>
 
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $area }}
-                                        </li>
+                                @endforeach
 
-                                    @endforeach
-
-                                </ul>
-
-                                <ul>
-
-                                    @foreach(array_slice(
-                                        $conditions,
-                                        ceil(count($conditions) / 2)
-                                    ) as $area)
-
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $area }}
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
-
-                            </div>
+                            </ul>
 
                         </div>
 
+                        @endif
+
 
                         <!-- =========================
-                            PATIENT CARE
-                        ========================== -->
-                        <div class="mb-4">
+                                SPECIALITIES
+                            ========================== -->
 
-                            <h3>
-                                {{ $department->patient_care_heading ?: 'Patient Care' }}
-                            </h3>
+                        @if(!empty($specialities))
 
-                            <p>
-                                {{ $department->patient_care_description }}
-                            </p>
+                        <h4>
+                            Specialities
+                        </h4>
+
+                        <div class="list-box">
+
+                            <ul>
+
+                                @foreach(
+                                array_slice(
+                                $specialities,
+                                0,
+                                ceil(count($specialities) / 2)
+                                ) as $speciality
+                                )
+
+                                <li>
+
+                                    <i class="far fa-check"></i>
+
+                                    {{ $speciality }}
+
+                                </li>
+
+                                @endforeach
+
+                            </ul>
+
+
+                            <ul>
+
+                                @foreach(
+                                array_slice(
+                                $specialities,
+                                ceil(count($specialities) / 2)
+                                ) as $speciality
+                                )
+
+                                <li>
+
+                                    <i class="far fa-check"></i>
+
+                                    {{ $speciality }}
+
+                                </li>
+
+                                @endforeach
+
+                            </ul>
 
                         </div>
 
+                        @endif
+
 
                         <!-- =========================
-                            WHY CHOOSE
-                        ========================== -->
-                        <div class="mb-4">
+                                CONDITIONS & CARE AREAS
+                            ========================== -->
 
-                            <h3>
-                                Why Choose Our Department
-                            </h3>
+                        @if(!empty($conditions))
 
-                            <p>
-                                Our approach is designed to provide patients with
-                                focused medical attention, appropriate treatment
-                                planning and continued support.
-                            </p>
+                        <h4>
+                            Conditions & Care Areas
+                        </h4>
 
-                            <div class="list-box">
+                        <div class="list-box">
 
-                                <ul>
+                            <ul>
 
-                                    @foreach(array_slice(
-                                        $whyChoose,
-                                        0,
-                                        ceil(count($whyChoose) / 2)
-                                    ) as $reason)
+                                @foreach(
+                                array_slice(
+                                $conditions,
+                                0,
+                                ceil(count($conditions) / 2)
+                                ) as $condition
+                                )
 
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $reason }}
-                                        </li>
+                                <li>
 
-                                    @endforeach
+                                    <i class="far fa-check"></i>
 
-                                </ul>
+                                    {{ $condition }}
 
-                                <ul>
+                                </li>
 
-                                    @foreach(array_slice(
-                                        $whyChoose,
-                                        ceil(count($whyChoose) / 2)
-                                    ) as $reason)
+                                @endforeach
 
-                                        <li>
-                                            <i class="far fa-check"></i>
-                                            {{ $reason }}
-                                        </li>
+                            </ul>
 
-                                    @endforeach
 
-                                </ul>
+                            <ul>
 
-                            </div>
+                                @foreach(
+                                array_slice(
+                                $conditions,
+                                ceil(count($conditions) / 2)
+                                ) as $condition
+                                )
+
+                                <li>
+
+                                    <i class="far fa-check"></i>
+
+                                    {{ $condition }}
+
+                                </li>
+
+                                @endforeach
+
+                            </ul>
 
                         </div>
 
+                        @endif
+
 
                         <!-- =========================
-                            RELATED DOCTORS
-                        ========================== -->
-                        <div class="mb-4">
+                                PATIENT CARE
+                            ========================== -->
 
-                            <h3>
-                                Related Doctors
-                            </h3>
+                        @if($department->patient_care_heading)
 
-                            <p>
-                                Patients are supported by qualified medical
-                                professionals with expertise related to
-                                {{ $department->name }}.
-                            </p>
+                        <h4>
+                            {{ $department->patient_care_heading }}
+                        </h4>
 
-                            <div class="list-box">
+                        @endif
 
-                                <ul>
+                        @if($department->patient_care_description)
 
-                                    @forelse($department->doctors as $doctor)
+                        <p>
+                            {{ $department->patient_care_description }}
+                        </p>
 
-                                        <li>
-                                            <i class="far fa-user-md"></i>
-                                            {{ $doctor->name }}
-                                        </li>
+                        @endif
 
-                                    @empty
-                                        <li>No doctors currently assigned to this department.</li>
-                                    @endforelse
 
-                                </ul>
+                        <!-- =========================
+                                WHY CHOOSE
+                            ========================== -->
 
-                            </div>
+                        @if(!empty($whyChoose))
+
+                        <h4>
+                            Why Choose Our Department
+                        </h4>
+
+                        <div class="list-box">
+
+                            <ul>
+
+                                @foreach(
+                                array_slice(
+                                $whyChoose,
+                                0,
+                                ceil(count($whyChoose) / 2)
+                                ) as $item
+                                )
+
+                                <li>
+
+                                    <i class="far fa-check"></i>
+
+                                    {{ $item }}
+
+                                </li>
+
+                                @endforeach
+
+                            </ul>
+
+
+                            <ul>
+
+                                @foreach(
+                                array_slice(
+                                $whyChoose,
+                                ceil(count($whyChoose) / 2)
+                                ) as $item
+                                )
+
+                                <li>
+
+                                    <i class="far fa-check"></i>
+
+                                    {{ $item }}
+
+                                </li>
+
+                                @endforeach
+
+                            </ul>
 
                         </div>
 
+                        @endif
 
-                        <!-- =========================
-                            APPOINTMENT CTA
-                        ========================== -->
-                        <div class="mt-4">
 
-                            <a
-                                href="tel:+919727579000"
-                                class="theme-btn"
-                            >
-                                <i class="far fa-phone-alt"></i>
-                                Book An Appointment
+
+
+                       <!-- Related Doctors -->
+
+@if($department->doctors->count())
+
+    <h4>
+        Related Doctors
+    </h4>
+
+    <div class="row g-3">
+
+        @foreach($department->doctors as $doctor)
+
+            <div class="col-lg-6 col-md-6">
+
+                <div
+                    style="
+                        border: 1px solid #e2e2e2;
+                        border-radius: 10px;
+                        padding: 12px;
+                        display: flex;
+                        align-items: center;
+                        gap: 14px;
+                        height: 100%;
+                        background: #fff;
+                    "
+                >
+
+                    {{-- Doctor Image --}}
+
+                    @if($doctor->image)
+
+                        <img
+                            src="{{ asset('storage/' . $doctor->image) }}"
+                            alt="{{ $doctor->name }}"
+                            style="
+                                width: 75px;
+                                height: 75px;
+                                min-width: 75px;
+                                object-fit: cover;
+                                border-radius: 8px;
+                            "
+                        >
+
+                    @endif
+
+
+                    {{-- Doctor Details --}}
+
+                    <div>
+
+                        <h5 style="margin: 0 0 5px 0;">
+                            <a href="{{ route('doctors.show', $doctor->slug) }}">
+                                {{ $doctor->name }}
                             </a>
+                        </h5>
 
-                        </div>
+                        <p style="margin: 0 0 3px 0;">
+                            {{ $doctor->speciality }}
+                        </p>
+
 
                     </div>
 
@@ -395,103 +480,51 @@
 
             </div>
 
-        </div>
+        @endforeach
 
     </div>
+
+@else
+
+    <p>
+        No doctors currently assigned to this department.
+    </p>
+
+@endif
 
 </section>
 
 
 <!-- =========================
-    CONTACT / APPOINTMENT
-========================== -->
-<section class="contact-appointment-section section-padding fix pt-0">
+        CONTACT / APPOINTMENT
+    ========================== -->
 
-    <div class="container">
+<section class="contact-appointment-section  fix pt-0">
+
+    <div class="container pb-5">
 
         <div class="contact-appointment-wrapper-5">
 
-            <div class="row g-3">
+            <div class="row g-4">
 
-                <!-- LEFT -->
+
+                <!-- =========================
+                        LEFT SIDE
+                    ========================== -->
+
                 <div class="col-lg-6">
 
                     <div class="contact-appointment-left-item">
 
+
                         <div
                             class="contact-appointment-image wow img-custom-anim-left"
                             data-wow-duration="1.3s"
-                            data-wow-delay="0.3s"
-                        >
+                            data-wow-delay="0.3s">
 
                             <img
                                 src="{{ asset('assets/img/inner/contact/contact.png') }}"
-                                alt="Atulya Super Speciality Hospital"
-                            >
-
-                        </div>
-
-
-                        <div class="contact-appointment-list">
-
-                            <h5
-                                class="wow fadeInUp"
-                                data-wow-delay=".3s"
-                            >
-                                Working Hours
-                            </h5>
-
-                            <div
-                                class="contact-list wow fadeInUp"
-                                data-wow-delay=".5s"
-                            >
-
-                                <ul class="list">
-
-                                    <li>
-                                        Monday
-                                        <span>9AM - 10PM</span>
-                                    </li>
-
-                                    <li>
-                                        Saturday
-                                        <span>9AM - 08PM</span>
-                                    </li>
-
-                                    <li>
-                                        Sunday
-                                        <span>9AM - 12PM</span>
-                                    </li>
-
-                                </ul>
-
-
-                                <div class="caller-item">
-
-                                    <div class="icon">
-
-                                        <img
-                                            src="{{ asset('assets/img/home-5/call.png') }}"
-                                            alt="Call"
-                                        >
-
-                                    </div>
-
-                                    <div class="content">
-
-                                        <span>For Help</span>
-
-                                        <p>
-                                            <a href="tel:+919727579000">
-                                                +91 97275 79000
-                                            </a>
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                                alt="Contact Hospital">
 
                         </div>
 
@@ -500,7 +533,10 @@
                 </div>
 
 
-                <!-- RIGHT -->
+                <!-- =========================
+                        RIGHT SIDE - APPOINTMENT
+                    ========================== -->
+
                 <div class="col-lg-6">
 
                     <div class="contact-appointment-box">
@@ -509,29 +545,30 @@
                             Book An Appointment
                         </h3>
 
-                        <form
-                            action="javascript:void(0);"
-                            method="POST"
-                            onsubmit="return false;"
-                        >
+
+                        <form action="#" method="POST">
 
                             @csrf
 
-                            <div class="row g-3">
+                            <div class="row g-4">
+
 
                                 <!-- Name -->
-                                <div class="col-lg-6 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
 
-                                        <span>Name</span>
+                                        <span>
+                                            Name
+                                        </span>
 
                                         <input
                                             type="text"
                                             name="name"
-                                            placeholder="Your Name"
-                                        >
+                                            placeholder="Your Name">
 
                                     </div>
 
@@ -539,18 +576,21 @@
 
 
                                 <!-- Email -->
-                                <div class="col-lg-6 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
 
-                                        <span>Email</span>
+                                        <span>
+                                            Email
+                                        </span>
 
                                         <input
                                             type="email"
                                             name="email"
-                                            placeholder="Your Email"
-                                        >
+                                            placeholder="Your Email">
 
                                     </div>
 
@@ -558,18 +598,21 @@
 
 
                                 <!-- Phone -->
-                                <div class="col-lg-6 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
 
-                                        <span>Phone</span>
+                                        <span>
+                                            Phone
+                                        </span>
 
                                         <input
                                             type="text"
                                             name="phone"
-                                            placeholder="Your Phone"
-                                        >
+                                            placeholder="Your Phone">
 
                                     </div>
 
@@ -577,30 +620,38 @@
 
 
                                 <!-- Department -->
-                                <div class="col-lg-6 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
 
-                                        <span>Department</span>
+                                        <span>
+                                            Department
+                                        </span>
 
                                         <div class="form">
 
                                             <select
                                                 name="department"
-                                                class="single-select w-100"
-                                            >
+                                                class="single-select w-100">
 
                                                 <option value="">
                                                     Select Department
                                                 </option>
 
+                                                @foreach($departments as $item)
+
                                                 <option
-                                                    value="{{ $department->slug }}"
-                                                    selected
-                                                >
-                                                    {{ $department->name }}
+                                                    value="{{ $item->slug }}"
+                                                    {{ $item->id == $department->id ? 'selected' : '' }}>
+
+                                                    {{ $item->name }}
+
                                                 </option>
+
+                                                @endforeach
 
                                             </select>
 
@@ -612,19 +663,22 @@
 
 
                                 <!-- Age -->
-                                <div class="col-lg-12 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".5s">
 
                                     <div class="form-clt">
 
-                                        <span>Select Age</span>
+                                        <span>
+                                            Select Age
+                                        </span>
 
                                         <div class="form">
 
                                             <select
                                                 name="age"
-                                                class="single-select w-100"
-                                            >
+                                                class="single-select w-100">
 
                                                 <option value="">
                                                     Select Age
@@ -656,17 +710,20 @@
 
 
                                 <!-- Message -->
-                                <div class="col-lg-12 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-6 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <div class="form-clt">
 
-                                        <span>Your Message</span>
+                                        <span>
+                                            Your Message
+                                        </span>
 
                                         <textarea
                                             name="message"
-                                            placeholder="Write your message..."
-                                        ></textarea>
+                                            placeholder="Write your message..."></textarea>
 
                                     </div>
 
@@ -674,15 +731,14 @@
 
 
                                 <!-- Submit -->
-                                <div class="col-lg-12 wow fadeInUp"
+
+                                <div
+                                    class="col-lg-12 wow fadeInUp"
                                     data-wow-delay=".3s">
 
                                     <button
-                                        type="button"
-                                        class="theme-btn"
-                                        disabled
-                                        style="opacity: 0.65; cursor: not-allowed;"
-                                    >
+                                        type="submit"
+                                        class="theme-btn">
 
                                         <i class="far fa-chevron-right"></i>
 
@@ -691,6 +747,7 @@
                                     </button>
 
                                 </div>
+
 
                             </div>
 

@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('title', $doctor['name'] . ' - Atulya Hospital')
+@section('title', $doctor['name'] . ' - {{ setting('hospital_name') }}')
 
 @section('content')
 

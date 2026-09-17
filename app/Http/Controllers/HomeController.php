@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\Video;
 
@@ -70,12 +71,19 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
+        $blogs = Blog::where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderByDesc('published_at')
+            ->orderByDesc('id')
+            ->take(3)
+            ->get();
 
         return view('website.index', compact(
             'doctors',
             'featuredVideo',
             'latestVideos',
-            'videos'
+            'videos',
+            'blogs'
         ));
     }
 }
