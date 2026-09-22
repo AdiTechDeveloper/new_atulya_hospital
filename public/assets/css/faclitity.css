@@ -2847,8 +2847,131 @@ html {
     }
 
 }
+.atulya-appointment-section {
+    padding: 80px 0;
+}
+
+.atulya-appointment-section .appointment-wrapper {
+    width: 100%;
+}
+
+.atulya-appointment-section .appointment-items {
+    height: 100%;
+    padding: 30px;
+    background: #2490e5;
+    border-radius: 8px;
+}
+
+.atulya-appointment-section .appointment-items h3 {
+    color: #fff;
+    margin: 0 0 12px;
+}
+
+.atulya-appointment-section .appointment-items .row {
+    row-gap: 12 px;
+}
+
+.atulya-appointment-section .form-clt {
+    margin: 0;
+}
+
+.atulya-appointment-section .form-clt p {
+    color: #fff;
+    margin: 0 0 6px;
+    font-size: 13px;
+}
+
+.atulya-appointment-section input,
+.atulya-appointment-section select,
+.atulya-appointment-section textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #fff;
+    color: #172965;
+    border-radius: 4px;
+}
+
+.atulya-appointment-section input,
+.atulya-appointment-section select {
+    height: 44px;
+    padding: 0 14px;
+}
+
+.atulya-appointment-section textarea {
+    height: 70px;
+    min-height: 70px;
+    padding: 12px 14px;
+    resize: none;
+}
+
+.atulya-appointment-section .theme-btn {
+    width: 100%;
+    
+    margin-top: 2px;
+}
 
 
+/* RIGHT SIDE IMAGES */
+
+.atulya-appointment-section .appointment-images {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.atulya-appointment-section .appointment-image-item {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.atulya-appointment-section .appointment-image-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
 
 
+/* TABLET */
 
+@media (max-width: 991px) {
+
+    .atulya-appointment-section .appointment-images {
+        height: auto;
+        flex-direction: row;
+    }
+
+    .atulya-appointment-section .appointment-image-item {
+        height: 260px;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 575px) {
+
+    .atulya-appointment-section {
+        padding: 60px 0;
+    }
+
+    .atulya-appointment-section .appointment-items {
+        padding: 24px 20px;
+    }
+
+    .atulya-appointment-section .appointment-images {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .atulya-appointment-section .appointment-image-item {
+        height: 220px;
+    }
+
+}

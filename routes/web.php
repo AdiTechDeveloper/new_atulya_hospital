@@ -13,12 +13,19 @@ use App\Http\Controllers\Admin\VideoController;
 
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\JobController as AdminJobController;
+use App\Http\Controllers\Website\AppointmentController;
 use App\Http\Controllers\Website\BlogController as WebsiteBlogController;
+use App\Http\Controllers\Website\ContactController;
 use App\Http\Controllers\Website\DepartmentController;
 use App\Http\Controllers\Website\FacilityController as WebsiteFacilityController;
 use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
-
+use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
+use App\Http\Controllers\Admin\ForgotPasswordController;
+use App\Http\Controllers\Admin\JobApplicationController;
+use App\Http\Controllers\Admin\ResetPasswordController;
+use App\Http\Controllers\Website\CareerController;
 
 // ==================== Website Routes ====================
 
@@ -26,15 +33,18 @@ use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+
+Route::post('/appointment', [AppointmentController::class, 'store'])
+    ->name('appointment.store');
+
 // About
 Route::get('/about', function () {
     return view('website.pages.about');
 })->name('about');
 
 // Contact
-Route::get('/contact', function () {
-    return view('website.pages.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])
+    ->name('contact');
 
 // Videos
 Route::get('/videos', [WebsiteVideoController::class, 'index'])
@@ -48,6 +58,7 @@ Route::get('/gallery', [WebsiteGalleryController::class, 'publicIndex'])
 Route::get('/icu', function () {
     return view('website.pages.icu');
 })->name('icu');
+
 
 // Departments
 
@@ -72,6 +83,16 @@ Route::get('/doctors', [DoctorController::class, 'index'])
 Route::get('/doctors/{slug}', [DoctorController::class, 'show'])
     ->name('doctors.show');
 
+//carrer 
+
+Route::get('/career', [CareerController::class, 'index'])
+    ->name('careers.index');
+
+Route::get('/career/{job:slug}/apply', [CareerController::class, 'apply'])
+    ->name('careers.apply');
+
+Route::post('/career/{job:slug}/apply', [CareerController::class, 'storeApplication'])
+    ->name('careers.application.store');
 
 // ==================== Admin Authentication ====================
 
@@ -83,6 +104,18 @@ Route::get('/admin/login', [AuthController::class, 'showLogin'])
 Route::post('/admin/login', [AuthController::class, 'login'])
     ->middleware('guest')
     ->name('admin.login.submit');
+
+Route::get('/admin/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
+    ->name('admin.password.request');
+
+Route::post('/admin/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    ->name('admin.password.email');
+
+Route::get('/admin/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+    ->name('password.reset');
+
+Route::post('/admin/reset-password', [ResetPasswordController::class, 'reset'])
+    ->name('admin.password.update');
 
 // Admin Logout
 Route::post('/admin/logout', [AuthController::class, 'logout'])
@@ -225,6 +258,10 @@ Route::middleware('auth')
 
         Route::put('/settings', [SettingController::class, 'update'])
             ->name('admin.settings.update');
+        Route::post(
+            '/settings/change-password',
+            [SettingController::class, 'changePassword']
+        )->name('admin.password.change');
 
         // Departments
         Route::get('/departments', [AdminDepartmentController::class, 'index'])
@@ -247,6 +284,72 @@ Route::middleware('auth')
 
         Route::patch('/departments/{department}/status', [AdminDepartmentController::class, 'toggleStatus'])
             ->name('admin.departments.status');
+
+        // Appointment routes
+
+        Route::get('/appointments', [
+            AdminAppointmentController::class,
+            'index'
+        ])->name('admin.appointments.index');
+
+        Route::get('/appointments/{appointment}', [
+            AdminAppointmentController::class,
+            'show'
+        ])->name('admin.appointments.show');
+
+        Route::put('/appointments/{appointment}', [
+            AdminAppointmentController::class,
+            'update'
+        ])->name('admin.appointments.update');
+
+        Route::delete('/appointments/{appointment}', [
+            AdminAppointmentController::class,
+            'destroy'
+        ])->name('admin.appointments.destroy');
+        Route::get('/jobs', [
+            AdminJobController::class,
+            'index'
+        ])->name('admin.jobs.index');
+
+        Route::get('/jobs/create', [
+            AdminJobController::class,
+            'create'
+        ])->name('admin.jobs.create');
+
+        Route::post('/jobs', [
+            AdminJobController::class,
+            'store'
+        ])->name('admin.jobs.store');
+
+        Route::get('/jobs/{job}/edit', [
+            AdminJobController::class,
+            'edit'
+        ])->name('admin.jobs.edit');
+
+        Route::put('/jobs/{job}', [
+            AdminJobController::class,
+            'update'
+        ])->name('admin.jobs.update');
+
+        Route::delete('/jobs/{job}', [
+            AdminJobController::class,
+            'destroy'
+        ])->name('admin.jobs.destroy');
+
+        Route::get('/job-applications', [JobApplicationController::class, 'index'])
+            ->name('admin.job-applications.index');
+
+        Route::get('/job-applications/{jobApplication}', [JobApplicationController::class, 'show'])
+            ->name('admin.job-applications.show');
+
+        Route::put('/job-applications/{jobApplication}', [JobApplicationController::class, 'update'])
+            ->name('admin.job-applications.update');
+
+        Route::get('/job-applications/{jobApplication}/resume', [JobApplicationController::class, 'downloadResume'])
+            ->name('admin.job-applications.resume');
+
+        Route::delete('/job-applications/{jobApplication}', [JobApplicationController::class, 'destroy'])
+            ->name('admin.job-applications.destroy');
     });
 
 

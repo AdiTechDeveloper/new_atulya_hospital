@@ -33,8 +33,5 @@ class Department extends Model
     {
         return $this->belongsToMany(Doctor::class);
     }
-    public function departments()
-    {
-        return $this->belongsToMany(Department::class);
-    }
+   
 }

@@ -529,3 +529,112 @@ document.addEventListener('DOMContentLoaded', function () {
 // }
 
 
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const department = document.getElementById('appointmentDepartment');
+    const doctor = document.getElementById('appointmentDoctor');
+
+    if (!department || !doctor) {
+        return;
+    }
+
+    const doctorOptions = Array.from(
+        doctor.querySelectorAll('option[data-department]')
+    );
+
+    function updateDoctors(selectedDepartment) {
+
+        selectedDepartment = selectedDepartment
+            .trim()
+            .toLowerCase();
+
+        doctor.value = '';
+
+        let hasDoctors = false;
+
+        doctorOptions.forEach(function (option) {
+
+            const doctorDepartment = option
+                .getAttribute('data-department')
+                .trim()
+                .toLowerCase();
+
+            if (
+                selectedDepartment &&
+                doctorDepartment === selectedDepartment
+            ) {
+                option.style.display = '';
+                hasDoctors = true;
+            } else {
+                option.style.display = 'none';
+            }
+        });
+
+        if (!selectedDepartment) {
+
+            doctor.disabled = true;
+
+            doctor.options[0].textContent =
+                'Select Department First';
+
+            return;
+        }
+
+        doctor.disabled = !hasDoctors;
+
+        doctor.options[0].textContent = hasDoctors
+            ? 'Select Doctor'
+            : 'No Doctor Available';
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Department Change
+    |--------------------------------------------------------------------------
+    */
+
+    department.addEventListener('change', function () {
+
+        updateDoctors(this.value);
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Restore Old Department + Doctor After Validation Error
+    |--------------------------------------------------------------------------
+    */
+
+    const oldDepartment = @json(old('department'));
+    const oldDoctor = @json(old('doctor_id'));
+
+    if (oldDepartment) {
+
+        updateDoctors(oldDepartment);
+
+        if (oldDoctor) {
+
+            const oldDoctorOption = doctorOptions.find(function (option) {
+
+                return option.value == oldDoctor;
+
+            });
+
+            if (oldDoctorOption) {
+                oldDoctorOption.style.display = '';
+                doctor.value = oldDoctor;
+            }
+        }
+    }
+
+});
+
+
+
+
+
+
+

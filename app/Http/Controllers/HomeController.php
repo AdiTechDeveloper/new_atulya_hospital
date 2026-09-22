@@ -8,30 +8,18 @@ use App\Models\Video;
 
 class HomeController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Homepage
-    |--------------------------------------------------------------------------
-    */
-
     public function index()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Doctors
-        |--------------------------------------------------------------------------
-        */
-
         $doctors = Doctor::where('is_active', true)
             ->orderBy('id')
             ->get();
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Featured Video
-        |--------------------------------------------------------------------------
-        */
+        $departments = $doctors
+            ->pluck('department')
+            ->filter()
+            ->unique()
+            ->sort()
+            ->values();
 
         $featuredVideo = Video::where('is_active', true)
             ->where('is_featured', true)
@@ -45,25 +33,11 @@ class HomeController extends Controller
                 ->first();
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Latest Videos
-        |--------------------------------------------------------------------------
-        */
-
         $latestVideos = Video::where('is_active', true)
             ->orderBy('sort_order')
             ->latest()
             ->take(3)
             ->get();
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Homepage Videos - 4 Cards
-        |--------------------------------------------------------------------------
-        */
 
         $videos = Video::where('is_active', true)
             ->orderBy('sort_order')
@@ -80,6 +54,7 @@ class HomeController extends Controller
 
         return view('website.index', compact(
             'doctors',
+            'departments',
             'featuredVideo',
             'latestVideos',
             'videos',

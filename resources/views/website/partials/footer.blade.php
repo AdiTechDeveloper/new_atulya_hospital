@@ -130,7 +130,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/carrer') }}">
+                                    <a href="{{ url('/career') }}">
                                         Carrer
                                     </a>
                                 </li>

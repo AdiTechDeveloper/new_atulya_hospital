@@ -59,38 +59,63 @@
             </li>
 
             <li>
-               <a href="{{ url('/admin/facilities/') }}">
+                <a href="{{ url('/admin/facilities/') }}">
                     <div class="parent-icon">
-                          <i class="material-icons-outlined">workspace_premium</i>
+                        <i class="material-icons-outlined">workspace_premium</i>
                     </div>
                     <div class="menu-title">Facilities</div>
                 </a>
             </li>
-              <li>
-               <a href="{{ url('/admin/blogs/') }}">
+            <li>
+                <a href="{{ url('/admin/blogs/') }}">
                     <div class="parent-icon">
-                          <i class="material-icons-outlined">article</i>
+                        <i class="material-icons-outlined">article</i>
                     </div>
                     <div class="menu-title">Blogs</div>
                 </a>
             </li>
-             <li>
-               <a href="{{ url('/admin/departments/') }}">
+            <li>
+                <a href="{{ url('/admin/departments/') }}">
                     <div class="parent-icon">
-                          <i class="material-icons-outlined">account_balance</i>
+                        <i class="material-icons-outlined">account_balance</i>
                     </div>
                     <div class="menu-title">Departments</div>
                 </a>
             </li>
-              <li>
-               <a href="{{ url('/admin/settings/') }}">
+            
+            <li>
+                <a href="{{ url('/admin/appointments/') }}">
                     <div class="parent-icon">
-                          <i class="material-icons-outlined">brightness_5</i>
+                        <i class="material-icons-outlined">calendar_month</i>
+                    </div>
+                    <div class="menu-title">Appointments</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/jobs') }}">
+                    <div class="parent-icon">
+                        <i class="material-icons-outlined">add_business</i>
+                    </div>
+                    <div class="menu-title">Jobs</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/job-applications') }}">
+                    <div class="parent-icon">
+                        <i class="material-icons-outlined">attach_email</i>
+                    </div>
+                    <div class="menu-title">Jobs Applications</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/settings/') }}">
+                    <div class="parent-icon">
+                        <i class="material-icons-outlined">brightness_5</i>
                     </div>
                     <div class="menu-title">Setting</div>
                 </a>
             </li>
-            
+
 
 
 

@@ -143,7 +143,7 @@
 
                                 <h4>
                                     <a href="{{ setting('phone') }}">
-                                       {{ setting('phone') }}
+                                        {{ setting('phone') }}
                                     </a>
                                 </h4>
 
@@ -922,7 +922,7 @@
                         <p>Call Emergency</p>
 
                         <a href="{{ setting('phone') }}">
-                       {{ setting('phone') }}
+                            {{ setting('phone') }}
                         </a>
                     </div>
 
@@ -1119,154 +1119,152 @@
 
             @if(isset($videos) && $videos->count())
 
-                <div class="row g-4 atulya-video-row">
+            <div class="row g-4 atulya-video-row">
 
-                    @foreach($videos as $video)
+                @foreach($videos as $video)
 
-                        @php
+                @php
 
-                            $youtubeId = null;
+                $youtubeId = null;
 
-                            if (
-                                preg_match(
-                                    '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
-                                    $video->youtube_url,
-                                    $matches
-                                )
-                            ) {
-                                $youtubeId = $matches[1];
-                            }
+                if (
+                preg_match(
+                '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?\/]+)/',
+                $video->youtube_url,
+                $matches
+                )
+                ) {
+                $youtubeId = $matches[1];
+                }
 
-                            if ($video->thumbnail) {
+                if ($video->thumbnail) {
 
-                                $videoThumbnail = asset(
-                                    'storage/' . $video->thumbnail
-                                );
+                $videoThumbnail = asset(
+                'storage/' . $video->thumbnail
+                );
 
-                            } elseif ($youtubeId) {
+                } elseif ($youtubeId) {
 
-                                $videoThumbnail =
-                                    'https://img.youtube.com/vi/' .
-                                    $youtubeId .
-                                    '/maxresdefault.jpg';
+                $videoThumbnail =
+                'https://img.youtube.com/vi/' .
+                $youtubeId .
+                '/maxresdefault.jpg';
 
-                            } else {
+                } else {
 
-                                $videoThumbnail =
-                                    asset(
-                                        'assets/img/home-1/counter/video-img.png'
-                                    );
+                $videoThumbnail =
+                asset(
+                'assets/img/home-1/counter/video-img.png'
+                );
 
-                            }
+                }
 
-                        @endphp
-
-
-                        {{-- VIDEO CARD --}}
-
-                        <div class="col-xl-3 col-lg-3 col-md-6">
-
-                            <div class="atulya-video-card">
-
-                                {{-- Thumbnail --}}
-
-                                <div class="atulya-video-thumb">
-
-                                    <img
-                                        src="{{ $videoThumbnail }}"
-                                        alt="{{ $video->title }}"
-                                        loading="lazy"
-                                    >
-
-                                    <div class="atulya-video-thumb-overlay"></div>
-
-                                    <button
-                                        type="button"
-                                        class="atulya-video-play open-video"
-                                        data-video-url="{{ $video->youtube_url }}"
-                                        aria-label="Play {{ $video->title }}"
-                                    >
-                                        <i class="fas fa-play"></i>
-                                    </button>
-
-                                </div>
+                @endphp
 
 
-                                {{-- Content --}}
+                {{-- VIDEO CARD --}}
 
-                                <div class="atulya-video-content">
+                <div class="col-xl-3 col-lg-3 col-md-6">
 
-                                    <h4>
-                                        {{ $video->title }}
-                                    </h4>
+                    <div class="atulya-video-card">
 
-                                    @if($video->description)
+                        {{-- Thumbnail --}}
 
-                                        <p>
-                                            {{ \Illuminate\Support\Str::limit($video->description, 80) }}
-                                        </p>
+                        <div class="atulya-video-thumb">
 
-                                    @endif
+                            <img
+                                src="{{ $videoThumbnail }}"
+                                alt="{{ $video->title }}"
+                                loading="lazy">
 
-                                </div>
+                            <div class="atulya-video-thumb-overlay"></div>
 
-                            </div>
+                            <button
+                                type="button"
+                                class="atulya-video-play open-video"
+                                data-video-url="{{ $video->youtube_url }}"
+                                aria-label="Play {{ $video->title }}">
+                                <i class="fas fa-play"></i>
+                            </button>
 
                         </div>
 
-                    @endforeach
+
+                        {{-- Content --}}
+
+                        <div class="atulya-video-content">
+
+                            <h4>
+                                {{ $video->title }}
+                            </h4>
+
+                            @if($video->description)
+
+                            <p>
+                                {{ \Illuminate\Support\Str::limit($video->description, 80) }}
+                            </p>
+
+                            @endif
+
+                        </div>
+
+                    </div>
 
                 </div>
 
+                @endforeach
 
-                {{-- SEE ALL --}}
+            </div>
 
-                <div class="atulya-video-see-all">
 
-                    <a
-                        href="{{ route('videos.index') }}"
-                        class="theme-btn">
+            {{-- SEE ALL --}}
 
-                        <span>
-                            View All Videos
-                        </span>
+            <div class="atulya-video-see-all">
 
-                        <i class="fas fa-arrow-right"></i>
+                <a
+                    href="{{ route('videos.index') }}"
+                    class="theme-btn">
 
-                    </a>
+                    <span>
+                        View All Videos
+                    </span>
 
-                </div>
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
 
             @else
 
-                {{-- EMPTY STATE --}}
+            {{-- EMPTY STATE --}}
 
-                <div class="atulya-video-empty">
+            <div class="atulya-video-empty">
 
-                    <i class="fas fa-video"></i>
+                <i class="fas fa-video"></i>
 
-                    <h3>
-                        Videos Coming Soon
-                    </h3>
+                <h3>
+                    Videos Coming Soon
+                </h3>
 
-                    <p>
-                        We are preparing informative healthcare
-                        content for you.
-                    </p>
+                <p>
+                    We are preparing informative healthcare
+                    content for you.
+                </p>
 
-                    <a
-                        href="{{ route('videos.index') }}"
-                        class="theme-btn atulya-see-videos">
+                <a
+                    href="{{ route('videos.index') }}"
+                    class="theme-btn atulya-see-videos">
 
-                        <span>
-                            View All Videos
-                        </span>
+                    <span>
+                        View All Videos
+                    </span>
 
-                        <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right"></i>
 
-                    </a>
+                </a>
 
-                </div>
+            </div>
 
             @endif
 
@@ -1418,161 +1416,201 @@
 
 </section>
 
-
-
-<!--  Appointment Section Start -->
-<section class="appointment-section section-padding">
+<section class="appointment-section section-padding atulya-appointment-section">
 
     <div class="container">
 
         <div class="appointment-wrapper">
 
-            <div class="row g-2">
+            <div class="row g-4 align-items-stretch">
 
                 <!-- APPOINTMENT FORM -->
-                <div class="col-lg-8 wow fadeInUp" data-wow-delay=".3s">
+                <div class="col-lg-8">
 
                     <div class="appointment-items">
 
                         <h3>Book An Appointment</h3>
+                        @if(session('success'))
+                        <div class="alert alert-success mb-4">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+                       <form action="{{ route('appointment.store') }}" method="POST">
 
-                        <form action="#">
+                            @csrf
 
                             <div class="row">
 
                                 <!-- NAME -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-
+                                <div class="col-md-6">
                                     <div class="form-clt">
 
                                         <p>Name</p>
 
                                         <input
                                             type="text"
-                                            placeholder="Your name">
-
+                                            name="name"
+                                            value="{{ old('name') }}"
+                                            placeholder="Enter Your Name"
+                                            required>
+                                        @error('name')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-
                                 </div>
 
 
                                 <!-- PHONE -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-
+                                <div class="col-md-6">
                                     <div class="form-clt">
 
                                         <p>Phone</p>
 
                                         <input
                                             type="tel"
-                                            placeholder="Your phone">
+                                            name="phone"
+                                            value="{{ old('phone') }}"
+                                            placeholder="Enter Your Phone Number"
+                                            required>
+                                        @error('phone')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
 
                                     </div>
-
                                 </div>
 
 
                                 <!-- DEPARTMENT -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-
+                                <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Department</p>
+                                        <p>Department <span>(Optional)</span></p>
 
                                         <div class="form">
 
-                                            <select class="single-select w-100">
+                                            <select name="department" id="appointmentDepartment" class="w-100">
+                                                <option value="">Select Department</option>
 
-                                                <option value="">
-                                                    Select Department
+                                                @foreach($departments as $department)
+                                                <option
+                                                    value="{{ $department }}"
+                                                    {{ old('department') == $department ? 'selected' : '' }}>
+                                                    {{ ucwords($department) }}
                                                 </option>
-
-                                                <option value="Orthopedic">
-                                                    Orthopedic
-                                                </option>
-
-                                                <option value="Urology">
-                                                    Urology
-                                                </option>
-
-                                                <option value="Rheumatology">
-                                                    Rheumatology
-                                                </option>
-
-                                                <option value="General Surgery">
-                                                    General Surgery
-                                                </option>
-
-                                                <option value="Critical Care">
-                                                    Critical Care
-                                                </option>
-
-                                                <option value="ENT">
-                                                    ENT
-                                                </option>
-
-                                                <option value="Gynecology">
-                                                    Gynecology
-                                                </option>
-
-                                                <option value="Physician">
-                                                    Physician
-                                                </option>
-
+                                                @endforeach
                                             </select>
+
+                                            @error('department')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
 
                                         </div>
 
                                     </div>
+                                </div>
 
+
+                                <!-- DOCTOR -->
+                                <div class="col-md-6">
+                                    <div class="form-clt">
+
+                                        <p>Doctor <span>(Optional)</span></p>
+
+                                        <div class="form">
+
+                                            <select name="doctor_id" id="appointmentDoctor" class="w-100" disabled>
+                                                <option value="">Select Department First</option>
+
+                                                @foreach($doctors as $doctor)
+                                                <option
+                                                    value="{{ $doctor->id }}"
+                                                    data-department="{{ trim($doctor->department) }}"
+                                                    style="display:none;"
+                                                    {{ old('doctor_id') == $doctor->id ? 'selected' : '' }}>
+                                                    {{ $doctor->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('doctor_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
+                                        </div>
+
+                                    </div>
                                 </div>
 
 
                                 <!-- DATE -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-
+                                <div class="col-md-6">
                                     <div class="form-clt">
 
                                         <p>Date</p>
-
                                         <input
                                             type="date"
-                                            placeholder="Select date">
+                                            name="appointment_date"
+                                            value="{{ old('appointment_date') }}"
+                                            min="{{ date('Y-m-d') }}"
+                                            required>
+
+                                        @error('appointment_date')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
 
                                     </div>
-
                                 </div>
 
 
                                 <!-- TIME -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-
+                                <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Time</p>
+                                        <p>Time <span>(Optional)</span></p>
 
                                         <input
                                             type="time"
-                                            placeholder="Select time">
+                                            name="appointment_time"
+                                            value="{{ old('appointment_time') }}">
+
+                                        @error('appointment_time')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <!-- MESSAGE -->
+                                <div class="col-12">
+                                    <div class="form-clt">
+
+                                        <p>Message <span>(Optional)</span></p>
+
+                                        <textarea
+                                            name="message"
+                                            rows="3"
+                                            placeholder="Write Your Message">{{ old('message') }}</textarea>
+
+                                        @error('message')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
 
                                     </div>
-
                                 </div>
 
 
                                 <!-- BUTTON -->
-                                <div class="col-xl-12">
-
+                                <div class="col-12">
                                     <div class="form-clt">
 
                                         <button
-                                            class="theme-btn"
-                                            type="submit">
-                                            Make an Appointment
+                                            type="submit"
+                                            class="theme-btn">
+                                            <i class="far fa-chevron-right"></i>
+                                            Submit Appointment
                                         </button>
 
                                     </div>
-
                                 </div>
 
                             </div>
@@ -1583,20 +1621,38 @@
 
                 </div>
 
-                <!-- IMAGE -->
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay=".5s">
 
-                    <div class="appointment-image">
+                <!-- TWO IMAGES -->
+                <div class="col-lg-4">
 
-                        <img
-                            src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
-                            alt="Book an Appointment">
+                    <div class="appointment-images">
+
+                        <div class="appointment-image-item">
+
+                            <img
+                                src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
+                                alt="Atulya Super Speciality Hospital">
+
+                        </div>
+
+                        <div class="appointment-image-item">
+
+                            <img
+                                src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
+                                alt="Atulya Super Speciality Hospital">
+
+                        </div>
 
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 
@@ -1847,183 +1903,176 @@
 
 
 <!-- News Section Start -->
-<section class="news-section section-padding fix pt-0"> 
- 
-    <div class="news-shape-1"> 
-        <img 
-            src="{{ asset('assets/img/home-1/news/shape-01.png') }}" 
-            alt="img" 
-        > 
-    </div> 
- 
-    <div class="news-shape-2"> 
-        <img 
-            src="{{ asset('assets/img/home-1/news/shape-02.png') }}" 
-            alt="img" 
-        > 
-    </div> 
- 
- 
-    <div class="container"> 
- 
+<section class="news-section section-padding fix pt-0">
+
+    <div class="news-shape-1">
+        <img
+            src="{{ asset('assets/img/home-1/news/shape-01.png') }}"
+            alt="img">
+    </div>
+
+    <div class="news-shape-2">
+        <img
+            src="{{ asset('assets/img/home-1/news/shape-02.png') }}"
+            alt="img">
+    </div>
+
+
+    <div class="container">
+
         <!-- ========================= 
                 HEADING 
-        ========================== --> 
- 
-        <div class="section-title text-center"> 
- 
-            <span class="subtitle tz-sub-tilte tz-sub-anim text-uppercase tx-subTitle"> 
-                OUR BLOG 
-            </span> 
- 
-            <h2 class="tx-title sec_title tz-itm-title tz-itm-anim"> 
-                Our Recent Insights, Blog <br> 
-                and News From Us 
-            </h2> 
- 
-        </div> 
- 
- 
+        ========================== -->
+
+        <div class="section-title text-center">
+
+            <span class="subtitle tz-sub-tilte tz-sub-anim text-uppercase tx-subTitle">
+                OUR BLOG
+            </span>
+
+            <h2 class="tx-title sec_title tz-itm-title tz-itm-anim">
+                Our Recent Insights, Blog <br>
+                and News From Us
+            </h2>
+
+        </div>
+
+
         <!-- ========================= 
                 BLOGS 
-        ========================== --> 
- 
-        @if(isset($blogs) && $blogs->count()) 
- 
-            <div class="row"> 
- 
-                @foreach($blogs as $blog) 
- 
-                    <div 
-                        class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" 
-                        data-wow-delay="{{ ($loop->index + 3) / 10 }}s" 
-                    > 
- 
-                        <div class="news-box-items"> 
- 
-                            <!-- Blog Image --> 
- 
-                            <div class="news-img blog-fixed-image"> 
- 
-                                @if($blog->featured_image) 
- 
-                                    <img 
-                                        src="{{ asset('storage/' . $blog->featured_image) }}" 
-                                        alt="{{ $blog->title }}" 
-                                    > 
- 
-                                @else 
- 
-                                    <img 
-                                        src="{{ asset('assets/img/home-1/news/blog-1.png') }}" 
-                                        alt="{{ $blog->title }}" 
-                                    > 
- 
-                                @endif 
- 
- 
-                                @if($blog->category) 
- 
-                                    <span class="post-box"> 
-                                        {{ $blog->category }} 
-                                    </span> 
- 
-                                @endif 
- 
-                            </div> 
- 
- 
-                            <!-- Blog Content --> 
- 
-                            <div class="news-content"> 
- 
-                                <span> 
-                                    {{ $blog->published_at 
+        ========================== -->
+
+        @if(isset($blogs) && $blogs->count())
+
+        <div class="row">
+
+            @foreach($blogs as $blog)
+
+            <div
+                class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="{{ ($loop->index + 3) / 10 }}s">
+
+                <div class="news-box-items">
+
+                    <!-- Blog Image -->
+
+                    <div class="news-img blog-fixed-image">
+
+                        @if($blog->featured_image)
+
+                        <img
+                            src="{{ asset('storage/' . $blog->featured_image) }}"
+                            alt="{{ $blog->title }}">
+
+                        @else
+
+                        <img
+                            src="{{ asset('assets/img/home-1/news/blog-1.png') }}"
+                            alt="{{ $blog->title }}">
+
+                        @endif
+
+
+                        @if($blog->category)
+
+                        <span class="post-box">
+                            {{ $blog->category }}
+                        </span>
+
+                        @endif
+
+                    </div>
+
+
+                    <!-- Blog Content -->
+
+                    <div class="news-content">
+
+                        <span>
+                            {{ $blog->published_at 
                                         ? $blog->published_at->format('d M, Y') 
                                         : $blog->created_at->format('d M, Y') 
-                                    }} 
-                                </span> 
- 
- 
-                                <h3> 
- 
-                                    <a href="{{ route('blog.show', $blog->slug) }}"> 
- 
-                                        {{ $blog->title }} 
- 
-                                    </a> 
- 
-                                </h3> 
- 
- 
-                                @if($blog->short_description) 
- 
-                                    <p> 
-                                        {{ \Illuminate\Support\Str::limit( 
+                                    }}
+                        </span>
+
+
+                        <h3>
+
+                            <a href="{{ route('blog.show', $blog->slug) }}">
+
+                                {{ $blog->title }}
+
+                            </a>
+
+                        </h3>
+
+
+                        @if($blog->short_description)
+
+                        <p>
+                            {{ \Illuminate\Support\Str::limit( 
                                             $blog->short_description, 
                                             120 
-                                        ) }} 
-                                    </p> 
- 
-                                @endif 
- 
-                            </div> 
- 
-                        </div> 
- 
-                    </div> 
- 
-                @endforeach 
- 
-            </div> 
- 
- 
-            <!-- ========================= 
+                                        ) }}
+                        </p>
+
+                        @endif
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            @endforeach
+
+        </div>
+
+
+        <!-- ========================= 
                     SHOW MORE BLOGS 
-            ========================== --> 
- 
-            <div class="text-center mt-5"> 
- 
-                <a 
-                    href="{{ route('blog') }}" 
-                    class="theme-btn" 
-                > 
- 
-                    <i class="far fa-chevron-right"></i> 
- 
-                    Show More Blogs 
- 
-                </a> 
- 
-            </div> 
- 
-        @else 
- 
-            <!-- Empty State --> 
- 
-            <div class="text-center"> 
- 
-                <p> 
-                    No blogs available at the moment. 
-                </p> 
- 
-                <a 
-                    href="{{ route('blog') }}" 
-                    class="theme-btn" 
-                > 
- 
-                    <i class="far fa-chevron-right"></i> 
- 
-                    View Blog 
- 
-                </a> 
- 
-            </div> 
- 
-        @endif 
- 
-    </div> 
- 
+            ========================== -->
+
+        <div class="text-center mt-5">
+
+            <a
+                href="{{ route('blog') }}"
+                class="theme-btn">
+
+                <i class="far fa-chevron-right"></i>
+
+                Show More Blogs
+
+            </a>
+
+        </div>
+
+        @else
+
+        <!-- Empty State -->
+
+        <div class="text-center">
+
+            <p>
+                No blogs available at the moment.
+            </p>
+
+            <a
+                href="{{ route('blog') }}"
+                class="theme-btn">
+
+                <i class="far fa-chevron-right"></i>
+
+                View Blog
+
+            </a>
+
+        </div>
+
+        @endif
+
+    </div>
+
 </section>
 
 
@@ -2032,7 +2081,6 @@
 ========================== -->
 
 <style>
-
     .news-section .blog-fixed-image {
         width: 100%;
         height: 260px;
@@ -2080,7 +2128,6 @@
         }
 
     }
-
 </style>
 
 <!-- Faq Section Start -->
@@ -2119,7 +2166,7 @@
                                     <p>Emergency Assistance</p>
                                     <h4>
                                         <a href="{{ setting('phone') }}">
-                                           {{ setting('phone') }}
+                                            {{ setting('phone') }}
                                         </a>
                                     </h4>
                                 </div>
