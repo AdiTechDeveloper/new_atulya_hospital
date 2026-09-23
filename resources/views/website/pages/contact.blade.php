@@ -35,7 +35,7 @@
                                 <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Name</p>
+                                        <p>Name*</p>
 
                                         <input
                                             type="text"
@@ -54,7 +54,7 @@
                                 <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Phone</p>
+                                        <p>Phone*</p>
 
                                         <input
                                             type="tel"
@@ -136,7 +136,7 @@
                                 <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Date</p>
+                                        <p>Date*</p>
                                         <input
                                             type="date"
                                             name="appointment_date"
@@ -228,7 +228,7 @@
                         <div class="appointment-image-item">
 
                             <img
-                                src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
+                               src="{{ asset('assets/img/home-1/hero/img1.png') }}"
                                 alt="Atulya Super Speciality Hospital">
 
                         </div>

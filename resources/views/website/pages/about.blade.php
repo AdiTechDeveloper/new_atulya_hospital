@@ -40,15 +40,15 @@
                     <div class="atulya-hero-actions">
 
                         <a href="{{ url('/doctors') }}"
-                           class="atulya-btn atulya-btn-primary">
+                            class="atulya-btn atulya-btn-primary">
                             Meet Our Doctors
                             <i class="far fa-arrow-right"></i>
                         </a>
 
                         <a href="{{ setting('phone') }}"
-                           class="atulya-btn atulya-btn-outline">
+                            class="atulya-btn atulya-btn-outline">
                             <i class="far fa-phone-alt"></i>
-                           {{ setting('phone') }}
+                            {{ setting('phone') }}
                         </a>
 
                     </div>
@@ -79,8 +79,7 @@
 
                     <img
                         src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                        alt="Atulya Super Speciality Hospital & ICU in Ahmedabad"
-                    >
+                        alt="Atulya Super Speciality Hospital & ICU in Ahmedabad">
 
                     <div class="atulya-hero-badge">
 
@@ -117,8 +116,7 @@
 
                     <img
                         src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
-                        alt="About Atulya Super Speciality Hospital Ahmedabad"
-                    >
+                        alt="About Atulya Super Speciality Hospital Ahmedabad">
 
                 </div>
 
@@ -532,130 +530,50 @@
 
             <div class="atulya-infra-grid">
 
-                <div class="atulya-infra-card">
-
-                    <div class="atulya-infra-image">
-                        <img
-                            src="{{ asset('assets/img/inner/facilities/25-beds.jpg') }}"
-                            alt="25-Bed Hospital Facility at {{ setting('hospital_name') }} Ahmedabad"
-                        >
-                    </div>
-
-                    <div class="atulya-infra-content">
-                        <h3>25-Bed Hospital Facility</h3>
-
-                        <p>
-                            Hospital beds supporting inpatient healthcare
-                            and patient care requirements.
-                        </p>
-                    </div>
-
-                </div>
-
+                @forelse($facilities as $facility)
 
                 <div class="atulya-infra-card">
 
                     <div class="atulya-infra-image">
+
+                        @if($facility->main_image)
                         <img
-                            src="{{ asset('assets/img/inner/facilities/modular-ot.jpg') }}"
-                            alt="Modular Operation Theatre at {{ setting('hospital_name') }} Ahmedabad"
-                        >
+                            src="{{ asset('storage/' . $facility->main_image) }}"
+                            alt="{{ $facility->title }} at {{ setting('hospital_name') }} Ahmedabad">
+                        @else
+                        <img
+                            src="{{ asset('assets/img/inner/facilities/default.jpg') }}"
+                            alt="{{ $facility->title }} at {{ setting('hospital_name') }} Ahmedabad">
+                        @endif
+
                     </div>
 
-                    <div class="atulya-infra-content">
-                        <h3>Modular Operation Theatre</h3>
 
+                    <div class="atulya-infra-content">
+
+                        <h3>
+                            {{ $facility->title }}
+                        </h3>
+
+                        @if($facility->short_description)
                         <p>
-                            Surgical infrastructure designed to support
-                            operative procedures.
+                            {{ $facility->short_description }}
                         </p>
+                        @endif
+
                     </div>
 
                 </div>
 
+                @empty
 
-                <div class="atulya-infra-card">
-
-                    <div class="atulya-infra-image">
-                        <img
-                            src="{{ asset('assets/img/inner/facilities/icu.jpg') }}"
-                            alt="Critical Care ICU at {{ setting('hospital_name') }} Ahmedabad"
-                        >
-                    </div>
-
-                    <div class="atulya-infra-content">
-                        <h3>ICU & Critical Care</h3>
-
-                        <p>
-                            Critical care infrastructure for patients
-                            requiring close medical monitoring.
-                        </p>
-                    </div>
-
+                <div class="col-12">
+                    <p class="text-center">
+                        No hospital facilities available.
+                    </p>
                 </div>
 
-
-                <div class="atulya-infra-card">
-
-                    <div class="atulya-infra-image">
-                        <img
-                            src="{{ asset('assets/img/inner/facilities/emergency.jpg') }}"
-                            alt="24x7 Emergency Facility at{{ setting('hospital_name') }} Ahmedabad"
-                        >
-                    </div>
-
-                    <div class="atulya-infra-content">
-                        <h3>Emergency Care</h3>
-
-                        <p>
-                            Emergency facilities supporting urgent
-                            medical care requirements.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="atulya-infra-card">
-
-                    <div class="atulya-infra-image">
-                        <img
-                            src="{{ asset('assets/img/inner/facilities/lab-pharmacy.jpg') }}"
-                            alt="Laboratory and Pharmacy Facility at {{ setting('hospital_name') }} Ahmedabad"
-                        >
-                    </div>
-
-                    <div class="atulya-infra-content">
-                        <h3>Laboratory & Pharmacy</h3>
-
-                        <p>
-                            Diagnostic laboratory and pharmacy support
-                            for patient care.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="atulya-infra-card">
-
-                    <div class="atulya-infra-image">
-                        <img
-                            src="{{ asset('assets/img/inner/facilities/xray.jpg') }}"
-                            alt="X-Ray Diagnostic Facility at {{ setting('hospital_name') }} Ahmedabad"
-                        >
-                    </div>
-
-                    <div class="atulya-infra-content">
-                        <h3>X-Ray & Diagnostics</h3>
-
-                        <p>
-                            Diagnostic support for medical evaluation
-                            and treatment planning.
-                        </p>
-                    </div>
-
-                </div>
+                @endforelse
 
             </div>
 
@@ -677,8 +595,7 @@
 
                     <img
                         src="{{ asset('assets/img/inner/service-details/11.png') }}"
-                        alt="Quality Healthcare Infrastructure at Atulya Super Speciality Hospital"
-                    >
+                        alt="Quality Healthcare Infrastructure at Atulya Super Speciality Hospital">
 
                 </div>
 
@@ -781,8 +698,7 @@
 
                 <a
                     href="{{ setting('phone') }}"
-                    class="atulya-btn"
-                >
+                    class="atulya-btn">
                     <i class="far fa-phone-alt"></i>
                     Call Hospital
                 </a>

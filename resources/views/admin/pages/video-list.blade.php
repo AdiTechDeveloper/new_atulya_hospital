@@ -386,7 +386,7 @@
     </div>
 </main>
 
-@if(session('success') || session('error'))
+<!-- @if(session('success') || session('error'))
     <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
         <div id="videoToast" class="toast align-items-center border-0 shadow-lg {{ session('success') ? 'text-bg-success' : 'text-bg-danger' }}" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
@@ -400,7 +400,7 @@
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

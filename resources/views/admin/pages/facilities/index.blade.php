@@ -38,7 +38,7 @@
             </div>
 
 
-            @if(session('success'))
+            <!-- @if(session('success'))
 
                 <div class="row">
                     <div class="col-12">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-            @endif
+            @endif -->
 
 
             @if($errors->any())

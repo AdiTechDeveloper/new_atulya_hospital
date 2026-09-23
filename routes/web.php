@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AuthController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\Website\FacilityController as WebsiteFacilityController
 use App\Http\Controllers\Website\GalleryController as WebsiteGalleryController;
 use App\Http\Controllers\Website\VideoController as WebsiteVideoController;
 use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\ResetPasswordController;
@@ -38,9 +40,8 @@ Route::post('/appointment', [AppointmentController::class, 'store'])
     ->name('appointment.store');
 
 // About
-Route::get('/about', function () {
-    return view('website.pages.about');
-})->name('about');
+Route::get('/about', [AboutController::class, 'index'])
+    ->name('about');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])
@@ -130,9 +131,9 @@ Route::middleware('auth')
     ->group(function () {
 
         // Dashboard
-        Route::get('/dashboard', function () {
-            return view('admin.index');
-        })->name('admin.dashboard');
+      
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('admin.dashboard');
 
 
         // Videos

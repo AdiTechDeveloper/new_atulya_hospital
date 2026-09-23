@@ -1,23 +1,43 @@
+/* =========================================================
+   ATULYA HOSPITAL - EXTERNAL JS
+========================================================= */
+
+
+/* =========================================================
+   DOCTOR SLIDER
+========================================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
     const track = document.getElementById('doctorSliderTrack');
-
     const nextButton = document.getElementById('doctorNext');
-
     const prevButton = document.getElementById('doctorPrev');
 
 
-    if (!track || !nextButton || !prevButton) {
+    /*
+     * Doctor slider page par nahi hai
+     * to kuch nahi karna.
+     */
+    if (!track) {
         return;
     }
 
 
-    const doctors = track.querySelectorAll('.doctor-slide-item');
+    const doctors =
+        track.querySelectorAll('.doctor-slide-item');
+
+
+    if (!doctors.length) {
+        return;
+    }
+
 
     let currentIndex = 0;
 
+
+    /* -----------------------------------------
+       Visible Doctors
+    ----------------------------------------- */
 
     function getVisibleDoctors() {
 
@@ -34,26 +54,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         return 4;
-
     }
 
 
+    /* -----------------------------------------
+       Move Next
+    ----------------------------------------- */
+
     function moveSlider() {
 
-        const visibleDoctors = getVisibleDoctors();
+        const visibleDoctors =
+            getVisibleDoctors();
 
-        const gap = window.innerWidth <= 767 ? 20 : 24;
+        const gap =
+            window.innerWidth <= 767
+                ? 20
+                : 24;
+
 
         const slideWidth =
             doctors[0].getBoundingClientRect().width;
+
+
+        const maxIndex =
+            Math.max(
+                0,
+                doctors.length - visibleDoctors
+            );
 
 
         /*
          * Last position ke baad
          * directly first doctor par.
          */
-        const maxIndex = doctors.length - visibleDoctors;
-
 
         if (currentIndex < maxIndex) {
 
@@ -67,20 +100,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         const moveAmount =
-            currentIndex * (slideWidth + gap);
+            currentIndex *
+            (slideWidth + gap);
 
 
         track.style.transform =
-            'translateX(-' + moveAmount + 'px)';
-
+            'translateX(-' +
+            moveAmount +
+            'px)';
     }
 
 
+    /* -----------------------------------------
+       Move Previous
+    ----------------------------------------- */
+
     function movePrevious() {
 
-        const visibleDoctors = getVisibleDoctors();
+        const visibleDoctors =
+            getVisibleDoctors();
 
-        const maxIndex = doctors.length - visibleDoctors;
+        const gap =
+            window.innerWidth <= 767
+                ? 20
+                : 24;
+
+
+        const slideWidth =
+            doctors[0].getBoundingClientRect().width;
+
+
+        const maxIndex =
+            Math.max(
+                0,
+                doctors.length - visibleDoctors
+            );
 
 
         if (currentIndex > 0) {
@@ -94,135 +148,196 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-        const gap = window.innerWidth <= 767 ? 20 : 24;
-
-        const slideWidth =
-            doctors[0].getBoundingClientRect().width;
-
-
         const moveAmount =
-            currentIndex * (slideWidth + gap);
+            currentIndex *
+            (slideWidth + gap);
 
 
         track.style.transform =
-            'translateX(-' + moveAmount + 'px)';
-
+            'translateX(-' +
+            moveAmount +
+            'px)';
     }
 
 
-    nextButton.addEventListener('click', function () {
+    /* -----------------------------------------
+       Next Button
+    ----------------------------------------- */
 
-        moveSlider();
+    if (nextButton) {
 
-    });
+        nextButton.addEventListener(
+            'click',
+            function (event) {
+
+                event.preventDefault();
+
+                moveSlider();
+
+            }
+        );
+    }
 
 
-    prevButton.addEventListener('click', function () {
+    /* -----------------------------------------
+       Previous Button
+    ----------------------------------------- */
 
-        movePrevious();
+    if (prevButton) {
 
-    });
+        prevButton.addEventListener(
+            'click',
+            function (event) {
+
+                event.preventDefault();
+
+                movePrevious();
+
+            }
+        );
+    }
 
 
-    window.addEventListener('resize', function () {
+    /* -----------------------------------------
+       Resize
+    ----------------------------------------- */
 
-        currentIndex = 0;
+    let resizeTimer;
 
-        track.style.transform = 'translateX(0)';
 
-    });
+    window.addEventListener(
+        'resize',
+        function () {
+
+            clearTimeout(resizeTimer);
+
+
+            resizeTimer = setTimeout(
+                function () {
+
+                    currentIndex = 0;
+
+                    track.style.transform =
+                        'translateX(0)';
+
+                },
+                150
+            );
+
+        }
+    );
 
 });
 
 
 
+/* =========================================================
+   HOME PAGE VIDEO POPUP
+========================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const modal =
+        document.getElementById('videoModal');
+
+    const iframe =
+        document.getElementById('popupVideo');
+
+    const closeBtn =
+        document.getElementById('closeVideo');
 
 
-    document.addEventListener('DOMContentLoaded', function() {
+    /*
+     * Video popup current page par nahi hai
+     * to kuch nahi karna.
+     */
+
+    if (!modal || !iframe) {
+        return;
+    }
 
 
-        /* =========================================================
-           ELEMENTS
-        ========================================================= */
+    /* -----------------------------------------
+       Get YouTube ID
+    ----------------------------------------- */
 
-        const modal = document.getElementById('videoModal');
+    function getYoutubeId(url) {
 
-        const iframe = document.getElementById('popupVideo');
-
-        const closeBtn = document.getElementById('closeVideo');
-
-
-        if (!modal || !iframe) {
-            return;
-        }
-
-
-        /* =========================================================
-           GET YOUTUBE ID
-        ========================================================= */
-
-        function getYoutubeId(url) {
-
-            if (!url) {
-                return null;
-            }
-
-
-            const patterns = [
-
-                /youtube\.com\/watch\?v=([^&]+)/,
-
-                /youtu\.be\/([^?&]+)/,
-
-                /youtube\.com\/embed\/([^?&]+)/,
-
-                /youtube\.com\/shorts\/([^?&]+)/
-
-            ];
-
-
-            for (const pattern of patterns) {
-
-                const match = url.match(pattern);
-
-                if (match) {
-
-                    return match[1];
-
-                }
-
-            }
-
-
+        if (!url) {
             return null;
+        }
+
+
+        const patterns = [
+
+            /youtube\.com\/watch\?v=([^&]+)/,
+
+            /youtu\.be\/([^?&]+)/,
+
+            /youtube\.com\/embed\/([^?&]+)/,
+
+            /youtube\.com\/shorts\/([^?&]+)/
+
+        ];
+
+
+        for (
+            let i = 0;
+            i < patterns.length;
+            i++
+        ) {
+
+            const match =
+                url.match(patterns[i]);
+
+
+            if (match) {
+
+                return match[1];
+
+            }
 
         }
 
 
-        /* =========================================================
-           OPEN VIDEO
-        ========================================================= */
-
-        document
-            .querySelectorAll('.atulya-home-video .open-video')
-            .forEach(function(button) {
+        return null;
+    }
 
 
-                button.addEventListener('click', function() {
+    /* -----------------------------------------
+       Open Video
+    ----------------------------------------- */
+
+    const videoButtons =
+        document.querySelectorAll(
+            '.atulya-home-video .open-video'
+        );
+
+
+    videoButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                'click',
+                function (event) {
+
+                    event.preventDefault();
 
 
                     const youtubeUrl =
-                        this.getAttribute('data-video-url');
+                        this.getAttribute(
+                            'data-video-url'
+                        );
 
 
                     const videoId =
-                        getYoutubeId(youtubeUrl);
+                        getYoutubeId(
+                            youtubeUrl
+                        );
 
 
                     if (!videoId) {
-
                         return;
-
                     }
 
 
@@ -232,409 +347,324 @@ document.addEventListener('DOMContentLoaded', function () {
                         '?autoplay=1&rel=0';
 
 
-                    modal.classList.add('active');
+                    modal.classList.add(
+                        'active'
+                    );
 
 
-                    document.body.style.overflow = 'hidden';
+                    document.body.style.overflow =
+                        'hidden';
 
-
-                });
-
-            });
-
-
-        /* =========================================================
-           CLOSE VIDEO
-        ========================================================= */
-
-        function closeVideo() {
-
-
-            modal.classList.remove('active');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Remove iframe src so video stops
-            |--------------------------------------------------------------------------
-            */
-
-            iframe.src = '';
-
-
-            document.body.style.overflow = '';
-
-
-        }
-
-
-        /* =========================================================
-           CLOSE BUTTON
-        ========================================================= */
-
-        if (closeBtn) {
-
-            closeBtn.addEventListener(
-                'click',
-                closeVideo
+                }
             );
 
         }
-
-
-        /* =========================================================
-           CLOSE ON BACKGROUND CLICK
-        ========================================================= */
-
-        modal.addEventListener(
-            'click',
-            function(event) {
-
-
-                if (event.target === modal) {
-
-                    closeVideo();
-
-                }
-
-            }
-        );
-
-
-        /* =========================================================
-           CLOSE WITH ESC
-        ========================================================= */
-
-        document.addEventListener(
-            'keydown',
-            function(event) {
-
-
-                if (event.key === 'Escape') {
-
-                    closeVideo();
-
-                }
-
-            }
-        );
-
-
-    });
-
-// document.addEventListener('DOMContentLoaded', function () {
-
-//     const openButton =
-//         document.getElementById('openVideo');
-
-//     const bottomButton =
-//         document.getElementById('openVideoBottom');
-
-//     const modal =
-//         document.getElementById('videoModal');
-
-//     const iframe =
-//         document.getElementById('popupVideo');
-
-//     const closeButton =
-//         document.getElementById('closeVideo');
-
-
-//     if (!modal || !iframe) {
-//         return;
-//     }
-
-
-//     function getYoutubeId(url) {
-
-//         if (!url) {
-//             return null;
-//         }
-
-
-//         const patterns = [
-
-//             /youtube\.com\/watch\?v=([^&]+)/,
-
-//             /youtu\.be\/([^?&]+)/,
-
-//             /youtube\.com\/embed\/([^?&]+)/,
-
-//             /youtube\.com\/shorts\/([^?&]+)/
-
-//         ];
-
-
-//         for (const pattern of patterns) {
-
-//             const match =
-//                 url.match(pattern);
-
-//             if (match) {
-//                 return match[1];
-//             }
-
-//         }
-
-
-//         return null;
-//     }
-
-
-//     function openVideo(videoUrl) {
-
-//         const videoId =
-//             getYoutubeId(videoUrl);
-
-
-//         if (!videoId) {
-//             return;
-//         }
-
-
-//         iframe.src =
-//             'https://www.youtube.com/embed/' +
-//             videoId +
-//             '?autoplay=1&rel=0';
-
-
-//         modal.classList.add('active');
-
-//         document.body.style.overflow = 'hidden';
-
-//     }
-
-
-//     if (openButton) {
-
-//         openButton.addEventListener(
-//             'click',
-//             function () {
-
-//                 openVideo(
-//                     this.getAttribute('data-video-url')
-//                 );
-
-//             }
-//         );
-
-//     }
-
-
-//     if (bottomButton) {
-
-//         bottomButton.addEventListener(
-//             'click',
-//             function () {
-
-//                 openVideo(
-//                     this.getAttribute('data-video-url')
-//                 );
-
-//             }
-//         );
-
-//     }
-
-
-//     function closeVideo() {
-
-//         modal.classList.remove('active');
-
-//         iframe.src = '';
-
-//         document.body.style.overflow = '';
-
-//     }
-
-
-//     if (closeButton) {
-
-//         closeButton.addEventListener(
-//             'click',
-//             closeVideo
-//         );
-
-//     }
-
-
-//     modal.addEventListener(
-//         'click',
-//         function (event) {
-
-//             if (event.target === modal) {
-//                 closeVideo();
-//             }
-
-//         }
-//     );
-
-
-//     document.addEventListener(
-//         'keydown',
-//         function (event) {
-
-//             if (event.key === 'Escape') {
-//                 closeVideo();
-//             }
-
-//         }
-//     );
-
-// });
-
-
-// const openVideo = document.getElementById("openVideo");
-// const closeVideoButton = document.getElementById("closeVideo");
-// const videoModal = document.getElementById("videoModal");
-// const popupVideo = document.getElementById("popupVideo");
-
-// // Open popup
-// if (openVideo && videoModal && popupVideo) {
-//     openVideo.addEventListener("click", function () {
-//         videoModal.style.display = "flex";
-
-//         popupVideo.currentTime = 0;
-
-//         const playPromise = popupVideo.play();
-
-//         if (playPromise !== undefined) {
-//             playPromise.catch(function (error) {
-//                 console.log("Video autoplay prevented:", error);
-//             });
-//         }
-//     });
-// }
-
-// // Close popup
-// if (closeVideoButton && videoModal && popupVideo) {
-//     closeVideoButton.addEventListener("click", function () {
-//         videoModal.style.display = "none";
-
-//         popupVideo.pause();
-//         popupVideo.currentTime = 0;
-//     });
-// }
-
-// // Close when clicking outside video
-// if (videoModal && popupVideo) {
-//     videoModal.addEventListener("click", function (e) {
-//         if (e.target === videoModal) {
-//             videoModal.style.display = "none";
-
-//             popupVideo.pause();
-//             popupVideo.currentTime = 0;
-//         }
-//     });
-// }
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    const department = document.getElementById('appointmentDepartment');
-    const doctor = document.getElementById('appointmentDoctor');
-
-    if (!department || !doctor) {
-        return;
-    }
-
-    const doctorOptions = Array.from(
-        doctor.querySelectorAll('option[data-department]')
     );
 
-    function updateDoctors(selectedDepartment) {
 
-        selectedDepartment = selectedDepartment
-            .trim()
-            .toLowerCase();
+    /* -----------------------------------------
+       Close Video
+    ----------------------------------------- */
 
-        doctor.value = '';
+    function closeVideo() {
 
-        let hasDoctors = false;
+        modal.classList.remove(
+            'active'
+        );
 
-        doctorOptions.forEach(function (option) {
 
-            const doctorDepartment = option
-                .getAttribute('data-department')
-                .trim()
-                .toLowerCase();
+        /*
+         * iframe source remove karne se
+         * video stop ho jayega.
+         */
 
-            if (
-                selectedDepartment &&
-                doctorDepartment === selectedDepartment
-            ) {
-                option.style.display = '';
-                hasDoctors = true;
-            } else {
-                option.style.display = 'none';
-            }
-        });
+        iframe.src = '';
 
-        if (!selectedDepartment) {
 
-            doctor.disabled = true;
-
-            doctor.options[0].textContent =
-                'Select Department First';
-
-            return;
-        }
-
-        doctor.disabled = !hasDoctors;
-
-        doctor.options[0].textContent = hasDoctors
-            ? 'Select Doctor'
-            : 'No Doctor Available';
+        document.body.style.overflow =
+            '';
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Department Change
-    |--------------------------------------------------------------------------
-    */
+    /* -----------------------------------------
+       Close Button
+    ----------------------------------------- */
 
-    department.addEventListener('change', function () {
+    if (closeBtn) {
 
-        updateDoctors(this.value);
+        closeBtn.addEventListener(
+            'click',
+            function (event) {
 
-    });
+                event.preventDefault();
 
+                closeVideo();
 
-    /*
-    |--------------------------------------------------------------------------
-    | Restore Old Department + Doctor After Validation Error
-    |--------------------------------------------------------------------------
-    */
-
-    const oldDepartment = @json(old('department'));
-    const oldDoctor = @json(old('doctor_id'));
-
-    if (oldDepartment) {
-
-        updateDoctors(oldDepartment);
-
-        if (oldDoctor) {
-
-            const oldDoctorOption = doctorOptions.find(function (option) {
-
-                return option.value == oldDoctor;
-
-            });
-
-            if (oldDoctorOption) {
-                oldDoctorOption.style.display = '';
-                doctor.value = oldDoctor;
             }
-        }
+        );
+
     }
+
+
+    /* -----------------------------------------
+       Close Background Click
+    ----------------------------------------- */
+
+    modal.addEventListener(
+        'click',
+        function (event) {
+
+            if (event.target === modal) {
+
+                closeVideo();
+
+            }
+
+        }
+    );
+
+
+    /* -----------------------------------------
+       ESC Key
+    ----------------------------------------- */
+
+    document.addEventListener(
+        'keydown',
+        function (event) {
+
+            if (event.key === 'Escape') {
+
+                closeVideo();
+
+            }
+
+        }
+    );
 
 });
 
 
 
+/* =========================================================
+   APPOINTMENT DEPARTMENT → DOCTOR FILTER
+========================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const department =
+        document.getElementById(
+            'appointmentDepartment'
+        );
+
+    const doctor =
+        document.getElementById(
+            'appointmentDoctor'
+        );
 
 
+    /*
+     * Appointment form current page par nahi hai
+     * to kuch nahi karna.
+     */
+
+    if (!department || !doctor) {
+        return;
+    }
 
 
+    const doctorOptions =
+        Array.from(
+            doctor.querySelectorAll(
+                'option[data-department]'
+            )
+        );
+
+
+    /* -----------------------------------------
+       Update Doctors
+    ----------------------------------------- */
+
+    function updateDoctors(
+        selectedDepartment
+    ) {
+
+        selectedDepartment =
+            selectedDepartment
+                .trim()
+                .toLowerCase();
+
+
+        doctor.value = '';
+
+
+        let hasDoctors = false;
+
+
+        doctorOptions.forEach(
+            function (option) {
+
+                const departmentValue =
+                    option.getAttribute(
+                        'data-department'
+                    );
+
+
+                const doctorDepartment =
+                    departmentValue
+                        ? departmentValue
+                            .trim()
+                            .toLowerCase()
+                        : '';
+
+
+                if (
+                    selectedDepartment &&
+                    doctorDepartment ===
+                        selectedDepartment
+                ) {
+
+                    option.style.display =
+                        '';
+
+                    hasDoctors = true;
+
+                } else {
+
+                    option.style.display =
+                        'none';
+
+                }
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           No Department Selected
+        ----------------------------------------- */
+
+        if (!selectedDepartment) {
+
+            doctor.disabled = true;
+
+
+            if (doctor.options[0]) {
+
+                doctor.options[0]
+                    .textContent =
+                    'Select Department First';
+
+            }
+
+
+            return;
+        }
+
+
+        /* -----------------------------------------
+           Doctors Found / Not Found
+        ----------------------------------------- */
+
+        doctor.disabled =
+            !hasDoctors;
+
+
+        if (doctor.options[0]) {
+
+            doctor.options[0]
+                .textContent =
+                hasDoctors
+                    ? 'Select Doctor'
+                    : 'No Doctor Available';
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       Department Change
+    ----------------------------------------- */
+
+    department.addEventListener(
+        'change',
+        function () {
+
+            updateDoctors(
+                this.value
+            );
+
+        }
+    );
+
+
+    /* -----------------------------------------
+       Initial State
+    ----------------------------------------- */
+
+    if (!department.value) {
+
+        doctor.disabled = true;
+
+
+        if (doctor.options[0]) {
+
+            doctor.options[0]
+                .textContent =
+                'Select Department First';
+
+        }
+
+    } else {
+
+        /*
+         * Existing selected department
+         * ko load karte waqt apply karo.
+         */
+
+        updateDoctors(
+            department.value
+        );
+
+    }
+
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const backTop = document.getElementById('back-top');
+
+    if (!backTop) return;
+
+    const scrollThreshold = 300;
+
+    function toggleBackTop() {
+        if (window.scrollY > scrollThreshold) {
+            backTop.classList.add('show');
+        } else {
+            backTop.classList.remove('show');
+        }
+    }
+
+    // Scroll detection
+    window.addEventListener('scroll', toggleBackTop, {
+        passive: true
+    });
+
+    // Back to top
+    backTop.addEventListener('click', function (e) {
+
+        e.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    });
+
+    // Initial state
+    toggleBackTop();
+
+});

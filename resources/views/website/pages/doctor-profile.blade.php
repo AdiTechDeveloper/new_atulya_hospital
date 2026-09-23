@@ -1,13 +1,8 @@
 @extends('website.layout.app')
 
-@section('title', $doctor['name'] . ' - {{ setting('hospital_name') }}')
+@section('title', $doctor->name . ' - ' . setting('hospital_name'))
 
 @section('content')
-
-
-<!-- =========================================================
-     DOCTOR PROFILE HERO
-========================================================= -->
 
 <section class="doctor-profile-hero">
 
@@ -15,18 +10,22 @@
 
         <div class="row align-items-center g-5">
 
-
             <!-- Doctor Image -->
-
             <div class="col-lg-4">
 
                 <div class="doctor-profile-photo">
 
-                                      <img
-        src="{{ asset('storage/' . $doctor->image) }}"
-        alt="{{ $doctor->name }}"
-                    >
-
+                    @if($doctor->image)
+                        <img
+                            src="{{ asset('storage/' . $doctor->image) }}"
+                            alt="{{ $doctor->name }}"
+                        >
+                    @else
+                        <img
+                            src="{{ asset('website/assets/images/doctor/doctor-placeholder.jpg') }}"
+                            alt="{{ $doctor->name }}"
+                        >
+                    @endif
 
                     <div class="doctor-photo-badge">
 
@@ -39,7 +38,7 @@
                             </strong>
 
                             <span>
-                                Atulya Super Speciality Hospital
+                                {{ setting('hospital_name') }}
                             </span>
 
                         </div>
@@ -51,49 +50,39 @@
             </div>
 
 
-
             <!-- Doctor Details -->
-
             <div class="col-lg-8">
 
                 <div class="doctor-hero-content">
 
-
                     <!-- Department -->
-
                     <span class="doctor-department-badge">
 
                         <i class="fas fa-stethoscope"></i>
 
-                        {{ $doctor['department'] }}
+                        {{ $doctor->department }}
 
                     </span>
 
 
                     <!-- Doctor Name -->
-
                     <h1>
-                        {{ $doctor['name'] }}
+                        {{ $doctor->name }}
                     </h1>
 
 
                     <!-- Specialization -->
-
                     <div class="doctor-specialization">
 
-                       {{ $doctor['specialization'] }}
+                        {{ $doctor->speciality }}
 
                     </div>
 
 
-
                     <!-- Quick Information -->
-
                     <div class="doctor-quick-grid">
 
-
                         <!-- Qualification -->
-
                         <div class="doctor-quick-card">
 
                             <i class="fas fa-graduation-cap"></i>
@@ -105,7 +94,7 @@
                                 </small>
 
                                 <strong>
-                                    {{ $doctor['qualification'] }}
+                                    {{ $doctor->qualification }}
                                 </strong>
 
                             </div>
@@ -113,9 +102,7 @@
                         </div>
 
 
-
                         <!-- Department -->
-
                         <div class="doctor-quick-card">
 
                             <i class="fas fa-stethoscope"></i>
@@ -127,7 +114,7 @@
                                 </small>
 
                                 <strong>
-                                    {{ $doctor['department'] }}
+                                    {{ $doctor->department }}
                                 </strong>
 
                             </div>
@@ -135,9 +122,7 @@
                         </div>
 
 
-
                         <!-- Specialty -->
-
                         <div class="doctor-quick-card">
 
                             <i class="fas fa-user-md"></i>
@@ -149,7 +134,7 @@
                                 </small>
 
                                 <strong>
-                                    {{ $doctor['specialization'] }}
+                                    {{ $doctor->speciality }}
                                 </strong>
 
                             </div>
@@ -157,9 +142,7 @@
                         </div>
 
 
-
                         <!-- OPD Timing -->
-
                         <div class="doctor-quick-card">
 
                             <i class="far fa-clock"></i>
@@ -171,30 +154,21 @@
                                 </small>
 
                                 <strong>
-                                    {{ $doctor['timing'] }}
+                                    {{ $doctor->opd_timing }}
                                 </strong>
 
                             </div>
 
                         </div>
 
-
                     </div>
 
 
-
                     <!-- Buttons -->
-
                     <div class="doctor-action-buttons">
 
-
-                        <!--
-                            TEMPLATE BUTTON
-                            Existing .theme-btn is used here
-                        -->
-
                         <a
-                            href="/appointment?doctor={{ urlencode($doctor['name']) }}"
+                            href="{{ url('/contact') }}?doctor={{ urlencode($doctor->name) }}"
                             class="theme-btn doctor-book-btn"
                         >
 
@@ -205,11 +179,8 @@
                         </a>
 
 
-
-                        <!-- Call Hospital -->
-
                         <a
-                            href="tel:+919727579000"
+                            href="tel:{{ $doctor->phone_number ?: setting('phone') }}"
                             class="doctor-call-btn"
                         >
 
@@ -219,9 +190,7 @@
 
                         </a>
 
-
                     </div>
-
 
                 </div>
 
@@ -232,7 +201,6 @@
     </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -250,10 +218,7 @@
                 <div class="doctor-content-card">
 
 
-                    <!-- =================================================
-                         ABOUT DOCTOR
-                    ================================================== -->
-
+                    <!-- ABOUT DOCTOR -->
                     <div>
 
                         <span class="doctor-section-label">
@@ -262,44 +227,50 @@
 
 
                         <h2>
-                            {{ $doctor['name'] }}
+                            {{ $doctor->name }}
                         </h2>
 
 
                         <p>
 
-                            <strong>
-                                {{ $doctor['name'] }}
-                            </strong>
+                            @if($doctor->about)
 
-                            is a
+                                {!! nl2br(e($doctor->about)) !!}
 
-                            <strong>
-                                {{ $doctor['specialization'] }}
-                            </strong>
+                            @else
 
-                            at Atulya Super Speciality Hospital & ICU.
+                                <strong>
+                                    {{ $doctor->name }}
+                                </strong>
 
-                            The doctor provides specialised consultation,
-                            clinical evaluation and treatment guidance
-                            within the
+                                is a
 
-                            <strong>
-                                {{ $doctor['department'] }}
-                            </strong>
+                                <strong>
+                                    {{ $doctor->speciality }}
+                                </strong>
 
-                            department.
+                                at
+
+                                {{ setting('hospital_name') }}.
+
+                                The doctor provides specialised consultation,
+                                clinical evaluation and treatment guidance
+                                within the
+
+                                <strong>
+                                    {{ $doctor->department }}
+                                </strong>
+
+                                department.
+
+                            @endif
 
                         </p>
 
                     </div>
 
 
-
-                    <!-- =================================================
-                         PROFESSIONAL DETAILS
-                    ================================================== -->
-
+                    <!-- PROFESSIONAL DETAILS -->
                     <div class="mt-5">
 
                         <span class="doctor-section-label">
@@ -316,7 +287,6 @@
 
 
                             <!-- Left Column -->
-
                             <ul>
 
                                 <li>
@@ -329,7 +299,7 @@
                                             Department:
                                         </strong>
 
-                                        {{ $doctor['department'] }}
+                                        {{ $doctor->department }}
 
                                     </span>
 
@@ -346,7 +316,7 @@
                                             Qualification:
                                         </strong>
 
-                                        {{ $doctor['qualification'] }}
+                                        {{ $doctor->qualification }}
 
                                     </span>
 
@@ -355,9 +325,7 @@
                             </ul>
 
 
-
                             <!-- Right Column -->
-
                             <ul>
 
                                 <li>
@@ -370,7 +338,7 @@
                                             Specialization:
                                         </strong>
 
-                                        {{ $doctor['specialization'] }}
+                                        {{ $doctor->speciality }}
 
                                     </span>
 
@@ -387,7 +355,7 @@
                                             OPD Timing:
                                         </strong>
 
-                                        {{ $doctor['timing'] }}
+                                        {{ $doctor->opd_timing }}
 
                                     </span>
 
@@ -401,11 +369,7 @@
                     </div>
 
 
-
-                    <!-- =================================================
-                         AREAS OF CARE
-                    ================================================== -->
-
+                    <!-- AREAS OF CARE -->
                     <div class="mt-5">
 
                         <span class="doctor-section-label">
@@ -424,76 +388,110 @@
                             related to
 
                             <strong>
-                                {{ $doctor['department'] }}
+                                {{ $doctor->department }}
                             </strong>
 
                             and
 
                             <strong>
-                                {{ $doctor['specialization'] }}
+                                {{ $doctor->speciality }}
                             </strong>.
 
                         </p>
 
 
-                        <div class="doctor-list-box">
+                        @php
+                            $areasOfCare = $doctor->areas_of_care ?? [];
+                        @endphp
 
 
-                            <ul>
-
-                                <li>
-
-                                    <i class="far fa-check"></i>
-
-                                    Specialist Consultation
-
-                                </li>
+                        @if(is_string($areasOfCare))
+                            @php
+                                $areasOfCare = json_decode($areasOfCare, true) ?: [];
+                            @endphp
+                        @endif
 
 
-                                <li>
+                        @if(count($areasOfCare))
 
-                                    <i class="far fa-check"></i>
+                            <div class="doctor-list-box">
 
-                                    Clinical Evaluation
+                                <ul>
 
-                                </li>
+                                    @foreach(array_slice($areasOfCare, 0, ceil(count($areasOfCare) / 2)) as $area)
 
-                            </ul>
+                                        <li>
 
+                                            <i class="far fa-check"></i>
 
+                                            {{ $area }}
 
-                            <ul>
+                                        </li>
 
-                                <li>
+                                    @endforeach
 
-                                    <i class="far fa-check"></i>
-
-                                    Treatment Guidance
-
-                                </li>
+                                </ul>
 
 
-                                <li>
+                                <ul>
 
-                                    <i class="far fa-check"></i>
+                                    @foreach(array_slice($areasOfCare, ceil(count($areasOfCare) / 2)) as $area)
 
-                                    Patient-Centred Care
+                                        <li>
 
-                                </li>
+                                            <i class="far fa-check"></i>
 
-                            </ul>
+                                            {{ $area }}
+
+                                        </li>
+
+                                    @endforeach
+
+                                </ul>
+
+                            </div>
+
+                        @else
+
+                            <div class="doctor-list-box">
+
+                                <ul>
+
+                                    <li>
+                                        <i class="far fa-check"></i>
+                                        Specialist Consultation
+                                    </li>
+
+                                    <li>
+                                        <i class="far fa-check"></i>
+                                        Clinical Evaluation
+                                    </li>
+
+                                </ul>
 
 
-                        </div>
+                                <ul>
+
+                                    <li>
+                                        <i class="far fa-check"></i>
+                                        Treatment Guidance
+                                    </li>
+
+                                    <li>
+                                        <i class="far fa-check"></i>
+                                        Patient-Centred Care
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        @endif
 
                     </div>
 
 
-
-                    <!-- =================================================
-                         PATIENT CARE
-                    ================================================== -->
-
+                    <!-- PATIENT CARE -->
                     <div class="mt-5">
 
                         <span class="doctor-section-label">
@@ -506,31 +504,43 @@
                         </h3>
 
 
-                        <p>
+                        @if($doctor->patient_care_text)
 
-                            Atulya Super Speciality Hospital & ICU is
-                            committed to providing professional,
-                            accessible and compassionate healthcare.
+                            <p>
+                                {!! nl2br(e($doctor->patient_care_text)) !!}
+                            </p>
 
-                        </p>
+                        @else
+
+                            <p>
+
+                                {{ setting('hospital_name') }}
+
+                                is committed to providing professional,
+                                accessible and compassionate healthcare.
+
+                            </p>
 
 
-                        <p>
+                            <p>
 
-                            Patients can consult the doctor during the
-                            scheduled OPD hours and discuss their
-                            healthcare concerns with the specialist.
+                                Patients can consult
 
-                        </p>
+                                <strong>
+                                    {{ $doctor->name }}
+                                </strong>
+
+                                during the scheduled OPD hours and discuss
+                                their healthcare concerns with the specialist.
+
+                            </p>
+
+                        @endif
 
                     </div>
 
 
-
-                    <!-- =================================================
-                         CARE BANNER
-                    ================================================== -->
-
+                    <!-- CARE BANNER -->
                     <div class="doctor-care-banner">
 
                         <i class="fas fa-heart"></i>
@@ -563,6 +573,5 @@
     </div>
 
 </section>
-
 
 @endsection

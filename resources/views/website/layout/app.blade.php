@@ -88,7 +88,7 @@
     <!-- Slick JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-
+<!-- 
     <script>
         $(document).ready(function() {
 
@@ -204,7 +204,7 @@
             // Fallback: agar koi resource atak jaye to bhi 3 sec baad hata do
             setTimeout(hidePreloader, 3000);
         })();
-    </script>
+    </script> -->
 </body>
 
 </html>

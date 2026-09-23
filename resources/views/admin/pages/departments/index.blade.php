@@ -50,7 +50,7 @@
                 SUCCESS MESSAGE
             ========================================================== --}}
 
-            @if(session('success'))
+            <!-- @if(session('success'))
 
                 <div
                     class="alert alert-success alert-dismissible fade show"
@@ -81,7 +81,7 @@
 
             @endif
 
-
+ -->
 
             {{-- =========================================================
                 ERROR MESSAGE

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\Video;
+use App\Models\Facility;
 
 class HomeController extends Controller
 {
@@ -52,13 +53,17 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
+        $facilities = Facility::where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->get();
         return view('website.index', compact(
             'doctors',
             'departments',
             'featuredVideo',
             'latestVideos',
             'videos',
-            'blogs'
+            'blogs',
+            'facilities'
         ));
     }
 }

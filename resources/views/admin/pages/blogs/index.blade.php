@@ -24,7 +24,7 @@
                 </a>
             </div>
 
-            {{-- Success Message --}}
+            <!-- {{-- Success Message --}}
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -34,7 +34,7 @@
                             data-bs-dismiss="alert"
                             aria-label="Close"></button>
                 </div>
-            @endif
+            @endif -->
 
             {{-- Validation Errors --}}
             @if($errors->any())

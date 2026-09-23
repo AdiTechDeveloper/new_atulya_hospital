@@ -1445,7 +1445,7 @@
                                 <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Name</p>
+                                        <p>Name*</p>
 
                                         <input
                                             type="text"
@@ -1464,7 +1464,7 @@
                                 <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Phone</p>
+                                        <p>Phone*</p>
 
                                         <input
                                             type="tel"
@@ -1546,7 +1546,7 @@
                                 <div class="col-md-6">
                                     <div class="form-clt">
 
-                                        <p>Date</p>
+                                        <p>Date*</p>
                                         <input
                                             type="date"
                                             name="appointment_date"
@@ -1638,7 +1638,7 @@
                         <div class="appointment-image-item">
 
                             <img
-                                src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
+                                src="{{ asset('assets/img/home-1/hero/img1.png') }}"
                                 alt="Atulya Super Speciality Hospital">
 
                         </div>
@@ -1739,9 +1739,9 @@
                                                         Krishtal Parikh</h5>
 
                                                 </div>
-                                                <div class="icon">
+                                                <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1768,9 +1768,9 @@
                                                         Taksh Shrimali</h5>
 
                                                 </div>
-                                                <div class="icon">
+                                                <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1797,9 +1797,9 @@
                                                         Shivani Joshi</h5>
 
                                                 </div>
-                                                <div class="icon">
+                                                <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1827,9 +1827,9 @@
                                                     </h5>
 
                                                 </div>
-                                                <div class="icon">
+                                                <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>

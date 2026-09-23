@@ -133,11 +133,7 @@
 
                     </div>
 
-                    <p class="text-center">
-                        We are always on the lookout for talented folk to join our team.
-                        <span>Follow us on LinkedIn!</span>
-                    </p>
-
+                  
                 </div>
 
             </div>

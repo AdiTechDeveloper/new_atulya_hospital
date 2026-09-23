@@ -12,7 +12,8 @@ class VideoController extends Controller
         $videos = Video::where('is_active', true)
             ->orderBy('sort_order')
             ->latest()
-            ->get();
+            ->paginate(3)
+            ->withQueryString();
 
         return view('website.pages.videos', compact('videos'));
     }

@@ -302,7 +302,7 @@
 ========================================= */
 
 .facility-details-section {
-    padding: 80px 0;
+    padding: 10px 0;
 }
 
 .facility-sidebar {
@@ -328,7 +328,7 @@
 }
 
 .facility-list li {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 .facility-list li a {
@@ -489,7 +489,7 @@
 @media (max-width: 991px) {
 
     .facility-details-section {
-        padding: 60px 0;
+        padding: 10px 0;
     }
 
     .facility-sidebar {
@@ -507,7 +507,7 @@
 @media (max-width: 767px) {
 
     .facility-details-section {
-        padding: 50px 0;
+        padding: 10px 0;
     }
 
     .facility-image.large-image,

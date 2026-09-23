@@ -42,7 +42,7 @@
 }
 
 .facility-details-section {
-    padding: 100px 0;
+    padding: 10px 0;
 }
 
 .facility-details-image {
@@ -194,7 +194,7 @@
 @media (max-width: 1199px) {
 
     .doctor-slide-item {
-        flex: 0 0 calc((100% - 48px) / 3) !important;
+       flex: 0 0 calc((100% - 72px) / 4);
     }
 
 }
@@ -2150,7 +2150,7 @@ html {
 ========================================================= */
 
 .atulya-videos-content {
-    padding: 90px 0 100px;
+    padding: 10px;
     background: #ffffff;
 }
 
@@ -2707,7 +2707,7 @@ html {
     }
 
     .atulya-videos-content {
-        padding: 75px 0 85px;
+        padding: 15px;
     }
 
     .atulya-videos-heading h2 {
@@ -2751,7 +2751,7 @@ html {
     }
 
     .atulya-videos-content {
-        padding: 60px 0 70px;
+        padding:15px;
     }
 
     .atulya-videos-heading {
@@ -2974,4 +2974,16 @@ html {
         height: 220px;
     }
 
+}
+#back-top {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+#back-top.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }

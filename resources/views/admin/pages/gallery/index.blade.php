@@ -109,7 +109,7 @@
 
             <div class="d-flex">
 
-                <div class="toast-body">
+                <!-- <div class="toast-body">
 
                     @if(session('success'))
                         <i class="bi bi-check-circle-fill me-2"></i>
@@ -119,7 +119,7 @@
                         {{ session('error') }}
                     @endif
 
-                </div>
+                </div> -->
 
                 <button type="button"
                     class="btn-close btn-close-white me-2 m-auto"
