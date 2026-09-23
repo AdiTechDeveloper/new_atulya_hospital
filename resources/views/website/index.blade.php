@@ -353,19 +353,22 @@
     <div class="service-shape-1">
         <img
             src="{{ asset('assets/img/home-1/service/shape-1.png') }}"
-            alt="img">
+            alt="Atulya Hospital service"
+        >
     </div>
 
     <div class="service-shape-2">
         <img
             src="{{ asset('assets/img/home-1/service/shape-2.png') }}"
-            alt="img">
+            alt="Atulya Hospital healthcare"
+        >
     </div>
 
     <div class="service-shape-3">
         <img
             src="{{ asset('assets/img/home-1/service/shape-3.png') }}"
-            alt="img">
+            alt="Atulya Hospital medical services"
+        >
     </div>
 
 
@@ -385,497 +388,226 @@
         </div>
 
 
-        <div class="service-wrapper">
+        @if($departments->count())
 
-            <div class="row">
+            <div class="service-wrapper">
 
-
-                <!-- SERVICE CATEGORIES -->
-                <div class="col-lg-4">
-
-                    <ul class="nav">
-
-                        <!-- ORTHOPEDICS -->
-                        <li
-                            class="nav-item wow fadeInUp"
-                            data-wow-delay=".2s">
-
-                            <a
-                                href="#thumb1"
-                                data-bs-toggle="tab"
-                                class="nav-link active">
-                                Orthopedics
-                                <i class="far fa-chevron-right"></i>
-                            </a>
-
-                        </li>
+                <div class="row">
 
 
-                        <!-- UROLOGY -->
-                        <li
-                            class="nav-item wow fadeInUp"
-                            data-wow-delay=".4s">
+                    {{-- =================================================
+                         DEPARTMENT LIST
+                    ================================================== --}}
 
-                            <a
-                                href="#thumb2"
-                                data-bs-toggle="tab"
-                                class="nav-link">
-                                Urology
-                                <i class="far fa-chevron-right"></i>
-                            </a>
+                    <div class="col-lg-4">
 
-                        </li>
+                        <ul class="nav">
 
+                            @foreach($departments as $index => $department)
 
-                        <!-- ENT -->
-                        <li
-                            class="nav-item wow fadeInUp"
-                            data-wow-delay=".6s">
-
-                            <a
-                                href="#thumb3"
-                                data-bs-toggle="tab"
-                                class="nav-link">
-                                ENT Care
-                                <i class="far fa-chevron-right"></i>
-                            </a>
-
-                        </li>
-
-
-                        <!-- GENERAL SURGERY -->
-                        <li
-                            class="nav-item wow fadeInUp"
-                            data-wow-delay=".8s">
-
-                            <a
-                                href="#thumb4"
-                                data-bs-toggle="tab"
-                                class="nav-link">
-                                General Surgery
-                                <i class="far fa-chevron-right"></i>
-                            </a>
-
-                        </li>
-
-
-                        <!-- JOINT REPLACEMENT -->
-                        <li
-                            class="nav-item wow fadeInUp"
-                            data-wow-delay="1s">
-
-                            <a
-                                href="#thumb5"
-                                data-bs-toggle="tab"
-                                class="nav-link">
-                                Joint Replacement
-                                <i class="far fa-chevron-right"></i>
-                            </a>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-
-                <!-- SERVICE CONTENT -->
-                <div
-                    class="col-lg-8 wow fadeInUp"
-                    data-wow-delay=".3s">
-
-                    <div class="tab-content">
-
-
-                        <!-- ORTHOPEDICS -->
-                        <div
-                            id="thumb1"
-                            class="tab-pane fade show active">
-
-                            <div class="service-box-items">
-
-                                <!-- CONTENT -->
-                                <div class="service-icon-box">
-
-                                    <div class="icon">
-                                        <i class="flaticon-good-heart"></i>
-                                    </div>
-
-
-                                    <h3>
-
-                                        <a href="{{ url('/departments/orthopedic') }}">
-                                            Advanced Orthopedics <br>
-                                            Care & Treatment
-                                        </a>
-
-                                    </h3>
-
-
-                                    <p>
-                                        Comprehensive orthopaedic care focused
-                                        on accurate diagnosis, effective treatment
-                                        and helping patients regain mobility and
-                                        improve their quality of life.
-                                    </p>
-
+                                <li
+                                    class="nav-item wow fadeInUp"
+                                    data-wow-delay="{{ 0.2 + ($index * 0.2) }}s"
+                                >
 
                                     <a
-                                        href="{{ url('/departments/orthopedic') }}"
-                                        class="theme-btn mt-5">
+                                        href="#department-{{ $department->id }}"
+                                        data-bs-toggle="tab"
+                                        class="nav-link {{ $index === 0 ? 'active' : '' }}"
+                                    >
+
+                                        {{ $department->name }}
 
                                         <i class="far fa-chevron-right"></i>
 
-                                        More Details
-
                                     </a>
 
-                                </div>
+                                </li>
 
+                            @endforeach
 
-                                <!-- IMAGE -->
-                                <div
-                                    class="service-image"
-                                    style="
-                                        width:45%;
-                                        min-width:45%;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    <img
-                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                                        alt="Orthopaedic Care"
-                                        style="
-                                            width:100%;
-                                            max-width:100%;
-                                            height:auto;
-                                            object-fit:contain;
-                                        ">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- UROLOGY -->
-                        <div
-                            id="thumb2"
-                            class="tab-pane fade">
-
-                            <div class="service-box-items">
-
-                                <!-- CONTENT -->
-                                <div class="service-icon-box">
-
-                                    <div class="icon">
-                                        <i class="flaticon-good-heart"></i>
-                                    </div>
-
-
-                                    <h3>
-
-                                        <a href="{{ url('/departments/urology') }}">
-                                            Advanced Urology <br>
-                                            Care & Treatment
-                                        </a>
-
-                                    </h3>
-
-
-                                    <p>
-                                        Comprehensive care for urinary tract
-                                        and male reproductive health, including
-                                        diagnosis and treatment of urological
-                                        conditions.
-                                    </p>
-
-
-                                    <a
-                                        href="{{ url('/departments/urology') }}"
-                                        class="theme-btn mt-5">
-
-                                        <i class="far fa-chevron-right"></i>
-
-                                        More Details
-
-                                    </a>
-
-                                </div>
-
-
-                                <!-- IMAGE -->
-                                <div
-                                    class="service-image"
-                                    style="
-                                        width:45%;
-                                        min-width:45%;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    <img
-                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                                        alt="Urology Care"
-                                        style="
-                                            width:100%;
-                                            max-width:100%;
-                                            height:auto;
-                                            object-fit:contain;
-                                        ">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- ENT -->
-                        <div
-                            id="thumb3"
-                            class="tab-pane fade">
-
-                            <div class="service-box-items">
-
-                                <!-- CONTENT -->
-                                <div class="service-icon-box">
-
-                                    <div class="icon">
-                                        <i class="flaticon-good-heart"></i>
-                                    </div>
-
-
-                                    <h3>
-
-                                        <a href="{{ url('/departments/ent') }}">
-                                            Complete ENT <br>
-                                            Care & Treatment
-                                        </a>
-
-                                    </h3>
-
-
-                                    <p>
-                                        Comprehensive treatment for ear, nose
-                                        and throat conditions with specialist
-                                        consultation, accurate diagnosis and
-                                        personalised patient care.
-                                    </p>
-
-
-                                    <a
-                                        href="{{ url('/departments/ent') }}"
-                                        class="theme-btn mt-5">
-
-                                        <i class="far fa-chevron-right"></i>
-
-                                        More Details
-
-                                    </a>
-
-                                </div>
-
-
-                                <!-- IMAGE -->
-                                <div
-                                    class="service-image"
-                                    style="
-                                        width:45%;
-                                        min-width:45%;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    <img
-                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                                        alt="ENT Care"
-                                        style="
-                                            width:100%;
-                                            max-width:100%;
-                                            height:auto;
-                                            object-fit:contain;
-                                        ">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- GENERAL SURGERY -->
-                        <div
-                            id="thumb4"
-                            class="tab-pane fade">
-
-                            <div class="service-box-items">
-
-                                <!-- CONTENT -->
-                                <div class="service-icon-box">
-
-                                    <div class="icon">
-                                        <i class="flaticon-good-heart"></i>
-                                    </div>
-
-
-                                    <h3>
-
-                                        <a href="{{ url('/departments/general-surgery') }}">
-                                            General Surgery <br>
-                                            Care & Treatment
-                                        </a>
-
-                                    </h3>
-
-
-                                    <p>
-                                        Expert surgical care for a wide range
-                                        of conditions, with a focus on safe,
-                                        effective and minimally invasive
-                                        procedures.
-                                    </p>
-
-
-                                    <a
-                                        href="{{ url('/departments/general-surgery') }}"
-                                        class="theme-btn mt-5">
-
-                                        <i class="far fa-chevron-right"></i>
-
-                                        More Details
-
-                                    </a>
-
-                                </div>
-
-
-                                <!-- IMAGE -->
-                                <div
-                                    class="service-image"
-                                    style="
-                                        width:45%;
-                                        min-width:45%;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    <img
-                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                                        alt="General Surgery"
-                                        style="
-                                            width:100%;
-                                            max-width:100%;
-                                            height:auto;
-                                            object-fit:contain;
-                                        ">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- JOINT REPLACEMENT -->
-                        <div
-                            id="thumb5"
-                            class="tab-pane fade">
-
-                            <div class="service-box-items">
-
-                                <!-- CONTENT -->
-                                <div class="service-icon-box">
-
-                                    <div class="icon">
-                                        <i class="flaticon-good-heart"></i>
-                                    </div>
-
-
-                                    <h3>
-
-                                        <a href="{{ url('/departments/joint-replacement') }}">
-                                            Joint Replacement <br>
-                                            Care & Treatment
-                                        </a>
-
-                                    </h3>
-
-
-                                    <p>
-                                        Advanced joint replacement care focused
-                                        on restoring mobility, reducing pain and
-                                        helping patients return to their daily
-                                        activities with confidence.
-                                    </p>
-
-
-                                    <a
-                                        href="{{ url('/departments/joint-replacement') }}"
-                                        class="theme-btn mt-5">
-
-                                        <i class="far fa-chevron-right"></i>
-
-                                        More Details
-
-                                    </a>
-
-                                </div>
-
-
-                                <!-- IMAGE -->
-                                <div
-                                    class="service-image"
-                                    style="
-                                        width:45%;
-                                        min-width:45%;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    <img
-                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                                        alt="Joint Replacement Care"
-                                        style="
-                                            width:100%;
-                                            max-width:100%;
-                                            height:auto;
-                                            object-fit:contain;
-                                        ">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
+                        </ul>
 
                     </div>
+
+
+
+                    {{-- =================================================
+                         DEPARTMENT CONTENT
+                    ================================================== --}}
+
+                    <div
+                        class="col-lg-8 wow fadeInUp"
+                        data-wow-delay=".3s"
+                    >
+
+                        <div class="tab-content">
+
+
+                            @foreach($departments as $index => $department)
+
+                                <div
+                                    id="department-{{ $department->id }}"
+                                    class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}"
+                                >
+
+                                    <div class="service-box-items">
+
+
+                                        {{-- =================================================
+                                             CONTENT
+                                        ================================================== --}}
+
+                                        <div class="service-icon-box">
+
+                                            <div class="icon">
+                                                <i class="flaticon-good-heart"></i>
+                                            </div>
+
+
+                                            <h3>
+
+                                                <a
+                                                    href="{{ route('departments.show', $department->slug) }}"
+                                                >
+
+                                                    {{ $department->name }}
+
+                                                    <br>
+
+                                                    Care & Treatment
+
+                                                </a>
+
+                                            </h3>
+
+
+                                            <p>
+
+                                                @if($department->short_description)
+
+                                                    {{ \Illuminate\Support\Str::limit(
+                                                        $department->short_description,
+                                                        180
+                                                    ) }}
+
+                                                @elseif($department->about_description)
+
+                                                    {{ \Illuminate\Support\Str::limit(
+                                                        $department->about_description,
+                                                        180
+                                                    ) }}
+
+                                                @else
+
+                                                    Comprehensive healthcare services
+                                                    with specialist consultation,
+                                                    accurate diagnosis and
+                                                    personalised patient care.
+
+                                                @endif
+
+                                            </p>
+
+
+                                            <a
+                                                href="{{ route('departments.show', $department->slug) }}"
+                                                class="theme-btn mt-5"
+                                            >
+
+                                                <i class="far fa-chevron-right"></i>
+
+                                                More Details
+
+                                            </a>
+
+                                        </div>
+
+
+
+                                        {{-- =================================================
+                                             IMAGE
+                                        ================================================== --}}
+
+                                        <div
+                                            class="service-image"
+                                            style="
+                                                width:45%;
+                                                min-width:45%;
+                                                display:flex;
+                                                align-items:center;
+                                                justify-content:center;
+                                            "
+                                        >
+
+                                            @if($department->image)
+
+                                                <img
+                                                    src="{{ asset('storage/' . $department->image) }}"
+                                                    alt="{{ $department->name }} at {{ setting('hospital_name') }}"
+                                                    style="
+                                                        width:100%;
+                                                        max-width:100%;
+                                                        height:auto;
+                                                        object-fit:contain;
+                                                    "
+                                                >
+
+                                            @else
+
+                                                <img
+                                                    src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                                    alt="{{ $department->name }} healthcare service"
+                                                    style="
+                                                        width:100%;
+                                                        max-width:100%;
+                                                        height:auto;
+                                                        object-fit:contain;
+                                                    "
+                                                >
+
+                                            @endif
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                            @endforeach
+
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
             </div>
 
-        </div>
+        @else
+
+            <div class="text-center text-white py-5">
+
+                <h3 class="text-white">
+                    Healthcare Services
+                </h3>
+
+                <p>
+                    Our healthcare departments will be available here soon.
+                </p>
+
+            </div>
+
+        @endif
+
 
     </div>
 
-
-
-
 </section>
+
 <!-- Service Section End -->
 
 
@@ -1435,7 +1167,7 @@
                             {{ session('success') }}
                         </div>
                         @endif
-                       <form action="{{ route('appointment.store') }}" method="POST">
+                        <form action="{{ route('appointment.store') }}" method="POST">
 
                             @csrf
 
