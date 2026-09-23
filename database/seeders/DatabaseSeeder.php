@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(1)->create();
         $this->call([
             SettingSeeder::class,
+            AtulyaDataSeeder::class,
         ]);
+
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
