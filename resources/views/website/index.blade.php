@@ -1383,7 +1383,13 @@
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
-                                        <div class="client-image">
+                                       
+
+                                        <div class="testimonial-content">
+                                            <p>
+                                                “Dr. Priyanka Prajapati provided excellent treatment for my father’s malaria. She was professional, knowledgeable, and ensured he received the right treatment promptly. Thanks to her care, he recovered quickly. Highly recommended!”
+                                            </p>
+                                             <div class="client-image">
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1392,11 +1398,6 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
-
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “Dr. Priyanka Prajapati provided excellent treatment for my father’s malaria. She was professional, knowledgeable, and ensured he received the right treatment promptly. Thanks to her care, he recovered quickly. Highly recommended!”
-                                            </p>
 
                                             <div class="info-item">
                                                 <div class="info-content">
@@ -1411,7 +1412,23 @@
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
-                                        <div class="client-image">
+                                        {{-- <div class="client-image">
+                                            <div class="star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div> --}}
+
+                                        <div class="testimonial-content">
+                                            <p>
+                                                “Dr Dhaiwat Shukla has changed my wife's life.she has rheumatoid arthritis with extreme eye dryness but since we consulted this young dynamic yet experienced guy she has felt much better and she is doing fine.”
+                                            </p>
+
+                                            
+                                             <div class="client-image">
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1420,11 +1437,6 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
-
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “Dr Dhaiwat Shukla has changed my wife's life.she has rheumatoid arthritis with extreme eye dryness but since we consulted this young dynamic yet experienced guy she has felt much better and she is doing fine.”
-                                            </p>
 
                                             <div class="info-item">
                                                 <div class="info-content">
@@ -1443,7 +1455,13 @@
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
-                                        <div class="client-image">
+                                        
+
+                                        <div class="testimonial-content">
+                                            <p>
+                                                “Our family got diagnosed and care by this hospital and we always get good care from them.In another word, hospital becomes more familiar and with welcoming vibes.I thanks to Dr Kunal, Dr Parth, Dr Ragav, Dr Dhaiwat and many more doctors and staff members for such a good care.
+                                            </p>
+                                            <div class="client-image">
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1452,11 +1470,6 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
-
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “Our family got diagnosed and care by this hospital and we always get good care from them.In another word, hospital becomes more familiar and with welcoming vibes.I thanks to Dr Kunal, Dr Parth, Dr Ragav, Dr Dhaiwat and many more doctors and staff members for such a good care.
-                                            </p>
 
                                             <div class="info-item">
                                                 <div class="info-content">
@@ -1475,7 +1488,13 @@
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
-                                        <div class="client-image">
+                                     
+
+                                        <div class="testimonial-content">
+                                            <p>
+                                                “I strongly recommand Atulya Hospital for their professional approach, in house expert panel of medical professionals, and overall positive atmosphere. Very impressed with available facilities, support from nursing and attendents.Thank you for your service. All the best and keep going with good work.”
+                                            </p>
+                                               <div class="client-image">
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1484,11 +1503,6 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
-
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “I strongly recommand Atulya Hospital for their professional approach, in house expert panel of medical professionals, and overall positive atmosphere. Very impressed with available facilities, support from nursing and attendents.Thank you for your service. All the best and keep going with good work.”
-                                            </p>
 
                                             <div class="info-item">
                                                 <div class="info-content">
@@ -1507,7 +1521,14 @@
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
-                                        <div class="client-image">
+                                      
+
+                                        <div class="testimonial-content">
+                                            <p>
+                                                “My son was just 5 years old when he was diagnosed with a rheumatological condition. We took multiple opinions before meeting Dr. Dhaivat Shukla. He understood the condition well, guided us properly, and started the right treatment. We are very thankful to Dr. Shukla and the Atulya team for their care and support.”
+                                            </p>
+
+                                              <div class="client-image">
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1516,11 +1537,6 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
-
-                                        <div class="testimonial-content">
-                                            <p>
-                                                “My son was just 5 years old when he was diagnosed with a rheumatological condition. We took multiple opinions before meeting Dr. Dhaivat Shukla. He understood the condition well, guided us properly, and started the right treatment. We are very thankful to Dr. Shukla and the Atulya team for their care and support.”
-                                            </p>
 
                                             <div class="info-item">
                                                 <div class="info-content">
