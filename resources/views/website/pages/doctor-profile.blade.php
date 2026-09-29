@@ -16,15 +16,19 @@
                 <div class="doctor-profile-photo">
 
                     @if($doctor->image)
+
                         <img
                             src="{{ asset('storage/' . $doctor->image) }}"
                             alt="{{ $doctor->name }}"
                         >
+
                     @else
+
                         <img
                             src="{{ asset('website/assets/images/doctor/doctor-placeholder.jpg') }}"
                             alt="{{ $doctor->name }}"
                         >
+
                     @endif
 
                     <div class="doctor-photo-badge">
@@ -73,9 +77,7 @@
 
                     <!-- Specialization -->
                     <div class="doctor-specialization">
-
                         {{ $doctor->speciality }}
-
                     </div>
 
 
@@ -141,26 +143,6 @@
 
                         </div>
 
-
-                        <!-- OPD Timing -->
-                        <div class="doctor-quick-card">
-
-                            <i class="far fa-clock"></i>
-
-                            <div>
-
-                                <small>
-                                    OPD Timing
-                                </small>
-
-                                <strong>
-                                    {{ $doctor->opd_timing }}
-                                </strong>
-
-                            </div>
-
-                        </div>
-
                     </div>
 
 
@@ -171,11 +153,8 @@
                             href="{{ url('/contact') }}?doctor={{ urlencode($doctor->name) }}"
                             class="theme-btn doctor-book-btn"
                         >
-
                             <i class="far fa-calendar-check"></i>
-
                             Book An Appointment
-
                         </a>
 
 
@@ -183,11 +162,8 @@
                             href="tel:{{ $doctor->phone_number ?: setting('phone') }}"
                             class="doctor-call-btn"
                         >
-
                             <i class="fas fa-phone-alt"></i>
-
                             Call Hospital
-
                         </a>
 
                     </div>
@@ -203,9 +179,7 @@
 </section>
 
 
-<!-- =========================================================
-     DOCTOR INFORMATION
-========================================================= -->
+<!-- Doctor Information -->
 
 <section class="doctor-info-section">
 
@@ -218,7 +192,7 @@
                 <div class="doctor-content-card">
 
 
-                    <!-- ABOUT DOCTOR -->
+                    <!-- About Doctor -->
                     <div>
 
                         <span class="doctor-section-label">
@@ -270,7 +244,7 @@
                     </div>
 
 
-                    <!-- PROFESSIONAL DETAILS -->
+                    <!-- Professional Details -->
                     <div class="mt-5">
 
                         <span class="doctor-section-label">
@@ -284,7 +258,6 @@
 
 
                         <div class="doctor-list-box">
-
 
                             <!-- Left Column -->
                             <ul>
@@ -344,32 +317,14 @@
 
                                 </li>
 
-
-                                <li>
-
-                                    <i class="far fa-check"></i>
-
-                                    <span>
-
-                                        <strong>
-                                            OPD Timing:
-                                        </strong>
-
-                                        {{ $doctor->opd_timing }}
-
-                                    </span>
-
-                                </li>
-
                             </ul>
-
 
                         </div>
 
                     </div>
 
 
-                    <!-- AREAS OF CARE -->
+                    <!-- Areas Of Care -->
                     <div class="mt-5">
 
                         <span class="doctor-section-label">
@@ -401,15 +356,14 @@
 
 
                         @php
+
                             $areasOfCare = $doctor->areas_of_care ?? [];
-                        @endphp
 
-
-                        @if(is_string($areasOfCare))
-                            @php
+                            if (is_string($areasOfCare)) {
                                 $areasOfCare = json_decode($areasOfCare, true) ?: [];
-                            @endphp
-                        @endif
+                            }
+
+                        @endphp
 
 
                         @if(count($areasOfCare))
@@ -418,7 +372,13 @@
 
                                 <ul>
 
-                                    @foreach(array_slice($areasOfCare, 0, ceil(count($areasOfCare) / 2)) as $area)
+                                    @foreach(
+                                        array_slice(
+                                            $areasOfCare,
+                                            0,
+                                            ceil(count($areasOfCare) / 2)
+                                        ) as $area
+                                    )
 
                                         <li>
 
@@ -435,7 +395,12 @@
 
                                 <ul>
 
-                                    @foreach(array_slice($areasOfCare, ceil(count($areasOfCare) / 2)) as $area)
+                                    @foreach(
+                                        array_slice(
+                                            $areasOfCare,
+                                            ceil(count($areasOfCare) / 2)
+                                        ) as $area
+                                    )
 
                                         <li>
 
@@ -491,7 +456,7 @@
                     </div>
 
 
-                    <!-- PATIENT CARE -->
+                    <!-- Patient Care -->
                     <div class="mt-5">
 
                         <span class="doctor-section-label">
@@ -513,12 +478,9 @@
                         @else
 
                             <p>
-
                                 {{ setting('hospital_name') }}
-
                                 is committed to providing professional,
                                 accessible and compassionate healthcare.
-
                             </p>
 
 
@@ -530,8 +492,8 @@
                                     {{ $doctor->name }}
                                 </strong>
 
-                                during the scheduled OPD hours and discuss
-                                their healthcare concerns with the specialist.
+                                for specialised consultation and
+                                appropriate medical guidance.
 
                             </p>
 
@@ -540,7 +502,7 @@
                     </div>
 
 
-                    <!-- CARE BANNER -->
+                    <!-- Care Banner -->
                     <div class="doctor-care-banner">
 
                         <i class="fas fa-heart"></i>
@@ -552,11 +514,9 @@
                             </strong>
 
                             <span>
-
                                 Our approach focuses on understanding
                                 patient needs and providing appropriate
                                 medical guidance and care.
-
                             </span>
 
                         </div>

@@ -255,7 +255,7 @@
 
                     <div class="parent-icon">
                         <i class="material-icons-outlined">
-                            work
+                            work_history
                         </i>
                     </div>
 

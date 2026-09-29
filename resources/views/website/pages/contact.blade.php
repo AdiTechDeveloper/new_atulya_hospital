@@ -1,249 +1,19 @@
 @extends('website.layout.app')
 
 @section('title', 'Contact Us')
+@section('page-banner')
+
+    @include('website.partials.page-banner', [
+        'title' => 'Contact Us'
+    ])
+
+@endsection
 
 @section('content')
 
 
 <!-- Appointment Section Start -->
-<section class="appointment-section atulya-appointment-section">
 
-    <div class="container">
-
-        <div class="appointment-wrapper">
-
-            <div class="row g-4 align-items-stretch">
-
-                <!-- APPOINTMENT FORM -->
-                <div class="col-lg-8">
-
-                    <div class="appointment-items">
-
-                        <h3>Book An Appointment</h3>
-                        @if(session('success'))
-                        <div class="alert alert-success mb-4">
-                            {{ session('success') }}
-                        </div>
-                        @endif
-                       <form action="{{ route('appointment.store') }}" method="POST">
-
-                            @csrf
-
-                            <div class="row">
-
-                                <!-- NAME -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Name*</p>
-
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="{{ old('name') }}"
-                                            placeholder="Enter Your Name"
-                                            required>
-                                        @error('name')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-                                <!-- PHONE -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Phone*</p>
-
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value="{{ old('phone') }}"
-                                            placeholder="Enter Your Phone Number"
-                                            required>
-                                        @error('phone')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-
-                                <!-- DEPARTMENT -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Department <span>(Optional)</span></p>
-
-                                        <div class="form">
-
-                                            <select name="department" id="appointmentDepartment" class="w-100">
-                                                <option value="">Select Department</option>
-
-                                                @foreach($departments as $department)
-                                                <option
-                                                    value="{{ $department }}"
-                                                    {{ old('department') == $department ? 'selected' : '' }}>
-                                                    {{ ucwords($department) }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            @error('department')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <!-- DOCTOR -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Doctor <span>(Optional)</span></p>
-
-                                        <div class="form">
-
-                                            <select name="doctor_id" id="appointmentDoctor" class="w-100" disabled>
-                                                <option value="">Select Department First</option>
-
-                                                @foreach($doctors as $doctor)
-                                                <option
-                                                    value="{{ $doctor->id }}"
-                                                    data-department="{{ trim($doctor->department) }}"
-                                                    style="display:none;"
-                                                    {{ old('doctor_id') == $doctor->id ? 'selected' : '' }}>
-                                                    {{ $doctor->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            @error('doctor_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <!-- DATE -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Date*</p>
-                                        <input
-                                            type="date"
-                                            name="appointment_date"
-                                            value="{{ old('appointment_date') }}"
-                                            min="{{ date('Y-m-d') }}"
-                                            required>
-
-                                        @error('appointment_date')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-
-                                <!-- TIME -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Time <span>(Optional)</span></p>
-
-                                        <input
-                                            type="time"
-                                            name="appointment_time"
-                                            value="{{ old('appointment_time') }}">
-
-                                        @error('appointment_time')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-                                <!-- MESSAGE -->
-                                <div class="col-12">
-                                    <div class="form-clt">
-
-                                        <p>Message <span>(Optional)</span></p>
-
-                                        <textarea
-                                            name="message"
-                                            rows="3"
-                                            placeholder="Write Your Message">{{ old('message') }}</textarea>
-
-                                        @error('message')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-
-                                <!-- BUTTON -->
-                                <div class="col-12">
-                                    <div class="form-clt">
-
-                                        <button
-                                            type="submit"
-                                            class="theme-btn">
-                                            <i class="far fa-chevron-right"></i>
-                                            Submit Appointment
-                                        </button>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TWO IMAGES -->
-                <div class="col-lg-4">
-
-                    <div class="appointment-images">
-
-                        <div class="appointment-image-item">
-
-                            <img
-                                src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
-                                alt="Atulya Super Speciality Hospital">
-
-                        </div>
-
-                        <div class="appointment-image-item">
-
-                            <img
-                               src="{{ asset('assets/img/home-1/hero/img1.png') }}"
-                                alt="Atulya Super Speciality Hospital">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 <!-- Appointment Section End -->
 
 
@@ -363,6 +133,49 @@
     </div>
 
 </div>
+<section class="appointment-cta-section">
 
+    <div class="container">
+
+        <div class="appointment-cta-wrapper">
+
+            <div class="appointment-cta-content">
+
+                <span class="appointment-cta-label">
+                    APPOINTMENT
+                </span>
+
+                <h2>
+                    Need Medical Assistance?
+                    <br>
+                    Book Your Appointment
+                </h2>
+
+                <p>
+                    Schedule an appointment with our experienced doctors
+                    and get the right care for your health.
+                </p>
+
+                <a
+                    href="#"
+                    class="appointment-cta-btn">
+
+                    <span class="btn-text">
+                        Book An Appointment
+                    </span>
+
+                    <span class="btn-icon">
+                        <i class="far fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 @endsection

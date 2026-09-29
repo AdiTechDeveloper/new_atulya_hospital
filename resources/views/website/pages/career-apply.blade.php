@@ -3,6 +3,13 @@
 @section('title', 'Apply for ' . $job->title . ' | Atulya Super Speciality Hospital')
 
 @section('meta_description', 'Apply for the ' . $job->title . ' position at Atulya Super Speciality Hospital & ICU.')
+@section('page-banner')
+
+    @include('website.partials.page-banner', [
+        'title' =>$job->title
+    ])
+
+@endsection
 
 @section('content')
 

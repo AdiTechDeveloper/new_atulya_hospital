@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="blog-details-wrapper section-padding">
+<section class="blog-details-wrapper mt-2 mb-2">
 
     <div class="container">
 

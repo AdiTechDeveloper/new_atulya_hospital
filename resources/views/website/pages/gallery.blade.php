@@ -1,7 +1,13 @@
 @extends('website.layout.app')
 
 @section('title', 'Gallery')
+@section('page-banner')
 
+    @include('website.partials.page-banner', [
+        'title' => 'Book An Appointment'
+    ])
+
+@endsection
 @section('content')
 
     <section class="service-details-section section-padding pt-80 pb-80">

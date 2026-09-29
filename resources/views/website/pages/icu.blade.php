@@ -1,12 +1,19 @@
 @extends('website.layout.app')
 
 @section('title', 'ICU & Emergency')
+@section('page-banner')
+
+    @include('website.partials.page-banner', [
+        'title' => 'ICU & Emergency'
+    ])
+
+@endsection
 
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('assets/css/icu-emergency.css') }}">
 
-<section class="">
+<section class="mt-4 ">
 
     <div class="container pb-10">
 

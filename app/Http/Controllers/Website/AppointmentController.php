@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-
 use App\Mail\NewAppointmentMail;
 use App\Models\Appointment;
 use App\Models\Doctor;
@@ -15,83 +14,103 @@ class AppointmentController extends Controller
 {
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'min:2',
-                'max:100',
-                'regex:/^[A-Za-z\s]+$/',
-            ],
+        if ($request->doctor_id === 'other') {
+            $request->merge([
+                'doctor_id' => null,
+            ]);
+        }
 
-            'phone' => [
-                'required',
-                'string',
-                'regex:/^[6-9][0-9]{9}$/',
-            ],
+        if ($request->department === 'other_department') {
+            $request->merge([
+                'department' => 'Other Department',
+            ]);
+        }
 
-            'department' => [
-                'nullable',
-                'string',
-                'max:100',
-            ],
+       $validated = $request->validate([
+    'name' => [
+        'required',
+        'string',
+        'min:2',
+        'max:50',
+        'regex:/^[A-Za-z\s]+$/',
+    ],
 
-            'doctor_id' => [
-                'nullable',
-                'integer',
-                'exists:doctors,id',
-            ],
+    'phone' => [
+        'required',
+        'string',
+        'regex:/^[6-9][0-9]{9}$/',
+    ],
 
-            'appointment_date' => [
-                'required',
-                'date',
-                'after_or_equal:today',
-            ],
+    'department' => [
+        'nullable',
+        'string',
+        'max:100',
+    ],
 
-            'appointment_time' => [
-                'nullable',
-                'date_format:H:i',
-            ],
+    'doctor_id' => [
+        'nullable',
+        'integer',
+        'exists:doctors,id',
+    ],
 
-            'message' => [
-                'nullable',
-                'string',
-                'max:1000',
-            ],
-        ]);
+    'appointment_date' => [
+        'required',
+        'date',
+        'after_or_equal:today',
+    ],
+
+    'appointment_time' => [
+        'nullable',
+        'date_format:H:i',
+    ],
+
+    'message' => [
+        'nullable',
+        'string',
+        'max:1000',
+    ],
+]);
+
 
         // Doctor verification
 
         if (!empty($validated['doctor_id'])) {
 
-            $doctor = Doctor::where('id', $validated['doctor_id'])
-                ->where('is_active', true)
-                ->first();
+    $doctor = Doctor::where('id', $validated['doctor_id'])
+        ->where('is_active', true)
+        ->first();
 
-            if (!$doctor) {
-                throw ValidationException::withMessages([
-                    'doctor_id' => 'Selected doctor is not available.',
-                ]);
-            }
+    if (!$doctor) {
 
-            if (!empty($validated['department'])) {
+        throw ValidationException::withMessages([
+            'doctor_id' => 'Selected doctor is not available.',
+        ]);
 
-                $selectedDepartment = strtolower(
-                    trim($validated['department'])
-                );
+    }
 
-                $doctorDepartment = strtolower(
-                    trim($doctor->department)
-                );
+    if (!empty($validated['department'])) {
 
-                if ($selectedDepartment !== $doctorDepartment) {
-                    throw ValidationException::withMessages([
-                        'doctor_id' =>
-                            'Selected doctor does not belong to the selected department.',
-                    ]);
-                }
-            }
+        $selectedDepartment = strtolower(
+            trim($validated['department'])
+        );
+
+        $doctorDepartment = strtolower(
+            trim($doctor->department)
+        );
+
+        if ($selectedDepartment !== $doctorDepartment) {
+
+            throw ValidationException::withMessages([
+                'doctor_id' =>
+                    'Selected doctor does not belong to the selected department.',
+            ]);
+
         }
+
+    }
+
+}
+
 
         // Create appointment
 
@@ -106,14 +125,21 @@ class AppointmentController extends Controller
             'status' => 'pending',
         ]);
 
+
         // Send notification email
 
         try {
-            Mail::to(env('APPOINTMENT_NOTIFICATION_EMAIL'))
-                ->send(new NewAppointmentMail($appointment));
+
+            Mail::to(
+                env('APPOINTMENT_NOTIFICATION_EMAIL')
+            )->send(
+                new NewAppointmentMail($appointment)
+            );
         } catch (\Throwable $e) {
+
             report($e);
         }
+
 
         return back()->with(
             'success',

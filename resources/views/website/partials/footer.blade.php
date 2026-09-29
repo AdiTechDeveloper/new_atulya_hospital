@@ -27,7 +27,7 @@
                         <div class="widget-head">
                             <a href="{{ url('/') }}" class="footer-logo">
                                 <img width="150px"
-                                    src="{{ asset('assets/img/logo/Atulya-Logo.png') }}"
+                                    src="{{ asset('assets/img/logo/Atulya-logo.png') }}"
                                     alt="{{ setting('hospital_name') }}">
                             </a>
                         </div>
@@ -35,15 +35,20 @@
                         <div class="footer-content">
 
                             <p>
-                               {{ setting('hospital_name') }} is committed to providing
+                                {{ setting('hospital_name') }} is committed to providing
                                 compassionate, comprehensive and quality
                                 healthcare with a patient-centred approach.
                             </p>
 
                             <ul>
                                 <li>
-                                    Monday - Sunday
-                                    <span>24 * 7</span>
+                                    <span class="footer-day">
+                                        Monday - Sunday
+                                    </span>
+
+                                    <span class="footer-247">
+                                        <img src="{{ asset('assets/img/logo/24-7.png') }}" alt="24 * 7">
+                                    </span>
                                 </li>
 
                                 {{-- <li>
@@ -99,11 +104,6 @@
 
                             <ul class="list-area">
 
-                                <li>
-                                    <a href="{{ url('/') }}">
-                                        Home
-                                    </a>
-                                </li>
 
                                 <li>
                                     <a href="{{ url('/about') }}">
@@ -146,51 +146,23 @@
                             <div class="widget-head">
                                 <h3>Our Services</h3>
                             </div>
+                            @php
+                            $footerDepartments = \App\Models\Department::where('is_active', true)
+                            ->orderBy('sort_order', 'asc')
+                            ->orderBy('id', 'asc')
+                            ->take(5)
+                            ->get();
+                            @endphp
 
                             <ul class="list-area">
-
+                                @foreach($footerDepartments as $department)
                                 <li>
-                                    <a href="{{ url('/departments/orthopedic') }}">
-                                        Orthopedic
+                                    <a href="{{ route('departments.show', $department->slug) }}">
+                                        {{ $department->name }}
                                     </a>
                                 </li>
-
-
-                                <li>
-                                    <a href="{{ url('/departments/ent') }}">
-                                        ENT
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/departments/rheumatology') }}">
-                                        RHEUMATOLOGY
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/urology') }}">
-                                        UROLOGY
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url('/departments/onco-surgery') }}">
-                                        General Surgery
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/departments/critical-care') }}">
-                                        Critical Care
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/departments/physiotherapy') }}">
-                                        Physician
-                                    </a>
-                                </li>
-
+                                @endforeach
                             </ul>
-
                         </div>
 
                     </div>
@@ -295,7 +267,7 @@
             <div class="footer-content">
 
                 <p class="text-white">
-                   {{ setting('hospital_name') }} is dedicated to providing
+                    {{ setting('hospital_name') }} is dedicated to providing
                     accessible and compassionate healthcare
                     with a focus on patient comfort and well-being.
                 </p>
@@ -352,10 +324,8 @@
                         <div class="content">
 
                             <p>
-                                Atulya Superspeciality Hospital & ICU,
-                                206–214, 2nd Floor, Elite Magnum,
-                                Bhuyangdev Cross Road,
-                                Ahmedabad – 380061, Gujarat
+
+                                {{ setting('address') }}
                             </p>
 
                         </div>
@@ -385,7 +355,7 @@
 
                 <p>
                     Copyright © {{ date('Y') }} {{ setting('hospital_name') }}.
-                    All Rights Reserved.
+                    All Rights Reserved. Design and Developed by The Adi Tech
                 </p>
 
                 <div class="social-icon d-flex align-items-center">

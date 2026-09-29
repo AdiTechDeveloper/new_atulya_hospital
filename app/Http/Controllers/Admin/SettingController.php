@@ -29,46 +29,46 @@ class SettingController extends Controller
     |--------------------------------------------------------------------------
     */
 
-public function changePassword(Request $request)
-{
-    $validated = $request->validate([
-        'current_password' => ['required', 'string'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-    ]);
-
-    $user = Auth::user();
-
-    if (!$user) {
-        return back()->withErrors([
-            'current_password' => 'User session not found. Please login again.',
+    public function changePassword(Request $request)
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
+        $user = Auth::user();
+
+        if (!$user) {
+            return back()->withErrors([
+                'current_password' => 'User session not found. Please login again.',
+            ]);
+        }
+
+        // Check current password
+        if (!Hash::check($validated['current_password'], $user->password)) {
+            return back()
+                ->withErrors([
+                    'current_password' => 'Current password is incorrect.',
+                ])
+                ->withInput();
+        }
+
+        // Update password
+        $user->password = $validated['password'];
+
+        // Laravel User model has:
+        // 'password' => 'hashed'
+        // so Laravel will hash it automatically.
+        $user->save();
+
+        return redirect()
+            ->route('admin.settings.index')
+            ->with(
+                'success',
+                'Password updated successfully. Please login again with your new password.'
+            );
     }
-
-    // Check current password
-    if (!Hash::check($validated['current_password'], $user->password)) {
-        return back()
-            ->withErrors([
-                'current_password' => 'Current password is incorrect.',
-            ])
-            ->withInput();
-    }
-
-    // Update password
-    $user->password = $validated['password'];
-
-    // Laravel User model has:
-    // 'password' => 'hashed'
-    // so Laravel will hash it automatically.
-    $user->save();
-
-    return redirect()
-        ->route('admin.settings.index')
-        ->with(
-            'success',
-            'Password updated successfully. Please login again with your new password.'
-        );
-}
- /*
+    /*
     |--------------------------------------------------------------------------
     | Update Hospital Settings
     |--------------------------------------------------------------------------
@@ -156,6 +156,29 @@ public function changePassword(Request $request)
                 'mimes:jpg,jpeg,png,webp',
                 'max:2048',
             ],
+            'satisfied_patients' => [
+                'required',
+                'string',
+                'max:50',
+            ],
+
+            'clinic_rooms' => [
+                'required',
+                'string',
+                'max:50',
+            ],
+
+            'awards_winning' => [
+                'required',
+                'string',
+                'max:50',
+            ],
+
+            'research_count' => [
+                'required',
+                'string',
+                'max:50',
+            ],
         ], [
 
             'hospital_name.required' =>
@@ -226,6 +249,17 @@ public function changePassword(Request $request)
 
             'logo.max' =>
             'Logo size must not exceed 2MB.',
+            'satisfied_patients.required' =>
+            'Please enter satisfied patients count.',
+
+            'clinic_rooms.required' =>
+            'Please enter clinic rooms count.',
+
+            'awards_winning.required' =>
+            'Please enter awards winning count.',
+
+            'research_count.required' =>
+            'Please enter research count.',
         ]);
 
 
@@ -303,6 +337,17 @@ public function changePassword(Request $request)
 
             'logo' =>
             $logo,
+            'satisfied_patients' =>
+            $validated['satisfied_patients'],
+
+            'clinic_rooms' =>
+            $validated['clinic_rooms'],
+
+            'awards_winning' =>
+            $validated['awards_winning'],
+
+            'research_count' =>
+            $validated['research_count'],
         ]);
 
 

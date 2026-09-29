@@ -768,726 +768,6 @@
     }
 }
 
-.atulya-about {
-    background: #f7f9fc;
-    color: #172965;
-}
-
-.atulya-container {
-    width: min(1180px, calc(100% - 30px));
-    margin: auto;
-}
-
-.atulya-section {
-    padding: 80px 0;
-}
-
-.atulya-section-head {
-    max-width: 720px;
-    margin: 0 auto 45px;
-    text-align: center;
-}
-
-.atulya-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    color: #1c6fd1;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.atulya-kicker::before {
-    content: "";
-    width: 28px;
-    height: 2px;
-    background: #1c6fd1;
-}
-
-.atulya-section-head h2 {
-    margin: 0 0 14px;
-    color: #172965;
-    font-size: clamp(30px, 4vw, 44px);
-    line-height: 1.15;
-    font-weight: 700;
-}
-
-.atulya-section-head p {
-    margin: 0;
-    color: #68738a;
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-/* HERO */
-
-.atulya-about-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 85px 0 75px;
-    background:
-        radial-gradient(circle at 90% 20%,
-            rgba(44, 127, 218, .12),
-            transparent 30%),
-        linear-gradient(135deg, #f8fbff 0%, #eef5fc 100%);
-}
-
-.atulya-about-hero::after {
-    content: "";
-    position: absolute;
-    right: -120px;
-    bottom: -160px;
-    width: 380px;
-    height: 380px;
-    border: 70px solid rgba(28, 111, 209, .05);
-    border-radius: 50%;
-}
-
-.atulya-hero-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 65px;
-    align-items: center;
-}
-
-.atulya-hero-content h1 {
-    max-width: 650px;
-    margin: 0 0 22px;
-    color: #172965;
-    font-size: clamp(38px, 5vw, 62px);
-    line-height: 1.08;
-    font-weight: 750;
-}
-
-.atulya-hero-content h1 span {
-    color: #1c6fd1;
-}
-
-.atulya-hero-content>p {
-    max-width: 620px;
-    margin: 0 0 30px;
-    color: #667189;
-    font-size: 17px;
-    line-height: 1.85;
-}
-
-.atulya-hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 35px;
-}
-
-.atulya-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    min-height: 50px;
-    padding: 0 23px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-    transition: .25s ease;
-}
-
-.atulya-btn-primary {
-    background: #172965;
-    color: #fff;
-    box-shadow: 0 10px 25px rgba(23, 41, 101, .18);
-}
-
-.atulya-btn-primary:hover {
-    background: #1c6fd1;
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-.atulya-btn-outline {
-    border: 1px solid #d5dfec;
-    background: #fff;
-    color: #172965;
-}
-
-.atulya-btn-outline:hover {
-    border-color: #1c6fd1;
-    color: #1c6fd1;
-    transform: translateY(-2px);
-}
-
-.atulya-hero-points {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-}
-
-.atulya-hero-point {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #3e4b65;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.atulya-hero-point i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #e4f1ff;
-    color: #1c6fd1;
-    font-size: 12px;
-}
-
-.atulya-hero-image {
-    position: relative;
-}
-
-.atulya-hero-image img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 18px;
-    box-shadow: 0 25px 60px rgba(23, 41, 101, .15);
-}
-
-.atulya-hero-badge {
-    position: absolute;
-    left: -25px;
-    bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 16px 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(23, 41, 101, .15);
-}
-
-.atulya-hero-badge-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 9px;
-    background: #e8f3ff;
-    color: #1c6fd1;
-    font-size: 19px;
-}
-
-.atulya-hero-badge strong {
-    display: block;
-    margin-bottom: 2px;
-    color: #172965;
-    font-size: 16px;
-}
-
-.atulya-hero-badge span {
-    color: #7a8498;
-    font-size: 12px;
-}
-
-/* ABOUT */
-
-.atulya-about-grid {
-    display: grid;
-    grid-template-columns: .9fr 1.1fr;
-    gap: 65px;
-    align-items: center;
-}
-
-.atulya-about-image {
-    position: relative;
-}
-
-.atulya-about-image img {
-    width: 100%;
-    height: 530px;
-    object-fit: cover;
-    border-radius: 16px;
-}
-
-.atulya-content .atulya-kicker {
-    margin-bottom: 12px;
-}
-
-.atulya-content h2 {
-    margin: 0 0 18px;
-    color: #172965;
-    font-size: clamp(30px, 4vw, 45px);
-    line-height: 1.15;
-}
-
-.atulya-content>p {
-    margin: 0 0 18px;
-    color: #68738a;
-    font-size: 15px;
-    line-height: 1.85;
-}
-
-.atulya-check-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 25px;
-    margin-top: 28px;
-}
-
-.atulya-check {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: #3d4961;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.atulya-check i {
-    flex: 0 0 auto;
-    margin-top: 2px;
-    color: #1c6fd1;
-}
-
-/* VISION MISSION */
-
-.atulya-purpose {
-    background: #172965;
-}
-
-.atulya-purpose .atulya-section-head h2,
-.atulya-purpose .atulya-section-head p {
-    color: #fff;
-}
-
-.atulya-purpose .atulya-kicker {
-    color: #8fc7ff;
-}
-
-.atulya-purpose .atulya-kicker::before {
-    background: #8fc7ff;
-}
-
-.atulya-purpose-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-}
-
-.atulya-purpose-card {
-    position: relative;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .1);
-    border-radius: 13px;
-    background: rgba(255, 255, 255, .055);
-    overflow: hidden;
-}
-
-.atulya-purpose-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    margin-bottom: 22px;
-    border-radius: 10px;
-    background: #fff;
-    color: #1c6fd1;
-    font-size: 20px;
-}
-
-.atulya-purpose-card h3 {
-    margin: 0 0 12px;
-    color: #fff;
-    font-size: 25px;
-}
-
-.atulya-purpose-card p {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    color: rgba(255, 255, 255, .72);
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-/* WHY */
-
-.atulya-why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.atulya-why-card {
-    padding: 28px;
-    border: 1px solid #e4eaf2;
-    border-radius: 12px;
-    background: #fff;
-    transition: .25s ease;
-}
-
-.atulya-why-card:hover {
-    transform: translateY(-5px);
-    border-color: #cddff2;
-    box-shadow: 0 18px 40px rgba(23, 41, 101, .08);
-}
-
-.atulya-why-number {
-    margin-bottom: 22px;
-    color: #dceaf8;
-    font-size: 30px;
-    font-weight: 800;
-}
-
-.atulya-why-card h3 {
-    margin: 0 0 10px;
-    color: #172965;
-    font-size: 19px;
-}
-
-.atulya-why-card p {
-    margin: 0;
-    color: #737e92;
-    font-size: 14px;
-    line-height: 1.75;
-}
-
-/* INFRASTRUCTURE */
-
-.atulya-infra {
-    background: #f0f5fa;
-}
-
-.atulya-infra-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.atulya-infra-card {
-    overflow: hidden;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 8px 25px rgba(23, 41, 101, .06);
-}
-
-.atulya-infra-image {
-    height: 225px;
-    overflow: hidden;
-}
-
-.atulya-infra-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .4s ease;
-}
-
-.atulya-infra-card:hover img {
-    transform: scale(1.05);
-}
-
-.atulya-infra-content {
-    padding: 21px 22px 23px;
-}
-
-.atulya-infra-content h3 {
-    margin: 0 0 7px;
-    color: #172965;
-    font-size: 19px;
-}
-
-.atulya-infra-content p {
-    margin: 0;
-    color: #737e92;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-/* QUALITY */
-
-.atulya-quality {
-    background: #fff;
-}
-
-.atulya-quality-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.atulya-quality-image {
-    position: relative;
-}
-
-.atulya-quality-image img {
-    width: 100%;
-    height: 460px;
-    object-fit: cover;
-    border-radius: 16px;
-}
-
-.atulya-quality-content h2 {
-    margin: 0 0 17px;
-    color: #172965;
-    font-size: clamp(30px, 4vw, 44px);
-    line-height: 1.15;
-}
-
-.atulya-quality-content>p {
-    margin: 0 0 24px;
-    color: #68738a;
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.atulya-quality-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.atulya-quality-item {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    padding: 13px 14px;
-    border: 1px solid #e5ebf2;
-    border-radius: 8px;
-    color: #354159;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.atulya-quality-item i {
-    color: #1c6fd1;
-}
-
-.atulya-trust {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-top: 25px;
-    padding-top: 22px;
-    border-top: 1px solid #e7ebf1;
-}
-
-.atulya-trust-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: #eaf4ff;
-    color: #1c6fd1;
-}
-
-.atulya-trust strong {
-    display: block;
-    margin-bottom: 3px;
-    color: #172965;
-    font-size: 14px;
-}
-
-.atulya-trust span {
-    color: #7b8597;
-    font-size: 12px;
-}
-
-/* CTA */
-
-.atulya-cta {
-    padding: 55px 0;
-    background: #eef5fc;
-}
-
-.atulya-cta-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 35px 40px;
-    border-radius: 14px;
-    background: #172965;
-}
-
-.atulya-cta-box h3 {
-    margin: 0 0 7px;
-    color: #fff;
-    font-size: 27px;
-}
-
-.atulya-cta-box p {
-    margin: 0;
-    color: rgba(255, 255, 255, .7);
-    font-size: 14px;
-}
-
-.atulya-cta-box .atulya-btn {
-    flex: 0 0 auto;
-    background: #fff;
-    color: #172965;
-}
-
-.atulya-cta-box .atulya-btn:hover {
-    background: #1c6fd1;
-    color: #fff;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 991px) {
-    .atulya-section {
-        padding: 65px 0;
-    }
-
-    .atulya-hero-grid,
-    .atulya-about-grid,
-    .atulya-quality-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .atulya-hero-image img {
-        height: 430px;
-    }
-
-    .atulya-about-image img,
-    .atulya-quality-image img {
-        height: 420px;
-    }
-
-    .atulya-hero-badge {
-        left: 20px;
-    }
-
-    .atulya-why-grid,
-    .atulya-infra-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 767px) {
-    .atulya-section {
-        padding: 50px 0;
-    }
-
-    .atulya-about-hero {
-        padding: 55px 0;
-    }
-
-    .atulya-hero-content h1 {
-        font-size: 40px;
-    }
-
-    .atulya-hero-content>p {
-        font-size: 15px;
-    }
-
-    .atulya-hero-image img {
-        height: 340px;
-    }
-
-    .atulya-about-image img,
-    .atulya-quality-image img {
-        height: 350px;
-    }
-
-    .atulya-purpose-grid,
-    .atulya-why-grid,
-    .atulya-infra-grid,
-    .atulya-check-grid,
-    .atulya-quality-list {
-        grid-template-columns: 1fr;
-    }
-
-    .atulya-purpose-card {
-        padding: 27px;
-    }
-
-    .atulya-cta-box {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 28px;
-    }
-
-    .atulya-experience-box {
-        right: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .atulya-container {
-        width: min(100% - 22px, 1180px);
-    }
-
-    .atulya-hero-content h1 {
-        font-size: 34px;
-    }
-
-    .atulya-hero-actions {
-        flex-direction: column;
-    }
-
-    .atulya-btn {
-        width: 100%;
-    }
-
-    .atulya-hero-points {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .atulya-hero-image img {
-        height: 290px;
-    }
-
-    .atulya-about-image img,
-    .atulya-quality-image img {
-        height: 300px;
-    }
-
-    .atulya-hero-badge {
-        position: relative;
-        left: 0;
-        bottom: auto;
-        margin-top: 12px;
-    }
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-.gallery-category {
-    scroll-margin-top: 100px;
-    margin-top: 35px;
-}
-
-.gallery-category h4 {
-    margin-bottom: 15px;
-}
-
-.gallery-category .service-img {
-    margin-bottom: 0;
-    overflow: hidden;
-}
-
-.gallery-category .service-img img {
-    width: 100%;
-    display: block;
-}
 
 /* =========================================================
    ATULYA HOME VIDEO SECTION
@@ -2986,4 +2266,1060 @@ html {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+}
+/* Counter */
+.atulya-counter-section {
+    position: relative;
+    z-index: 10;
+    margin-bottom: -90px;
+}
+
+.atulya-counter-section .counter-section {
+    padding: 0;
+}
+
+.atulya-counter-section .counter-wrapper {
+    width: 100% !important;
+    max-width: 1120px !important;
+    min-height: 250px;
+    margin: 22px auto !important;
+    padding: 45px 35px;
+    border-radius: 15px;
+    background: #10c7bc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.atulya-counter-section .counter-items {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+}
+
+.atulya-counter-section .counter-items .icon {
+    flex-shrink: 0;
+}
+
+.atulya-counter-section .counter-items .icon img {
+    width: 104px;
+    height: 104px;
+    object-fit: contain;
+}
+
+.atulya-counter-section .counter-items .content {
+    text-align: left;
+}
+
+.atulya-counter-section .counter-items .content h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.atulya-counter-section .counter-items .content p {
+    margin: 12px 0 0;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+
+/* Video Section */
+.atulya-home-video {
+    position: relative;
+    padding-top: 145px;
+    padding-bottom: 100px;
+    background-position: center;
+    background-size: cover;
+}
+
+.atulya-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.atulya-home-video .container {
+    position: relative;
+    z-index: 2;
+}
+
+.atulya-video-inner {
+    position: relative;
+}
+
+.atulya-video-heading {
+    margin-bottom: 45px;
+}
+
+.atulya-video-label {
+    display: inline-block;
+    padding: 18px 30px;
+    margin-bottom: 20px;
+    background: #e5f7f6;
+    color: #00b9b0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+.atulya-video-heading h2 {
+    margin-bottom: 15px;
+    color: #182f73;
+    font-size: 52px;
+    font-weight: 700;
+}
+
+.atulya-video-heading p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 17px;
+}
+
+
+/* Video Cards */
+.atulya-video-card {
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.atulya-video-thumb {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.atulya-video-thumb img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.atulya-video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65px;
+    height: 65px;
+    border: 0;
+    border-radius: 50%;
+    background: #10c7bc;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.atulya-video-content {
+    padding: 22px;
+}
+
+.atulya-video-content h4 {
+    margin: 0;
+    color: #182f73;
+    font-size: 21px;
+}
+
+.atulya-video-content p {
+    margin: 10px 0 0;
+    color: #666;
+}
+
+
+/* Mobile */
+@media (max-width: 991px) {
+
+    .atulya-counter-section {
+        margin-bottom: -60px;
+    }
+
+    .atulya-counter-section .counter-wrapper {
+        max-width: calc(100% - 30px) !important;
+        padding: 40px 25px;
+        flex-wrap: wrap;
+        gap: 35px 10px;
+    }
+
+    .atulya-counter-section .counter-items {
+        flex: 0 0 50%;
+        width: 50%;
+    }
+
+    .atulya-counter-section .counter-items .icon img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .atulya-counter-section .counter-items .content h2 {
+        font-size: 42px;
+    }
+
+    .atulya-counter-section .counter-items .content p {
+        font-size: 15px;
+    }
+
+    .atulya-home-video {
+        padding-top: 110px;
+    }
+
+    .atulya-video-heading h2 {
+        font-size: 40px;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .atulya-counter-section {
+        margin-bottom: -40px;
+    }
+
+    .atulya-counter-section .counter-wrapper {
+        padding: 30px 20px;
+    }
+
+    .atulya-counter-section .counter-items {
+        flex: 0 0 100%;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .atulya-counter-section .counter-items .icon img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .atulya-counter-section .counter-items .content h2 {
+        font-size: 38px;
+    }
+
+    .atulya-home-video {
+        padding-top: 90px;
+    }
+
+    .atulya-video-heading h2 {
+        font-size: 32px;
+    }
+
+    .atulya-video-label {
+        padding: 14px 20px;
+        letter-spacing: 3px;
+    }
+}
+/* Page Banner */
+/* Page Banner */
+
+.atulya-page-banner {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+}
+
+.atulya-page-banner-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+.atulya-page-banner-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.atulya-page-banner-overlay .container {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.atulya-banner-box {
+    width: 48%;
+    min-height: 330px;
+
+    margin-left: 3%;
+
+    padding: 55px 70px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: rgba(75, 95, 105, 0.68);
+
+    clip-path: polygon(
+        7% 0,
+        100% 0,
+        93% 100%,
+        0 100%
+    );
+}
+
+.atulya-banner-box h1 {
+    margin: 0 0 35px;
+
+    color: #ffffff;
+
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.atulya-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 11px;
+
+    width: fit-content;
+
+    padding: 21px 30px;
+
+    background: #ffffff;
+
+    font-size: 15px;
+    line-height: 1;
+
+    font-weight: 400;
+}
+
+.atulya-breadcrumb a,
+.atulya-breadcrumb span {
+    color: #172965;
+    font-weight: bold;
+    
+}
+
+
+/* Doctors */
+
+.atulya-doctors-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+
+@media (max-width: 1199px) {
+
+    .atulya-page-banner {
+        height: 470px;
+    }
+
+    .atulya-banner-box {
+        width: 53%;
+        min-height: 300px;
+
+        margin-left: 2%;
+
+        padding: 50px 60px;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 48px;
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .atulya-page-banner {
+        height: 400px;
+    }
+
+    .atulya-banner-box {
+        width: 62%;
+        min-height: 270px;
+
+        padding: 45px 50px;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 42px;
+        margin-bottom: 25px;
+    }
+
+    .atulya-breadcrumb {
+        padding: 18px 24px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .atulya-page-banner {
+        height: 340px;
+    }
+
+    .atulya-banner-box {
+        width: 78%;
+        min-height: 230px;
+
+        margin-left: 0;
+
+        padding: 35px 40px;
+
+        clip-path: polygon(
+            5% 0,
+            100% 0,
+            95% 100%,
+            0 100%
+        );
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .atulya-breadcrumb {
+        padding: 15px 18px;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .atulya-page-banner {
+        height: 280px;
+    }
+
+    .atulya-banner-box {
+        width: 100%;
+        min-height: 190px;
+
+        padding: 30px;
+
+        clip-path: none;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 30px;
+        margin-bottom: 18px;
+    }
+
+    .atulya-breadcrumb {
+        padding: 13px 15px;
+        font-size: 11px;
+    }
+}
+
+    /* =========================================
+   APPOINTMENT CTA
+========================================= */
+
+    .appointment-cta-section {
+        padding: 75px 0;
+        background: #eef8fb;
+    }
+
+
+    /* Main Box */
+
+    .appointment-cta-wrapper {
+        position: relative;
+
+        min-height: 360px;
+
+        overflow: hidden;
+
+        background: #10c7bc;
+
+        border-radius: 24px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================
+   CONTENT
+========================================= */
+
+    .appointment-cta-content {
+        position: relative;
+        z-index: 2;
+
+        width: 100%;
+        max-width: 900px;
+
+        padding: 65px 75px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        box-sizing: border-box;
+    }
+
+
+    /* Label */
+
+    .appointment-cta-label {
+        display: inline-flex;
+        align-items: center;
+
+        width: fit-content;
+
+        margin-bottom: 20px;
+
+        color: #fff;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        letter-spacing: 5px;
+    }
+
+
+    /* Small line */
+
+    .appointment-cta-label::before {
+        content: "";
+
+        width: 28px;
+        height: 2px;
+
+        margin-right: 12px;
+
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+
+    /* Heading */
+
+    .appointment-cta-content h2 {
+        margin: 0 0 18px;
+
+        color: #fff;
+
+        font-size: 48px;
+        line-height: 1.15;
+        font-weight: 700;
+
+        letter-spacing: -0.5px;
+    }
+
+
+    /* Description */
+
+    .appointment-cta-content p {
+        max-width: 700px;
+
+        margin: 0 0 30px;
+
+        color: rgba(255, 255, 255, 0.92);
+
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+
+    /* =========================================
+   BUTTON
+========================================= */
+
+    .appointment-cta-btn {
+        width: 250px;
+        height: 58px;
+
+        padding: 6px 7px 6px 24px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+
+        box-sizing: border-box;
+
+        background: #fff;
+
+        color: #182f73;
+
+        border-radius: 50px;
+
+        text-decoration: none;
+
+        font-size: 16px;
+        font-weight: 600;
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+        transition: all 0.3s ease;
+    }
+
+
+    /* Button Icon */
+
+    .appointment-cta-btn .btn-icon {
+        width: 46px;
+        height: 46px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: #10c7bc;
+
+        color: #fff;
+
+        font-size: 15px;
+
+        transition: all 0.3s ease;
+    }
+
+
+    /* Hover */
+
+    .appointment-cta-btn:hover {
+        background: #182f73;
+        color: #fff;
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+
+    .appointment-cta-btn:hover .btn-icon {
+        background: #10c7bc;
+
+        transform: translateX(2px);
+    }
+
+
+    /* =========================================
+   DECORATIVE SHAPE
+========================================= */
+
+    .appointment-cta-wrapper::after {
+        content: "";
+
+        position: absolute;
+
+        right: -120px;
+        bottom: -180px;
+
+        width: 450px;
+        height: 450px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.06);
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================
+   LARGE DESKTOP
+========================================= */
+
+    @media (min-width: 1400px) {
+
+        .appointment-cta-wrapper {
+            min-height: 380px;
+        }
+
+        .appointment-cta-content {
+            padding-left: 75px;
+        }
+
+        .appointment-cta-content h2 {
+            font-size: 50px;
+        }
+
+        .appointment-cta-content p {
+            font-size: 18px;
+        }
+    }
+
+
+    /* =========================================
+   TABLET
+========================================= */
+
+    @media (max-width: 991px) {
+
+        .appointment-cta-section {
+            padding: 60px 0;
+        }
+
+        .appointment-cta-wrapper {
+            min-height: 350px;
+        }
+
+        .appointment-cta-content {
+            padding: 55px 45px;
+        }
+
+        .appointment-cta-content h2 {
+            font-size: 40px;
+        }
+
+        .appointment-cta-content p {
+            font-size: 16px;
+        }
+    }
+
+
+    /* =========================================
+   MOBILE
+========================================= */
+
+    @media (max-width: 767px) {
+
+        .appointment-cta-section {
+            padding: 50px 0;
+        }
+
+        .appointment-cta-wrapper {
+            min-height: auto;
+
+            border-radius: 18px;
+        }
+
+        .appointment-cta-content {
+            padding: 45px 30px;
+        }
+
+        .appointment-cta-label {
+            margin-bottom: 18px;
+
+            font-size: 11px;
+            letter-spacing: 4px;
+        }
+
+        .appointment-cta-content h2 {
+            font-size: 32px;
+            line-height: 1.2;
+        }
+
+        .appointment-cta-content p {
+            margin-bottom: 25px;
+
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .appointment-cta-btn {
+            width: 235px;
+            height: 56px;
+        }
+    }
+
+
+    /* =========================================
+   SMALL MOBILE
+========================================= */
+
+    @media (max-width: 480px) {
+
+        .appointment-cta-content {
+            padding: 38px 24px;
+        }
+
+        .appointment-cta-content h2 {
+            font-size: 28px;
+        }
+
+        .appointment-cta-content p {
+            font-size: 14px;
+        }
+
+        .appointment-cta-btn {
+            width: 100%;
+        }
+    }
+
+    /* Page Banner */
+
+.atulya-page-banner {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.atulya-page-banner-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    display: block;
+
+    transform: scale(1.01);
+}
+
+.atulya-page-banner-shade {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(20, 35, 42, 0.12);
+}
+
+.atulya-page-banner-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.atulya-page-banner-content .container {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.atulya-banner-box {
+    position: relative;
+
+    width: 500px;
+    min-height: 290px;
+
+    margin-left: 15px;
+
+    padding: 52px 65px 48px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: rgba(63, 82, 91, 0.72);
+
+    backdrop-filter: blur(2px);
+
+    clip-path: polygon(
+        5% 0,
+        100% 0,
+        94% 100%,
+        0 100%
+    );
+}
+
+.atulya-banner-line {
+    width: 55px;
+    height: 4px;
+
+    margin-bottom: 22px;
+
+    background: #08c7bd;
+}
+
+.atulya-banner-box h1 {
+    margin: 0 0 30px;
+
+    color: #ffffff;
+
+    font-size: 52px;
+    line-height: 1.12;
+    font-weight: 500;
+
+    letter-spacing: -0.5px;
+}
+
+.atulya-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    gap: 12px;
+
+    padding: 15px 22px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #08c7bd;
+
+    font-size: 14px;
+    line-height: 1;
+
+    font-weight: 500;
+}
+
+.atulya-breadcrumb a {
+    color: #08c7bd;
+    transition: color 0.3s ease;
+}
+
+.atulya-breadcrumb a:hover {
+    color: #222;
+}
+
+.atulya-breadcrumb span {
+    color: #08c7bd;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1199px) {
+
+    .atulya-page-banner {
+        height: 450px;
+    }
+
+    .atulya-banner-box {
+        width: 460px;
+        min-height: 275px;
+
+        padding: 48px 58px;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 46px;
+    }
+}
+
+
+/* Tablet */
+
+@media (max-width: 991px) {
+
+    .atulya-page-banner {
+        height: 400px;
+    }
+
+    .atulya-banner-box {
+        width: 430px;
+        min-height: 250px;
+
+        padding: 42px 50px;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 42px;
+        margin-bottom: 25px;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+
+    .atulya-page-banner {
+        height: 340px;
+    }
+
+    .atulya-banner-box {
+        width: 390px;
+        max-width: 90%;
+
+        min-height: 220px;
+
+        margin-left: 0;
+
+        padding: 35px 42px;
+
+        clip-path: polygon(
+            4% 0,
+            100% 0,
+            96% 100%,
+            0 100%
+        );
+    }
+
+    .atulya-banner-line {
+        width: 42px;
+        height: 3px;
+
+        margin-bottom: 16px;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 36px;
+        margin-bottom: 22px;
+    }
+
+    .atulya-breadcrumb {
+        gap: 9px;
+        padding: 13px 17px;
+        font-size: 12px;
+    }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 575px) {
+
+    .atulya-page-banner {
+        height: 290px;
+    }
+
+    .atulya-banner-box {
+        width: 100%;
+        max-width: 100%;
+
+        min-height: 185px;
+
+        padding: 28px 30px;
+
+        clip-path: none;
+    }
+
+    .atulya-banner-line {
+        margin-bottom: 13px;
+    }
+
+    .atulya-banner-box h1 {
+        font-size: 30px;
+        margin-bottom: 18px;
+    }
+
+    .atulya-breadcrumb {
+        padding: 12px 14px;
+        gap: 7px;
+        font-size: 11px;
+    }
+}
+.footer-day {
+    font-weight: 700 !important;
+    font-size:18px;
+}
+
+.footer-247 {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-247 img {
+    width: 65px;
+    height: auto;
+    max-height: 38px;
+    object-fit: contain;
+    display: block;
 }

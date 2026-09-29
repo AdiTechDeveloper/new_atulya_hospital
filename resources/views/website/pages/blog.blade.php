@@ -1,6 +1,14 @@
 @extends('website.layout.app')
 
 @section('title', 'Blog')
+@section('page-banner')
+
+    @include('website.partials.page-banner', [
+        'title' => 'Blog'
+    ])
+
+@endsection
+
 
 @section('content')
 
@@ -21,6 +29,7 @@
                     class="wow fadeInUp"
                     data-wow-delay=".2s"
                     style="
+                    margin-top:18px;
                         display: inline-block;
                         padding: 5px;
                         background: #e4f8f7;

@@ -3,6 +3,13 @@
 @section('title', 'Careers | Atulya Super Speciality Hospital & ICU | Ahmedabad')
 
 @section('meta_description', 'Explore career opportunities at Atulya Super Speciality Hospital & ICU in Ahmedabad and apply for available positions.')
+@section('page-banner')
+
+    @include('website.partials.page-banner', [
+        'title' => 'Careers'
+    ])
+
+@endsection
 
 @section('content')
 

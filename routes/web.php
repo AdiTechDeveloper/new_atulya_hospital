@@ -39,6 +39,9 @@ Route::get('/', [HomeController::class, 'index'])
 Route::post('/appointment', [AppointmentController::class, 'store'])
     ->name('appointment.store');
 
+Route::get('/appointment', [ContactController::class, 'appointment'])
+    ->name('appointment');
+
 // About
 Route::get('/about', [AboutController::class, 'index'])
     ->name('about');
@@ -60,6 +63,10 @@ Route::get('/icu', function () {
     return view('website.pages.icu');
 })->name('icu');
 
+
+Route::get('/patient-corner', function () {
+    return view('website.pages.patient-corner');
+})->name('patient.corner');
 
 // Departments
 
@@ -131,9 +138,9 @@ Route::middleware('auth')
     ->group(function () {
 
         // Dashboard
-      
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->name('admin.dashboard');
+
+        Route::get('/dashboard', [DashboardController::class, 'index'])
+            ->name('admin.dashboard');
 
 
         // Videos

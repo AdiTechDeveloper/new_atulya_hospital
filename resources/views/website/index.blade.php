@@ -10,13 +10,20 @@
 <!-- Hero Section Start -->
 
 <section class="hero-section hero-1 bg-cover fix"
-    style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/img/home-1/hero/bg-01.png') }}'); height:900px;">
+    style="
+        background-image:
+            linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)),
+            url('{{ asset('assets/img/home-1/hero/bg-01.png') }}');
+        height: 900px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    ">
 
     <div class="container">
         <div class="row g-2 align-items-center">
 
-            <div class="col-lg-8">
-
+            <div class="col-lg-7">
 
                 <div class="hero-content">
 
@@ -24,8 +31,9 @@
                         Quality Healthcare with Compassionate Care
                     </h1>
 
-                    <p class="wow fadeInUp text-white" data-wow-delay=".3s">
-                        Comprehensive medical care supported by experienced doctors, critical care services and modern hospital facilities.
+                    <p class="wow fadeInUp" data-wow-delay=".3s">
+                        Comprehensive medical care supported by experienced doctors,
+                        critical care services and modern hospital facilities.
                     </p>
 
                     <a href="{{ url('/departments/urology') }}"
@@ -46,7 +54,6 @@
     </div>
 
 </section>
-
 
 
 <!-- Hero Features Start -->
@@ -200,19 +207,19 @@
                     <div class="about-image">
 
                         <img
-                            src="{{ asset('assets/img/home-1/hero/img1.png') }}"
+                            src="{{ asset('assets/img/home-1/hero/img_1.png') }}"
                             alt="Atulya Super Speciality Hospital and ICU Ahmedabad"
                             class="wow img-custom-anim-left">
 
                         <div class="about-img-2 float-bob-x">
                             <img
-                                src="{{ asset('assets/img/home-1/hero/img2.png') }}"
+                                src="{{ asset('assets/img/home-1/hero/img_2.png') }}"
                                 alt="{{ setting('hospital_name') }} medical care">
                         </div>
 
                         <div class="about-img-3 float-bob-y">
                             <img
-                                src="{{ asset('assets/img/home-1/hero/img3.png') }}"
+                                src="{{ asset('assets/img/home-1/hero/img_3.png') }}"
                                 alt="{{ setting('hospital_name') }} healthcare services">
                         </div>
 
@@ -353,22 +360,19 @@
     <div class="service-shape-1">
         <img
             src="{{ asset('assets/img/home-1/service/shape-1.png') }}"
-            alt="Atulya Hospital service"
-        >
+            alt="Atulya Hospital service">
     </div>
 
     <div class="service-shape-2">
         <img
             src="{{ asset('assets/img/home-1/service/shape-2.png') }}"
-            alt="Atulya Hospital healthcare"
-        >
+            alt="Atulya Hospital healthcare">
     </div>
 
     <div class="service-shape-3">
         <img
             src="{{ asset('assets/img/home-1/service/shape-3.png') }}"
-            alt="Atulya Hospital medical services"
-        >
+            alt="Atulya Hospital medical services">
     </div>
 
 
@@ -390,216 +394,207 @@
 
         @if($departments->count())
 
-            <div class="service-wrapper">
+        <div class="service-wrapper">
 
-                <div class="row">
+            <div class="row">
 
 
-                    {{-- =================================================
+                {{-- =================================================
                          DEPARTMENT LIST
                     ================================================== --}}
 
-                    <div class="col-lg-4">
+                <div class="col-lg-4">
 
-                        <ul class="nav">
+                    <ul class="nav">
 
-                            @foreach($departments as $index => $department)
+                        @foreach($departments as $index => $department)
 
-                                <li
-                                    class="nav-item wow fadeInUp"
-                                    data-wow-delay="{{ 0.2 + ($index * 0.2) }}s"
-                                >
+                        <li
+                            class="nav-item wow fadeInUp"
+                            data-wow-delay="{{ 0.2 + ($index * 0.2) }}s">
 
-                                    <a
-                                        href="#department-{{ $department->id }}"
-                                        data-bs-toggle="tab"
-                                        class="nav-link {{ $index === 0 ? 'active' : '' }}"
-                                    >
+                            <a
+                                href="#department-{{ $department->id }}"
+                                data-bs-toggle="tab"
+                                class="nav-link {{ $index === 0 ? 'active' : '' }}">
 
-                                        {{ $department->name }}
+                                {{ $department->name }}
 
-                                        <i class="far fa-chevron-right"></i>
+                                <i class="far fa-chevron-right"></i>
 
-                                    </a>
+                            </a>
 
-                                </li>
+                        </li>
 
-                            @endforeach
+                        @endforeach
 
-                        </ul>
+                    </ul>
 
-                    </div>
+                </div>
 
 
 
-                    {{-- =================================================
+                {{-- =================================================
                          DEPARTMENT CONTENT
                     ================================================== --}}
 
-                    <div
-                        class="col-lg-8 wow fadeInUp"
-                        data-wow-delay=".3s"
-                    >
+                <div
+                    class="col-lg-8 wow fadeInUp"
+                    data-wow-delay=".3s">
 
-                        <div class="tab-content">
-
-
-                            @foreach($departments as $index => $department)
-
-                                <div
-                                    id="department-{{ $department->id }}"
-                                    class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}"
-                                >
-
-                                    <div class="service-box-items">
+                    <div class="tab-content">
 
 
-                                        {{-- =================================================
+                        @foreach($departments as $index => $department)
+
+                        <div
+                            id="department-{{ $department->id }}"
+                            class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}">
+
+                            <div class="service-box-items">
+
+
+                                {{-- =================================================
                                              CONTENT
                                         ================================================== --}}
 
-                                        <div class="service-icon-box">
+                                <div class="service-icon-box">
 
-                                            <div class="icon">
-                                                <i class="flaticon-good-heart"></i>
-                                            </div>
-
-
-                                            <h3>
-
-                                                <a
-                                                    href="{{ route('departments.show', $department->slug) }}"
-                                                >
-
-                                                    {{ $department->name }}
-
-                                                    <br>
-
-                                                    Care & Treatment
-
-                                                </a>
-
-                                            </h3>
+                                    <div class="icon">
+                                        <i class="flaticon-good-heart"></i>
+                                    </div>
 
 
-                                            <p>
+                                    <h3>
 
-                                                @if($department->short_description)
+                                        <a
+                                            href="{{ route('departments.show', $department->slug) }}">
 
-                                                    {{ \Illuminate\Support\Str::limit(
+                                            {{ $department->name }}
+
+                                            <br>
+
+                                            Care & Treatment
+
+                                        </a>
+
+                                    </h3>
+
+
+                                    <p>
+
+                                        @if($department->short_description)
+
+                                        {{ \Illuminate\Support\Str::limit(
                                                         $department->short_description,
                                                         180
                                                     ) }}
 
-                                                @elseif($department->about_description)
+                                        @elseif($department->about_description)
 
-                                                    {{ \Illuminate\Support\Str::limit(
+                                        {{ \Illuminate\Support\Str::limit(
                                                         $department->about_description,
                                                         180
                                                     ) }}
 
-                                                @else
+                                        @else
 
-                                                    Comprehensive healthcare services
-                                                    with specialist consultation,
-                                                    accurate diagnosis and
-                                                    personalised patient care.
+                                        Comprehensive healthcare services
+                                        with specialist consultation,
+                                        accurate diagnosis and
+                                        personalised patient care.
 
-                                                @endif
+                                        @endif
 
-                                            </p>
-
-
-                                            <a
-                                                href="{{ route('departments.show', $department->slug) }}"
-                                                class="theme-btn mt-5"
-                                            >
-
-                                                <i class="far fa-chevron-right"></i>
-
-                                                More Details
-
-                                            </a>
-
-                                        </div>
+                                    </p>
 
 
+                                    <a
+                                        href="{{ route('departments.show', $department->slug) }}"
+                                        class="theme-btn mt-5">
 
-                                        {{-- =================================================
+                                        <i class="far fa-chevron-right"></i>
+
+                                        More Details
+
+                                    </a>
+
+                                </div>
+
+
+
+                                {{-- =================================================
                                              IMAGE
                                         ================================================== --}}
 
-                                        <div
-                                            class="service-image"
-                                            style="
+                                <div
+                                    class="service-image"
+                                    style="
                                                 width:45%;
                                                 min-width:45%;
                                                 display:flex;
                                                 align-items:center;
                                                 justify-content:center;
-                                            "
-                                        >
+                                            ">
 
-                                            @if($department->image)
+                                    @if($department->image)
 
-                                                <img
-                                                    src="{{ asset('storage/' . $department->image) }}"
-                                                    alt="{{ $department->name }} at {{ setting('hospital_name') }}"
-                                                    style="
+                                    <img
+                                        src="{{ asset('storage/' . $department->image) }}"
+                                        alt="{{ $department->name }} at {{ setting('hospital_name') }}"
+                                        style="
                                                         width:100%;
                                                         max-width:100%;
                                                         height:auto;
                                                         object-fit:contain;
-                                                    "
-                                                >
+                                                    ">
 
-                                            @else
+                                    @else
 
-                                                <img
-                                                    src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
-                                                    alt="{{ $department->name }} healthcare service"
-                                                    style="
+                                    <img
+                                        src="{{ asset('assets/img/home-1/service/serviceimg.png') }}"
+                                        alt="{{ $department->name }} healthcare service"
+                                        style="
                                                         width:100%;
                                                         max-width:100%;
                                                         height:auto;
                                                         object-fit:contain;
-                                                    "
-                                                >
+                                                    ">
 
-                                            @endif
-
-                                        </div>
-
-
-                                    </div>
+                                    @endif
 
                                 </div>
 
-                            @endforeach
 
+                            </div>
 
                         </div>
 
-                    </div>
+                        @endforeach
 
+
+                    </div>
 
                 </div>
 
+
             </div>
+
+        </div>
 
         @else
 
-            <div class="text-center text-white py-5">
+        <div class="text-center text-white py-5">
 
-                <h3 class="text-white">
-                    Healthcare Services
-                </h3>
+            <h3 class="text-white">
+                Healthcare Services
+            </h3>
 
-                <p>
-                    Our healthcare departments will be available here soon.
-                </p>
+            <p>
+                Our healthcare departments will be available here soon.
+            </p>
 
-            </div>
+        </div>
 
         @endif
 
@@ -628,7 +623,7 @@
 
 
 
-            <div class="section-title-area align-items-end mb-0">
+            <div class="section-title-area align-items-end mb-0 pb-4">
 
                 <div class="section-title">
 
@@ -815,6 +810,156 @@
 </section>
 <!-- Cta Section End -->
 
+
+<section class="atulya-counter-section">
+
+    <div class="container">
+
+        <div class="counter-section">
+
+           <div class="counter-wrapper zoom-effect-style">
+
+    {{-- Satisfied Patients --}}
+    <div class="counter-items wow fadeInUp" data-wow-delay=".2s">
+
+        <div class="icon">
+            <img
+                src="{{ asset('assets/img/home-1/counter/icon-01.png') }}"
+                alt="Satisfied Patients"
+                style="width: 65px; height: 65px; object-fit: contain;">
+        </div>
+
+        <div class="content">
+
+            @php
+                $satisfiedPatients = setting('satisfied_patients');
+                $satisfiedPatientsNumber = preg_replace('/[^0-9.]/', '', $satisfiedPatients);
+                $satisfiedPatientsSuffix = preg_replace('/[0-9.]/', '', $satisfiedPatients);
+            @endphp
+
+            <h2>
+                <span
+                    class="odometer"
+                    data-count="{{ $satisfiedPatientsNumber }}">
+                    00
+                </span>{{ $satisfiedPatientsSuffix }}
+            </h2>
+
+            <p>Satisfied Patients</p>
+
+        </div>
+
+    </div>
+
+
+    {{-- Clinic Rooms --}}
+    <div class="counter-items wow fadeInUp" data-wow-delay=".4s">
+
+        <div class="icon">
+            <img
+                src="{{ asset('assets/img/home-1/counter/icon-02.png') }}"
+                alt="Clinic Rooms"
+                style="width: 65px; height: 65px; object-fit: contain;">
+        </div>
+
+        <div class="content">
+
+            @php
+                $clinicRooms = setting('clinic_rooms');
+                $clinicRoomsNumber = preg_replace('/[^0-9.]/', '', $clinicRooms);
+                $clinicRoomsSuffix = preg_replace('/[0-9.]/', '', $clinicRooms);
+            @endphp
+
+            <h2>
+                <span
+                    class="odometer"
+                    data-count="{{ $clinicRoomsNumber }}">
+                    00
+                </span>{{ $clinicRoomsSuffix }}
+            </h2>
+
+            <p>Clinic Rooms</p>
+
+        </div>
+
+    </div>
+
+
+    {{-- Awards Winning --}}
+    <div class="counter-items wow fadeInUp" data-wow-delay=".6s">
+
+        <div class="icon">
+            <img
+                src="{{ asset('assets/img/home-1/counter/icon-03.png') }}"
+                alt="Awards Winning"
+                style="width: 65px; height: 65px; object-fit: contain;">
+        </div>
+
+        <div class="content">
+
+            @php
+                $awardsWinning = setting('awards_winning');
+                $awardsWinningNumber = preg_replace('/[^0-9.]/', '', $awardsWinning);
+                $awardsWinningSuffix = preg_replace('/[0-9.]/', '', $awardsWinning);
+            @endphp
+
+            <h2>
+                <span
+                    class="odometer"
+                    data-count="{{ $awardsWinningNumber }}">
+                    00
+                </span>{{ $awardsWinningSuffix }}
+            </h2>
+
+            <p>Awards Winning</p>
+
+        </div>
+
+    </div>
+
+
+    {{-- Kinds Of Research --}}
+    <div class="counter-items wow fadeInUp" data-wow-delay=".8s">
+
+        <div class="icon">
+            <img
+                src="{{ asset('assets/img/home-1/counter/icon-04.png') }}"
+                alt="Kinds Of Research"
+                style="width: 65px; height: 65px; object-fit: contain;">
+        </div>
+
+        <div class="content">
+
+            @php
+                $researchCount = setting('research_count');
+                $researchCountNumber = preg_replace('/[^0-9.]/', '', $researchCount);
+                $researchCountSuffix = preg_replace('/[0-9.]/', '', $researchCount);
+            @endphp
+
+            <h2>
+                <span
+                    class="odometer"
+                    data-count="{{ $researchCountNumber }}">
+                    00
+                </span>{{ $researchCountSuffix }}
+            </h2>
+
+            <p>Kinds Of Research</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
 <section
     class="vedio-bg-section fix bg-cover atulya-home-video"
     style="background-image: url('{{ asset('assets/img/home-1/counter/video-img.png') }}');">
@@ -825,9 +970,7 @@
 
         <div class="atulya-video-inner">
 
-            {{-- =========================
-                    HEADING
-            ========================== --}}
+            {{-- HEADING --}}
 
             <div class="atulya-video-heading">
 
@@ -845,9 +988,7 @@
             </div>
 
 
-            {{-- =========================
-                    VIDEOS
-            ========================== --}}
+            {{-- VIDEOS --}}
 
             @if(isset($videos) && $videos->count())
 
@@ -894,13 +1035,9 @@
                 @endphp
 
 
-                {{-- VIDEO CARD --}}
-
                 <div class="col-xl-3 col-lg-3 col-md-6">
 
                     <div class="atulya-video-card">
-
-                        {{-- Thumbnail --}}
 
                         <div class="atulya-video-thumb">
 
@@ -916,13 +1053,13 @@
                                 class="atulya-video-play open-video"
                                 data-video-url="{{ $video->youtube_url }}"
                                 aria-label="Play {{ $video->title }}">
+
                                 <i class="fas fa-play"></i>
+
                             </button>
 
                         </div>
 
-
-                        {{-- Content --}}
 
                         <div class="atulya-video-content">
 
@@ -949,8 +1086,6 @@
             </div>
 
 
-            {{-- SEE ALL --}}
-
             <div class="atulya-video-see-all">
 
                 <a
@@ -967,9 +1102,8 @@
 
             </div>
 
-            @else
 
-            {{-- EMPTY STATE --}}
+            @else
 
             <div class="atulya-video-empty">
 
@@ -984,17 +1118,21 @@
                     content for you.
                 </p>
 
-                <a
-                    href="{{ route('videos.index') }}"
-                    class="theme-btn atulya-see-videos">
+                <div class="atulya-video-see-all">
 
-                    <span>
-                        View All Videos
-                    </span>
+                    <a
+                        href="{{ route('videos.index') }}"
+                        class="theme-btn">
 
-                    <i class="fas fa-arrow-right"></i>
+                        <span>
+                            View All Videos
+                        </span>
 
-                </a>
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
 
             </div>
 
@@ -1002,38 +1140,36 @@
 
         </div>
 
-    </div>
 
+        {{-- VIDEO POPUP --}}
 
-    {{-- =========================
-            VIDEO POPUP
-    ========================== --}}
+        <div
+            id="videoModal"
+            class="atulya-video-modal">
 
-    <div
-        id="videoModal"
-        class="atulya-video-modal">
+            <div class="atulya-video-modal-content">
 
-        <div class="atulya-video-modal-content">
+                <button
+                    type="button"
+                    id="closeVideo"
+                    class="atulya-video-close"
+                    aria-label="Close video">
 
-            <button
-                type="button"
-                id="closeVideo"
-                class="atulya-video-close"
-                aria-label="Close video">
+                    <i class="fas fa-times"></i>
 
-                <i class="fas fa-times"></i>
+                </button>
 
-            </button>
+                <div class="atulya-video-iframe-wrapper">
 
-            <div class="atulya-video-iframe-wrapper">
+                    <iframe
+                        id="popupVideo"
+                        src=""
+                        title="{{ setting('hospital_name', 'Atulya Hospital') }} Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
 
-                <iframe
-                    id="popupVideo"
-                    src=""
-                    title="{{ setting('hospital_name', 'Atulya Hospital') }} Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
+                </div>
 
             </div>
 
@@ -1148,236 +1284,43 @@
 
 </section>
 
-<section class="appointment-section section-padding atulya-appointment-section">
+
+<section class="appointment-cta-section">
 
     <div class="container">
 
-        <div class="appointment-wrapper">
+        <div class="appointment-cta-wrapper">
 
-            <div class="row g-4 align-items-stretch">
+            <div class="appointment-cta-content">
 
-                <!-- APPOINTMENT FORM -->
-                <div class="col-lg-8">
+                <span class="appointment-cta-label">
+                    APPOINTMENT
+                </span>
 
-                    <div class="appointment-items">
+                <h2>
+                    Need Medical Assistance?
+                    <br>
+                    Book Your Appointment
+                </h2>
 
-                        <h3>Book An Appointment</h3>
-                        @if(session('success'))
-                        <div class="alert alert-success mb-4">
-                            {{ session('success') }}
-                        </div>
-                        @endif
-                        <form action="{{ route('appointment.store') }}" method="POST">
+                <p>
+                    Schedule an appointment with our experienced doctors
+                    and get the right care for your health.
+                </p>
 
-                            @csrf
+                <a
+                    href="{{route('appointment')}}"
+                    class="appointment-cta-btn">
 
-                            <div class="row">
+                    <span class="btn-text">
+                        Book An Appointment
+                    </span>
 
-                                <!-- NAME -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
+                    <span class="btn-icon">
+                        <i class="far fa-chevron-right"></i>
+                    </span>
 
-                                        <p>Name*</p>
-
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="{{ old('name') }}"
-                                            placeholder="Enter Your Name"
-                                            required>
-                                        @error('name')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-                                <!-- PHONE -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Phone*</p>
-
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value="{{ old('phone') }}"
-                                            placeholder="Enter Your Phone Number"
-                                            required>
-                                        @error('phone')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-
-                                <!-- DEPARTMENT -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Department <span>(Optional)</span></p>
-
-                                        <div class="form">
-
-                                            <select name="department" id="appointmentDepartment" class="w-100">
-                                                <option value="">Select Department</option>
-
-                                                @foreach($departments as $department)
-                                                <option
-                                                    value="{{ $department }}"
-                                                    {{ old('department') == $department ? 'selected' : '' }}>
-                                                    {{ ucwords($department) }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            @error('department')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <!-- DOCTOR -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Doctor <span>(Optional)</span></p>
-
-                                        <div class="form">
-
-                                            <select name="doctor_id" id="appointmentDoctor" class="w-100" disabled>
-                                                <option value="">Select Department First</option>
-
-                                                @foreach($doctors as $doctor)
-                                                <option
-                                                    value="{{ $doctor->id }}"
-                                                    data-department="{{ trim($doctor->department) }}"
-                                                    style="display:none;"
-                                                    {{ old('doctor_id') == $doctor->id ? 'selected' : '' }}>
-                                                    {{ $doctor->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            @error('doctor_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <!-- DATE -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Date*</p>
-                                        <input
-                                            type="date"
-                                            name="appointment_date"
-                                            value="{{ old('appointment_date') }}"
-                                            min="{{ date('Y-m-d') }}"
-                                            required>
-
-                                        @error('appointment_date')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-
-                                <!-- TIME -->
-                                <div class="col-md-6">
-                                    <div class="form-clt">
-
-                                        <p>Time <span>(Optional)</span></p>
-
-                                        <input
-                                            type="time"
-                                            name="appointment_time"
-                                            value="{{ old('appointment_time') }}">
-
-                                        @error('appointment_time')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-                                <!-- MESSAGE -->
-                                <div class="col-12">
-                                    <div class="form-clt">
-
-                                        <p>Message <span>(Optional)</span></p>
-
-                                        <textarea
-                                            name="message"
-                                            rows="3"
-                                            placeholder="Write Your Message">{{ old('message') }}</textarea>
-
-                                        @error('message')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-
-                                <!-- BUTTON -->
-                                <div class="col-12">
-                                    <div class="form-clt">
-
-                                        <button
-                                            type="submit"
-                                            class="theme-btn">
-                                            <i class="far fa-chevron-right"></i>
-                                            Submit Appointment
-                                        </button>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TWO IMAGES -->
-                <div class="col-lg-4">
-
-                    <div class="appointment-images">
-
-                        <div class="appointment-image-item">
-
-                            <img
-                                src="{{ asset('assets/img/inner/contact/contact-img.jpg') }}"
-                                alt="Atulya Super Speciality Hospital">
-
-                        </div>
-
-                        <div class="appointment-image-item">
-
-                            <img
-                                src="{{ asset('assets/img/home-1/hero/img1.png') }}"
-                                alt="Atulya Super Speciality Hospital">
-
-                        </div>
-
-                    </div>
-
-                </div>
+                </a>
 
             </div>
 
@@ -1388,35 +1331,52 @@
 </section>
 
 
+
 <!-- Testimonial Section5 Start -->
-<section class="testimonial-section-1 section-padding pb-0 bg-cover fix" style="background-image: url('assets/img/home-1/testimonial/bg-test1.png');">
+<section class="testimonial-section-1 section-padding pb-0 bg-cover fix atulya-testimonial-section"
+    style="background-image: url('assets/img/home-1/testimonial/bg-test1.png');">
+
     <div class="shape float-bob-y">
         <img src="{{ asset('assets/img/home-1/testimonial/vector.png') }}" alt="img">
     </div>
+
     <div class="shape-2 float-bob-y">
         <img src="{{ asset('assets/img/home-1/testimonial/hand.png') }}" alt="img">
     </div>
+
     <div class="container">
         <div class="testimonial-wrapper-1">
             <div class="row g-4">
+
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay=".2s">
                     <div class="testimonial-image">
                         <img src="{{ asset('assets/img/home-1/testimonial/test-girl.png') }}" alt="img">
                     </div>
                 </div>
+
                 <div class="col-lg-8">
                     <div class="section-title-area">
                         <div class="section-title">
-                            <span class="subtitle tz-sub-tilte tz-sub-anim  text-uppercase tx-subTitle">OUR TESTIMONIAL</span>
-                            <h2 class="tx-title sec_title  tz-itm-title tz-itm-anim">
+                            <span class="subtitle tz-sub-tilte tz-sub-anim text-uppercase tx-subTitle">
+                                OUR TESTIMONIAL
+                            </span>
+
+                            <h2 class="tx-title sec_title tz-itm-title tz-itm-anim">
                                 Our Real Story of Clients
                             </h2>
                         </div>
+
                         <div class="array-button-2">
-                            <button class="array-prev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="array-next"><i class="fas fa-chevron-right"></i></button>
+                            <button class="array-prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+
+                            <button class="array-next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
+
                     <div class="testimonial-right-item">
                         <div class="swiper testimonial-slider-1">
                             <div class="swiper-wrapper">
@@ -1424,7 +1384,6 @@
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
                                         <div class="client-image">
-
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1433,26 +1392,26 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
+
                                         <div class="testimonial-content">
                                             <p>
-                                                “I am a doctor myself and have taken the help of my colleague Dr. Dhaivat Shukla for joint-related problems in my relatives. His diagnosis and treatment approach have always impressed me. His knowledge, dedication, and patient care are truly commendable. Best wishes to my dear friend Dr. Shukla and the entire {{ setting('hospital_name') }} team.”
+                                                “Dr. Priyanka Prajapati provided excellent treatment for my father’s malaria. She was professional, knowledgeable, and ensured he received the right treatment promptly. Thanks to her care, he recovered quickly. Highly recommended!”
                                             </p>
+
                                             <div class="info-item">
                                                 <div class="info-content">
-                                                    <h5>Sangeeta Sheth</h5>
-
+                                                    <h5>Parth Mewada</h5>
                                                 </div>
-                                                <div class="icon">
 
-                                                </div>
+                                                <div class="icon"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
                                         <div class="client-image">
-
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1461,16 +1420,19 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
+
                                         <div class="testimonial-content">
                                             <p>
-                                                “Dr. Priyanka Prajapati provided excellent treatment for my father he was suffering from malaria. She was professional, knowledgeable, and he received the right treatment at the right time. Her caring approach gave us confidence throughout the treatment. Thanks to her and the Atulya team for their excellent care.”
+                                                “Dr Dhaiwat Shukla has changed my wife's life.she has rheumatoid arthritis with extreme eye dryness but since we consulted this young dynamic yet experienced guy she has felt much better and she is doing fine.”
                                             </p>
+
                                             <div class="info-item">
                                                 <div class="info-content">
                                                     <h5>
-                                                        Krishtal Parikh</h5>
-
+                                                        krishna logistics
+                                                    </h5>
                                                 </div>
+
                                                 <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
                                                 </div> -->
@@ -1478,10 +1440,10 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
                                         <div class="client-image">
-
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1490,16 +1452,19 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
+
                                         <div class="testimonial-content">
                                             <p>
-                                                “My mother was suffering from arthritis, severe morning stiffness, and constant pain. Dr. Dhaivat Shukla at {{ setting('hospital_name') }} helped us manage her condition with proper treatment and guidance. Her pain improved significantly, and we are truly thankful to Dr. Shukla and the entire Atulya team.”
+                                                “Our family got diagnosed and care by this hospital and we always get good care from them.In another word, hospital becomes more familiar and with welcoming vibes.I thanks to Dr Kunal, Dr Parth, Dr Ragav, Dr Dhaiwat and many more doctors and staff members for such a good care.
                                             </p>
+
                                             <div class="info-item">
                                                 <div class="info-content">
                                                     <h5>
-                                                        Taksh Shrimali</h5>
-
+                                                        Gaurang Kadiya
+                                                    </h5>
                                                 </div>
+
                                                 <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
                                                 </div> -->
@@ -1507,10 +1472,10 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
                                         <div class="client-image">
-
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1519,16 +1484,19 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
+
                                         <div class="testimonial-content">
                                             <p>
-                                                “Dr. Dhaivat Shukla is an excellent doctor. I was suffering from Ankylosing Spondylitis, and he diagnosed my condition quickly and started effective treatment. He is very supportive, helpful, and caring towards his patients. I am very satisfied with his treatment and would highly recommend him.”
+                                                “I strongly recommand Atulya Hospital for their professional approach, in house expert panel of medical professionals, and overall positive atmosphere. Very impressed with available facilities, support from nursing and attendents.Thank you for your service. All the best and keep going with good work.”
                                             </p>
+
                                             <div class="info-item">
                                                 <div class="info-content">
                                                     <h5>
-                                                        Shivani Joshi</h5>
-
+                                                        Maulik Gohel
+                                                    </h5>
                                                 </div>
+
                                                 <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
                                                 </div> -->
@@ -1536,10 +1504,10 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="swiper-slide">
                                     <div class="testimonial-box-item-1">
                                         <div class="client-image">
-
                                             <div class="star">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -1548,17 +1516,19 @@
                                                 <i class="fas fa-star"></i>
                                             </div>
                                         </div>
+
                                         <div class="testimonial-content">
                                             <p>
                                                 “My son was just 5 years old when he was diagnosed with a rheumatological condition. We took multiple opinions before meeting Dr. Dhaivat Shukla. He understood the condition well, guided us properly, and started the right treatment. We are very thankful to Dr. Shukla and the Atulya team for their care and support.”
                                             </p>
+
                                             <div class="info-item">
                                                 <div class="info-content">
                                                     <h5>
                                                         Husain Bhatia
                                                     </h5>
-
                                                 </div>
+
                                                 <!-- <div class="icon">
                                                     <img src="{{ asset('assets/img/home-5/testimonial/01.svg') }}" alt="img">
                                                 </div> -->
@@ -1566,14 +1536,140 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
 </section>
+
+<hr>
+
+<style>
+    .atulya-testimonial-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .atulya-testimonial-section .testimonial-wrapper-1 {
+        position: relative;
+    }
+
+    .atulya-testimonial-section .testimonial-image {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .atulya-testimonial-section .testimonial-image img {
+        width: auto;
+        max-width: 100%;
+        max-height: 500px;
+        object-fit: contain;
+    }
+
+    .atulya-testimonial-section .section-title-area {
+        margin-bottom: 25px;
+    }
+
+    .atulya-testimonial-section .testimonial-right-item {
+        margin-top: 0;
+    }
+
+    .atulya-testimonial-section .testimonial-slider-1 {
+        height: auto;
+    }
+
+    .atulya-testimonial-section .testimonial-slider-1 .swiper-wrapper {
+        align-items: stretch;
+    }
+
+    .atulya-testimonial-section .testimonial-slider-1 .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    .atulya-testimonial-section .testimonial-box-item-1 {
+        width: 100%;
+        height: 100%;
+        margin: 5px 0 15px;
+        padding: 28px 32px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .atulya-testimonial-section .testimonial-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .atulya-testimonial-section .testimonial-content p {
+        margin-bottom: 20px;
+    }
+
+    .atulya-testimonial-section .info-item {
+        margin-top: auto;
+    }
+
+    .atulya-testimonial-section .client-image {
+        margin-bottom: 12px;
+    }
+
+    .atulya-testimonial-section .star {
+        display: flex;
+        gap: 4px;
+    }
+
+    .atulya-testimonial-section .star i {
+        font-size: 14px;
+    }
+
+    @media (max-width: 991px) {
+
+        .atulya-testimonial-section {
+            padding-top: 65px;
+            padding-bottom: 65px;
+        }
+
+        .atulya-testimonial-section .testimonial-image {
+            margin-bottom: 25px;
+        }
+
+        .atulya-testimonial-section .testimonial-image img {
+            max-height: 400px;
+        }
+
+        .atulya-testimonial-section .testimonial-box-item-1 {
+            padding: 25px;
+        }
+    }
+
+    @media (max-width: 575px) {
+
+        .atulya-testimonial-section {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .atulya-testimonial-section .testimonial-box-item-1 {
+            margin-bottom: 10px;
+            padding: 22px 20px;
+        }
+
+        .atulya-testimonial-section .testimonial-content p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+    }
+</style>
+
 
 <!-- Brand Section Start -->
 <div class="brand-section section-padding fix">
@@ -1808,9 +1904,6 @@
 </section>
 
 
-<!-- =========================
-     BLOG IMAGE CONSISTENCY
-========================== -->
 
 <style>
     .news-section .blog-fixed-image {

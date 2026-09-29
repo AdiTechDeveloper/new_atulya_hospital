@@ -556,16 +556,136 @@
                     </div>
 
                 </div>
+                {{-- Hospital Statistics --}}
+                <div class="card mb-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="mb-4">
+
+                            <h5 class="mb-1">
+                                Hospital Statistics
+                            </h5>
+
+                            <p class="text-secondary mb-0">
+                                Manage the statistics displayed on the hospital website.
+                            </p>
+
+                        </div>
+
+                        <div class="row g-4">
+
+                            {{-- Satisfied Patients --}}
+                            <div class="col-12 col-xl-6">
+
+                                <label for="satisfiedPatients" class="form-label">
+                                    Satisfied Patients
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="satisfied_patients"
+                                    id="satisfiedPatients"
+                                    class="form-control @error('satisfied_patients') is-invalid @enderror"
+                                    value="{{ old('satisfied_patients', $setting->satisfied_patients) }}"
+                                    placeholder="Example: 138K">
+
+                                @error('satisfied_patients')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                            </div>
+
+                            {{-- Clinic Rooms --}}
+                            <div class="col-12 col-xl-6">
+
+                                <label for="clinicRooms" class="form-label">
+                                    Clinic Rooms
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="clinic_rooms"
+                                    id="clinicRooms"
+                                    class="form-control @error('clinic_rooms') is-invalid @enderror"
+                                    value="{{ old('clinic_rooms', $setting->clinic_rooms) }}"
+                                    placeholder="Example: 420">
+
+                                @error('clinic_rooms')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                            </div>
+
+                            {{-- Awards Winning --}}
+                            <div class="col-12 col-xl-6">
+
+                                <label for="awardsWinning" class="form-label">
+                                    Awards Winning
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="awards_winning"
+                                    id="awardsWinning"
+                                    class="form-control @error('awards_winning') is-invalid @enderror"
+                                    value="{{ old('awards_winning', $setting->awards_winning) }}"
+                                    placeholder="Example: 32+">
+
+                                @error('awards_winning')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                            </div>
+
+                            {{-- Kinds Of Research --}}
+                            <div class="col-12 col-xl-6">
+
+                                <label for="researchCount" class="form-label">
+                                    Kinds Of Research
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="research_count"
+                                    id="researchCount"
+                                    class="form-control @error('research_count') is-invalid @enderror"
+                                    value="{{ old('research_count', $setting->research_count) }}"
+                                    placeholder="Example: 563K">
+
+                                @error('research_count')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
                 {{-- Save Settings --}}
                 <div class="card mb-4">
-                    
+
                     <div class="card-body p-4">
-                        
+
                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                            
+
                             <div>
-                                
+
                                 <h5 class="mb-1">
                                     Save Settings
                                 </h5>
@@ -583,51 +703,51 @@
                                 <span class="material-icons-outlined me-1 align-middle">
                                     save
                                 </span>
-                                
+
                                 Save Changes
 
                             </button>
 
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
 
             </form>
 
             {{-- Change Password --}}
             <div class="card mb-4">
-            
+
                 <div class="card-body p-4">
-            
+
                     <div class="mb-4">
                         <h5 class="mb-1">
                             Change Password
                         </h5>
-            
+
                         <p class="text-secondary mb-0">
                             Update your admin account password.
                         </p>
                     </div>
-            
+
                     <form
                         action="{{ route('admin.password.change') }}"
                         method="POST"
                         id="changePasswordForm"
                         novalidate>
                         @csrf
-            
+
                         <div class="row g-4">
-            
+
                             {{-- Current Password --}}
                             <div class="col-12 col-xl-4">
-            
+
                                 <label for="currentPassword" class="form-label">
                                     Current Password
                                     <span class="text-danger">*</span>
                                 </label>
-            
+
                                 <input
                                     type="password"
                                     name="current_password"
@@ -635,24 +755,24 @@
                                     class="form-control @error('current_password') is-invalid @enderror"
                                     placeholder="Enter current password"
                                     autocomplete="current-password">
-            
+
                                 @error('current_password')
                                 <div class="invalid-feedback d-block">
                                     {{ $message }}
                                 </div>
                                 @enderror
-            
+
                             </div>
-            
-            
+
+
                             {{-- New Password --}}
                             <div class="col-12 col-xl-4">
-            
+
                                 <label for="newPassword" class="form-label">
                                     New Password
                                     <span class="text-danger">*</span>
                                 </label>
-            
+
                                 <input
                                     type="password"
                                     name="password"
@@ -660,24 +780,24 @@
                                     class="form-control @error('password') is-invalid @enderror"
                                     placeholder="Enter new password"
                                     autocomplete="new-password">
-            
+
                                 @error('password')
                                 <div class="invalid-feedback d-block">
                                     {{ $message }}
                                 </div>
                                 @enderror
-            
+
                             </div>
-            
-            
+
+
                             {{-- Confirm Password --}}
                             <div class="col-12 col-xl-4">
-            
+
                                 <label for="confirmPassword" class="form-label">
                                     Confirm New Password
                                     <span class="text-danger">*</span>
                                 </label>
-            
+
                                 <input
                                     type="password"
                                     name="password_confirmation"
@@ -685,35 +805,35 @@
                                     class="form-control"
                                     placeholder="Confirm new password"
                                     autocomplete="new-password">
-            
+
                             </div>
-            
-            
+
+
                             {{-- Button --}}
                             <div class="col-12">
-            
+
                                 <div class="d-flex justify-content-end">
-            
+
                                     <button
                                         type="submit"
                                         class="btn btn-primary px-4">
                                         <span class="material-icons-outlined me-1 align-middle">
                                             lock_reset
                                         </span>
-            
+
                                         Update Password
                                     </button>
-            
+
                                 </div>
-            
+
                             </div>
-            
+
                         </div>
-            
+
                     </form>
-            
+
                 </div>
-            
+
             </div>
         </div>
     </div>
@@ -727,7 +847,7 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         const form = document.getElementById('settingsForm');
-        
+
         const hospitalName = document.getElementById('hospitalName');
         const phone = document.getElementById('phone');
         const address = document.getElementById('address');
