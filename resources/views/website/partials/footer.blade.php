@@ -144,7 +144,7 @@
                         <div class="single-footer-widget">
 
                             <div class="widget-head">
-                                <h3>Our Services</h3>
+                                <h3>Our Deapartments</h3>
                             </div>
                             @php
                             $footerDepartments = \App\Models\Department::where('is_active', true)

@@ -4,6 +4,14 @@
 
 @section('meta_description', 'Watch healthcare awareness videos, medical information and updates from Atulya Super Speciality Hospital & ICU, Ahmedabad.')
 
+@section('page-banner')
+
+    @include('website.partials.page-banner', [
+        'title' => 'Videos'
+    ])
+
+@endsection
+
 @section('content')
 
 
