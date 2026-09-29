@@ -7314,8 +7314,12 @@ button {
 }
 
 .service-details-wrapper .service-details-sidebar .sidebar-widget ul li a:hover {
-  background-color: var(--theme-color);
+  background-color: #02c9b8;
   color: var(--white);
+}
+.service-details-wrapper .service-details-sidebar .sidebar-widget ul li a.active {
+    background-color: #02c9b8;
+    color: var(--white);
 }
 
 .service-details-wrapper .service-details-sidebar .sidebar-widget ul li:not(:last-child) {
