@@ -1196,6 +1196,7 @@
 
     .cta-section .cta-wrapper .section-title-area {
         justify-content: flex-start !important;
+        margin-top: 23px;
         padding-top: 85px !important;
     }
 
